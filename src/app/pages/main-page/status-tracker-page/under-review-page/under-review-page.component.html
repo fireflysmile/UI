@@ -1,0 +1,39 @@
+<!-- card -->
+<app-rect-card *ngIf="detail">
+  <app-status-tracker-sub-header>
+    Under Review
+  </app-status-tracker-sub-header>
+
+  <!-- content -->
+  <div class="cm-under-review-content">
+    <!-- submission -->
+    <app-under-review-status-item
+      [date]="detail.applicationSubmissionCompleted"
+      icon="submission"
+      status="completed"
+      label="Application submission completed"></app-under-review-status-item>
+
+    <!-- bar -->
+    <div class="cm-bar cm-completed"></div>
+
+    <!-- pending -->
+    <app-under-review-status-item
+      [date]="detail.officialAssigned"
+      [label]="'Official\nAssigned, Review Pending'"
+      [status]="pendingStatus"
+      icon="pending"></app-under-review-status-item>
+
+    <!-- bar -->
+    <div
+      [class.cm-completed]="pendingStatus === 'completed'"
+      [class.cm-pending]="pendingStatus === 'pending'"
+      class="cm-bar"></div>
+
+    <!-- review -->
+    <app-under-review-status-item
+      [date]="detail.reviewClosed || detail.reviewOpened"
+      [label]="'Official\nReview in Progress'"
+      [status]="reviewStatus"
+      icon="reload"></app-under-review-status-item>
+  </div>
+</app-rect-card>

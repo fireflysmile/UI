@@ -1,0 +1,17 @@
+<app-rect-card-header>
+  <div heading>Value-based Excess across Segment</div>
+</app-rect-card-header>
+<div class="sub-title">Total INR {{totalValue}} CR</div>
+<div class="chart">
+  <app-horizontal-bar-chart
+    class="chart-content"
+    [data]="chartData"
+    (barClicked)="barClicked($event)"
+  ></app-horizontal-bar-chart>
+</div>
+
+<app-legends-circle
+  [data]="legends"
+>
+
+</app-legends-circle>

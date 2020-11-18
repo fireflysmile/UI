@@ -1,0 +1,18 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center);
+}
+
+// color ball
+.cm-stacked-bar-chart-legend-color {
+  @include ball(16px);
+}
+
+// label
+.cm-stacked-bar-chart-legend-label {
+  color: $gun-powder;
+  font-size: 10px;
+  margin-left: 8px;
+}

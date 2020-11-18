@@ -1,0 +1,106 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+:host {
+  display: block;
+  overflow: auto;
+  position: relative;
+}
+
+// table
+.ts-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &.ts-fixed-header {
+    top: 0;
+    z-index: 10;
+
+    @include onlyForIE {
+      position: absolute;
+      left: 0;
+    }
+
+    @include onlyForChrome {
+      position: sticky;
+    }
+
+    @include onlyForFirefox {
+      position: sticky;
+    }
+  }
+}
+
+// header column
+.ts-table-column {
+  // sort header
+  &.ts-sort-header {
+    cursor: pointer;
+    user-select: none;
+
+    // default is hidden
+    .ts-sort-icon {
+      display: none;
+      margin-left: 5px;
+    }
+
+    // icon on asc
+    &.ts-sort-asc {
+      .ts-sort-icon {
+        display: block;
+        transform: rotate(180deg);
+      }
+    }
+
+    // icon on desc
+    &.ts-sort-desc {
+      .ts-sort-icon {
+        display: block;
+      }
+    }
+
+    // sort header inner
+    .ts-table-column-inner {
+      @include flex(center);
+    }
+  }
+}
+
+.ts-table-column-inner {
+  @include padding(0 6px);
+}
+
+tr {
+  height: 40px;
+}
+
+thead {
+  z-index: 10;
+}
+
+th {
+  background-color: $white;
+}
+
+tbody {
+  tr:nth-child(2n) {
+    background-color: rgba($alice-blue, .4);
+  }
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+td {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 14px;
+  color: $thunder;
+}

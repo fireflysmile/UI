@@ -1,0 +1,68 @@
+<!-- highlighted label -->
+<div
+  *ngIf="data?.highlighted"
+  class="cm-stacked-bar-highlighted-label">
+  {{data.highlightedLabel}}
+</div>
+
+<!-- bar container -->
+<div
+  [class.cm-stacked-bar-highlighted]="data?.highlighted"
+  [class.cm-stacked-bar-clickable]="clickable"
+  [class.hovering]="containerHover"
+  (mouseenter)="containerHover = true;"
+  (mouseout)="containerHover = false;"
+  (mouseleave)="containerHover = false;"
+  (click)="clickable && toggleSelection.emit(data.values)"
+  class="cm-stacked-bar-container">
+  <!-- bars wrapper -->
+  <div
+    #stackedBarsWrapper
+    class="cm-stacked-bars-wrapper">
+    <!-- value -->
+    <div class="cm-stacked-bars-value"
+      *ngIf="showBarTotal"
+      [style.opacity]="dim && !anyBarSelected ? 0.4 : 1">
+      {{total | shorthandedNumber: 1}}
+    </div>
+
+    <!-- bars -->
+    <div
+      class="cm-stacked-bars">
+      <div
+        #stackedBar
+        *ngFor="let item of renderableBars; let i=index"
+        [style.background-color]="item.color"
+        [style.height]="item.percent + '%'"
+        [class.dim]="dim && !data.values[i].selected"
+        (click)="clickable && toggleSelection.emit([data.values[i]]); $event.stopPropagation();"
+        (mouseover)="item.showTooltip = true" (mouseleave)="item.showTooltip = false"
+        class="cm-stacked-bar-item">
+        <!-- value -->
+        <div
+          *ngIf="showPercent && stackedBar.offsetHeight > 13"
+          class="cm-stacked-bar-item-value">
+          {{item.label}}
+        </div>
+
+        <app-more-options
+          class="tooltip"
+          *ngIf="item.tooltipText && item.showTooltip"
+          appAutoPositioner
+          [positionContainer]="stackedBar"
+          horizontalPriority="right"
+          [width]="150"
+          verticalPriority="bottom"
+          [verticalGap]="8"
+          [horizontalGap]="-50">
+          <p>{{ item.tooltipText }}</p>
+        </app-more-options>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- label -->
+<div class="cm-stacked-bar-label">
+  {{data?.label}}
+</div>

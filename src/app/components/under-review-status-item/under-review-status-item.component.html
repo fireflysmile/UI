@@ -1,0 +1,24 @@
+<!-- icons -->
+<ng-container [ngSwitch]="icon">
+  <!-- submission -->
+  <app-icon-submission *ngSwitchCase="'submission'"></app-icon-submission>
+
+  <!-- pending -->
+  <app-icon-pending *ngSwitchCase="'pending'"></app-icon-pending>
+
+  <!-- reload -->
+  <app-icon-reload *ngSwitchCase="'reload'"></app-icon-reload>
+</ng-container>
+
+<!-- label -->
+<div
+  [innerHTML]="label | nl2br"
+  class="cm-under-review-label"></div>
+
+<!-- date -->
+<div
+  *ngIf="date"
+  class="cm-under-review-date">
+  {{date | date: 'dd/MM/yyyy'}}<br/>
+  {{date | date: 'hh:mm a'}}
+</div>

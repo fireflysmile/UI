@@ -1,0 +1,28 @@
+<app-rect-card>
+  <!-- left section -->
+  <div class="cm-my-task-card-left">
+    <!-- icon -->
+    <div class="cm-my-task-icon">
+      <ng-container [ngSwitch]="status">
+        <!-- pending -->
+        <app-icon-pending *ngSwitchCase="'pending'"></app-icon-pending>
+
+        <!-- progress -->
+        <app-icon-refresh *ngSwitchCase="'progress'"></app-icon-refresh>
+
+        <!-- post-check -->
+        <app-icon-search-doc *ngSwitchCase="'post-checks'"></app-icon-search-doc>
+      </ng-container>
+    </div>
+
+    <!-- label -->
+    <div class="cm-my-task-label">
+      {{label}}
+    </div>
+  </div>
+
+  <!-- value -->
+  <div class="cm-my-task-card-value">
+    <ng-content></ng-content>
+  </div>
+</app-rect-card>

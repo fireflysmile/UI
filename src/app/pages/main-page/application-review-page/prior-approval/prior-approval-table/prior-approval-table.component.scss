@@ -1,0 +1,26 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+table.prior-approval-table {
+  th,
+  td:not(.th) {
+    &:nth-child(1),
+    &:nth-child(3) {
+      width: 17%;
+      min-width: 198px;
+    }
+    &:nth-child(2) {
+      width: 50%;
+      min-width: 580px;
+    }
+  }
+
+  td:not(.th) {
+    @include paddingTop(14px);
+  }
+
+  th {
+    @include paddingBottom(5px);
+    @include borderBottom(1px solid $seashell);
+  }
+}

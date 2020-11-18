@@ -1,0 +1,30 @@
+<!-- title -->
+<div class="cm-title">
+  PC Modification Status
+</div>
+
+<!-- content -->
+<div class="cm-content">
+  <app-waterfall-bar-chart
+    (dataSelect)="dataSelect.emit($event)"
+    [data]="chartData"
+    [label]="'INR 2 CR'"></app-waterfall-bar-chart>
+
+  <!-- legends -->
+  <div class="cm-legends">
+    <!-- item -->
+    <div
+      *ngFor="let item of legends"
+      class="cm-legend-item">
+      <!-- color -->
+      <div
+        [style.background-color]="item.color"
+        class="cm-color"></div>
+
+      <!-- legend -->
+      <div class="cm-legend">
+        {{item.label}}
+      </div>
+    </div>
+  </div>
+</div>

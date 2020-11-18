@@ -1,0 +1,121 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// card
+app-rect-card {
+  @include box(100%);
+}
+
+// header
+.cm-header {
+  @include flex(stretch, space-between);
+  height: 73px;
+}
+
+// header left
+.cm-left {
+  @include flex(center);
+  @include paddingLeft(19px);
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: $jackson-purple;
+    margin-left: 16px;
+  }
+}
+
+// header right
+.cm-right {
+  @include flex(center);
+}
+
+// margin wrapper
+.cm-margin-wrapper {
+  @include flex(center, center);
+  width: 380px;
+  background-color: $gainsboro2;
+  height: 100%;
+}
+
+// form filed for margin
+app-form-field {
+  @include widthBetweenGap(6px, 2);
+  width: auto;
+
+  ::ng-deep {
+    .cm-form-field-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: $jackson-purple;
+    }
+  }
+}
+
+// margin input wrapper
+.cm-margin-input-wrapper {
+  position: relative;
+
+  .cm-prefix {
+    @include verticalCenter;
+    position: absolute;
+    font-size: 15px;
+    left: 0;
+  }
+
+  input {
+    @include paddingLeft(13px);
+    @include paddingBottom(0);
+    width: 100%;
+    background-color: transparent;
+    height: 26px;
+  }
+}
+
+// static margin wrapper
+.cm-static-margin-wrapper {
+  @include flex(center);
+  height: 26px;
+}
+
+// slash
+.cm-slash {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+// static value for pc code level margin
+.cm-static-value {
+  font-size: 15px;
+  color: $jackson-purple;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+// expand wrapper
+.cm-expand-wrapper {
+  @include flex(center, center);
+  width: 80px;
+
+  app-icon-big-chevron-down {
+    &.cm-expanded {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// content
+.cm-content {
+  @include borderTop(1px solid $light-grey);
+}
+
+// error
+.cm-error {
+  font-size: 12px;
+  color: $red2;
+  margin-left: 10px;
+}

@@ -1,0 +1,13 @@
+<div class="document">
+  <div class="name">{{ document.name }}</div>
+  <app-icon-download [clickable]="true" (click)="download()"></app-icon-download>
+  <app-icon-eye [clickable]="true" (click)="showPreview = true"></app-icon-eye>
+</div>
+
+<app-modal *ngIf="showPreview">
+  <app-preview-pdf
+    title="View Document"
+    [url]="document.url"
+    (close)="showPreview = false">
+  </app-preview-pdf>
+</app-modal>

@@ -1,0 +1,111 @@
+<app-application-review-card>
+  <app-application-review-card-title title="Post Implementation">
+    <app-card-action-item right icon="download" [freeWidth]="true" (click)="download()">Download Application</app-card-action-item>
+  </app-application-review-card-title>
+
+  <div class="no-post-implementation-message" *ngIf="!completed">
+    Please finish approvals for this application
+  </div>
+
+  <div class="no-post-implementation-message" *ngIf="!postImplementationNeeded && completed">
+    No Post-Implementation check is required for this application
+  </div>
+
+  <ng-container *ngIf="postImplementationNeeded">
+    <div class="action-row">
+      <app-warning-note>
+        Post-implementation check for all directors will be done all at once.
+        In case there is a case of extension, the remaining non-extension cases will also be checked along with the extension cases.
+      </app-warning-note>
+
+      <div>
+        <button class="cm-button-outline" (click)="onMCAVerification()" [disabled]="disableMcaButton">MCA Verfication</button>
+        <div class="link">Learn more about MCA Verfication</div>
+      </div>
+    </div>
+
+    <div class="dates-row">
+      <div class="date">
+        <app-icon-calendar-range></app-icon-calendar-range>
+        <div>
+          <div class="label">Date of Prior Approval</div>
+          <div class="value">{{ approvalDate | date: 'dd/MM/y' }}</div>
+        </div>
+      </div>
+      <div class="date">
+        <app-icon-calendar-range></app-icon-calendar-range>
+        <div>
+          <div class="label">6-month Deadline</div>
+          <div class="value">{{ deadlineDate | date: 'dd/MM/y' }}</div>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns">
+            <span *ngIf="!column.tooltip">{{ column.label }}</span>
+            <div *ngIf="column.tooltip" class="header-cell-with-tooltip">
+              <span>{{ column.label }}</span>
+              <app-icon-info [clickable]="true"></app-icon-info>
+            </div>
+          </th>
+          <th class="action">
+            <div class="header-cell-with-tooltip">
+              <span>Comment</span>
+              <app-icon-info [clickable]="true"></app-icon-info>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of personnel">
+          <td *ngFor="let column of columns">
+            <span *ngIf="!column.displayType">{{ person[column.property] }}</span>
+            <ng-container *ngIf="column.displayType === 'date'">
+              <span *ngIf="!isManualDateEntry(person, column)">{{ person[column.property] | date: 'dd/MM/y' }}</span>
+              <app-date-selector
+                *ngIf="isManualDateEntry(person, column)"
+                [date]="person[column.property] || null"
+                (dateChange)="onDatePicked(person, column, $event)"
+                [disabled]="isDateEntryDisabled(column)">
+              </app-date-selector>
+            </ng-container>
+          </td>
+          <td class="action">
+            <app-icon-text-add [clickable]="true"></app-icon-text-add>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <app-application-review-card-title
+      class="documents-title" title="Documents"
+      *ngIf="(application.postImplementation?.dir12s && application.postImplementation?.dir12s.length) || application.postImplementation?.extensionRequest">
+    </app-application-review-card-title>
+
+    <app-dir-table
+      *ngIf="application.postImplementation?.dir12s && application.postImplementation.dir12s.length"
+      [application]="application">
+    </app-dir-table>
+
+    <app-extension-table
+      *ngIf="application.postImplementation?.extensionRequest"
+      [application]="application"
+      [viewType]="viewType">
+    </app-extension-table>
+
+  </ng-container>
+
+</app-application-review-card>
+
+<div class="footer">
+  <button class="cm-button primary" [disabled]="!complete">Close Application</button>
+</div>
+
+<app-modal *ngIf="showPostFactoChangesModal">
+  <app-post-facto-attention-alert
+    (close)="showPostFactoChangesModal = false">
+  </app-post-facto-attention-alert>
+</app-modal>

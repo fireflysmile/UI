@@ -1,0 +1,138 @@
+<div class="starter">
+  <app-back-button [routerLink]="['/main/collateral']"
+    >Back to Collateral Value Analysis</app-back-button
+  >
+
+  <app-rect-card-header>
+    <div heading>
+      <div>Collateral Value Analysis</div>
+    </div>
+  </app-rect-card-header>
+  <app-tab
+    class="header-tab"
+    [data]="tabData"
+    [active]="activeTab"
+    (changed)="tabChanged($event)"
+  ></app-tab>
+</div>
+
+<div class="card-group">
+  <app-card
+    class="card-item split-summary-card"
+    *ngIf="excessSummary && queryParams.type === 'excess'"
+  >
+    <app-page-title> Excess Collateral Summary </app-page-title>
+    <div class="total-title">Total Excess Collateral</div>
+    <div class="total-value">INR {{ excessSummary.total }} CR</div>
+
+    <div class="two-column">
+      <div class="item first">
+        <div>Qty-based Excess</div>
+        <div>INR {{ excessSummary.qtyBasedExcess[0] }} CR</div>
+        <div>Total {{ excessSummary.qtyBasedExcess[1] }}%</div>
+      </div>
+      <div class="separater"></div>
+      <div class="item second">
+        <div>Value-based Excess</div>
+        <div>INR {{ excessSummary.valueBasedExcess[0] }} CR</div>
+        <div>Total {{ excessSummary.valueBasedExcess[1] }}%</div>
+      </div>
+    </div>
+  </app-card>
+
+  <app-card
+    class="card-item split-summary-card"
+    *ngIf="valueSummary && queryParams.type === 'cash'"
+  >
+    <app-page-title> Instrument Type Summary </app-page-title>
+    <div class="total-title">Net Effective Deposit</div>
+    <div class="total-value">INR {{ valueSummary.total }} CR</div>
+
+    <div class="two-column">
+      <div class="item first">
+        <div>Cash Instruments</div>
+        <div>INR {{ valueSummary.cash[0] }} CR</div>
+        <div>Total {{ valueSummary.cash[1] }}%</div>
+      </div>
+      <div class="separater"></div>
+      <div class="item second">
+        <div>Non-Cash Instruments</div>
+        <div>INR {{ valueSummary.nonCash[0] }} CR</div>
+        <div>Total {{ valueSummary.nonCash[1] }}%</div>
+      </div>
+    </div>
+  </app-card>
+
+  <app-card
+    class="card-item split-summary-card"
+    *ngIf="totalSummary && queryParams.type === 'total'"
+  >
+    <app-page-title> Total Summary </app-page-title>
+    <div class="total-title">Total Effective Deposit</div>
+    <div class="total-value">INR {{ totalSummary.total }} CR</div>
+
+    <div class="two-column">
+      <div class="item first">
+        <div>Net Effective Deposit</div>
+        <div>INR {{ totalSummary.cash[0] }} CR</div>
+        <div>Total {{ totalSummary.cash[1] }}%</div>
+      </div>
+      <div class="separater"></div>
+      <div class="item second">
+        <div>Total Excess Collateral</div>
+        <div>INR {{ totalSummary.excess[0] }} CR</div>
+        <div>Total {{ totalSummary.excess[1] }}%</div>
+      </div>
+    </div>
+  </app-card>
+
+  <app-card class="card-item split-summary-card" *ngIf="instrumentDetail">
+    <app-page-title>{{instrumentDetail.name}} Instrument Summary </app-page-title>
+    <div class="total-title">Total {{ instrumentDetail.type }}</div>
+    <div class="total-value">INR {{ instrumentDetail.total }} CR</div>
+
+    <div class="two-column">
+      <div class="item first">
+        <div>{{ instrumentDetail.name }}</div>
+        <div>INR {{ instrumentDetail.value }} CR</div>
+        <div>
+          Total
+          {{ (instrumentDetail.value / instrumentDetail.total).toFixed(0) }}%
+        </div>
+      </div>
+    </div>
+  </app-card>
+
+  <app-card class="card-item donut-chart-card">
+    <app-page-title> Value-based Excess </app-page-title>
+    <div class="donuts">
+      <div
+        class="donut-group"
+        *ngFor="let item of [overallCashLimitDonut, isinLevelLimitDonut]"
+      >
+        <app-donut-chart
+          [data]="item.data"
+          *ngIf="item.data.length"
+          type="noSectionLabel"
+          [centralLabel]="'INR '+item.total+' CR'"
+          [centralColor]="'black'"
+          [tooltipType]="'collateral-detail'"
+        ></app-donut-chart>
+        <div class="donut-label">
+          Excess Collateral due to 50% Overal Cash Limit
+        </div>
+        <div class="legends" *ngIf="item.hasLegends">
+          <app-legends-circle [data]="secondLegends"></app-legends-circle>
+        </div>
+      </div>
+    </div>
+  </app-card>
+</div>
+
+<div class="collateral-details-table">
+  <app-collateral-details-table
+    *ngIf="queryParams.mode"
+    [mode]="queryParams.mode"
+    [autoFilter]="tableFilter"
+  ></app-collateral-details-table>
+</div>

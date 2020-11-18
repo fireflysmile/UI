@@ -1,0 +1,15 @@
+<!-- header -->
+<div class="cm-header">
+  Directors for whom DIR 12 is required
+</div>
+
+<!-- content -->
+<div class="cm-content">
+  <app-director-submit-dir12-item
+    (checkChanges)="checkChanges()"
+    *ngFor="let item of errorDirectors"
+    [availableDirectors]="availableDirectors"
+    [director]="item"
+    [directors]="directors"
+    [editable]="!submitted"></app-director-submit-dir12-item>
+</div>

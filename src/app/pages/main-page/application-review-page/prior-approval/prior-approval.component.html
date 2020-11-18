@@ -1,0 +1,134 @@
+<app-application-review-card class="prior-approval-card" *ngIf="application.approvals.prior">
+
+  <app-application-review-card-title title="Prior Approval">
+    <app-card-action-item
+      *ngIf="viewType === 'checker'" [freeWidth]="true"
+      right icon="details" (click)="publishApprovalLetter()"
+      [disabled]="completed || !application.approvals.prior.accepted">
+      Publish PDF
+    </app-card-action-item>
+  </app-application-review-card-title>
+
+  <div class="view-type">{{ viewType + ' View' }}</div>
+
+  <div class="card-actions-row">
+    <app-checker-maker-field
+      [label]="viewType === 'maker' ? 'Checker' : 'Maker'"
+      [official]="viewType === 'maker' ? application.checker : application.maker"
+      [editable]="!completed && viewType === 'maker'"
+      (select)="onCheckerSelected($event)">
+    </app-checker-maker-field>
+    <button class="cm-button-outline" (click)="canChangeApprovalLetter() && showGrantModal = true" [disabled]="completed">Generate</button>
+    <button
+      class="cm-button-outline" (click)="canChangeApprovalLetter() && acceptPriorApproval(false, false)"
+      *ngIf="application.approvals.prior?.accepted !== false" [disabled]="completed">
+      Reject
+    </button>
+    <button class="cm-button-outline red" disabled *ngIf="application.approvals.prior.accepted === false">Rejected</button>
+  </div>
+
+  <p class="reject-message" *ngIf="application.approvals.prior.accepted === false">
+    Prior Approval has been rejected. If you would like to initiate again, please click on "Generate"
+  </p>
+
+  <div class="table-container">
+    <app-prior-approval-table
+      *ngIf="application.approvals.prior.accepted !== false"
+      [priorApproval]="application.approvals.prior"
+      [statusText]="getStatusDisplayText(application.approvals.prior)"
+      [viewType]="viewType"
+      (comment)="priorApprovalNewComment = $event"
+      [completed]="completed">
+    </app-prior-approval-table>
+
+    <app-rejection-table
+      *ngIf="application.approvals.prior.accepted === false"
+      [approval]="application.approvals.prior"
+      [statusText]="getStatusDisplayText(application.approvals.prior)"
+      [viewType]="viewType"
+      (comment)="priorApprovalNewComment = $event"
+      [completed]="completed">
+    </app-rejection-table>
+  </div>
+
+</app-application-review-card>
+
+<app-application-review-card class="post-facto-card" *ngIf="application.approvals.postFacto">
+  <app-application-review-card-title title="Post Facto">
+    <app-warning-note right *ngIf="completed && viewType === 'maker'">No Warning Letter has been sent to the Member</app-warning-note>
+    <app-card-action-item
+      *ngIf="viewType === 'checker'" [freeWidth]="true"
+      right icon="details" (click)="publishWarningLetter()"
+      [disabled]="completed || !application.approvals.postFacto.warningLetter">
+      Publish PDF
+    </app-card-action-item>
+  </app-application-review-card-title>
+
+  <div class="view-type">{{ viewType + ' View' }}</div>
+
+  <div class="card-actions-row">
+    <p>Do you accept the Post Facto changes in the application?</p>
+    <button class="cm-button-outline" (click)="acceptPostFactos(true)"
+      *ngIf="application.approvals.postFacto?.accepted !== true" [disabled]="completed">
+      Accept
+    </button>
+    <button class="cm-button-outline green" disabled *ngIf="application.approvals.postFacto.accepted === true">Accepted</button>
+
+    <button class="cm-button-outline" (click)="acceptPostFactos(false)"
+      *ngIf="application.approvals.postFacto?.accepted !== false" [disabled]="completed">
+      Reject
+    </button>
+    <button class="cm-button-outline red" disabled *ngIf="application.approvals.postFacto.accepted === false">Rejected</button>
+  </div>
+
+  <div class="card-actions-row" *ngIf="!application.approvals.prior || (application.approvals.postFacto.warningLetter && application.checker)">
+    <app-checker-maker-field
+      [label]="viewType === 'maker' ? 'Checker' : 'Maker'"
+      [official]="viewType === 'maker' ? application.checker : application.maker"
+      [editable]="!completed && viewType === 'maker' && !application.approvals.prior"
+      (select)="application.checker = $event">
+    </app-checker-maker-field>
+    <button
+      class="cm-button-outline" (click)="generateWarningLetter()"
+      [disabled]="completed"
+      *ngIf="application.approvals.postFacto.warningLetter">
+       Generate
+     </button>
+  </div>
+
+  <div class="table-container" *ngIf="application.approvals.postFacto.accepted">
+    <app-post-facto-approval-table
+      [postFactoApproval]="application.approvals.postFacto"
+      [statusText]="getStatusDisplayText(application.approvals.postFacto)"
+      (generateWarningLetter)="generateWarningLetter()"
+      [viewType]="viewType"
+      (comment)="postFactoApprovalNewComment = $event"
+      [completed]="completed">
+    </app-post-facto-approval-table>
+  </div>
+
+  <div class="table-container" *ngIf="application.approvals.postFacto.accepted === false">
+    <app-rejection-table
+      [approval]="application.approvals.postFacto"
+      [statusText]="getStatusDisplayText(application.approvals.postFacto)"
+      [viewType]="viewType"
+      (comment)="postFactoApprovalNewComment = $event"
+      [completed]="completed">
+    </app-rejection-table>
+  </div>
+
+</app-application-review-card>
+
+
+<div class="footer">
+  <button class="cm-button primary" *ngIf="viewType === 'maker'" [disabled]="completed || !validateForm()" (click)="sendToChecker()">Send to checker</button>
+  <button class="cm-button primary" *ngIf="viewType === 'checker'" [disabled]="completed" (click)="sendToMaker()">Send to maker</button>
+  <button class="cm-button primary" *ngIf="viewType === 'checker'" [disabled]="completed" (click)="sendToMember()">Send decision to member</button>
+</div>
+
+<app-modal *ngIf="showGrantModal">
+  <app-grant-approval
+    [application]="application"
+    (close)="showGrantModal = false; $event && acceptPriorApproval(true, $event === 'partial')">
+  </app-grant-approval>
+</app-modal>

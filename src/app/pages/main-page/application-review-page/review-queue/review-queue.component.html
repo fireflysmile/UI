@@ -1,0 +1,156 @@
+<app-application-review-card [class.readonly]="completed || viewType === 'checker'">
+  <app-application-review-card-title title="Review Queue">
+    <app-contact-box
+      *ngIf="application.reviewQueue.length"
+      right
+      title="Contact Person Details"
+      [mobile]="application.contactPersonNumber"
+      [email]="application.contactPersonEmail">
+    </app-contact-box>
+  </app-application-review-card-title>
+
+  <div class="no-reviews-message" *ngIf="!application.reviewQueue.length && application.completedReviews.length">
+    All Reviews closed, view completed Reviews
+  </div>
+
+  <div class="no-reviews-message" *ngIf="!application.reviewQueue.length && !application.completedReviews.length">
+    No Review items opened yet
+  </div>
+
+  <table *ngIf="application.reviewQueue.length">
+    <thead>
+      <tr>
+        <th><app-checkbox [ngModel]="selectAll" (ngModelChange)="onSelectAll($event)"></app-checkbox></th>
+        <th>Review Section</th>
+        <th>Comment</th>
+        <th>Date of last update</th>
+        <th>Response from Member</th>
+        <th class="action">Add to Review</th>
+        <th class="action">Close Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of application.reviewQueue">
+        <td><app-checkbox [ngModel]="selectedItems.indexOf(item) !== -1" (ngModelChange)="onToggleItem(item, $event)"></app-checkbox></td>
+        <td>
+          <div>{{ item.section }}</div>
+          <div class="edited-label" *ngIf="item.isEdit">
+            <app-icon-edit-circle></app-icon-edit-circle>
+            Edited
+          </div>
+        </td>
+        <td>
+          <ng-container [ngSwitch]="item.sentToMember">
+            <div *ngSwitchCase="true" class="communication-text-container">{{ item.comment?.text }}</div>
+            <div *ngSwitchDefault>
+              <textarea class="cm-mat-textarea" rows="2" [(ngModel)]="item.comment.text"></textarea>
+            </div>
+          </ng-container>
+          <app-card-action-item
+            icon="eye"
+            [freeWidth]="true"
+            *ngIf="item.comment.attachment"
+            (click)="onViewCommentAttachment(item)">
+            {{ item.comment.attachment.name }}
+          </app-card-action-item>
+          <app-card-action-item
+            icon="attachment"
+            [freeWidth]="true"
+            [disabled]="item.sentToMember"
+            [class.light-text]="item.sentToMember"
+            appFilepicker="application/pdf"
+            (file)="updateAttachment(item.attachment, $event, item)">
+            Add attachment
+          </app-card-action-item>
+        </td>
+        <td>{{ item.lastUpdatedDate | date: 'd/M/yyyy hh:mm a' }}</td>
+        <td>
+          <div class="communication-text-container">{{ item.response?.text }}</div>
+          <app-card-action-item
+            icon="eye"
+            [freeWidth]="true"
+            [disabled]="!item.response?.attachment"
+            [class.light-text]="!item.response?.attachment"
+            (click)="onViewResponseAttachment(item)">
+            View Attachment
+          </app-card-action-item>
+        </td>
+        <td class="action">
+          <app-icon-add-circle-outline
+            *ngIf="item.sentToMember"
+            [clickable]="true"
+            (click)="followUp(item)">
+          </app-icon-add-circle-outline>
+        </td>
+        <td class="action">
+          <app-icon-check-circle
+          *ngIf="item.response"
+          [clickable]="true"
+          (click)="closeItem(item)">
+        </app-icon-check-circle></td>
+      </tr>
+    </tbody>
+  </table>
+</app-application-review-card>
+
+<div class="footer">
+  <div class="action-group">
+    <app-card-action-item
+      *ngIf="application.reviewQueue.length && viewType !== 'checker'"
+      icon="delete"
+      [freeWidth]="true"
+      [disabled]="!enableDelete"
+      (click)="delete()">
+      Delete
+    </app-card-action-item>
+    <app-card-action-item
+      icon="eye"
+      [freeWidth]="true"
+      [disabled]="application.completedReviews.length === 0"
+      (click)="showCompletedReviewsModal = true">
+      View Completed Reviews
+    </app-card-action-item>
+    <app-card-action-item
+      *ngIf="application.reviewQueue.length && viewType !== 'checker'"
+      icon="edit-circle"
+      [freeWidth]="true"
+      (click)="showCloseEditModal = true"
+      [disabled]="editItems.length === 0">
+      Close All Edited
+    </app-card-action-item>
+  </div>
+  <button
+    class="cm-button primary"
+    [disabled]="sendableItems.length === 0"
+    (click)="sendToMember()"
+    *ngIf="viewType !== 'checker'">
+    Send to member
+  </button>
+</div>
+
+
+<app-modal *ngIf="showCloseEditModal">
+  <app-close-edited-warning
+    (close)="showCloseEditModal = false; $event && closeAllEdited();">
+  </app-close-edited-warning>
+</app-modal>
+
+<app-modal *ngIf="showCompletedReviewsModal">
+  <app-completed-reviews
+    (followUp)="followUp($event)"
+    (close)="showCompletedReviewsModal = false"
+    [viewType]="viewType"
+    [approvalsCompleted]="completed">
+  </app-completed-reviews>
+</app-modal>
+
+<app-modal *ngIf="viewAttachment">
+  <app-preview-pdf
+    title="View Attachment"
+    [url]="viewAttachment.attachment.url"
+    [name]="viewAttachment.attachment.name"
+    [action]="viewAttachment.action"
+    (close)="viewAttachment = null"
+    (upload)="updateAttachment(viewAttachment.attachment, $event)">
+  </app-preview-pdf>
+</app-modal>

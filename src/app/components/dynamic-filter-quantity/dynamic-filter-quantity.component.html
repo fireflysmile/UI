@@ -1,0 +1,160 @@
+<!-- container -->
+<div class="cm-dynamic-filter-quantity-container">
+  <!-- selector -->
+  <div class="cm-dynamic-filter-quantity-selector">
+    <!-- selector inner -->
+    <div
+      (click)="opened = !opened"
+      class="cm-quantity-selector-inner">
+      <!-- switch by type -->
+      <ng-container [ngSwitch]="type">
+        <!-- default -->
+        <ng-container *ngSwitchCase="'default'">
+          <span class="cm-quantity-placeholder">Select</span>
+        </ng-container>
+
+        <!-- eq -->
+        <ng-container *ngSwitchCase="'eq'">
+          <svg width="42" height="22">
+            <text y="19" font-size="12" dy="-4">
+              =
+            </text>
+
+            <text font-size="7" dy="3.5">
+              <tspan x="12" dy="13.5">Equals</tspan>
+            </text>
+          </svg>
+        </ng-container>
+
+        <!-- lte -->
+        <ng-container *ngSwitchCase="'lte'">
+          <svg width="42" height="22">
+            <text y="19" font-size="12" dy="-4">
+              <=
+            </text>
+
+            <text font-size="7" dy="3.5">
+              <tspan x="15" dy="9">Less</tspan>
+              <tspan x="15" dy="9">or equal</tspan>
+            </text>
+          </svg>
+        </ng-container>
+
+        <!-- gte -->
+        <ng-container *ngSwitchCase="'gte'">
+          <svg width="42" height="22">
+            <text y="19" font-size="12" dy="-4">
+              >=
+            </text>
+
+            <text font-size="7" dy="3.5">
+              <tspan x="15" dy="9">Greater</tspan>
+              <tspan x="15" dy="9">or equal</tspan>
+            </text>
+          </svg>
+        </ng-container>
+
+        <!-- lt -->
+        <ng-container *ngSwitchCase="'lt'">
+          <svg width="42" height="22">
+            <text y="19" font-size="12" dy="-4">
+              <
+            </text>
+
+            <text font-size="7" dy="3.5">
+              <tspan x="12" dy="9">Less</tspan>
+              <tspan x="12" dy="9">than</tspan>
+            </text>
+          </svg>
+        </ng-container>
+
+        <!-- gt -->
+        <ng-container *ngSwitchCase="'gt'">
+          <svg width="42" height="22">
+            <text y="19" font-size="12" dy="-4">
+              >
+            </text>
+
+            <text font-size="7" dy="3.5">
+              <tspan x="12" dy="9">Greater</tspan>
+              <tspan x="12" dy="9">than</tspan>
+            </text>
+          </svg>
+        </ng-container>
+
+        <!-- range -->
+        <ng-container *ngSwitchCase="'range'">
+          <svg width="42" height="22">
+            <text y="19" font-size="12" dy="-4">
+              ::
+            </text>
+
+            <text font-size="7" dy="3.5">
+              <tspan x="12" dy="9">In the</tspan>
+              <tspan x="12" dy="9">range</tspan>
+            </text>
+          </svg>
+        </ng-container>
+      </ng-container>
+
+      <!-- arrow -->
+      <div
+        [class.cm-opened]="opened"
+        class="cm-quantity-selector-arrow"></div>
+    </div>
+
+    <!-- quantity selector options -->
+    <div
+      *ngIf="opened"
+      class="cm-quantity-selector-options cm-filter-card">
+      <!-- option item -->
+      <div
+        (click)="onTypeChange(item.value); opened = false"
+        *ngFor="let item of options"
+        [class.cm-selected]="item.value === type"
+        class="cm-quantity-selector-option-item">
+        {{item.label}}
+      </div>
+    </div>
+  </div>
+
+  <!-- divider -->
+  <app-divider
+    length="22"
+    direction="vertical"></app-divider>
+
+  <ng-container [ngSwitch]="type">
+    <!-- range -->
+    <ng-container *ngSwitchCase="'range'">
+      <!-- from -->
+      <input
+        (ngModelChange)="start = $event; emitFilterChange()"
+        [ngModel]="start"
+        [style.width]="inputWidth + 'px'"
+        appAutoFocus
+        placeholder="From"/>
+
+      <!-- divider -->
+      <app-divider
+        length="22"
+        direction="vertical"></app-divider>
+
+      <!-- to -->
+      <input
+        (ngModelChange)="end = $event; emitFilterChange()"
+        [ngModel]="end"
+        [style.width]="inputWidth + 'px'"
+        placeholder="To"/>
+    </ng-container>
+
+    <!-- default -->
+    <ng-container *ngSwitchDefault>
+      <!-- input -->
+      <input
+        (ngModelChange)="value = $event; emitFilterChange()"
+        [ngModel]="value"
+        [style.width]="inputWidth + 'px'"
+        appAutoFocus/>
+    </ng-container>
+  </ng-container>
+</div>

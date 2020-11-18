@@ -1,0 +1,57 @@
+<ng-container *ngIf="editing; else readOnly">
+  <!-- fields -->
+  <form
+    #form="extendedForm"
+    (validSubmit)="modified.emit(this.group.getRawValue())"
+    [formGroup]="group"
+    appExtendedForm
+    class="cm-fields">
+    <app-form-field
+      label="New Phone Number">
+      <app-phone-number-control
+        formControlName="phoneNumber"></app-phone-number-control>
+    </app-form-field>
+
+    <app-form-field
+      label="Confirm New Phone Number">
+      <app-phone-number-control
+        formControlName="confirmPhoneNumber"></app-phone-number-control>
+    </app-form-field>
+  </form>
+
+  <!-- actions -->
+  <div class="cm-actions">
+    <ng-container *ngIf="loading; else actions">
+      Loading...
+    </ng-container>
+
+    <ng-template #actions>
+      <button
+        (click)="form.submit()"
+        appStrokeButton
+        color="primary">
+        Modify
+      </button>
+
+      <button
+        (click)="editing = false; reset()"
+        appStrokeButton
+        color="primary">
+        Cancel
+      </button>
+    </ng-template>
+  </div>
+</ng-container>
+
+<ng-template #readOnly>
+  <!-- first name -->
+  <app-form-field
+    label="Phone Number">
+    {{phone?.code}} - {{phone?.number}}
+  </app-form-field>
+
+  <!-- edit icon -->
+  <app-icon-edit
+    (click)="editing = true"
+    [clickable]="true"></app-icon-edit>
+</ng-template>

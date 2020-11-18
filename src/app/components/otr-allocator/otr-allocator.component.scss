@@ -1,0 +1,99 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// row
+.cm-row {
+  @include flex(center);
+}
+
+// row content
+.cm-row-content {
+  @include flex(flex-start);
+  width: calc(100% - 76px);
+}
+
+// for info row
+.cm-info {
+  @include flex(center);
+
+  .cm-column {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+  }
+}
+
+.cm-info + .cm-info {
+  margin-top: 35px;
+}
+
+// column
+.cm-column {
+  @include widthBetweenGap(24px, 4);
+  position: relative;
+
+  app-icon-exclamation {
+    @include verticalCenter;
+    left: -30px;
+    position: absolute;
+
+    ::ng-deep {
+      path {
+        fill: $red2;
+      }
+    }
+  }
+}
+
+// column value
+.cm-column-value {
+  @include flex(center);
+
+  .cm-icon {
+    margin-left: 5px;
+  }
+
+  &.cm-column-value-error {
+    color: $red2;
+  }
+}
+
+// column error
+.cm-column-error {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  color: $red2;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 17px;
+}
+
+// content
+.cm-content {
+  margin-top: 45px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+app-otr-allocation-item + app-otr-allocation-item {
+  margin-top: 36px;
+}
+
+// action
+.cm-action {
+  @include flex(center, flex-start);
+  margin-top: 35px;
+
+  button {
+    font-size: 12px;
+
+    .cm-icon {
+      margin-right: 5px;
+    }
+  }
+}

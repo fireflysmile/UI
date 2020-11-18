@@ -1,0 +1,64 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+/**
+ * inline button preset
+ */
+@mixin inlineButton($color) {
+  color: $color;
+
+  &:disabled {
+    color: rgba($color, .5);
+  }
+
+  &:not(:disabled):hover {
+    color: rgba($color, .7);
+  }
+
+  &:not(:disabled):active {
+    color: rgba($color, .4);
+  }
+}
+
+// inline button
+.ts-inline-button {
+  @include padding(0);
+  transition: color .1s;
+
+  // default
+  @include color('default') {
+    @include inlineButton($suva-grey2);
+
+    .cm-icon {
+      margin-right: 8px;
+
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+
+    &:disabled {
+      color: $suva-grey2;
+
+      path {
+        fill: $provincial-pink;
+      }
+    }
+  }
+
+  // primary
+  @include color('primary') {
+    @include inlineButton($tahiti-gold);
+    @include flex(center);
+    height: auto;
+
+    .cm-icon {
+      margin-right: 8px;
+    }
+  }
+
+  // primary
+  @include color('warn') {
+    @include inlineButton($red-orange);
+  }
+}

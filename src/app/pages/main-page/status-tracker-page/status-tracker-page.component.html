@@ -1,0 +1,21 @@
+<!-- header -->
+<div class="cm-status-tracker-header">
+  <app-back-button [routerLink]="['/main/dashboard']">
+    Back to Dashboard
+  </app-back-button>
+
+  <button class="cm-icon-button">
+    <app-icon-file-download></app-icon-file-download>
+    Download Submitted Document
+  </button>
+</div>
+
+<!-- stepper -->
+<app-status-stepper
+  (stepClick)="onStepClick($event)"
+  [steps]="steps"></app-status-stepper>
+
+<!-- router container -->
+<div class="cm-status-tracker-router-container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,8 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(47px 110px 24px 40px);
+  display: block;
+  overflow: auto;
+}

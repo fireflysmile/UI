@@ -1,0 +1,25 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  width: 100%;
+
+  // pending
+  &.cm-pending {
+    color: $moon-yellow;
+  }
+
+  // rejected
+  &.cm-rejected {
+    color: $alizarin;
+  }
+
+  // confirmed
+  &.cm-confirmed {
+    color: $dark-pastel-green;
+  }
+}
+

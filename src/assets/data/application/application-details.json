@@ -1,0 +1,364 @@
+{
+  "id": "527392",
+  "date": "2020-02-12T21:00:34.245Z",
+  "memberCode": 19304,
+  "memberName": "Motilaloswal",
+  "contactPersonName": "Rahul Jain",
+  "contactPersonNumber": 9281700833,
+  "contactPersonEmail": "rahul.j@gmail.com",
+  "complianceOfficerName": "Rajesh Kumar",
+  "complianceOfficerNumber": 9910277722,
+  "url": "/assets/files/sample.pdf",
+  "processingFeeTransactionNo": "84350220",
+
+  "applicants": [
+    {
+      "id": "1",
+      "name": "Rishab Kapoor",
+      "requestType": "Incoming DD",
+      "educationalQualification": "Post-Graduate",
+      "age": 39,
+      "pan": "DVCPS7642M",
+      "din": "99876381",
+      "mobileNo": 9475832000,
+      "emailId": "rishab.j@gmail.com",
+      "address": "B1 Compound,\nMumbai 40005",
+      "proposedDateOfChange": "2020-05-15T21:00:34.245Z",
+      "status": "Implementation Pending",
+      "experiences": [
+        {
+          "id": "1",
+          "from": "2017-01-01T00:00:00.000Z",
+          "to": "2018-07-01T00:00:00.000Z",
+          "company": "A1 Company",
+          "designation": "Director",
+          "profile": "Head of Operations"
+        },
+        {
+          "id": "2",
+          "from": "2019-01-01T00:00:00.000Z",
+          "to": "2020-01-01T00:00:00.000Z",
+          "company": "B1 Company",
+          "designation": "Director",
+          "profile": "Head of Operations"
+        }
+      ],
+      "documents": [
+        {
+          "type": "Experience Letter",
+          "company": "A1 Company",
+          "name": "Rishab Jain_A1 Company_Experience Letter",
+          "url": "/assets/files/sample.pdf"
+        },
+        {
+          "type": "Experience Letter",
+          "company": "B1 Company",
+          "name": "Rishab Jain_B1 Company_Experience Letter",
+          "url": "/assets/files/sample.pdf"
+        },
+        {
+          "type": "Consent Letter",
+          "name": "Rishab Jain_Consent Letter",
+          "url": "/assets/files/sample.pdf"
+        },
+        {
+          "type": "Board Resolution",
+          "name": "Rishab Jain_Board Resolution",
+          "url": "/assets/files/sample.pdf"
+        },
+        {
+          "type": "Educational Qualification",
+          "name": "Rishab Jain_Education Certifiate",
+          "url": "/assets/files/sample.pdf"
+        }
+      ],
+      "declarations": [
+        {
+          "questionId": 1,
+          "response": "No"
+        },
+        {
+          "questionId": 2,
+          "response": "No"
+        },
+        {
+          "questionId": 3,
+          "response": "No"
+        },
+        {
+          "questionId": 4,
+          "response": "No"
+        },
+        {
+          "questionId": 5,
+          "response": "Yes"
+        },
+        {
+          "questionId": 6,
+          "response": "No"
+        },
+        {
+          "questionId": 7,
+          "response": "No"
+        },
+        {
+          "questionId": 8,
+          "response": "No"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Abhijit Bansal",
+      "requestType": "NDD to DD",
+      "educationalQualification": "Post-Graduate",
+      "age": 42,
+      "pan": "DVCPS8754A",
+      "din": "99878712",
+      "mobileNo": 9475802915,
+      "emailId": "abhijit.b@gmail.com",
+      "address": null,
+      "proposedDateOfChange": "2020-06-10T21:00:34.245Z",
+      "status": "Implementation Pending",
+      "experiences": [
+        {
+          "id": "1",
+          "from": "2017-01-01T00:00:00.000Z",
+          "to": "2020-07-01T00:00:00.000Z",
+          "company": "C1 Company",
+          "designation": "Director",
+          "profile": "Head of Operations"
+        }
+      ],
+      "documents": [
+        {
+          "type": "Experience Letter",
+          "company": "A1 Company",
+          "name": "Abhijit Bansal_A1 Company_Experience Letter",
+          "url": "/assets/files/sample.pdf"
+        },
+        {
+          "type": "Board Resolution",
+          "name": "Abhijit Bansal_Board Resolution",
+          "url": "/assets/files/sample.pdf",
+          "sharedWith": [{ "name": "Abhishek R", "id": "4" }]
+        }
+      ],
+      "postFactoClarification": "Did not know we had to apply for prior approval"
+    },
+    {
+      "id": "3",
+      "name": "Rahul Das",
+      "requestType": "Resigning NDD",
+      "educationalQualification": null,
+      "age": null,
+      "pan": null,
+      "din": null,
+      "mobileNo": 9230056713,
+      "emailId": "rahul.d@gmail.com",
+      "address": null,
+      "proposedDateOfChange": "2020-03-13T21:00:34.245Z",
+      "status": "Implementation Pending",
+      "documents": [
+        {
+          "type": "Resignation Letter",
+          "company": "A1 Company",
+          "name": "Rahul Das_Resignation Letter",
+          "url": "/assets/files/sample.pdf"
+        },
+        {
+          "type": "Board Resolution",
+          "name": "Rahul Das_Board Resolution",
+          "url": "/assets/files/sample.pdf"
+        }
+      ],
+      "postFactoClarification": "Did not know we had to apply for prior approval"
+    }
+  ],
+
+  "postFactos": [
+    {
+      "id": "4",
+      "name": "Abhishek R",
+      "requestType": "DD to NDD",
+      "educationalQualification": null,
+      "age": null,
+      "pan": null,
+      "din": null,
+      "mobileNo": 9876543210,
+      "emailId": "abhishek.b@gmail.com",
+      "address": null,
+      "proposedDateOfChange": "2020-05-15T21:00:34.245Z",
+      "status": "Implementation Pending",
+      "documents": [],
+      "postFactoClarification": "Did not know we had to apply for prior approval",
+      "declarations": [
+        {
+          "questionId": 1,
+          "response": "No"
+        },
+        {
+          "questionId": 2,
+          "response": "No"
+        },
+        {
+          "questionId": 3,
+          "response": "Yes"
+        },
+        {
+          "questionId": 4,
+          "response": "No"
+        },
+        {
+          "questionId": 5,
+          "response": "No"
+        },
+        {
+          "questionId": 6,
+          "response": "Yes"
+        },
+        {
+          "questionId": 7,
+          "response": "No"
+        },
+        {
+          "questionId": 8,
+          "response": "No"
+        }
+      ]
+    }
+  ],
+
+  "existingDirectors": [
+    {
+      "name": "Rohit Chatterjee",
+      "requestType": "NDD"
+    },
+    {
+      "name": "Saumya Gupta",
+      "requestType": "NDD"
+    },
+    {
+      "name": "Riya Sen",
+      "requestType": "NDD"
+    },
+    {
+      "name": "Lekha Gupta",
+      "requestType": "DD"
+    }
+  ],
+
+  "backgroundChecks": [
+    {
+      "name": "Abhishek R",
+      "website": "www.abc.com",
+      "feature": "Yes",
+      "risk": "low"
+    },
+    {
+      "name": "Rishab Jain",
+      "website": "www.a12.com",
+      "feature": "No",
+      "risk": "medium"
+    },
+    {
+      "name": "Abhijit Bansal",
+      "website": "www.dbc.com",
+      "feature": "Yes",
+      "risk": "low"
+    },
+    {
+      "name": "Rahul Das",
+      "website": "www.def.com",
+      "feature": "Yes",
+      "risk": "high"
+    },
+    {
+      "name": "Abhishek R",
+      "website": "www.querty.com",
+      "feature": "No",
+      "risk": "medium"
+    },
+    {
+      "name": "Rishab Jain",
+      "website": "www.yutre.com",
+      "feature": "No",
+      "risk": "medium"
+    },
+    {
+      "name": "Abhijit Bansal",
+      "website": "www.xcvic.com",
+      "feature": "Yes",
+      "risk": "low"
+    },
+    {
+      "name": "Rahul Das",
+      "website": "www.wertyo.com",
+      "feature": "Yes",
+      "risk": "high"
+    },
+    {
+      "name": "Abhishek R",
+      "website": "www.def.com",
+      "feature": "Yes",
+      "risk": "low"
+    },
+    {
+      "name": "Rishab Jain",
+      "website": "www.jldis.com",
+      "feature": "No",
+      "risk": "high"
+    },
+    {
+      "name": "Abhijit Bansal",
+      "website": "www.waldic.com",
+      "feature": "Yes",
+      "risk": "medium"
+    },
+    {
+      "name": "Rahul Das",
+      "website": "www.lilip.com",
+      "feature": "No",
+      "risk": "low"
+    }
+  ],
+
+  "reviewQueue": [],
+  "completedReviews": [],
+
+  "declarationQuestions": [
+    {
+      "id": 1,
+      "question": "Are there any court cases pending against the proposed director?"
+    },
+    {
+      "id": 2,
+      "question": "Has any disciplinary action been taken by any stock exchange against the proposed director  or the trading member in which he held the offices of a director and which had been a member of a stock exchange"
+    },
+    {
+      "id": 3,
+      "question": "Has ever been adjudged bankrupt or have any receiving order been made against the proposed director or have been proved to be insolvent at any time"
+    },
+    {
+      "id": 4,
+      "question": "Has the proposed director ever been involved in litigations, suits or proceedings connected with Capital Market and economic offences or have been involved in any financial liability of contingent or unascertained nature"
+    },
+    {
+      "id": 5,
+      "question": "Has the proposed director ever been at any time convicted of any offence (including economic offences) involving fraud or dishonesty or financial irregularities or any warning censor or any penalty has been imposed by Regulatory agencies such as SEBI, RBI, Department of Company affair nor any other such Regulatory body"
+    },
+    {
+      "id": 6,
+      "question": "Have the proposed director ever been at any time denied / rejected for membership of any stock exchange or commercial organization"
+    },
+    {
+      "id": 7,
+      "question": "Whether the proposed director held the offices of the Director in any company which had been a member of a stock exchange and which has been ever been suspended / expelled / declared a defaulter on any other stock exchange or commercial organization and whether any economic offence or any warning censor or any penalty has been imposed by any Regulatory agencies such as SEBI, RBI, Department of Company affair nor any other such Regulatory body against such company and in respect of all erstwhile entities, if any"
+    },
+    {
+      "id": 8,
+      "question": "Is the incoming Director a ‘Politically Exposed Persons’ (PEP)*\n*Note:\n1. As per SEBI master circular ISD/AML/CIR-1/2010 dated February 12, 2010, ‘Politically Exposed Persons’ (PEP) are individuals who are or have been entrusted with prominent public functions in a foreign country, e.g., Heads of States or of Governments, senior politicians, senior government/judicial/military officers, senior executives of state-owned corporations, important political party officials, etc.\n2. ‘Associate’ has the same definition as given under Section 2(1)(b) of the SEBI (Intermediaries) Regulations, 2008.\n3. A revised undertaking stamped & signed by two designated directors or authorised signatory(ies) as per Board Resolution mentioning names and designations need to be submitted as and when there is change in any of the details submitted vide current undertaking."
+    }
+  ]
+
+}

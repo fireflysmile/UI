@@ -1,0 +1,98 @@
+<!-- container -->
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header>
+    <!-- header left -->
+    <div class="cm-modal-header-left">
+      <!-- title -->
+      <span>View Application Edits</span>
+
+      <!-- description 1 -->
+      <i class="cm-oblique-description">
+        Following revisions have been made<br/>
+        with the consent of the Member
+      </i>
+
+      <!-- description 2 -->
+      <i class="cm-oblique-description">
+        Revisions have been sent to the email IDs of the<br/>
+        Contact Person and Compliance Officer
+      </i>
+    </div>
+
+    <!-- oblique hint -->
+    <i class="cm-oblique-description cm-right">
+      Please contact the exchange incase of<br/>
+      any discrepancies or clarifications
+    </i>
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content>
+    <table *ngIf="edits">
+      <!-- header -->
+      <thead>
+        <tr>
+          <th>Director Name</th>
+          <th>Edited Section</th>
+          <th>Date of Edit</th>
+          <th>Edited Details</th>
+        </tr>
+      </thead>
+
+      <!-- body -->
+      <tbody>
+        <ng-container *ngIf="loading; else dataRows">
+          <tr>
+            <td
+              class="cm-loading-column"
+              colspan="4">
+              Loading...
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-template #dataRows>
+          <ng-container *ngIf="edits.length; else noResults">
+            <tr *ngFor="let item of edits">
+              <!-- director -->
+              <td>{{item.director}}</td>
+
+              <!-- section -->
+              <td>{{item.section}}</td>
+
+              <!-- date of edit -->
+              <td>
+                {{item.dateOfEdit | date: 'd/M/yyyy'}}<br/>
+                {{item.dateOfEdit | date: 'hh:mm a'}}
+              </td>
+
+              <!-- details -->
+              <td>{{item.details}}</td>
+            </tr>
+          </ng-container>
+
+          <ng-template #noResults>
+            <tr>
+              <td
+                class="cm-loading-column"
+                colspan="4">
+                No edits have been made yet.
+              </td>
+            </tr>
+          </ng-template>
+        </ng-template>
+
+      </tbody>
+    </table>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      close
+    </button>
+  </app-modal-actions>
+</app-modal-container>

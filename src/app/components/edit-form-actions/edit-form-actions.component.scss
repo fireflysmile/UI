@@ -1,0 +1,14 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.edit-form-actions {
+  @include flex(center);
+  color: $suva-grey;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+app-card-action-item {
+  margin-left: 28px;
+}

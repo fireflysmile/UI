@@ -1,0 +1,136 @@
+<table>
+  <!-- header -->
+  <thead>
+    <tr>
+      <th>
+        <app-checkbox
+          [(ngModel)]="selectAll"
+          [disabled]="!canSelectAll"></app-checkbox>
+      </th>
+      <th>Clarification Raised for</th>
+      <th>Comment</th>
+      <th>Date of<br/>last update</th>
+      <th>Response to</th>
+      <th class="action">Add additional Response</th>
+    </tr>
+  </thead>
+
+  <!-- body -->
+  <tbody>
+    <tr *ngIf="!data.length">
+      <td></td>
+      <td colspan="5">No pending clarifications</td>
+    </tr>
+
+    <tr *ngFor="let item of data">
+      <!-- checkbox -->
+      <td>
+        <app-checkbox
+          [(ngModel)]="item.checked"
+          [disabled]="item.sentToMaker"></app-checkbox>
+      </td>
+
+      <!--clarification raised for-->
+      <td>
+        <div>{{ item.section }}</div>
+        <div class="edited-label" *ngIf="item.isEdit">
+          <app-icon-edit-circle></app-icon-edit-circle>
+          Edited
+        </div>
+      </td>
+
+      <!-- comment -->
+      <td>
+        <!-- text -->
+        <div class="communication-text-container">{{ item.comment.text }}</div>
+
+        <div *ngIf="item.comment.attachment"
+          class="cm-actions">
+          <app-icon-eye
+            (click)="openAttachmentViewer(item.comment.attachment, 'download')"
+            [clickable]="true"></app-icon-eye>
+
+          <!-- action item -->
+          <a [href]="item.comment.attachment.url" [download]="item.comment.attachment.name">
+            <app-card-action-item
+              [freeWidth]="true"
+              icon="download">
+              {{ item.comment.attachment.name }}
+            </app-card-action-item>
+          </a>
+        </div>
+      </td>
+
+      <!-- date of last updated -->
+      <td>
+        {{ item.lastUpdatedDate | date: 'd/M/yyyy' }}<br/>
+        {{ item.lastUpdatedDate | date: 'hh:mm a' }}
+      </td>
+
+      <!-- response to -->
+      <td>
+        <!-- when sent -->
+        <div
+          *ngIf="item.sentToMaker; else editView"
+          class="communication-text-container">{{ item.response.text }}</div>
+
+        <!-- edit view -->
+        <ng-template #editView>
+          <div>
+            <textarea
+              [(ngModel)]="item.response.text"
+              class="cm-mat-textarea"
+              rows="2"></textarea>
+          </div>
+        </ng-template>
+
+        <!-- when uploaded -->
+        <app-card-action-item
+          (click)="openAttachmentViewer(item.response.attachment, item.sentToMaker ? 'download' : 'upload')"
+          *ngIf="item.response.attachment"
+          [freeWidth]="true"
+          icon="eye">
+          {{item.response.attachment.name}}
+        </app-card-action-item>
+
+        <!-- upload button -->
+        <app-card-action-item
+          (file)="uploadResponseAttachment(item, $event)"
+          *ngIf="!item.sentToMaker"
+          [class.light-text]="item.sentToMaker"
+          [disabled]="item.sentToMaker"
+          [freeWidth]="true"
+          appFilepicker="application/pdf"
+          icon="attachment">
+          Add attachment
+        </app-card-action-item>
+      </td>
+
+      <!-- add additional response -->
+      <td class="action">
+        <!-- deletable data -->
+        <app-icon-delete
+          (click)="deleteClarification.emit(item)"
+          *ngIf="item.deletable; else origin"></app-icon-delete>
+
+        <!-- when original data -->
+        <ng-template #origin>
+          <app-icon-text-add
+            (click)="!item.copied && copyClarification.emit(item)"
+            [class.cm-disabled]="item.copied"></app-icon-text-add>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- viewer modal -->
+<app-modal *ngIf="showAttachmentViewer">
+  <app-preview-pdf
+    (close)="showAttachmentViewer = false"
+    (upload)="updateResponseAttachment($event)"
+    [action]="viewerData.action"
+    [name]="viewerData.attachment.name"
+    [url]="viewerData.attachment.url"
+    title="View Attachment"></app-preview-pdf>
+</app-modal>

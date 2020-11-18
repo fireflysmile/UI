@@ -1,0 +1,12 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.donut-box {
+  @include border(1px solid rgba($jackson-purple, 0.6));
+  border-radius: 10px;
+  margin-left: 67px;
+
+  .title-texts {
+    @include padding(20px 32px 0 32px);
+  }
+}

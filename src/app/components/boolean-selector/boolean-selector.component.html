@@ -1,0 +1,34 @@
+<!-- selector -->
+<div
+  (click)="opened = !opened"
+  class="cm-boolean-selector">
+  <!-- label -->
+  <div class="cm-boolean-label">
+    {{selectedOption?.label}}
+  </div>
+
+  <!-- arrow -->
+  <div class="cm-boolean-arrow"></div>
+</div>
+
+<!-- options -->
+<div
+  (autoClose)="opened = false"
+  *ngIf="opened"
+  [closeOnScroll]="true"
+  [closerContainer]="elementRef"
+  [positionContainer]="elementRef"
+  appAutoCloser
+  appAutoPositioner
+  appAutoScrollContainer
+  class="cm-boolean-options">
+  <div
+    (click)="setValue(item.value); opened = false"
+    *ngFor="let item of options"
+    [class.cm-selected]="item === selectedOption"
+    [focused]="item === selectedOption"
+    appAutoScrollItem
+    class="cm-boolean-option-item">
+    {{item.label}}
+  </div>
+</div>

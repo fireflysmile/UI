@@ -1,0 +1,62 @@
+<!-- content -->
+<div class="cm-content">
+  <app-form-field
+    label="PC Code">
+    <app-select
+      [(ngModel)]="data.pcCode"
+      [autoWidth]="false"
+      [disabled]="data.confirmed"
+      [options]="codes"></app-select>
+  </app-form-field>
+
+  <app-form-field
+    label="Allocation Quantity">
+    <input
+      #qty="ngModel"
+      (input)="removeUnnecessaryCharsOnInput($event)"
+      (ngModelChange)="onQtyChange($event)"
+      [disabled]="data.confirmed"
+      [ngModel]="data.allocatedQty"
+      class="cm-mat-input"/>
+
+    <i
+      *ngIf="qty.hasError('nullQty')"
+      class="cm-mat-error">
+      Null quantity allocated for non zero value
+    </i>
+  </app-form-field>
+
+  <app-form-field
+    label="Allocated Value">
+    <input
+      #value="ngModel"
+      (input)="removeUnnecessaryCharsOnInput($event)"
+      (ngModelChange)="onValueChange($event)"
+      [disabled]="data.confirmed"
+      [ngModel]="data.allocatedValue"
+      class="cm-mat-input"/>
+
+    <i
+      *ngIf="value.hasError('nullValue')"
+      class="cm-mat-error">
+      Null value allocated for non zero quantity
+    </i>
+  </app-form-field>
+
+  <app-form-field
+    label="Contract Note Number">
+    <input
+      [(ngModel)]="data.contactNoteNumber"
+      [disabled]="data.confirmed"
+      class="cm-mat-input"/>
+  </app-form-field>
+</div>
+
+<!-- action -->
+<div class="cm-action">
+  <!-- close icon -->
+  <app-icon-close
+    (click)="delete.emit()"
+    *ngIf="!data.confirmed && deletable"
+    [clickable]="true"></app-icon-close>
+</div>

@@ -1,0 +1,101 @@
+<app-ai-ml-layout>
+    <!-- Request type card -->
+    <app-ai-ml-reporting-card title="New Request">
+        <h2 class="subtitle">Main Request</h2>
+
+        <form [formGroup]="form" class="req-type-form">
+            <app-form-field label="Select Main Request">
+                <app-select formControlName="reqType" placeholder="Select">
+                    <app-option *ngFor="let value of reqTypes" [value]="value">
+                        {{value}}
+                    </app-option>
+                </app-select>
+            </app-form-field>
+        </form>
+    </app-ai-ml-reporting-card>
+
+    <!-- Request type card -->
+    <app-ai-ml-reporting-card title="Guidelines before you apply">
+        <div class="guidelines">
+            <div class="guidelines__inner">
+                Guidelines before you apply” becomes highlighted and shows the guidelines for IP Activation. Contrary to
+                popular belief,
+                Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+                making it over 2000
+                years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+                the more obscure
+                Latin words, consectetur.<br><br>
+
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                alteration in some form, by
+                injected humour, or randomised words which don’t look even slightly believable. If you are going to use
+                a passage of Lorem<br><br>
+
+                Guidelines before you apply” becomes highlighted and shows the guidelines for IP Activation. Contrary to
+                popular belief,
+                Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+                making it over 2000
+                years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+                the more obscure
+                Latin words, consectetur.<br><br>
+
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                alteration in some form, by
+                injected humour, or randomised words which don’t look even slightly believable. If you are going to use
+                a passage of Lorem<br><br>
+
+                Guidelines before you apply” becomes highlighted and shows the guidelines for IP Activation. Contrary to
+                popular belief,
+                Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+                making it over 2000
+                years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+                the more obscure
+                Latin words, consectetur.<br><br>
+
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                alteration in some form, by
+                injected humour, or randomised words which don’t look even slightly believable. If you are going to use
+                a passage of Lorem
+            </div>
+        </div>
+
+    </app-ai-ml-reporting-card>
+
+    <ng-container footerActions>
+        <button class="cm-button primary" (click)="visibleModal$.next('NonEligible')">START APPLICATION</button>
+    </ng-container>
+
+    <!-- Non-eligible modal -->
+    <app-modal *ngIf="(visibleModal$ | async) == 'NonEligible'">
+        <div class="modal__title">
+            <app-icon-warning class="modal__icon"></app-icon-warning>
+            Non - Eligible for AI & ML Submission.
+        </div>
+
+        <p class="modal__condensed_text">
+            You are not Eligible for AI & ML data submission for this
+            quarter <b>Q4: Jan 2020-Mar 2020</b>
+        </p>
+
+        <div class="modal__actions">
+            <button class="cm-button primary" (click)="visibleModal$.next('SubmissionClosed')">ok</button>
+        </div>
+    </app-modal>
+
+    <!-- Submission closed modal -->
+    <app-modal *ngIf="(visibleModal$ | async) == 'SubmissionClosed'">
+        <div class="modal__title">
+            <app-icon-check-circle class="modal__icon modal__icon--check"></app-icon-check-circle>
+            Eligible for AI & ML Submission.
+        </div>
+
+        <p>
+            AI & ML submission for quarter <b>Q1: Apr 2019 - Jun 2019</b> has been
+            closed. Portal is available for report downloads only.
+        </p>
+
+        <div class="modal__actions">
+            <button class="cm-button primary" (click)="startApplication()">ok</button>
+        </div>
+    </app-modal>
+</app-ai-ml-layout>

@@ -1,0 +1,108 @@
+<!-- total -->
+<div class="cm-row cm-info">
+  <div class="cm-row-content">
+    <div class="cm-column">
+      Total
+    </div>
+
+    <div class="cm-column">
+      <div class="cm-column-value">
+        {{detail?.totalQty || 0 | quantity}}
+        <ng-container
+          [ngTemplateOutlet]="arrow"
+          [ngTemplateOutletContext]="{exceeded: totalQtyExceeded}"></ng-container>
+      </div>
+    </div>
+
+    <div class="cm-column">
+      <div class="cm-column-value">
+        {{detail?.totalValue || 0 | quantity: 2}}
+        <ng-container
+          [ngTemplateOutlet]="arrow"
+          [ngTemplateOutletContext]="{exceeded: totalValueExceeded}"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- unallocated -->
+<div class="cm-row cm-info">
+  <div class="cm-row-content">
+    <div class="cm-column">
+      Unallocated
+    </div>
+
+    <div class="cm-column">
+      <app-icon-exclamation
+        *ngIf="onlyQtyNotFullyAllocated"></app-icon-exclamation>
+
+      <div
+        [class.cm-column-value-error]="onlyQtyNotFullyAllocated || onlyValueNotFullyAllocated"
+        class="cm-column-value">
+        {{remainingQty | quantity}}
+        <ng-container
+          [ngTemplateOutlet]="arrow"
+          [ngTemplateOutletContext]="{exceeded: totalQtyExceeded}"></ng-container>
+      </div>
+
+      <!-- column error -->
+      <div
+        *ngIf="totalQtyExceeded"
+        class="cm-column-error">
+        Allocated quantity exceeds total quantity
+      </div>
+    </div>
+
+    <div class="cm-column">
+      <app-icon-exclamation
+        *ngIf="onlyValueNotFullyAllocated"></app-icon-exclamation>
+
+      <div
+        [class.cm-column-value-error]="onlyQtyNotFullyAllocated || onlyValueNotFullyAllocated"
+        class="cm-column-value">
+        {{remainingValue | quantity: 2}}
+        <ng-container
+          [ngTemplateOutlet]="arrow"
+          [ngTemplateOutletContext]="{exceeded: totalValueExceeded}"></ng-container>
+      </div>
+
+      <!-- column error -->
+      <div
+        *ngIf="totalValueExceeded"
+        class="cm-column-error">
+        Allocated value exceeds total value
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- content -->
+<div class="cm-content">
+  <app-otr-allocation-item
+    (delete)="removeAllocation(item)"
+    *ngFor="let item of detail?.allocations"
+    [codes]="codes || []"
+    [data]="item"
+    [deletable]="(detail?.allocations || []).length > 1"></app-otr-allocation-item>
+</div>
+
+<!-- action -->
+<div class="cm-action">
+  <button
+    (click)="addNewAllocation()"
+    appInlineButton
+    color="default">
+    <app-icon-add-square></app-icon-add-square>
+    Add More
+  </button>
+</div>
+
+<ng-template
+  #arrow
+  let-exceeded="exceeded">
+  <app-icon-arrow-down-red *ngIf="exceeded; else notExceeded"></app-icon-arrow-down-red>
+
+  <ng-template #notExceeded>
+    <app-icon-arrow-up-green></app-icon-arrow-up-green>
+  </ng-template>
+</ng-template>

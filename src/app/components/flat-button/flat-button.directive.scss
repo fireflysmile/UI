@@ -1,0 +1,84 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+/**
+ * light theme flat button preset
+ * $color should be dark,
+ * $background should be light
+ */
+@mixin flatButtonLight($color, $background) {
+  color: $color;
+  background-color: $background;
+
+  &:disabled {
+    color: rgba($color, .5);
+    background-color: rgba($color, .1);
+  }
+
+  &:not(:disabled):hover {
+    background-color: rgba($color, .1);
+  }
+
+  &:not(:disabled):active {
+    background-color: rgba($color, .2);
+  }
+}
+
+/**
+ * dark theme flat button preset
+ * $color should be light,
+ * $background should be dark
+ */
+@mixin flatButtonDark($color, $background) {
+  color: $color;
+  background-color: $background;
+
+  &:disabled {
+    color: rgba($color, .8);
+    background-color: rgba($background, .5);
+  }
+
+  &:not(:disabled):hover {
+    background-color: rgba($background, .8);
+  }
+
+  &:not(:disabled):active {
+    background-color: rgba($background, .7);
+  }
+}
+
+// flat button style
+.ts-flat-button {
+  @include padding(0 20px);
+  border-radius: 5px;
+  height: 32px;
+  transition: background-color .1s, color .1s;
+  text-transform: uppercase;
+
+  // default appearance
+  @include color('default') {
+    @include flatButtonLight($black, $white);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  // primary appearance
+  @include color('primary') {
+    @include flatButtonDark($white, $tahiti-gold);
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 3px 6px rgba($black, .16);
+  }
+
+  // secondary appearance
+  @include color('secondary') {
+    @include flatButtonLight($black, $gainsboro);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  // warn appearance
+  @include color('warn') {
+    @include flatButtonDark($white, $red-orange);
+  }
+}

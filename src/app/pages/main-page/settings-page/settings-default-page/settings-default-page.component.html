@@ -1,0 +1,31 @@
+<div class="cm-row">
+  <app-rect-card>
+    <div class="cm-title">
+      Approve all Sedart at EOD
+    </div>
+  </app-rect-card>
+
+  <app-rect-card>
+    <div class="cm-title">
+      Set up rules for auto-confirmation
+    </div>
+
+    <div class="cm-content">
+      <a
+        [routerLink]="['/main/trade/settings/view-rule']"
+        class="cm-link">
+        View
+      </a>
+
+      <app-icon-upload
+        [routerLink]="['/main/trade/settings/set-rule']"
+        [clickable]="true"></app-icon-upload>
+    </div>
+  </app-rect-card>
+
+  <app-rect-card>
+    <div class="cm-title">
+      Run auto-confirmation
+    </div>
+  </app-rect-card>
+</div>

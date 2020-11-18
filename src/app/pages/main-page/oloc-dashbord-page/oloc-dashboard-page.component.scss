@@ -1,0 +1,88 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// header
+.cm-dashboard-overview-header {
+  @include flex(center, space-between);
+}
+
+// header right
+.cm-dashboard-overview-header-right {
+  @include flex(center);
+
+  // button gap
+  button + button {
+    margin-left: 48px;
+  }
+}
+
+.cm-status-title {
+  font-size: 18px;
+}
+
+// overview row
+.cm-dashboard-overview-row {
+  width: 100%;
+  @include flex(flex-start);
+
+  .cm-dashboard-overview-status {
+    width: calc(25% - 16px);
+    margin-right: 16px;
+
+    app-request-application-card + app-request-application-card {
+      margin-top: 14px;
+    }
+  }
+
+  // chart card
+  app-oloc-application-chart-card {
+    width: 75%;
+  }
+}
+
+
+// last 30d
+app-last-month-applications {
+  width: calc(25% - 15px);
+  margin-left: 15px;
+}
+
+// split header
+.cm-dashboard-split-header {
+  @include flex(flex-start, null, column);
+  @include padding(26px 0 18px);
+
+  app-page-title {
+    @include padding(0);
+  }
+
+  span {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    color: $light-slate-grey;
+    margin-top: 5px;
+  }
+}
+
+// member header
+.cm-dashboard-member-header {
+  @include flex(center, space-between);
+  @include padding(35px 0 20px);
+
+  .cm-new-button {
+    @include rect(278px, 35px);
+    @include clickable(true);
+    @include flex(center, center);
+    box-shadow: 0 3px 6px rgba($black, .16);
+    background-color: $tahiti-gold;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    color: $white;
+  }
+}

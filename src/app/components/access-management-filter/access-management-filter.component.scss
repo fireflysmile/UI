@@ -1,0 +1,41 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-end, space-between);
+  @include padding(40px 32px 0 24px);
+}
+
+// filter group with control
+.cm-filter-group {
+  @include flex(flex-end);
+}
+
+// filters
+.cm-filters {
+  @include flex(flex-start);
+
+  app-form-field {
+    @include widthBetweenGap(24px, 3);
+    min-width: 220px;
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+// actions
+.cm-actions {
+  @include flex(stretch);
+  height: 32px;
+  margin-left: 24px;
+
+  button {
+    @include padding(0 11px);
+  }
+
+  button + button {
+    margin-left: 12px;
+  }
+}

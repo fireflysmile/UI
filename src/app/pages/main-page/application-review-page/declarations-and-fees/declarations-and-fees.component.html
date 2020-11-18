@@ -1,0 +1,38 @@
+<app-declarations-card *ngFor="let personId of data" [personId]="personId"></app-declarations-card>
+
+<app-application-review-card>
+  <app-application-review-card-title title="Member Undertaking"></app-application-review-card-title>
+
+  <div class="agreement">
+    <app-checkbox [ngModel]="true" [disabled]="true"></app-checkbox>
+    <div class="agreement-text" [innerHtml]="memberUndertakingAgreement"></div>
+  </div>
+</app-application-review-card>
+
+
+<app-application-review-card>
+  <app-application-review-card-title title="Processing Fees"></app-application-review-card-title>
+
+  <div class="agreements-action-wrap">
+    <div class="agreements">
+      <div class="agreement" *ngFor="let agreement of processingFeesAgreements">
+        <app-checkbox [ngModel]="true" [disabled]="true"></app-checkbox>
+        <div class="agreement-text" [innerHtml]="agreement"></div>
+      </div>
+
+      <div class="transaction-reference">
+        <div class="label">Transaction Reference no.</div>
+        <input class="cm-mat-input" placeholder="Enter Transaction Reference No." disabled [(ngModel)]="application.processingFeeTransactionNo">
+      </div>
+    </div>
+
+    <div class="action" *ngIf="viewType !== 'checker'">
+      <app-application-review-table-action-header action="add"></app-application-review-table-action-header>
+      <app-application-review-table-action
+        action="add"
+        (add)="addToReview('Processing Fees', null, 'Transaction no. : ' + (application.processingFeeTransactionNo || '-'))">
+      </app-application-review-table-action>
+    </div>
+  </div>
+
+</app-application-review-card>

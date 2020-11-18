@@ -1,0 +1,14 @@
+<!-- code -->
+<app-select
+  (ngModelChange)="code = $event; setPhoneValue()"
+  [autoWidth]="true"
+  [ngModel]="code"
+  [options]="codes"></app-select>
+
+<!-- input -->
+<input
+  (blur)="markAsTouched()"
+  (ngModelChange)="number = $event; setPhoneValue()"
+  [ngModel]="number"
+  class="cm-mat-input"
+  mask="999999999999"/>

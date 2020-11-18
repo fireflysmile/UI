@@ -1,0 +1,75 @@
+<table
+  [class.no-warning-letter]="!postFactoApproval.warningLetter"
+  [class.with-warning-letter]="postFactoApproval.warningLetter">
+  <thead>
+    <tr>
+      <ng-container *ngIf="!postFactoApproval.warningLetter">
+        <th class="section-header">
+          <div class="warning-toggle-cell">
+            Generate Warning Letter
+            <div class="toggle" (click)="!completed && updateCheckerConfirmation(); !completed && generateWarningLetter.emit()">
+              <span>No</span>
+              <app-icon-toggle-off></app-icon-toggle-off>
+              <span>Yes</span>
+            </div>
+          </div>
+        </th>
+        <th *ngIf="!hideReasonForCancellation">{{ (viewType === 'checker' ? 'Maker\'s ' : '') + 'Reason for Cancellation' }}</th>
+      </ng-container>
+      <ng-container *ngIf="postFactoApproval.warningLetter">
+        <th>File Section</th>
+        <th>Attachment</th>
+        <th>Send Warning Letter</th>
+        <th>Status</th>
+      </ng-container>
+      <th *ngIf="viewType === 'maker'">Confirmation from Checker</th>
+      <th>Comments from Checker</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <ng-container *ngIf="!postFactoApproval.warningLetter">
+        <td></td>
+        <td *ngIf="!hideReasonForCancellation">
+          <textarea class="cm-mat-textarea" rows="1" appAutoSizeTextarea placeholder="Enter Reason for Cancellation"
+            [(ngModel)]="postFactoApproval.warningCancellationReason" *ngIf="warningCancellationReasonEditable"></textarea>
+
+          <span *ngIf="!warningCancellationReasonEditable">{{ postFactoApproval.warningCancellationReason }}</span>
+        </td>
+      </ng-container>
+      <ng-container *ngIf="postFactoApproval.warningLetter">
+        <td>Warning Letter</td>
+        <td>
+          <app-letter-attachment-cell
+            type="warning"
+            [attachment]="postFactoApproval.warningLetter">
+          </app-letter-attachment-cell>
+        </td>
+        <td>
+          <app-select [(ngModel)]="postFactoApproval.warningLetter" [autoWidth]="false"
+            (ngModelChange)="updateCheckerConfirmation()" *ngIf="!completed">
+            <app-option [value]="postFactoApproval.warningLetter">Yes</app-option>
+            <app-option [value]="null">No</app-option>
+          </app-select>
+          <ng-container *ngIf="completed">
+            {{ postFactoApproval.warningLetter ? 'Yes' : 'No' }}
+          </ng-container>
+        </td>
+        <td>
+          <div class="status-cell">{{ statusText }}</div>
+        </td>
+      </ng-container>
+      <td *ngIf="viewType === 'maker'">
+        <app-icon-check-circle *ngIf="postFactoApproval.checkerConfirmation"></app-icon-check-circle>
+        <app-icon-cross-circle *ngIf="postFactoApproval.checkerConfirmation === false"></app-icon-cross-circle>
+      </td>
+      <td>
+        <app-checker-comments
+          [comments]="postFactoApproval.comments"
+          [editable]="!completed && viewType === 'checker'"
+          (comment)="comment.emit($event)">
+        </app-checker-comments>
+      </td>
+    </tr>
+  </tbody>
+</table>

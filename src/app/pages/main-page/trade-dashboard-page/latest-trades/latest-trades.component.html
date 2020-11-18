@@ -1,0 +1,40 @@
+<app-trade-card>
+
+  <app-trade-card-title title="Latest Trades">
+    <app-toggle-filter
+      (ngModelChange)="tableSize = $event"
+      [options]="tableSizeOptions"
+      [ngModel]="tableSize"
+      buttonWidth="36">
+    </app-toggle-filter>
+  </app-trade-card-title>
+
+  <div class="toggle-filters-row">
+    <app-toggle-filter
+      (ngModelChange)="onSegmentChanged($event)"
+      [options]="segmentOptions"
+      [ngModel]="segment"
+      buttonWidth="55">
+    </app-toggle-filter>
+
+    <div class="toggle-filters-sub-section">
+      <app-toggle-filter
+        (ngModelChange)="onTradeTypeChanged($event)"
+        [options]="tradeTypeOptions"
+        [ngModel]="tradeType">
+      </app-toggle-filter>
+
+      <app-toggle-filter
+        (ngModelChange)="onStatusChanged($event)"
+        [options]="statusOptions"
+        [ngModel]="status">
+      </app-toggle-filter>
+    </div>
+  </div>
+
+  <app-trade-table *ngIf="filteredTrades"
+    [trades]="filteredTrades"
+    [maxRows]="tableSize">
+  </app-trade-table>
+
+</app-trade-card>

@@ -1,0 +1,32 @@
+<app-rect-card>
+  <app-status-tracker-sub-header>
+    Clarification
+  </app-status-tracker-sub-header>
+
+  <!-- clarification table -->
+  <app-application-clarification-table
+    (copyClarification)="copyClarification($event)"
+    (deleteClarification)="deleteClarification($event)"
+    [data]="clarifications"></app-application-clarification-table>
+</app-rect-card>
+
+<!-- page actions -->
+<app-page-actions
+  (confirmClick)="sendClarifications()"
+  [confirmable]="enableSend"
+  [confirmLoading]="sending"
+  confirm="send">
+  <button
+    (click)="openClarificationReview()"
+    class="cm-icon-button">
+    <app-icon-eye></app-icon-eye>
+    View Completed Reviews
+  </button>
+
+  <button
+    (click)="openClarificationEdits()"
+    class="cm-icon-button">
+    <app-icon-edit-circle></app-icon-edit-circle>
+    View Application Edits
+  </button>
+</app-page-actions>

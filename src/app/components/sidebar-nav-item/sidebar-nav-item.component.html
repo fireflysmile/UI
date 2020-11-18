@@ -1,0 +1,99 @@
+<!-- switch icon -->
+<ng-container [ngSwitch]="icon">
+  <!-- add circle -->
+  <app-icon-add-circle *ngSwitchCase="'add-circle'"></app-icon-add-circle>
+
+  <!-- dashboard -->
+  <app-icon-dashboard *ngSwitchCase="'dashboard'"></app-icon-dashboard>
+
+  <!-- list -->
+  <app-icon-list *ngSwitchCase="'list'"></app-icon-list>
+
+  <!-- settings -->
+  <app-icon-settings *ngSwitchCase="'settings'"></app-icon-settings>
+
+  <!-- refresh -->
+  <app-icon-refresh *ngSwitchCase="'refresh'"></app-icon-refresh>
+
+  <!-- exit -->
+  <app-icon-exit *ngSwitchCase="'exit'"></app-icon-exit>
+
+  <!-- task -->
+  <app-icon-task *ngSwitchCase="'task'"></app-icon-task>
+
+  <!-- protection -->
+  <app-icon-protection *ngSwitchCase="'protection'"></app-icon-protection>
+
+  <!-- guard -->
+  <app-icon-guard *ngSwitchCase="'guard'"></app-icon-guard>
+
+  <!-- trade -->
+  <app-icon-trade *ngSwitchCase="'trade'"></app-icon-trade>
+
+  <!-- member -->
+  <app-icon-member *ngSwitchCase="'member'"></app-icon-member>
+
+  <!-- details -->
+  <app-icon-details *ngSwitchCase="'details'"></app-icon-details>
+
+  <!-- suitcase -->
+  <app-icon-suitcase *ngSwitchCase="'suitcase'"></app-icon-suitcase>
+
+  <!-- documents -->
+  <app-icon-documents *ngSwitchCase="'documents'"></app-icon-documents>
+
+  <!-- people -->
+  <app-icon-people *ngSwitchCase="'people'"></app-icon-people>
+
+  <!-- background-check -->
+  <app-icon-background-check *ngSwitchCase="'background-check'"></app-icon-background-check>
+
+  <!-- signature -->
+  <app-icon-signature *ngSwitchCase="'signature'"></app-icon-signature>
+
+  <!-- stacked-windows -->
+  <app-icon-stacked-windows *ngSwitchCase="'stacked-windows'"></app-icon-stacked-windows>
+
+  <!-- save -->
+  <app-icon-save *ngSwitchCase="'save'"></app-icon-save>
+
+  <!-- declarations -->
+  <app-icon-declarations *ngSwitchCase="'declarations'"></app-icon-declarations>
+
+  <!-- home -->
+  <app-icon-home *ngSwitchCase="'home'"></app-icon-home>
+
+  <!--users -->
+  <app-icon-users *ngSwitchCase="'users'"></app-icon-users>
+
+  <!-- power -->
+  <app-icon-power-button *ngSwitchCase="'power'"></app-icon-power-button>
+
+  <!--monitor-->
+  <app-icon-monitor *ngSwitchCase="'monitor'"></app-icon-monitor>
+
+  <!-- line chart -->
+  <app-icon-line-chart *ngSwitchCase="'line-chart'"></app-icon-line-chart>
+
+  <!-- edit -->
+  <app-icon-edit *ngSwitchCase="'edit'"></app-icon-edit>
+
+  <!-- stacked bar chart -->
+  <app-icon-stacked-bar-chart *ngSwitchCase="'stacked-bar-chart'"></app-icon-stacked-bar-chart>
+</ng-container>
+
+<!-- label -->
+<div class="cm-sidebar-nav-item-label">
+  <span>
+    <ng-content></ng-content>
+  </span>
+</div>
+
+<!-- notifications -->
+<div
+  *ngIf="notifications"
+  class="cm-sidebar-nav-item-notifications">
+  <span>
+    {{notifications}}
+  </span>
+</div>

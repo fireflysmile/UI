@@ -1,0 +1,41 @@
+<app-ai-ml-layout>
+  <!-- Request type card -->
+  <app-ai-ml-reporting-card title="Member Details" class="form-card">
+    <span class="card-subtitle">Last submission done on <b>15/10/2019 12.30 for Q2: Jul 2019-Sep 2019</b></span>
+
+    <form [formGroup]="form">
+      <!-- Quarter -->
+      <app-form-field label="Select Quarter">
+        <app-select [options]="quarterOptions" formControlName="quarter" placeholder="Select Quarter Type ">
+        </app-select>
+      </app-form-field>
+
+      <!-- Entity IBES -->
+      <app-form-field label="Entity IBES Registration Number">
+        <input class="cm-mat-input" formControlName="entityRegNumber" placeholder="Enter IBES" />
+      </app-form-field>
+
+      <!-- Entity Category -->
+      <app-form-field label="Registration Entity Category">
+        <app-select [options]="entityCategoryOptions" formControlName="entityCategory" placeholder="Select Category">
+        </app-select>
+      </app-form-field>
+
+      <!-- Entity Name -->
+      <app-form-field label="Entity Name">
+        <input class="cm-mat-input" formControlName="entityName" placeholder="Enter Name" />
+      </app-form-field>
+
+      <!-- Entity No. -->
+      <app-form-field label="Entity NAP No.">
+        <input class="cm-mat-input" formControlName="entityNo" placeholder="Enter NAP" />
+      </app-form-field>
+    </form>
+  </app-ai-ml-reporting-card>
+
+  <ng-container footerActions>
+    <button class="cm-button secondary left-action">USER MANUAL</button>
+    <a class="cm-button primary" routerLink="../nil-submission">NIL Submission</a>
+    <button class="cm-button primary">Data Submission</button>
+  </ng-container>
+</app-ai-ml-layout>

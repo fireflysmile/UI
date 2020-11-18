@@ -1,0 +1,67 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start);
+}
+
+// question
+.cm-post-implementation-question {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: $raven;
+}
+
+// actions
+.cm-post-implementation-actions {
+  @include flex(flex-start);
+  margin-left: 80px;
+
+  button {
+    @include rect(55px, 28px);
+    @include border(1px solid $dim-grey);
+    @include clickable(true);
+    text-transform: uppercase;
+    border-radius: 5px;
+    color: $tahiti-gold;
+  }
+}
+
+// button wrapper
+.cm-post-implementation-button-wrapper {
+  @include flex(flex-start, null, column);
+
+  i {
+    margin-top: 8px;
+  }
+}
+
+// wrapper gap
+.cm-post-implementation-button-wrapper + .cm-post-implementation-button-wrapper {
+  margin-left: 120px;
+}
+
+// submitted
+.cm-submitted {
+  @include flex(center);
+
+  // ball icon
+  .cm-ball-icon {
+    background-color: $kelly-green;
+
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  // message
+  .cm-message {
+    margin-left: 5px;
+    font-size: 16px;
+    line-height: 19px;
+    color: $thunder;
+  }
+}

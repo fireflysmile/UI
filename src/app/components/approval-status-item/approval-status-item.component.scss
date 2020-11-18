@@ -1,0 +1,43 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start);
+}
+
+svg {
+  display: block;
+  position: relative;
+  top: 3px;
+}
+
+// right section
+.cm-approval-status-right {
+  margin-left: 11px;
+  max-width: 220px;
+}
+
+// message
+.cm-approval-status-message {
+  font-size: 16px;
+  line-height: 19px;
+  color: $thunder;
+}
+
+// reason
+.cm-approval-reason {
+  margin-top: 23px;
+
+  h6 {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    color: $raven;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 4px;
+  }
+}

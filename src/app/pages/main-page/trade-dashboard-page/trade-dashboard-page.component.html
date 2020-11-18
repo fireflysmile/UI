@@ -1,0 +1,43 @@
+<app-page-content>
+  <div class="page-title-row">
+    <span class="title">Trade View</span>
+    <div>
+      <app-card-action-item icon="back" *ngIf="expanded" (click)="expanded = null">Back</app-card-action-item>
+      <app-capsule-toggle
+        *ngIf="showViewModeToggle"
+        [options]="viewModeOptions"
+        [selectedValue]="viewMode"
+        (selectionChange)="onViewModeChanged($event)">
+      </app-capsule-toggle>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <app-overall-trade-overview
+      *ngIf="!expanded || expanded === 'overall'"
+      (expand)="expanded = 'overall'"
+      [allTrades]="trades"
+      [userType]="userType"
+      [expanded]="expanded === 'overall'"
+      [clearingMembers]="clearingMembers">
+    </app-overall-trade-overview>
+
+    <app-pc-trade-overview
+      *ngIf="!expanded || expanded === 'pc'"
+      (expand)="expanded = 'pc'"
+      [allTrades]="trades"
+      [userType]="userType"
+      [expanded]="expanded === 'pc'"
+      [clearingMembers]="clearingMembers">
+    </app-pc-trade-overview>
+
+    <!-- latest trades card -->
+    <!-- using 'hidden' instead of 'ngIf' on expanded for performance reasons -->
+    <app-latest-trades
+      *ngIf="tableDisplayDelayComplete"
+      [hidden]="expanded"
+      [allTrades]="trades">
+    </app-latest-trades>
+  </ng-container>
+
+</app-page-content>

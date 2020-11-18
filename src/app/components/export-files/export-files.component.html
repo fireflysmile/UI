@@ -1,0 +1,32 @@
+<div class="export-files-container">
+    <div class="title">
+      <!-- <app-icon-alert></app-icon-alert> -->
+      Download
+    </div>
+
+    <form
+      #form
+      [formGroup]="group"
+      >
+
+      <app-form-field
+        [label]="'select file type'">
+        <app-select
+          [autoWidth]="false"
+          [options]="types"
+          [placeholder]="'.doc'"
+          formControlName="select"></app-select>
+      </app-form-field>
+    </form>
+
+    <div class="filename-group">
+      <div class="label" >Filename</div>
+      <Input id="filename" class="input" [(ngModel)]="filename" ngDefaultControl placeholder="document"/>
+    </div>
+  
+    <div class="modal-actions">
+        <button class="cm-button primary" (click)="download()">Download</button>
+        <button class="cm-button secondary" (click)="close.emit()">Close</button>
+    </div>
+</div>
+  

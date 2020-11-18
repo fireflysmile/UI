@@ -1,0 +1,118 @@
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header>
+    <span>Noitacoloc Kcar Inventory</span>
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content>
+
+    <div class="cm-kcar-header">
+      <app-form-field
+        label="Floor Plan">
+        <!-- select -->
+        <app-select
+          [options]="planOptions"
+          [(ngModel)]="planVal"></app-select>
+      </app-form-field>
+
+      <div class="cm-kcar-legend-container">
+        <div class="cm-kcarlegend-header">Legend</div>
+        <div class="cm-kcar-legend-row">
+          <div class="cm-kcar-legend-left">
+            <!-- color -->
+            <div
+              [style.background-color]="'#008000'"
+              class="cm-kcar-legend-color"></div>
+
+            <!-- label -->
+            <div class="cm-kcar-legend-label">
+              Kcar
+              <span>is Free</span>
+            </div>
+          </div>
+
+          <div class="cm-kcar-legend-right">
+            <div class="cm-kcar-legend-item">
+              XX-F
+            </div>
+
+            <div class="cm-kcar-legend-desc">
+              Full
+              <span>Kcar</span>
+            </div>
+          </div>
+        </div>
+        <div class="cm-kcar-legend-row">
+          <div class="cm-kcar-legend-left">
+            <!-- color -->
+            <div
+              [style.background-color]="'#9a0000'"
+              class="cm-kcar-legend-color"></div>
+
+            <!-- label -->
+            <div class="cm-kcar-legend-label">
+              Kcar
+              <span>in Use</span>
+            </div>
+          </div>
+
+          <div class="cm-kcar-legend-right">
+            <div class="cm-kcar-legend-item">
+              XX-T
+            </div>
+
+            <div class="cm-kcar-legend-desc">
+              Half Top
+              <span>Kcar</span>
+            </div>
+          </div>
+        </div>
+        <div class="cm-kcar-legend-row">
+          <div class="cm-kcar-legend-left">
+            <!-- color -->
+            <div
+              [style.background-color]="'#808080'"
+              class="cm-kcar-legend-color"></div>
+
+            <!-- label -->
+            <div class="cm-kcar-legend-label">
+              System
+              <span>Kcars</span>
+            </div>
+          </div>
+
+          <div class="cm-kcar-legend-right">
+            <div class="cm-kcar-legend-item">
+              XX-HB
+            </div>
+
+            <div class="cm-kcar-legend-desc">
+              Half Bottom
+              <span>Kcar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cm-kcar-table">
+      <div *ngFor="let column of kcarData[planVal]" class="cm-kcar-column">
+        <div *ngFor="let item of column" class="cm-kcar-item"
+            [class.free] = "item.status == 'free'"
+            [class.use] = "item.status == 'in-use'">
+            {{item.label}}
+        </div>
+      </div>
+    </div>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      close
+    </button>
+  </app-modal-actions>
+</app-modal-container>

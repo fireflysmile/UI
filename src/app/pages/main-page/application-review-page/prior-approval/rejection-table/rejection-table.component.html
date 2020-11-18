@@ -1,0 +1,30 @@
+<table class="rejection-table">
+  <thead>
+    <tr>
+      <th>Reason for Rejection</th>
+      <th>Status</th>
+      <th>Comments from Checker</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ng-container *ngIf="editable">
+          <textarea class="cm-mat-textarea" rows="1" appAutoSizeTextarea placeholder="Enter Reason for Rejection"
+          [(ngModel)]="approval.rejectionReason"></textarea>
+          <p class="hint" *ngIf="viewType === 'checker'">You can modify the Reason for Rejection and send the decision to the Member</p>
+        </ng-container>
+
+        <span *ngIf="!editable">{{ approval.rejectionReason }}</span>
+      </td>
+      <td><div class="status-cell">{{ statusText }}</div></td>
+      <td>
+        <app-checker-comments
+          [comments]="approval.comments"
+          [editable]="!completed && viewType === 'checker'"
+          (comment)="comment.emit($event)">
+        </app-checker-comments>
+      </td>
+    </tr>
+  </tbody>
+</table>

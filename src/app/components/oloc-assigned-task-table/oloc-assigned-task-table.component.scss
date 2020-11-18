@@ -1,0 +1,100 @@
+@import 'src/app/styles/mixins';
+@import 'src/app/styles/props';
+
+:host {
+  display: block;
+
+  // editor
+  app-table-layout-editor {
+    margin-top: -64px;
+
+    ::ng-deep {
+      app-card {
+        @include paddingTop(18px);
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+      }
+
+      .cm-table-layout-scroll-content {
+        @include paddingBottom(0);
+        justify-content: center;
+      }
+    }
+  }
+
+  // card actions
+  app-card-actions {
+    ::ng-deep {
+      app-divider {
+        background-color: $white-smoke3;
+      }
+    }
+  }
+
+  // table
+  app-table {
+    ::ng-deep {
+      th,
+      td {
+        &.cm-fake-column {
+          width: 100px;
+          max-width: 100px;
+        }
+      }
+    }
+  }
+}
+
+app-rect-card {
+  @include paddingBottom(30px);
+}
+
+app-table {
+  margin-top: 62px;
+}
+
+.cm-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+// button default
+button {
+  @include rect(217px, 40px);
+  @include flex(center, center);
+  @include clickable();
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  &:disabled {
+    cursor: auto;
+  }
+}
+
+// confirm button
+.btn-confirm {
+  background-color: $safety-orange;
+  color: $white;
+  margin-top: 20px;
+  margin-right: 20px;
+
+  // disabled
+  &:disabled {
+    background-color: $provincial-pink;
+  }
+
+  // hover
+  &:not(:disabled):hover {
+    background-color: lighten($safety-orange, 10%);
+  }
+
+  // active
+  &:not(:disabled):active {
+    background-color: lighten($safety-orange, 15%);
+  }
+}

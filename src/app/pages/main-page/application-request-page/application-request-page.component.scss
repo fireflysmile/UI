@@ -1,0 +1,45 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+.cm-page-headline {
+  margin-top: 26px;
+  margin-bottom: 20px;
+}
+
+
+app-rect-card-header {
+  ::ng-deep {
+    .cm-rect-card-title {
+      @include flex(flex-start, null, column);
+
+      span {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: $light-slate-grey;
+        margin-top: 5px;
+      }
+    }
+
+    app-divider {
+      background-color: $white-smoke3;
+    }
+  }
+}
+
+
+// toggle row
+.cm-toggle-row {
+  @include flex(flex-start);
+  margin-top: 23px;
+}
+
+// toggle filter gap
+app-toggle-filter + app-toggle-filter {
+  margin-left: 57px;
+}
+
+// toggle row / card gap
+.cm-toggle-row + app-card, .cm-toggle-row + app-table-layout-editor {
+  margin-top: 28px;
+}

@@ -1,0 +1,147 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-application-review-card-title {
+  margin-bottom: 42px;
+  app-contact-box {
+    margin-right: 12px;
+  }
+}
+
+.no-reviews-message {
+  @include paddingBottom(150px);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  color: $raven;
+}
+
+table {
+  width: calc(100% + 125px);
+  min-width: calc(100% + 125px);
+  margin: 0 -28px 0 -97px;
+
+  th {
+    @include paddingBottom(9px);
+  }
+
+  th,
+  td {
+    &:first-of-type {
+      @include paddingLeft(58px);
+    }
+    &:last-of-type {
+      @include paddingRight(40px);
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      width: 28%;
+      min-width: 294px;
+    }
+    &:nth-child(1),
+    &:nth-child(4),
+    &:nth-child(6) {
+      width: 98px;
+      min-width: 98px;
+      max-width: 98px;
+    }
+
+    &:nth-child(7) {
+      width: 82px;
+      min-width: 82px;
+      max-width: 82px;
+    }
+
+    &:nth-child(5) {
+      width: 18%;
+      min-width: 196px;
+    }
+    &:nth-child(6),
+    &:nth-child(5),
+    &:nth-child(2) {
+      @include paddingRight(60px);
+    }
+
+    .communication-text-container {
+      min-height: 48px;
+    }
+
+  }
+
+  td:not(.th) {
+    @include borderTop(1px solid $seashell);
+    @include paddingTop(22px);
+    @include paddingBottom(12px);
+
+    app-checkbox {
+      margin-top: 5px;
+    }
+  }
+
+  app-card-action-item {
+    margin-top: 5px;
+    &.light-text {
+      ::ng-deep {
+        .cm-card-action-label {
+          color: $seashell;
+        }
+      }
+    }
+  }
+
+  app-icon-check-circle {
+    ::ng-deep {
+      svg {
+        height: 24px;
+        width: 24px;
+      }
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+  }
+
+  textarea {
+    width: 100%;
+  }
+}
+
+:host {
+  ::ng-deep {
+    .edited-label {
+      @include flex(center);
+      font-size: 12px;
+      line-height: 16px;
+      font-style: italic;
+      color: $suva-grey;
+      margin-top: 8px;
+
+      app-icon-edit-circle {
+        margin-right: 8px;
+        ::ng-deep {
+          circle {
+            fill: $jackson-purple;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $white;
+  @include padding(16px 107px 15px 32px);
+  @include flex(center, space-between, null, nowrap);
+
+  .action-group {
+    @include flex(center);
+    app-card-action-item {
+      margin-right: 35px;
+    }
+  }
+}

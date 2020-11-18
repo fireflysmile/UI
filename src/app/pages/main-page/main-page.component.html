@@ -1,0 +1,15 @@
+<!-- header  -->
+<app-header></app-header>
+
+<!-- main -->
+<div
+  [class.cm-full-view]="outlet?.activatedRouteData?.fullWidthView"
+  class="cm-main">
+  <!-- sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <!-- router container -->
+  <div class="cm-router-container">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>

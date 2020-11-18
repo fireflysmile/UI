@@ -1,0 +1,9 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+:host {
+  color: $red-orange;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+}

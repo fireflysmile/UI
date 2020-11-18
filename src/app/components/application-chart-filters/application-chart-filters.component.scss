@@ -1,0 +1,181 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, space-between, column, nowrap);
+  width: 180px;
+  background-color: $jackson-purple;
+}
+
+// top
+.cm-application-chart-filter-top {
+  @include padding(9px 8px 14px);
+}
+
+// filter header
+.cm-application-chart-filter-header {
+  @include flex(center);
+}
+
+// icon
+.cm-ball-icon {
+  background-color: $white;
+
+  ::ng-deep {
+    path {
+      fill: $jackson-purple;
+    }
+  }
+}
+
+// header right
+.cm-application-chart-filter-header-right {
+  @include flex(flex-start, null, column);
+  margin-left: 9px;
+}
+
+// title
+.cm-application-chart-filter-header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: $white;
+  line-height: 19px;
+}
+
+// sub title
+.cm-application-chart-filter-header-sub-title {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  color: $scampi;
+}
+
+// form
+.cm-application-chart-filter-form {
+  @include flex(center, null, column, nowrap);
+  margin-top: 34px;
+
+  // form button
+  button {
+    @include rect(98px, 24px);
+    @include border(1px solid $white);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    color: $white;
+    transition: background-color .15s;
+    margin-top: 16px;
+
+    &:hover {
+      background-color: rgba($white, .4);
+    }
+
+    &:active {
+      background-color: rgba($white, .6);
+    }
+  }
+}
+
+// field
+.cm-application-chart-filter-field {
+  @include flex(center);
+  @include paddingRight(12px);
+  width: 100%;
+
+  // icon
+  .cm-icon {
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  // form field
+  app-form-field {
+    @include itemFlex(1, 1, 0);
+    max-width: calc(100% - 35px);
+    margin-left: 11px;
+
+    ::ng-deep {
+      // form field label
+      .cm-form-field-label {
+        font-size: 13px;
+        line-height: 15px;
+        color: $scampi;
+      }
+    }
+  }
+
+  // override multi select styles
+  app-multi-select {
+    ::ng-deep {
+      // label
+      .ts-select-label {
+        color: $white;
+      }
+
+      // icon
+      svg {
+        path {
+          fill: $white;
+        }
+      }
+
+      // select height
+      .ts-select {
+        height: 21px;
+      }
+
+      // select container opened
+      .ts-select {
+        &.ts-opened {
+          border-bottom-color: $white;
+        }
+      }
+    }
+  }
+}
+
+// field gap
+.cm-application-chart-filter-field + .cm-application-chart-filter-field {
+  margin-top: 24px;
+}
+
+// bottom
+.cm-application-chart-filter-bottom {
+  @include borderTop(1px solid $scampi);
+  position: relative;
+
+  // icon
+  svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+// bottom inner
+.cm-application-chart-filter-bottom-inner {
+  @include padding(26px 0 16px);
+  @include flex(center, space-between, column);
+}
+
+// bottom label
+.cm-application-chart-filter-bottom-label {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 400;
+  color: $white;
+  text-align: center;
+}
+
+// bottom value
+.cm-application-chart-filter-bottom-value {
+  font-size: 30px;
+  line-height: 37px;
+  font-weight: 900;
+  color: $white;
+  margin-top: 2px;
+}

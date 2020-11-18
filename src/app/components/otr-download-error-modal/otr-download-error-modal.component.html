@@ -1,0 +1,28 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    <!-- success -->
+    Successfully created {{data.response.total - data.response.errors}} new users
+    <br/>
+    <br/>
+    <!-- errors -->
+    {{data.response.errors}} users could not be created because either:<br/>
+    <!-- reasons -->
+    <span *ngFor="let item of data.response.reasons">
+      • {{item}}
+    </span>
+    <br/>
+    <br/>
+    Please select the location where you wish to save the error file
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      download
+    </button>
+  </app-modal-actions>
+</app-modal-container>

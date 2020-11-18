@@ -1,0 +1,100 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+    display: block;
+    height: 100%;
+}
+
+.page {
+    padding-top: 25px;
+    padding-left: 103px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+
+    &__headline {
+        margin-bottom: 36px;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 16px 107px 15px 100px;
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+
+    ::ng-deep > * {
+        min-width: 188px;
+
+        &:not(:first-child) {
+            margin-left: 30px;
+        }
+    }
+}
+
+:host::ng-deep {
+    app-status-stepper {
+        margin-bottom: 32px;
+    }
+
+    .cm-step-label {
+        padding: 0 10px;
+    }
+
+    .modal {
+        padding: 22px 36px 30px 23px;
+        font-size: 15px;
+        max-width: 526px;
+
+        &__title {
+            display: flex;
+            align-items: center;
+            color: $jackson-purple;
+            font-weight: 700;
+            margin-bottom: 26px;
+        }
+
+        &__icon {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        p {
+            padding-right: 40px;
+            box-sizing: border-box;
+        }
+
+        &__icon--check {
+            transform: scale(1.2);
+
+            ::ng-deep path {
+                fill: $kelly-green;
+            }
+        }
+
+        &__condensed_text {
+            max-width: 75%;
+        }
+
+        &__actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 55px;
+
+            > * {
+                flex: 1 1 0;
+                max-width: 40%;
+                margin-left: 30px;
+                height: 40px;
+            }
+        }
+    }
+}

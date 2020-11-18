@@ -1,0 +1,74 @@
+<!-- page content -->
+<app-page-content>
+  <!-- title -->
+  <app-page-title>
+    Transfer
+  </app-page-title>
+
+  <!-- toggles -->
+  <app-toggle-filter
+    (ngModelChange)="segment = $event; toggleableFilterChange()"
+    [options]="segmentOptions"
+    [ngModel]="segment"
+    buttonWidth="55"
+    label="Segment"></app-toggle-filter>
+
+  <!-- toggle row -->
+  <div class="cm-toggle-row">
+    <!-- collateral -->
+    <app-toggle-filter
+      (ngModelChange)="collateral = $event; toggleableFilterChange()"
+      [options]="collateralOptions"
+      [ngModel]="collateral"
+      buttonWidth="110"
+      label="Collateral"></app-toggle-filter>
+
+    <!-- instrument type-->
+    <app-toggle-filter
+      (ngModelChange)="instrumentType = $event; toggleableFilterChange()"
+      [options]="instrumentTypeOptions"
+      [ngModel]="instrumentType"
+      buttonWidth="96"
+      label="Instrument"></app-toggle-filter>
+  </div>
+
+  <!-- card -->
+  <app-card *ngIf="!layoutView; else layoutEditor">
+    <!-- actions -->
+    <app-card-actions
+      [actionGroups]="actionGroups"></app-card-actions>
+
+    <!-- table -->
+    <app-table
+      (filterChange)="filters = $event; createDisplayableData()"
+      (sortChange)="sort = $event; createDisplayableData()"
+      [(selectAll)]="selectAll"
+      [columnFilterCreator]="callSetColumnFilters"
+      [columns]="columns"
+      [data]="displayableData"
+      [sort]="sort"
+      [totalColumnLength]="configs.length"></app-table>
+  </app-card>
+
+  <ng-template #layoutEditor>
+    <!-- layout editor -->
+    <app-table-layout-editor
+      (cancelClick)="layoutView = false"
+      (saveClick)="tableColumnService.transferColumnConfig = $event; layoutView = false"
+      [initialConfigs]="tableColumnService.initialTransferColumnConfigs"
+      [layouts]="configs"></app-table-layout-editor>
+  </ng-template>
+</app-page-content>
+
+<!-- actions -->
+<app-page-actions
+  [confirmable]="hasSelected"
+  confirm="transfer"></app-page-actions>
+
+<!-- file input -->
+<input
+  #fileInput
+  (change)="onFileUpload($event)"
+  hidden
+  type="file"
+  accept=".csv"/>

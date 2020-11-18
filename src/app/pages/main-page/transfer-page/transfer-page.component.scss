@@ -1,0 +1,18 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+// toggle row
+.cm-toggle-row {
+  @include flex(flex-start);
+  margin-top: 23px;
+}
+
+// toggle filter gap
+app-toggle-filter + app-toggle-filter {
+  margin-left: 57px;
+}
+
+// toggle row / card gap
+.cm-toggle-row + app-card, .cm-toggle-row + app-table-layout-editor {
+  margin-top: 28px;
+}

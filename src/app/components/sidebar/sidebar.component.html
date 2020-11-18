@@ -1,0 +1,25 @@
+<ng-container
+  *ngFor="let item of navigations">
+  <!-- with route -->
+  <ng-container *ngIf="item.route; else withoutRoute">
+    <!-- nav item -->
+    <app-sidebar-nav-item
+      [icon]="item.icon"
+      [routerLink]="item.route"
+      [notifications]="item.notifications && item.notifications()"
+      routerLinkActive="active">
+      {{item.label}}
+    </app-sidebar-nav-item>
+  </ng-container>
+
+  <!-- without route -->
+  <ng-template #withoutRoute>
+    <!-- nav item -->
+    <app-sidebar-nav-item
+      (click)="item.onClick && item.onClick()"
+      [icon]="item.icon">
+      {{item.label}}
+    </app-sidebar-nav-item>
+  </ng-template>
+</ng-container>
+

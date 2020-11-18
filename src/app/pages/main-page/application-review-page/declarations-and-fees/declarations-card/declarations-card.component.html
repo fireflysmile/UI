@@ -1,0 +1,66 @@
+<app-application-review-card [class.readonly]="completed || viewType === 'checker'">
+  <app-application-review-card-title title="Declarations">
+    <div right class="fine-print">*In case Yes, please provide clarifications</div>
+  </app-application-review-card-title>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <div class="name">
+            <span>{{ name }}</span>
+            <app-edit-form-actions left
+              (save)="save()"
+              (cancel)="cancel()"
+              (edit)="edit()"
+              [isEditing]="isEditing">
+            </app-edit-form-actions>
+          </div>
+        </th>
+        <th>Response</th>
+        <th>Clarification</th>
+        <th class="action">
+          <app-application-review-table-action-header
+            [action]="action">
+          </app-application-review-table-action-header>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let declaration of declarations; let i=index">
+        <td>
+          <div class="question">
+            <span>{{ i + 1 }}.</span>
+            <div class="question-text" [innerHtml]="declarationQuestionsMap[declaration.questionId]"></div>
+          </div>
+        </td>
+        <td>
+          <app-application-review-table-cell
+            [data]="declaration"
+            [column]="{ property: 'response', displayType: 'boolean', editable: true }"
+            [isEditing]="isEditing">
+          </app-application-review-table-cell>
+        </td>
+        <td>
+          <textarea class="cm-mat-textarea"
+            [disabled]="declaration.response === 'No'"
+            placeholder="* Provide Clarification"
+            appAutoSizeTextarea
+            rows="1"></textarea>
+        </td>
+        <td class="action">
+          <app-application-review-table-action
+            [action]="action"
+            (reset)="reset(declaration)"
+            (add)="addToReview('Declaration', personId, questionEllipsis(declaration.questionId))">
+          </app-application-review-table-action>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</app-application-review-card>
+
+<app-modal *ngIf="showValidationErrorModal">
+  <app-alert-message [message]="validationErrorMessage" (close)="showValidationErrorModal = false"></app-alert-message>
+</app-modal>

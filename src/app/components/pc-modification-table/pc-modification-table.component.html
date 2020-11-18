@@ -1,0 +1,51 @@
+<!-- card -->
+<app-rect-card [rounded]="true">
+  <!-- header -->
+  <div class="cm-header">
+    <!-- toggle filter -->
+    <app-toggle-filter
+      (ngModelChange)="getModificationData()"
+      [(ngModel)]="segment"
+      [options]="segmentOptions"></app-toggle-filter>
+
+    <!-- actions -->
+    <div class="cm-actions">
+      <button
+        (click)="downloadOrders()"
+        appInlineButton
+        color="default">
+        <app-icon-download></app-icon-download>
+        Download Orders
+      </button>
+
+      <button
+        (click)="openFileUploadModal()"
+        [disabled]="appService.isDisabled$ | async"
+        appInlineButton
+        color="default">
+        <app-icon-upload></app-icon-upload>
+        Upload PC Code Modifications
+      </button>
+    </div>
+  </div>
+
+  <!-- table -->
+  <app-table
+    (filterChange)="filters = $event; createDisplayableData()"
+    (sortChange)="sort = $event; createDisplayableData()"
+    [(selectAll)]="selectAll"
+    [columns]="columns"
+    [data]="displayableData"
+    [useSort]="false"></app-table>
+
+  <!-- footer -->
+  <div class="cm-footer">
+    <button
+      (click)="openModifyPcCodeModal()"
+      [disabled]="selectedRows.length === 0 || (appService.isDisabled$ | async)"
+      appFlatButton
+      color="primary">
+      modify pc code
+    </button>
+  </div>
+</app-rect-card>

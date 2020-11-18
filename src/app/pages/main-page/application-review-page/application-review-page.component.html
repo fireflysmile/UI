@@ -1,0 +1,17 @@
+<app-page-content *ngIf="application">
+
+  <app-back-button [routerLink]="['/main/my-task']">Back to My Tasks</app-back-button>
+
+  <app-application-review-card class="application-overview-card">
+    <div class="field" *ngFor="let field of fields">
+      <div class="label">{{ field.label }}</div>
+      <ng-container [ngSwitch]="field.displayType">
+        <div class="value" *ngSwitchDefault>{{ application[field.property] }}</div>
+        <div class="value" *ngSwitchCase="'date'">{{ application[field.property] | date: 'dd/MM/yyyy' }}</div>
+      </ng-container>
+    </div>
+  </app-application-review-card>
+
+  <router-outlet></router-outlet>
+
+</app-page-content>

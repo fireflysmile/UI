@@ -1,0 +1,34 @@
+<!-- access management filter -->
+<app-access-management-filter
+  (filter)="getUserAccessInfo($event)"></app-access-management-filter>
+
+<!-- table -->
+<app-access-management-table
+  [data]="data"></app-access-management-table>
+
+<!-- actions -->
+<div class="cm-actions-container">
+  <div class="cm-left-actions">
+    <button
+      (click)="setEnabledStateForSelectedUsers(true)"
+      [disabled]="!hasSelected"
+      appFlatButton
+      color="secondary">
+      enable all selected users
+    </button>
+
+    <button
+      (click)="setEnabledStateForSelectedUsers(false)"
+      [disabled]="!hasSelected"
+      appFlatButton
+      color="secondary">
+      disable all selected users
+    </button>
+  </div>
+
+  <button
+    appFlatButton
+    color="primary">
+    update access
+  </button>
+</div>

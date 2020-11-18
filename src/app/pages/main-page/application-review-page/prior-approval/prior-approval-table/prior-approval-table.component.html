@@ -1,0 +1,29 @@
+<table class="prior-approval-table">
+  <thead>
+    <tr>
+      <th>File Section</th>
+      <th>Attachment</th>
+      <th>Status</th>
+      <th>Comments from Checker</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="priorApproval.accepted">
+    <tr>
+      <td>Approval Letter</td>
+      <td>
+        <app-letter-attachment-cell
+          type="approval"
+          [attachment]="priorApproval.approvalLetter">
+        </app-letter-attachment-cell>
+      </td>
+      <td><div class="status-cell">{{ statusText }}</div></td>
+      <td>
+        <app-checker-comments
+          [comments]="priorApproval.comments"
+          [editable]="!completed && viewType === 'checker'"
+          (comment)="comment.emit($event)">
+        </app-checker-comments>
+      </td>
+    </tr>
+  </tbody>
+</table>

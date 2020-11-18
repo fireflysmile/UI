@@ -1,0 +1,26 @@
+<!-- header -->
+<div class="cm-split-application-header">
+  <app-back-button [routerLink]="['/main/dashboard']">
+    Back to Main Dashboard
+  </app-back-button>
+
+  <button
+    [routerLink]="['/main/dashboard/search-application']">
+    <app-icon-calendar-range></app-icon-calendar-range>
+    View Applications Before January {{now.getFullYear()}}
+  </button>
+</div>
+
+<!-- top -->
+<div class="cm-top-section">
+  <!-- top left -->
+  <app-split-application-detailed-summary
+    class="cm-top-left-section"></app-split-application-detailed-summary>
+
+  <!-- top right -->
+  <app-split-application-chart-card
+    class="cm-top-right-section"></app-split-application-chart-card>
+</div>
+
+<!-- table -->
+<app-split-application-table></app-split-application-table>

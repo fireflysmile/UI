@@ -1,0 +1,106 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+  max-width: 90px;
+}
+
+// highlighted label
+.cm-stacked-bar-highlighted-label {
+  color: $gun-powder;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 10px;
+  font-style: italic;
+  line-height: 13px;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// bar area
+.cm-stacked-bar-container {
+  @include flex(flex-end, center);
+  height: 100%;
+
+  // highlighted
+  &.cm-stacked-bar-highlighted {
+    background-color: $alice-blue2;
+  }
+  &.cm-stacked-bar-clickable {
+    cursor: pointer;
+  }
+}
+
+// bars wrapper
+.cm-stacked-bars-wrapper {
+  position: relative;
+  width: 60%;
+  height: 0;
+}
+
+// bars total value
+.cm-stacked-bars-value {
+  @include flex(center, center, null, nowrap);
+  white-space: nowrap;
+  text-align: center;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: $black;
+}
+
+// bars
+.cm-stacked-bars {
+  @include box(100%);
+}
+
+// bar item
+.cm-stacked-bar-item {
+  // flex for value
+  @include flex(center, center);
+  width: 100%;
+
+  &.dim {
+    opacity: 0.4;
+    .cm-stacked-bar-container.hovering  &,
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// bar value
+.cm-stacked-bar-item-value {
+  font-size: 10px;
+  color: $white;
+  font-weight: 400;
+}
+
+// bar label
+.cm-stacked-bar-label {
+  @include flex(center, center, null, nowrap);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 10px;
+  color: $gun-powder;
+}
+
+app-more-options.tooltip {
+  @include padding(10px);
+  font-size: 12px;
+  line-height: 18px;
+  white-space: pre-wrap;
+  z-index: 100;
+}

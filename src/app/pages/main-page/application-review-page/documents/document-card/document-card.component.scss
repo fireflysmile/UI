@@ -1,0 +1,66 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.document-card {
+  @include padding(10px 15px 10px 12px);
+  width: 294px;
+  min-height: 112px;
+  box-shadow: 0 3px 6px rgba($silver-chalice, 0.16);
+  position: relative;
+}
+
+.title-row {
+  @include flex(center, space-between, null, nowrap);
+
+  .title {
+    font-size: 14px;
+    line-height: 19px;
+    color: $jackson-purple;
+    font-weight: 700;
+  }
+
+  .icons {
+    @include flex(flex-start);
+
+    * {
+      margin-left: 35px;
+    }
+  }
+}
+
+.sub-title-row {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  height: 16px;
+  color: $jackson-purple;
+  margin-bottom: 8px;
+}
+
+.document-name {
+  font-size: 12px;
+  line-height: 16px;
+  color: $raven;
+  font-style: italic;
+}
+
+.document-shared-text {
+  font-size: 12px;
+  line-height: 16px;
+  color: $raven;
+  width: 146px;
+  margin-top: -13px;
+}
+
+.document-shared-with {
+  font-size: 15px;
+  line-height: 20px;
+  margin-top: 1px;
+  width: 170px;
+}
+
+app-icon-add-circle-outline {
+  position: absolute;
+  right: 16px;
+  bottom: 9px;
+}

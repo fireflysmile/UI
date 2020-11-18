@@ -1,0 +1,25 @@
+<!-- icon -->
+<ng-container [ngSwitch]="icon">
+  <!-- submission -->
+  <app-icon-submission *ngSwitchCase="'submission'"></app-icon-submission>
+
+  <!-- search doc -->
+  <app-icon-search-doc *ngSwitchCase="'search-doc'"></app-icon-search-doc>
+
+  <!-- approval -->
+  <app-icon-approvals *ngSwitchCase="'approval'"></app-icon-approvals>
+
+  <!-- message -->
+  <app-icon-message *ngSwitchCase="'message'"></app-icon-message>
+
+  <!-- checks -->
+  <app-icon-checks *ngSwitchCase="'checks'"></app-icon-checks>
+
+  <!-- people -->
+  <app-icon-people *ngSwitchCase="'people'"></app-icon-people>
+</ng-container>
+
+<!-- label -->
+<div class="cm-step-label">
+  {{label}}
+</div>

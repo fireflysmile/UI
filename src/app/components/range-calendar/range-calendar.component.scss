@@ -1,0 +1,16 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+// date
+.ts-date {
+  // ranged
+  &:not(.ts-selected).ts-ranged {
+    background-color: $whisper;
+  }
+
+  // ranged hover
+  &:not(.ts-selected).ts-ranged:hover {
+    color: $white;
+    background-color: rgba($royal-blue, .3);
+  }
+}

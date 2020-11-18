@@ -1,0 +1,41 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include box(100%);
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  @include flex(center, space-between);
+  @include padding(0 18px 0 23px);
+}
+
+// left section
+.cm-my-task-card-left {
+  @include flex(center);
+}
+
+// icon
+.cm-my-task-icon {
+  @include ball(30px);
+  @include flex(center, center);
+  background-color: $jackson-purple;
+}
+
+// label
+.cm-my-task-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: $jackson-purple;
+  max-width: 100px;
+  margin-left: 16px;
+}
+
+// value
+.cm-my-task-card-value {
+  font-size: 30px;
+  font-weight: 700;
+  color: $light-slate-grey;
+}

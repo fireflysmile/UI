@@ -1,0 +1,16 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// rect card
+app-rect-card {
+  @include box(100%);
+  @include flex(stretch);
+
+  app-stacked-bar-chart {
+    @include itemFlex(1, 1, 0);
+  }
+}

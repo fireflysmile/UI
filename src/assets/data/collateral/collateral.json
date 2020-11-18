@@ -1,0 +1,123 @@
+{
+    "segmentWiseUtilization": {
+        "MC": 80,
+        "OF": 81,
+        "DC": 82,
+        "OC": 82,
+        "BLS": 82
+    },
+    "collateralValueAnalysis": {
+        "cash": 100,
+        "nonCash": 100,
+        "qtyBasedExcess": 250,
+        "valueBasedExcess": 50
+    },
+    "valueBasedExcess": [
+        {
+            "name": "MC",
+            "cash": 500,
+            "nonCash": 500,
+            "valueBasedExcess": 900
+        },
+        {
+            "name": "OF",
+            "cash": 100,
+            "nonCash": 500,
+            "valueBasedExcess": 500
+        },
+        {
+            "name": "DC",
+            "cash": 200,
+            "nonCash": 300,
+            "valueBasedExcess": 50
+        },
+        {
+            "name": "OC",
+            "cash": 500,
+            "nonCash": 100,
+            "valueBasedExcess": 0
+        },
+        {
+            "name": "BLS",
+            "cash": 500,
+            "nonCash": 500,
+            "valueBasedExcess": 500
+        }
+    ],
+
+    "byInstrumentType": {
+        "cashRatio": "55%",
+        "nonCashRation": "45%",
+        "cash": [
+            {
+                "name": "BFD",
+                "value": 100
+            },
+            {
+                "name": "BGN",
+                "value": 200
+            },
+            {
+                "name": "CHQ",
+                "value": 300
+            },
+            {
+                "name": "GSE",
+                "value": 400
+            }
+        ],
+        "nonCash": [
+            {
+                "name": "CMF",
+                "value": 100
+            },
+            {
+                "name": "IFS",
+                "value": 200
+            },
+            {
+                "name": "MTX",
+                "value": 300
+            },
+            {
+                "name": "NMF",
+                "value": 400
+            },
+            {
+                "name": "OMF",
+                "value": 400
+            },
+            {
+                "name": "SDP",
+                "value": 300
+            },
+            {
+                "name": "TMG",
+                "value": 200
+            }
+            
+        ]
+    },
+
+    "maturityTimeline": [
+        {
+            "expiredAt": "2020-10-03T23:33:39.003Z",
+            "instrument": "",
+            "value": 100
+        }
+    ],
+
+    "detailedValueBasedExcess": {
+        "excessValueOn50CashLimit": 500,
+        "excessValueDueToCashComponentLimit": 400,
+        "excessValueDueToTlaLimit": 200
+    },
+
+    "instrumentLevelDetail": {
+        "name": "BFD",
+        "type": "Cash",
+        "value": 100,
+        "total": 500
+    }
+    
+}

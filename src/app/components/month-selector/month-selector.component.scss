@@ -1,0 +1,43 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 370px;
+}
+
+.cm-month-toggle {
+  @include flex(flex-start, flex-start, column);
+
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+    margin-bottom: 15px;
+  }
+
+  .yes-no-toggle {
+    width: 100%;
+    @include flex(flex-start, space-between, row, nowrap);
+
+    app-card-action-item + app-card-action-item {
+      margin-left: 24px;
+    }
+  }
+}
+
+// month
+.cm-month-selector-month {
+  margin-top: 20px;
+}
+
+// range container
+.cm-month-selector-months {
+  @include flex(flex-start, space-between, null, nowrap);
+  margin-top: 20px;
+
+  app-form-field {
+    @include widthBetweenGap(20px, 2);
+  }
+}
+

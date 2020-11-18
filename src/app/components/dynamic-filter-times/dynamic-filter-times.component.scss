@@ -1,0 +1,49 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(8px);
+  display: block;
+  min-width: 172px;
+}
+
+// labels
+.cm-dynamic-filter-time-labels {
+  @include flex(center, null, null, nowrap);
+  @include padding(0 3px);
+  min-width: 156px;
+  width: 100%;
+}
+
+// container
+.cm-dynamic-filter-time-container {
+  @include border(1px solid $suva-grey);
+  @include flex(stretch, null, null, nowrap);
+  border-radius: 3px;
+  margin-top: 2px;
+  min-width: 156px;
+  height: 24px;
+
+  // set flex
+  app-time-selector {
+    @include itemFlex(1, 1, 0);
+
+    @include onlyForFirefox {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+// label
+.cm-dynamic-filter-time-label {
+  width: 50%;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
+  color: $black;
+}
+
+// divider
+app-divider {
+  background-color: $white-smoke2;
+}

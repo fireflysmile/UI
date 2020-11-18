@@ -1,0 +1,9 @@
+<!-- label -->
+<div class="cm-form-field-label">
+  {{ label }}
+</div>
+
+<!-- content -->
+<div [ngClass]="{ disabled: disabled }" ss="cm-form-field-content">
+  <ng-content></ng-content>
+</div>

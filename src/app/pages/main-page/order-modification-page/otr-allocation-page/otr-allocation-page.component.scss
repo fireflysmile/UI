@@ -1,0 +1,25 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+// header row
+.cm-header-row {
+  @include flex(center, space-between);
+
+  // second
+  &.cm-second {
+    @include flex(center, flex-end);
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: $dim-grey;
+
+    b {
+      font-weight: 700;
+      color: $jackson-purple;
+    }
+  }
+}
+
+app-otr-overview-table {
+  margin-top: 24px;
+}

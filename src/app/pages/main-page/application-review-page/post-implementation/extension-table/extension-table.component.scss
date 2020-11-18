@@ -1,0 +1,62 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.title {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  margin-bottom: 33px;
+  color: $jackson-purple;
+}
+
+table.documents-table {
+  td:not(.th) {
+    @include paddingBottom(4px);
+  }
+}
+
+.yes-no-wrap {
+  @include flex();
+  button {
+    margin-right: 43px;
+    margin-bottom: 12px;
+    height: 28px;
+  }
+  &.hide {
+    visibility: hidden;
+  }
+}
+.message-wrap {
+  height: 18px;
+  &.hide {
+    visibility: hidden;
+  }
+}
+.message {
+  @include flex(center);
+
+  app-icon-check-circle,
+  app-icon-cross-circle {
+    ::ng-deep {
+      svg {
+        height: 18px;
+        width: 18px;
+      }
+    }
+  }
+  app-icon-check-circle {
+    ::ng-deep {
+      path {
+        fill: $kelly-green;
+      }
+    }
+  }
+
+  span {
+    margin-left: 4px;
+    color: $raven;
+    font-size: 12px;
+    line-height: 16px;
+    font-style: italic;
+  }
+}

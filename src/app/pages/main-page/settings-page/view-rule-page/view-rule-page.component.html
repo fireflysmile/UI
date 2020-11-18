@@ -1,0 +1,21 @@
+<!-- header -->
+<div class="cm-header">
+  <!-- title -->
+  <app-page-title>
+    View Rules
+  </app-page-title>
+
+  <!-- filter -->
+  <app-rules-filter></app-rules-filter>
+</div>
+
+<!-- rules -->
+<app-pc-code-rules
+  [data]="rules"></app-pc-code-rules>
+
+<!-- page actions -->
+<app-page-actions
+  [cancelable]="true"
+  [confirmable]="enabled"
+  cancel="cancel"
+  confirm="update rules"></app-page-actions>

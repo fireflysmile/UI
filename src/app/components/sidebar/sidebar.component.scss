@@ -1,0 +1,15 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, null, column, nowrap);
+  background-color: $jackson-purple;
+  width: 70px;
+  overflow: auto;
+  // height: 100%;
+}
+
+// nav item border
+app-sidebar-nav-item + app-sidebar-nav-item {
+  @include borderTop(1px solid $white);
+}

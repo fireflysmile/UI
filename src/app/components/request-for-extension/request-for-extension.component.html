@@ -1,0 +1,53 @@
+<!-- label -->
+<div class="cm-request-extension-label">
+  Request for Extension
+</div>
+
+<!-- submitted message -->
+<div
+  *ngIf="submitted; else content"
+  class="cm-submitted">
+  <div class="cm-ball-icon">
+    <app-icon-check-circle></app-icon-check-circle>
+  </div>
+
+  <div class="cm-message">
+    Request for Extension has been sent<br/>
+    We will inform you of the approval or rejection shortly
+  </div>
+</div>
+
+<ng-template #content>
+  <!-- content -->
+  <div class="cm-request-extension-content">
+    <app-request-for-extension-item icon="check-circle">
+      Please apply for an extension request if you are not able to implement the<br/>
+      approved changes within the 6 month deadline given by the exchange
+    </app-request-for-extension-item>
+
+    <app-request-for-extension-item icon="submission">
+      Please submit one extension request letter incorporating<br/>
+      all the extension requests for the application
+    </app-request-for-extension-item>
+
+    <app-request-for-extension-item icon="calendar">
+      Mention the date of Extension in the Request Letter<br/>
+      (the deadline you require for incorporating the change with MCA)
+    </app-request-for-extension-item>
+
+    <i class="cm-oblique-description">
+      Before uploading the file, please ensure the following
+    </i>
+
+    <app-request-for-extension-item icon="text-underline">
+      Naming Convention<br/>
+      1. For Extension Request Letter&lt;Application ID&gt;_Extension Request Letter
+    </app-request-for-extension-item>
+
+    <app-request-for-extension-item icon="document">
+      Document<br/>
+      1. Acceptable formats : JPEG, PDF<br/>
+      2. Max file size limit : 2 MB
+    </app-request-for-extension-item>
+  </div>
+</ng-template>

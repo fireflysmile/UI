@@ -1,0 +1,87 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-trade-card-title {
+  margin-bottom: 27px;
+
+  div {
+    @include flex(center);
+    app-toggle-filter {
+      margin-right: 6px;
+    }
+    font-size: 12px;
+    line-height: 16px;
+    color: $raven;
+  }
+}
+
+.toggle-filters-row {
+  @include flex(center, space-between, null, nowrap);
+  margin-bottom: 31px;
+
+  app-toggle-filter[hidden] {
+    display: none;
+  }
+}
+
+.dynamic-filters-row {
+  @include flex(flex-start, flex-end, null, nowrap);
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 24px;
+
+  span {
+    margin-top: 2px;
+  }
+
+  app-dynamic-filter {
+    width: 82px;
+    margin: 0 26px 0 11px;
+  }
+}
+
+.charts-row {
+  @include flex(flex-start, space-between, null, nowrap);
+
+  .column-chart-section {
+    flex-grow: 1;
+    app-stacked-bar-chart {
+      height: 330px;
+      margin-top: 36px;
+
+      ::ng-deep {
+        .cm-stacked-bar-chart-left {
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  .donut-box {
+    @include flex(flex-start, flex-start, column, nowrap);
+    @include box(400px);
+
+    app-donut-chart {
+      align-self: center;
+    }
+  }
+}
+
+.button-row {
+  @include flex(center, center);
+  margin-top: 25px;
+
+  button {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    width: 215px;
+  }
+}
+
+app-trade-card + app-trade-card {
+  margin-top: 12px;
+  .toggle-filters-row {
+    margin-bottom: 15px;
+  }
+}

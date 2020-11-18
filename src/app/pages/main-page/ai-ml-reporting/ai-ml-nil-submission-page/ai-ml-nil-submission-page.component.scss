@@ -1,0 +1,49 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+    display: block;
+    height: 100%;
+}
+
+form {
+    margin-top: 53px;
+}
+
+.form-card {
+    min-height: 366px;
+}
+
+.left-action {
+    margin-right: auto;
+}
+
+.declaration-field {
+    ::ng-deep {
+        .cm-form-field-label {
+            color: $jackson-purple;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cm-form-field-content {
+            display: flex;
+            align-items: flex-start;
+        }
+    }
+
+    &__cb {
+        flex: none;
+    }
+
+    &__label {
+        flex: auto;
+        margin-left: 10px;
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+        line-height: 16px;
+        color: $boulder;
+    }
+}

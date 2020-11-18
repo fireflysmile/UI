@@ -1,0 +1,111 @@
+<!-- dynamic filter -->
+<div class="cm-dynamic-filter">
+  <!-- switch by type -->
+  <ng-container [ngSwitch]="type">
+    <!-- default -->
+    <ng-container *ngSwitchCase="'default'">
+      <!-- input -->
+      <input
+        (focus)="value = ''"
+        (keydown.shift.tab)="closeModal()"
+        (keydown.tab)="closeModal()"
+        (ngModelChange)="value = $event; value ? openModal() : closeModal()"
+        [class.cm-selected]="filtered"
+        [ngModel]="value"
+        [tabIndex]="disabled && -1"
+        class="cm-input"
+        placeholder="Search"/>
+    </ng-container>
+
+    <!-- default -->
+    <ng-container *ngSwitchDefault>
+      <input
+        #input
+        (click)="openModal(); input.blur()"
+        (focus)="openModal(); input.blur()"
+        (keydown.shift.tab)="closeModal()"
+        (keydown.tab)="closeModal()"
+        (ngModelChange)="value = $event; openModal()"
+        [class.cm-selected]="filtered"
+        [ngModel]="value"
+        [tabIndex]="disabled && -1"
+        class="cm-input"
+        placeholder="Search"/>
+    </ng-container>
+  </ng-container>
+
+  <!-- clear -->
+  <button
+    (click)="clearFilter()"
+    [disabled]="!filtered">
+    Clear
+  </button>
+</div>
+
+<!-- switch by type -->
+<ng-container [ngSwitch]="type">
+  <!-- default -->
+  <ng-container
+    *ngSwitchCase="'default'">
+    <app-dynamic-filter-options
+      (autoClose)="closeModal()"
+      (selectedChange)="filterChange.emit($event)"
+      *ngIf="opened"
+      [class.cm-first]="first"
+      [reposition]="true"
+      [closerContainer]="elementRef"
+      [options]="options"
+      [search]="value"
+      [selected]="filter"
+      appAutoCloser
+      appPositionFixer></app-dynamic-filter-options>
+  </ng-container>
+
+  <!-- time -->
+  <ng-container
+    *ngSwitchCase="'time'">
+    <app-dynamic-filter-times
+      (autoClose)="closeModal()"
+      (valueChange)="filterChange.emit($event)"
+      *ngIf="opened"
+      [class.cm-first]="first"
+      [reposition]="true"
+      [closerContainer]="elementRef"
+      [inputWidth]="inputWidth"
+      [value]="filter"
+      appAutoCloser
+      appPositionFixer></app-dynamic-filter-times>
+  </ng-container>
+
+  <!-- date -->
+  <ng-container
+    *ngSwitchCase="'date'">
+    <app-dynamic-filter-dates
+      (autoClose)="closeModal()"
+      (valueChange)="filterChange.emit($event)"
+      *ngIf="opened"
+      [class.cm-first]="first"
+      [reposition]="true"
+      [closerContainer]="elementRef"
+      [inputWidth]="inputWidth"
+      [value]="filter"
+      appAutoCloser
+      appPositionFixer></app-dynamic-filter-dates>
+  </ng-container>
+
+  <!-- quantity -->
+  <ng-container
+    *ngSwitchCase="'quantity'">
+    <app-dynamic-filter-quantity
+      (autoClose)="closeModal()"
+      (filterChange)="filterChange.emit($event)"
+      *ngIf="opened"
+      [class.cm-first]="first"
+      [reposition]="true"
+      [closerContainer]="elementRef"
+      [inputWidth]="inputWidth"
+      [filter]="filter"
+      appAutoCloser
+      appPositionFixer></app-dynamic-filter-quantity>
+  </ng-container>
+</ng-container>

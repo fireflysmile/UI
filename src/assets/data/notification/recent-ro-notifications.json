@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Applications Assigned",
+    "type": "assigned",
+    "content": "You have been assigned as a Maker for 05 applications",
+    "link": "https://example.com"
+  },
+  {
+    "title": "Application for Review",
+    "type": "under-review",
+    "content": "You have 05 applications under Review",
+    "link": "https://example.com"
+  },
+  {
+    "title": "Application for Review",
+    "type": "clarification-responded",
+    "content": "A member has responded to some clarifications raised for application no. 112233",
+    "link": "https://example.com"
+  },
+  {
+    "title": "Checker Response",
+    "type": "approval-responded",
+    "content": "The Checker of application no. 112233 has responded to the Approval Note",
+    "link": "https://example.com"
+  },
+  {
+    "title": "Prior Approval Granted",
+    "type": "approval-granted",
+    "content": "The Checker of application no. 223344 has granted Prior Approval",
+    "link": "https://example.com"
+  },
+  {
+    "title": "Post-Implementation Check",
+    "type": "post-implementation-checked",
+    "content": "Post-Implementation Check for application no. 334455 has been done",
+    "link": "https://example.com"
+  }
+]
+
+
+

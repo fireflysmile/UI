@@ -1,0 +1,20 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 420px;
+}
+
+app-modal-content {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+app-modal-actions {
+  @include flex(center, flex-end);
+
+  button {
+    width: 148px;
+  }
+}

@@ -1,0 +1,31 @@
+<!-- rect -->
+<app-rect-card>
+  <app-rect-card-header>
+    <ng-container heading>Split of Applications</ng-container>
+  </app-rect-card-header>
+
+  <!-- chart content -->
+  <div class="cm-chart-content">
+    <!-- chart -->
+    <app-donut-chart
+      [data]="data"></app-donut-chart>
+
+    <!-- legend -->
+    <div class="cm-chart-legend-container">
+      <!-- legend -->
+      <div
+        *ngFor="let item of data"
+        class="cm-chart-legend-item">
+        <!-- color -->
+        <div
+          [style.background-color]="item.color"
+          class="cm-chart-legend-color"></div>
+
+        <!-- label -->
+        <div class="cm-chart-legend-label">
+          {{item.label}}
+        </div>
+      </div>
+    </div>
+  </div>
+</app-rect-card>

@@ -1,0 +1,35 @@
+<!-- labels -->
+<div class="cm-dynamic-filter-time-labels">
+  <!-- from label -->
+  <div class="cm-dynamic-filter-time-label">
+    From Time
+  </div>
+
+  <!-- to label -->
+  <div class="cm-dynamic-filter-time-label">
+    To Time
+  </div>
+</div>
+
+<!-- container -->
+<div class="cm-dynamic-filter-time-container">
+  <!-- time selector -->
+  <app-time-selector
+    (ngModelChange)="onTimeChange('start', $event)"
+    [invalid]="invalidStart"
+    [maxTime]="end"
+    [ngModel]="start"
+    [style.width]="inputWidth + 'px'"></app-time-selector>
+
+  <!-- divider -->
+  <app-divider direction="vertical"></app-divider>
+
+  <!-- time selector -->
+  <app-time-selector
+    (ngModelChange)="onTimeChange('end', $event)"
+    [ignoreFocus]="true"
+    [invalid]="invalidEnd"
+    [minTime]="start"
+    [ngModel]="end"
+    [style.width]="inputWidth + 'px'"></app-time-selector>
+</div>

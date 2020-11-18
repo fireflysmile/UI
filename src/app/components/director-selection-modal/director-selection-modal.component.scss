@@ -1,0 +1,65 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 408px;
+}
+
+// hint
+.cm-hint {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.cm-checkbox-row {
+  @include flex();
+  margin-top: 24px;
+}
+
+app-checkbox {
+  ::ng-deep {
+    .ts-checkbox-label {
+      margin-left: 8px;
+    }
+  }
+}
+
+// directors
+.cm-directors {
+  @include flex(flex-start);
+  margin-top: 45px;
+}
+
+// director item
+.cm-director-item {
+  @include border(1px solid $suva-grey);
+  @include widthBetweenGap(16px, 2);
+  @include flex(center, space-between);
+  @include padding(0 4px 0 12px);
+  @include clickable(true);
+  border-radius: 5px;
+  font-size: 14px;
+  color: $suva-grey;
+  height: 32px;
+  margin-bottom: 13px;
+
+  span {
+    @include ellipsis;
+    width: calc(100% - 32px);
+    display: block;
+  }
+
+  .cm-icon {
+    ::ng-deep {
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+  }
+
+  &.cm-selected {
+    border-color: $tahiti-gold;
+    color: $tahiti-gold;
+  }
+}

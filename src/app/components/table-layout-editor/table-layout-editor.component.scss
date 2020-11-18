@@ -1,0 +1,67 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-card {
+  @include paddingLeft(60px);
+  @include paddingRight(16px);
+}
+
+// order placeholder
+.cm-order-placeholder {
+  position: relative;
+  width: 10px;
+  height: 209px;
+  transition: width .5s;
+
+  // placed
+  &.cm-placed {
+    @include padding(0 5px);
+    width: 100px;
+    background-color: $provincial-pink;
+    background-clip: content-box;
+  }
+}
+
+// placeholder trigger
+.cm-order-placeholder-trigger {
+  @include topLeft;
+  position: absolute;
+  width: calc(100% + 80px);
+  height: 100%;
+  margin-left: -40px;
+  z-index: -1;
+
+  // when handling
+  &.cm-handling {
+    z-index: auto;
+  }
+}
+
+// scroll content
+.cm-table-layout-scroll-content {
+  @include flex(flex-start, null, null, nowrap);
+  @include padding(24px 0 140px);
+  overflow: auto;
+}
+
+// hidden
+.cm-hidden {
+  width: 0;
+  padding: 0;
+  // transition only for hiding
+  transition: width .5s, padding .5s;
+}
+
+// dimmed
+.cm-dim {
+  background-color: $white-smoke;
+}
+
+// table layout item
+app-table-layout-item {
+  transition: background-color .15s;
+}

@@ -1,0 +1,9 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 700;
+}

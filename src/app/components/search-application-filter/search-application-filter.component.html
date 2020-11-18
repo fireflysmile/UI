@@ -1,0 +1,75 @@
+<!-- card -->
+<app-rect-card>
+  <app-rect-card-header>
+    <!-- heading -->
+    <ng-container heading>
+      Search for Application
+    </ng-container>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div class="cm-application-filter-content">
+    <form [formGroup]="group">
+      <!-- column -->
+      <div class="cm-application-filter-form-column">
+        <!-- year -->
+        <app-year-selector formControlName="year"></app-year-selector>
+      </div>
+
+      <!-- column -->
+      <div class="cm-application-filter-form-column">
+        <!-- member name -->
+        <app-form-field
+          label="Member Name">
+          <app-select
+            [autoWidth]="false"
+            [options]="memberNames"
+            formControlName="memberName"
+            placeholder="Select Member Name"></app-select>
+        </app-form-field>
+
+        <!-- request type -->
+        <app-form-field
+          label="Request Type">
+          <app-select
+            [autoWidth]="false"
+            [options]="requestTypes"
+            formControlName="requestType"
+            placeholder="Select Request Type"></app-select>
+        </app-form-field>
+      </div>
+
+      <!-- column -->
+      <div class="cm-application-filter-form-column">
+        <!-- member code -->
+        <app-form-field
+          label="Member Code">
+          <app-select
+            [autoWidth]="false"
+            [options]="memberCodes"
+            formControlName="memberCode"
+            placeholder="Select Member Code"></app-select>
+        </app-form-field>
+
+        <!-- application id -->
+        <app-form-field
+          label="Application ID">
+          <app-select
+            (cancelClick)="group.get('applicationId').patchValue('')"
+            (ngModelChange)="onApplicationIdChange($event)"
+            [autoWidth]="false"
+            [cancelable]="true"
+            [options]="applicationIds"
+            formControlName="applicationId"
+            placeholder="Select Application ID"></app-select>
+        </app-form-field>
+      </div>
+    </form>
+  </div>
+
+  <!-- actions -->
+  <app-page-actions
+    (confirmClick)="search.emit(group.getRawValue())"
+    [confirmable]="group.valid"
+    confirm="search"></app-page-actions>
+</app-rect-card>

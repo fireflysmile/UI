@@ -1,0 +1,81 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, space-between);
+  @include padding(0 102px 0 34px);
+  height: 72px;
+  background-color: $white;
+}
+
+// additional actions
+.cm-page-additional-actions {
+  @include flex(center, flex-start);
+}
+
+// actions
+.cm-page-actions {
+  @include flex(center, flex-end);
+}
+
+// button default
+button {
+  @include rect(217px, 40px);
+  @include flex(center, center);
+  @include clickable();
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  &:disabled {
+    cursor: auto;
+  }
+}
+
+// cancel button
+.cm-page-action-cancel {
+  background-color: $whisper;
+  color: $black;
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  // hover
+  &:not(:disabled):hover {
+    background-color: darken($whisper, 10%);
+  }
+
+  // active
+  &:not(:disabled):active {
+    background-color: darken($whisper, 15%);
+  }
+}
+
+// confirm button
+.cm-page-action-confirm {
+  background-color: $safety-orange;
+  color: $white;
+
+  // disabled
+  &:disabled {
+    background-color: $provincial-pink;
+  }
+
+  // hover
+  &:not(:disabled):hover {
+    background-color: lighten($safety-orange, 10%);
+  }
+
+  // active
+  &:not(:disabled):active {
+    background-color: lighten($safety-orange, 15%);
+  }
+}
+
+// button gap
+button + button {
+  margin-left: 16px;
+}

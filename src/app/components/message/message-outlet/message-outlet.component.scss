@@ -1,0 +1,17 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+:host {
+  @include fullScreen;
+  @include flex(flex-start, center);
+  @include paddingTop(60px);
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+
+  ::ng-deep {
+    app-message-item + app-message-item {
+      margin-top: 6px;
+    }
+  }
+}

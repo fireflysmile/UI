@@ -1,0 +1,33 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, null, column, nowrap);
+
+  .cm-total-card {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// total card
+.cm-total-card {
+  ::ng-deep {
+    .cm-split-applications-top {
+      @include padding(0 39px 0 20px);
+    }
+  }
+}
+
+// sub row
+.cm-sub-row {
+  @include flex(stretch, space-between, null, nowrap);
+  margin-top: 16px;
+
+  app-split-application-card {
+    width: calc(50% - (17px / 2));
+  }
+
+  app-split-application-card + app-split-application-card {
+    margin-left: 17px;
+  }
+}

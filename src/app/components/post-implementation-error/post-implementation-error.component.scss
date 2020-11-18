@@ -1,0 +1,23 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center);
+}
+
+.cm-ball-icon {
+  @include ball(36px);
+  background-color: $cinnabar;
+
+  ::ng-deep {
+    path {
+      fill: $white;
+    }
+  }
+}
+
+.cm-message {
+  margin-left: 4px;
+  font-size: 16px;
+  line-height: 19px;
+}

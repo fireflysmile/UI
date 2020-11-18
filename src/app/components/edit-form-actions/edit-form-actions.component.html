@@ -1,0 +1,8 @@
+<div class="edit-form-actions">
+  <app-icon-edit [clickable]="true" (click)="onEdit()" *ngIf="!isEditing"></app-icon-edit>
+  <ng-container *ngIf="isEditing">
+    <span>Edit Details</span>
+    <app-card-action-item icon="save" (click)="onSave()">Save</app-card-action-item>
+    <app-card-action-item icon="close" (click)="onCancel()">Cancel</app-card-action-item>
+  </ng-container>
+</div>

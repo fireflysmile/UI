@@ -1,0 +1,11 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  .ts-select {
+    input {
+      @include itemFlex(1, 1, 0);
+      height: 100%;
+    }
+  }
+}

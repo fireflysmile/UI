@@ -1,0 +1,125 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+@mixin lightText {
+  font-size: 12px;
+  line-height: 16px;
+  color: $suva-grey;
+}
+
+app-application-review-card {
+  margin-bottom: 16px;
+
+  ::ng-deep {
+    app-icon-details {
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+  }
+
+  app-warning-note {
+    width: 212px;
+  }
+}
+
+.view-type {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  color: $raven;
+  text-transform: capitalize;
+}
+
+.card-actions-row {
+  margin: 22px 0 72px 0;
+  @include flex(flex-end);
+
+  .post-facto-card & {
+    margin: 10px 0 36px 0;
+  }
+
+  & > *:first-child {
+    margin-right: 8px;
+    width: 180px;
+  }
+
+  p {
+    @include lightText();
+  }
+
+  button {
+    height: 36px;
+    width: 80px;
+    @include padding(0);
+    text-transform: capitalize;
+    margin: 0 8px;
+
+    &.green {
+      color: $kelly-green;
+      border-color: $kelly-green;
+    }
+    &.red {
+      color: $cinnabar;
+      border-color: $cinnabar;
+    }
+  }
+}
+
+.reject-message {
+  margin: -50px 0 50px 0;
+  color: $raven;
+  font-size: 12px;
+  line-height: 16px;
+  width: 180px;
+}
+
+.table-container {
+  margin: 0 -28px 0 -97px;
+  width: calc(100% + 125px);
+  width: calc(100% + 125px);
+  min-height: 150px;
+
+  ::ng-deep {
+    table {
+      th,
+      td:not(.th) {
+        &:first-of-type {
+          @include paddingLeft(97px);
+        }
+        &:last-of-type {
+          min-width: 175px;
+          @include paddingRight(30px);
+        }
+      }
+
+      th:last-of-type {
+        @include paddingRight(45px);
+      }
+
+      td {
+        .status-cell {
+          @include lightText();
+        }
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $white;
+  @include padding(16px 107px 15px 32px);
+  @include flex(center, flex-end, null, nowrap);
+
+  button {
+    margin-left: 22px;
+  }
+}

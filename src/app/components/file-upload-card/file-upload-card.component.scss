@@ -1,0 +1,65 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include rect(295px, 112px);
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+}
+
+app-rect-card-header {
+  @include padding(8px 12px);
+
+  ::ng-deep {
+    .cm-rect-card-title {
+      font-size: 14px;
+    }
+  }
+}
+
+// header actions
+.cm-header-actions {
+  @include flex(center);
+
+  .cm-icon {
+    @include clickable(true);
+
+    ::ng-deep {
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+
+    &.cm-disabled {
+      ::ng-deep {
+        path {
+          fill: $provincial-pink;
+        }
+      }
+    }
+  }
+
+  .cm-icon + .cm-icon {
+    margin-left: 34px;
+  }
+}
+
+// content
+.cm-card-content {
+  @include padding(0 14px 11px);
+  @include flex(flex-start, space-between, column);
+  height: calc(100% - 44px);
+}
+
+// content top
+.cm-content-top {
+
+}
+
+// oblique
+.cm-oblique-description {
+  font-size: 12px;
+}

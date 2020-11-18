@@ -1,0 +1,36 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.close-edited-warning {
+  @include padding(17px 20px 13px 12px);
+  width: 408px;
+
+  .title {
+    @include flex(center);
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 30px;
+    color: $cinnabar;
+
+    app-icon-alert {
+      margin-right: 6px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 19px;
+
+    &:last-of-type {
+      margin-bottom: 96px;
+    }
+  }
+
+  .modal-actions {
+    @include flex(center, space-between, null, nowrap);
+    button {
+      width: calc(50% - 8px);
+    }
+  }
+}

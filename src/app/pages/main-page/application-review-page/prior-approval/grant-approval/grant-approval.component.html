@@ -1,0 +1,49 @@
+<div class="grant-approval">
+  <div class="title">Grant Prior Approval</div>
+
+  <div class="approval-types">
+    <div class="approval-type-option">
+      <app-card-action-item
+        icon="radio-unchecked" [freeWidth]="true"
+        *ngIf="approvalType !== 'full'" (click)="approvalType = 'full'">
+        <span>Full Approval</span>
+      </app-card-action-item>
+      <app-card-action-item
+        icon="radio-checked" [freeWidth]="true"
+        *ngIf="approvalType === 'full'">
+        <span>Full Approval</span>
+      </app-card-action-item>
+      <app-card-action-item
+        icon="radio-unchecked" [freeWidth]="true"
+        *ngIf="approvalType !== 'partial'" (click)="approvalType = 'partial'">
+        <span>Partial Approval</span>
+      </app-card-action-item>
+      <app-card-action-item
+        icon="radio-checked" [freeWidth]="true"
+        *ngIf="approvalType === 'partial'">
+        <span>Partial Approval</span>
+      </app-card-action-item>
+    </div>
+  </div>
+
+  <div class="director-options">
+    <ng-container *ngIf="approvalType === 'partial'">
+      <div class="description">Please select the directors you would NOT want to give approval to</div>
+      <div class="director-options-wrap">
+        <div class="director-option" *ngFor="let director of directors"
+          (click)="director.selected = !director.selected" [class.active]="director.selected">
+          <span>{{ director.name }}</span>
+          <app-icon-check-circle></app-icon-check-circle>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="modal-actions">
+    <button class="cm-button secondary" (click)="close.emit(false)">Cancel</button>
+    <button class="cm-button primary" (click)="close.emit(approvalType)"
+      [disabled]="approvalType === 'partial' && (!selectedDirectorsCount || selectedDirectorsCount === directors.length)">
+      Confirm
+    </button>
+  </div>
+</div>

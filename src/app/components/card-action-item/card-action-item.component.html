@@ -1,0 +1,73 @@
+<!-- icon -->
+<ng-container [ngSwitch]="icon">
+  <!--selected download-->
+  <app-icon-selected-download *ngSwitchCase="'selected-download'"></app-icon-selected-download>
+
+  <!-- filtered download -->
+  <app-icon-filtered-download *ngSwitchCase="'filtered-download'"></app-icon-filtered-download>
+
+  <!-- download -->
+  <app-icon-download *ngSwitchCase="'download'"></app-icon-download>
+
+  <!-- reload -->
+  <app-icon-reload *ngSwitchCase="'reload'"></app-icon-reload>
+
+  <!-- grid -->
+  <app-icon-grid *ngSwitchCase="'grid'"></app-icon-grid>
+
+  <!-- clear -->
+  <app-icon-clear *ngSwitchCase="'clear'"></app-icon-clear>
+
+  <!-- upload -->
+  <app-icon-upload *ngSwitchCase="'upload'"></app-icon-upload>
+
+  <!-- save -->
+  <app-icon-save *ngSwitchCase="'save'"></app-icon-save>
+
+  <!-- close -->
+  <app-icon-close *ngSwitchCase="'close'"></app-icon-close>
+
+  <!-- eye -->
+  <app-icon-eye *ngSwitchCase="'eye'"></app-icon-eye>
+
+  <!-- eye dot -->
+  <app-icon-eye-dot *ngSwitchCase="'eye-dot'"></app-icon-eye-dot>
+
+  <!-- calendar range -->
+  <app-icon-calendar-range *ngSwitchCase="'calendar-range'"></app-icon-calendar-range>
+
+  <!-- delete -->
+  <app-icon-delete *ngSwitchCase="'delete'"></app-icon-delete>
+
+  <!-- radio unchecked -->
+  <app-icon-radio-unchecked *ngSwitchCase="'radio-unchecked'"></app-icon-radio-unchecked>
+
+  <!-- radio checked -->
+  <app-icon-radio-checked *ngSwitchCase="'radio-checked'"></app-icon-radio-checked>
+
+  <!-- edit circle -->
+  <app-icon-edit-circle *ngSwitchCase="'edit-circle'"></app-icon-edit-circle>
+
+  <!-- attachment -->
+  <app-icon-attachment *ngSwitchCase="'attachment'"></app-icon-attachment>
+
+  <!-- assign -->
+  <app-icon-assign *ngSwitchCase="'assign'"></app-icon-assign>
+
+  <!-- details -->
+  <app-icon-details *ngSwitchCase="'details'"></app-icon-details>
+
+  <!-- cloud download -->
+  <app-icon-cloud-download *ngSwitchCase="'cloud-download'"></app-icon-cloud-download>
+
+  <!-- cloud upload -->
+  <app-icon-cloud-upload *ngSwitchCase="'cloud-upload'"></app-icon-cloud-upload>
+
+  <!-- back -->
+  <app-icon-back *ngSwitchCase="'back'"></app-icon-back>
+</ng-container>
+
+<!-- label -->
+<div class="cm-card-action-label" [class.free-width]="freeWidth">
+  <ng-content></ng-content>
+</div>

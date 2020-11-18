@@ -1,0 +1,46 @@
+<!-- card -->
+<app-card>
+  <!-- actions -->
+  <app-card-actions
+    [actionGroups]="actionGroups"></app-card-actions>
+
+  <!-- scroll content -->
+  <div
+    #scrollContainer
+    class="cm-table-layout-scroll-content">
+    <!-- render items -->
+    <ng-container *ngFor="let item of layouts; let i = index">
+      <!-- order placeholder -->
+      <div
+        [class.cm-placed]="placedIndex === i"
+        *ngIf="handling !== item"
+        class="cm-order-placeholder">
+        <div
+          (mouseenter)="onMouseEnterToLayoutItem(i)"
+          (mouseleave)="placedIndex = -1"
+          [class.cm-handling]="handling"
+          class="cm-order-placeholder-trigger"></div>
+      </div>
+
+      <!-- item -->
+      <app-table-layout-item
+        #layoutItem
+        (handlePress)="onHandlePress($event, item, layoutItem)"
+        (visibilityButtonClick)="onVisibilityButtonClick(item)"
+        [class.cm-hidden]="handling === item"
+        [class.cm-dim]="handling && handling !== item"
+        [layout]="item"></app-table-layout-item>
+    </ng-container>
+
+    <!-- order placeholder -->
+    <div
+      [class.cm-placed]="placedIndex === layouts.length"
+      class="cm-order-placeholder">
+      <div
+        (mouseenter)="onMouseEnterToLayoutItem(layouts.length)"
+        (mouseleave)="placedIndex = -1"
+        [class.cm-handling]="handling"
+        class="cm-order-placeholder-trigger"></div>
+    </div>
+  </div>
+</app-card>

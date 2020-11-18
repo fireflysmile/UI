@@ -1,0 +1,31 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+  border-color: $white;
+
+  app-table-layout-editor {
+    margin-top: -80px;
+  }
+
+  app-table-layout-editor {
+    margin-top: -45px;
+    ::ng-deep {
+      app-card {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+app-rect-card-header {
+  @include flex(flex-start, space-between);
+
+  div {
+    font-size: 16px;
+    line-height: 16px;
+    color: $light-slate-grey;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,91 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include paddingBottom(80px);
+  display: block;
+}
+
+// chart area
+.cm-bar-chart-area {
+  @include flex(stretch, space-between);
+  @include borderBottom(1px solid $dim-grey);
+  height: 180px;
+
+  .cm-bar-container {
+    @include itemFlex(1, 1, 50px);
+    max-width: 80px;
+  }
+}
+
+// bar container
+.cm-bar-container {
+  @include padding(0 12px);
+  position: relative;
+}
+
+.cm-bar-indicator {
+  @include borderTop(1px dashed $dim-grey);
+  @include topRight;
+  width: 200%;
+  position: absolute;
+}
+
+// bar
+.cm-bar {
+  @include clickable();
+  position: relative;
+  width: 100%;
+  background-color: $black;
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+// label
+.cm-label {
+  @include horizontalCenter;
+  position: absolute;
+  bottom: calc(100% + 1.5px);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+// bottom label
+.cm-bottom-label-container {
+  @include horizontalCenter;
+  @include flex(center, null, column);
+  position: absolute;
+  top: calc(100% + 12px);
+  text-align: center;
+}
+
+// bottom value
+.cm-bottom-value {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+// bottom label
+.cm-bottom-label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 9px;
+}
+
+app-icon-exclamation {
+  @include horizontalCenter;
+  position: absolute;
+  bottom: calc(100% + 16px);
+
+  ::ng-deep {
+    svg {
+      @include box(20px);
+    }
+
+    path {
+      fill: $red;
+    }
+  }
+}

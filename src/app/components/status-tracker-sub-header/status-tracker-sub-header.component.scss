@@ -1,0 +1,14 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card-header {
+  @include padding(18px 98px);
+
+  i {
+    text-align: right;
+  }
+}

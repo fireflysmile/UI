@@ -1,0 +1,80 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 540px;
+}
+
+// modal actions
+app-modal-actions {
+  @include flex(center, flex-end);
+
+  button {
+    width: auto;
+  }
+
+  button + button {
+    margin-left: 14px;
+  }
+}
+
+// title
+.cm-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// content
+.cm-content {
+  margin-top: 25px;
+}
+
+// order container
+.cm-order-container {
+  @include flex(flex-start, null, column);
+}
+
+// order
+.cm-order-item {
+  @include flex(center);
+}
+
+// order dot
+.cm-order-dot {
+  @include ball(5px);
+  background-color: $suva-grey3;
+}
+
+// order
+.cm-order {
+  font-size: 14px;
+  color: $suva-grey3;
+  margin-left: 6px;
+}
+
+// order item gap
+.cm-order-item + .cm-order-item {
+  margin-top: 14px;
+}
+
+// more
+.cm-order-more {
+  @include paddingLeft(11px);
+  font-size: 14px;
+  font-weight: 700;
+  color: $suva-grey3;
+}
+
+app-form-field {
+  margin-top: 35px;
+  width: 315px;
+
+  ::ng-deep {
+    .cm-form-field-label {
+      color: $raven;
+      font-weight: 700;
+    }
+  }
+}

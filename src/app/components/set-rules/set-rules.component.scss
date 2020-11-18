@@ -1,0 +1,38 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// card
+app-rect-card {
+  @include box(100%);
+  @include padding(30px 98px);
+}
+
+.cm-header {
+  @include flex(center, space-between);
+
+  h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: $jackson-purple;
+  }
+
+  button {
+    font-size: 12px;
+
+    .cm-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+.cm-content {
+  margin-top: 16px;
+}
+
+app-form-field {
+  width: 280px;
+}

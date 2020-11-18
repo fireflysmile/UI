@@ -1,0 +1,80 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-application-review-card-title {
+  margin-bottom: 20px;
+}
+
+table {
+  th {
+    @include paddingBottom(20px);
+    vertical-align: middle;
+    text-align: center;
+    &:nth-child(1) {
+      text-align: left;
+    }
+  }
+
+  td:not(.th) {
+    color: $raven;
+    &:last-of-type {
+      @include paddingLeft(25px);
+    }
+  }
+
+  th,
+  td {
+    &:nth-child(1) {
+      width: 46%;
+      min-width: 480px;
+    }
+    &:nth-child(2) {
+      width: 18%;
+      min-width: 180px;
+    }
+    &:nth-child(3) {
+      width: 20%;
+      min-width: 211px;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    .question {
+      @include flex(flex-start, null, null, nowrap);
+      .question-text {
+        max-width: calc(100% - 16px);
+        white-space: pre-wrap;
+        margin-left: 6px;
+      }
+    }
+
+    .name {
+      @include flex(center, null, null, nowrap);
+
+      span {
+        font-size: 16px;
+        line-height: 21px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex-shrink: 1;
+      }
+
+      app-edit-form-actions {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.fine-print {
+  font-size: 12px;
+  line-height: 16px;
+  font-style: italic;
+  color: $boulder;
+}

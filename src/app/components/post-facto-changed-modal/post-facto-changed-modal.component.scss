@@ -1,0 +1,81 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 604px;
+}
+
+app-modal-header {
+  ::ng-deep {
+    .ts-modal-title {
+      @include flex(center);
+    }
+  }
+
+  .cm-ball-icon {
+    @include ball(36px);
+    background-color: $cinnabar;
+    margin-right: 12px;
+  }
+}
+
+app-modal-content {
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+  }
+
+  b {
+    font-weight: 700;
+    color: $cinnabar;
+  }
+
+  p + p {
+    margin-top: 17px;
+  }
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  th:first-child {
+    width: 170px;
+  }
+
+  th, td {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  th {
+    @include padding(5px 0);
+    font-weight: 700;
+    color: $jackson-purple;
+  }
+
+  th + th {
+    @include paddingLeft(20px);
+  }
+
+  td {
+    @include padding(10px 0);
+  }
+
+  td + td {
+    @include paddingLeft(20px);
+  }
+}
+
+app-modal-actions {
+  .cm-cancel-button {
+    width: 180px;
+  }
+
+  .cm-confirm-button {
+    @include itemFlex(1, 1, 0);
+    width: auto;
+  }
+}

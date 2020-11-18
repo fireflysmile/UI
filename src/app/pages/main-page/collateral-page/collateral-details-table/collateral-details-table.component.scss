@@ -1,0 +1,8 @@
+app-table {
+    position: relative;
+    ::ng-deep {
+        .cm-table-container{
+            position: static;
+        }
+    }
+}

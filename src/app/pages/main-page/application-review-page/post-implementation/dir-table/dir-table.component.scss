@@ -1,0 +1,47 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.title {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  margin-bottom: 33px;
+  color: $jackson-purple;
+}
+
+table.documents-table {
+  th:nth-child(3) {
+    div {
+      width: 75px;
+    }
+  }
+}
+
+.group {
+  @include flex(flex-start);
+  width: 255px;
+
+  .person {
+    @include flex(center);
+    @include padding(0 12px);
+    @include border(1px solid $light-grey);
+    border-radius: 16px;
+
+    width: 115px;
+    max-width: 115px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 12px;
+    color: $dim-grey;
+
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    span {
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}

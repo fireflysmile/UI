@@ -1,0 +1,66 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(22px 107px 42px 28px);
+  display: block;
+  overflow: auto;
+  height: 100%;
+
+  .cm-total-card {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// total card
+.cm-total-card {
+  ::ng-deep {
+    .cm-split-applications-top {
+      @include padding(0 39px 0 20px);
+    }
+  }
+}
+
+// my task summary row
+.cm-my-task-summary-row {
+  @include flex(stretch);
+}
+
+// column
+.cm-my-task-summary-column {
+  // left column
+  &.cm-left {
+    @include itemFlex(1, 1, 75%);
+  }
+
+  // right column
+  &.cm-right {
+    @include itemFlex(1, 1, calc(25% - 16px));
+    margin-left: 16px;
+  }
+
+  // total column
+  &.cm-total {
+    @include itemFlex(0, 1, 35%);
+  }
+}
+
+// sub row
+.cm-my-task-summary-sub-row {
+  @include flex(stretch, null, space-between);
+  height: 67px;
+}
+
+// sub row gap
+.cm-my-task-summary-sub-row + .cm-my-task-summary-sub-row {
+  margin-top: 7px;
+}
+
+app-my-task-card {
+  @include widthBetweenGap(16px, 3);
+}
+
+app-assigned-task-table,
+app-oloc-assigned-task-table {
+  margin-top: 20px;
+}

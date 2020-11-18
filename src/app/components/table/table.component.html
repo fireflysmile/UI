@@ -1,0 +1,417 @@
+<div
+  #tableContainer
+  class="cm-table-container">
+  <ng-container *ngFor="let item of columns">
+    <ng-container *ngIf="item.info">
+      <ng-container [ngSwitch]="item.property">
+        <!-- date field -->  
+        <ng-container *ngSwitchCase="'instrumentType'">
+          <div class="cm-info-instrument-type-panel" 
+          *ngIf="item.showInfo"
+            [ngStyle]="{left: item.infoOffset[0] + 'px'}"
+          >
+            <div class="panel-arrow"></div>
+            <div class="title">Instrument Types</div>
+            <div class="sections">
+              <div class="section" *ngFor="let cg of ['Cash', 'Non-Cash']">
+                <div class="sub-title">{{cg}}</div>
+                <div class="item" *ngFor="let t of instrumentTypes[cg]">
+                  <div class="name">{{t.name}}</div>
+                  <div class="fullname">{{t.fullName}}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <div
+    #staticColumn
+    class="cm-table-static-column">
+    <!-- table -->
+    <table #selectionTable>
+      <!-- head -->
+      <thead>
+        <!-- label row -->
+        <tr>
+          <th>
+            <!-- inner -->
+            <div class="cm-cell-inner">
+              <app-checkbox
+                (ngModelChange)="selectAllChange.emit($event)"
+                [ngModel]="selectAll"
+              ></app-checkbox>
+            </div>
+          </th>
+        </tr>
+
+        <!-- empty row -->
+        <tr></tr>
+      </thead>
+
+      <!-- body -->
+      <tbody *ngIf="!loading">
+        <tr *ngFor="let item of data">
+          <td>
+            <div class="cm-cell-inner">
+              <app-checkbox *ngIf="item" [(ngModel)]="item.selected"></app-checkbox>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- header -->
+  <div #staticHeader class="cm-table-static-header">
+    <table>
+      <!-- head -->
+      <thead>
+        <!-- label -->
+        <tr>
+          <th>
+            <!-- inner -->
+            <div class="cm-cell-inner cm-fixed-header-selection">
+              <app-checkbox
+                (ngModelChange)="selectAllChange.emit($event)"
+                [ngModel]="selectAll"
+              ></app-checkbox>
+            </div>
+          </th>
+
+          <th *ngFor="let item of columns">
+            <div class="cm-cell-inner">
+              <!-- label -->
+              <div class="cm-header-label">
+                {{ item ? item.label : '' }}
+              </div>
+
+              <!-- sorts -->
+              <div
+                *ngIf="useSort"
+                [class.cm-inactive]="sortedColumn && sortedColumn !== item"
+                class="cm-header-sorts"
+              >
+                <!-- up -->
+                <div
+                  (click)="toggleColumnSort(item, 'asc')"
+                  [class.cm-inactive]="item && item.sortDirection === 'desc'"
+                  class="cm-header-sort-arrow"
+                ></div>
+                <!-- down -->
+                <div
+                  (click)="toggleColumnSort(item, 'desc')"
+                  [class.cm-inactive]="item && item.sortDirection === 'asc'"
+                  class="cm-header-sort-arrow cm-down"
+                ></div>
+              </div>
+            </div>
+          </th>
+
+          <ng-container *ngFor="let item of totalColumns; let i = index">
+            <th *ngIf="i > columns.length - 1" class="cm-fake-column"></th>
+          </ng-container>
+        </tr>
+
+        <!-- filters -->
+        <tr *ngIf="!disableFilters">
+          <th></th>
+
+          <th #tableHeader *ngFor="let item of columns; let i = index">
+            <div class="cm-cell-inner">
+              <!-- filter type -->
+              <app-dynamic-filter
+                #dynamicFilter
+                (filterOpen)="
+                  closeOtherFilters(dynamicFilter);
+                  setHeaderZIndex(tableHeader, 50)
+                "
+                (filterClose)="setHeaderZIndex(tableHeader, 20)"
+                (filterChange)="item ? item.filter = $event : null; onFilterChange()"
+                [containerWidth]="containerWidth"
+                [filter]="item ? item.filter : null"
+                [first]="i === 0"
+                [options]="item ? item.filterOptions : []"
+                [scrollLeft]="scrollLeft"
+                [type]="item ? item.filterType : ''"
+              ></app-dynamic-filter>
+            </div>
+          </th>
+
+          <ng-container *ngFor="let item of totalColumns; let i = index">
+            <th *ngIf="i > columns.length - 1" class="cm-fake-column"></th>
+          </ng-container>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <!-- static corner -->
+  <div #staticCorner class="cm-table-static-corner">
+    <!-- table -->
+    <table #cornerTable>
+      <!-- head -->
+      <thead>
+        <!-- label row -->
+        <tr>
+          <th>
+            <!-- inner -->
+            <div class="cm-cell-inner" *ngIf="!isNoSelectAndSortFlag">
+              <app-checkbox
+                (ngModelChange)="selectAllChange.emit($event)"
+                [ngModel]="selectAll"
+              ></app-checkbox>
+            </div>
+          </th>
+        </tr>
+
+        <!-- empty row -->
+        <tr *ngIf="!disableFilters">
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <!-- table -->
+  <div class="cm-table">
+    <table #dataTable>
+      <!-- head -->
+      <thead>
+        <!-- label -->
+        <tr>
+          <th>
+            <!-- inner -->
+            <div class="cm-cell-inner" *ngIf="!isNoSelectAndSortFlag">
+              <app-checkbox
+                (ngModelChange)="selectAllChange.emit($event)"
+                [ngModel]="selectAll"
+              ></app-checkbox>
+            </div>
+          </th>
+
+          <th *ngFor="let item of columns">
+            <div class="cm-cell-inner">
+              <div class="cm-info" *ngIf="item.info" #anchor
+                (mouseenter)="showInfo(item, $event, anchor)"
+                (focus)="item.showInfo=true"
+                (mouseleave)="item.showInfo=false"
+                (blur)="item.showInfo=false"
+              >
+                <app-icon-th-info></app-icon-th-info>
+              </div>
+
+              <!-- label -->
+              <div class="cm-header-label">
+                {{ item ? item.label : '' }}
+              </div>
+
+              <!-- sorts -->
+              <div
+                [class.cm-inactive]="sortedColumn && sortedColumn !== item"
+                class="cm-header-sorts"
+                *ngIf="useSort && !isNoSelectAndSortFlag"
+              >
+                <!-- up -->
+                <div
+                  (click)="toggleColumnSort(item, 'asc')"
+                  [class.cm-inactive]="item && item.sortDirection === 'desc'"
+                  class="cm-header-sort-arrow"
+                ></div>
+                <!-- down -->
+                <div
+                  (click)="toggleColumnSort(item, 'desc')"
+                  [class.cm-inactive]="item && item.sortDirection === 'asc'"
+                  class="cm-header-sort-arrow cm-down"
+                ></div>
+              </div>
+            </div>
+          </th>
+
+          <ng-container *ngFor="let item of totalColumns; let i = index">
+            <th *ngIf="i > columns.length - 1" class="cm-fake-column"></th>
+          </ng-container>
+        </tr>
+
+        <!-- filters -->
+        <tr *ngIf="!disableFilters">
+          <th></th>
+
+          <th #tableHeader *ngFor="let item of columns; let i = index">
+            <div class="cm-cell-inner">
+              <!-- filter type -->
+              <!-- filter will be hidden when type is 'none' -->
+              <app-dynamic-filter
+                #dynamicFilter
+                (filterOpen)="
+                  closeOtherFilters(dynamicFilter);
+                  setHeaderZIndex(tableHeader, 50)
+                "
+                (filterClose)="setHeaderZIndex(tableHeader, 20)"
+                (filterChange)="item ? item.filter = $event : null; onFilterChange()"
+                *ngIf="item && item.filterType !== 'none'"
+                [containerWidth]="containerWidth"
+                [filter]="item ? item.filter : null"
+                [first]="i === 0"
+                [options]="item ? item.filterOptions: []"
+                [scrollLeft]="scrollLeft"
+                [type]="item ? item.filterType : ''"
+              ></app-dynamic-filter>
+            </div>
+          </th>
+
+          <ng-container *ngFor="let item of totalColumns; let i = index">
+            <th *ngIf="i > columns.length - 1" class="cm-fake-column"></th>
+          </ng-container>
+        </tr>
+      </thead>
+
+      <!-- body -->
+      <tbody *ngIf="!loading; else loadingView">
+        <ng-container *ngIf="data.length > 0; else emptyView">
+          <tr
+            *ngFor="let row of data"
+            [class.cm-unselectable-row]="$any(row).unselectable"
+          >
+            <!-- selection column -->
+            <td>
+              <div class="cm-cell-inner" *ngIf="!isNoSelectAndSortFlag">
+                <app-checkbox
+                  *ngIf="!$any(row).unselectable"
+                  [(ngModel)]="row.selected"
+                ></app-checkbox>
+              </div>
+            </td>
+
+            <!-- data columns -->
+            <td *ngFor="let column of columns">
+              <div *ngIf="column" class="cm-cell-inner">
+                <ng-container [ngSwitch]="column.displayType">
+                  <!-- date field -->
+                  <ng-container *ngSwitchCase="'date'">
+                    {{ row[column.property] | date: column.dateFormat }}
+                  </ng-container>
+
+                  <!-- titlecase field -->
+                  <ng-container *ngSwitchCase="'titlecase'">
+                    {{ row[column.property] | titlecase }}
+                  </ng-container>
+
+                  <!-- instrument type -->
+                  <ng-container *ngSwitchCase="'instrument-type'">
+                    {{ row[column.property] | instrumentType }}
+                  </ng-container>
+
+                  <!-- request status field -->
+                  <ng-container *ngSwitchCase="'request-status'">
+                    <app-request-status
+                      [status]="row[column.property]"
+                    ></app-request-status>
+                  </ng-container>
+
+                  <!-- quantity -->
+                  <!-- quantity field also be treated as numeric field -->
+                  <ng-container *ngSwitchCase="'quantity'">
+                    <span class="cm-numeric-column">
+                      {{ row[column.property] | quantity }}
+                    </span>
+                  </ng-container>
+
+                  <!-- destination segment -->
+                  <ng-container *ngSwitchCase="'destination-segment'">
+                    <app-destination-segment-selector
+                      (ngModelChange)="
+                        row[column.property] = $event;
+                        columnFilterCreator ? columnFilterCreator() : null
+                      "
+                      [ngModel]="row[column.property]"
+                    ></app-destination-segment-selector>
+                  </ng-container>
+
+                  <!-- boolean selector -->
+                  <ng-container *ngSwitchCase="'boolean-selector'">
+                    <div class="boolean-selector-container">
+                      <app-boolean-selector
+                        (ngModelChange)="
+                          row[column.property] = $event;
+                          columnFilterCreator ? columnFilterCreator() : null
+                        "
+                        [ngModel]="row[column.property]"
+                      ></app-boolean-selector>
+                    </div>
+                  </ng-container>
+
+                  <!-- link -->
+                  <ng-container *ngSwitchCase="'link'">
+                    <a
+                      (click)="column.routerLinkClick(row)"
+                      *ngIf="column.routerLinkClick; else staticLink"
+                      class="cm-table-link"
+                    >
+                      {{ row[column.property] }}
+                    </a>
+
+                    <ng-template #staticLink>
+                      <a
+                        [routerLink]="
+                          (column.routerLink && column.routerLink(row)) || ['/']
+                        "
+                        class="cm-table-link"
+                      >
+                        {{ row[column.property] }}
+                      </a>
+                    </ng-template>
+                  </ng-container>
+
+                  <!-- numeric -->
+                  <ng-container *ngSwitchCase="'numeric'">
+                    <span class="cm-numeric-column">
+                      {{ row[column.property] }}
+                    </span>
+                  </ng-container>
+
+                  <!-- allocation status -->
+                  <ng-container *ngSwitchCase="'allocation-status'">
+                    <app-allocation-status-item
+                      [status]="row[column.property]"
+                    ></app-allocation-status-item>
+                  </ng-container>
+
+                  <!-- default field -->
+                  <ng-container *ngSwitchDefault>
+                    {{ row[column.property] }}
+                  </ng-container>
+                </ng-container>
+              </div>
+            </td>
+
+            <ng-container *ngFor="let item of totalColumns; let i = index">
+              <td *ngIf="i > columns.length - 1" class="cm-fake-column"></td>
+            </ng-container>
+          </tr>
+        </ng-container>
+
+        <ng-template #emptyView>
+          <tr>
+            <td [colSpan]="totalColumns.length + 1" class="cm-status-column">
+              No Records Found
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+
+      <ng-template #loadingView>
+        <tbody>
+          <tr>
+            <td [colSpan]="totalColumns.length + 1" class="cm-status-column">
+              Loading...
+            </td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </table>
+  </div>
+</div>

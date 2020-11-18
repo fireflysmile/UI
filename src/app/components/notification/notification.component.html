@@ -1,0 +1,33 @@
+<!-- bell -->
+<app-icon-bell
+  (click)="notifications.length > 0 && (opened = !opened)"
+  [clickable]="true"></app-icon-bell>
+
+<!-- dot -->
+<div
+  *ngIf="notifications.length > 0"
+  class="cm-dot"></div>
+
+<!-- notification popup -->
+<div
+  (autoClose)="opened = false"
+  *ngIf="opened"
+  [closeOnScroll]="true"
+  [closerContainer]="elementRef"
+  appAutoCloser
+  appPositionFixer
+  class="cm-notification-popup">
+  <!-- render items -->
+  <app-notification-item
+    *ngFor="let item of notifications"
+    [notification]="item"></app-notification-item>
+
+  <!-- view all -->
+  <div class="cm-notification-item-view-all">
+    <a
+      (click)="opened = false"
+      [routerLink]="['/main/notification']">
+      View All
+    </a>
+  </div>
+</div>

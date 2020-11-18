@@ -1,0 +1,94 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(21px 107px 79px 29px);
+  display: block;
+  overflow: auto;
+  height: 100%;
+}
+
+// headline
+.cm-page-headline {
+  @include flex(center);
+}
+
+// search application filter gap
+.cm-search-application-filter {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  // content
+  .cm-application-filter-content {
+    @include padding(0 15px);
+    margin-top: 24px;
+  }
+
+  // form
+  form {
+    @include flex(flex-start, null, column);
+  }
+
+  // column
+  .cm-application-filter-form-row {
+    @include flex(flex-start, space-between, row, nowrap);
+    // width: 700px;
+
+    app-form-field {
+      width: 270px
+    }
+
+    app-form-field + app-form-field {
+      margin-left: 16px;
+    }
+  }
+
+  .cm-date-input {
+    @include flex(center, space-between);
+    @include borderBottom(1px solid $nobel2);
+    height: 24px;
+
+    // input
+    input {
+      font-size: 12px;
+      font-weight: 400;
+      color: $black;
+      width: calc(100% - 24px);
+    }
+
+    app-card-actions {
+      padding: 0;
+      margin-top: -5px;
+
+      ::ng-deep {
+        .cm-icon svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .cm-card-action-label {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+  // second column gap
+  .cm-application-filter-form-row + .cm-application-filter-form-row {
+    margin-top: 24px;
+  }
+
+  // search action
+  app-page-actions {
+    @include padding(66px 98px 34px);
+    height: auto;
+  }
+
+  // table gap
+  app-application-table {
+    margin-top: 13px;
+  }
+}
+

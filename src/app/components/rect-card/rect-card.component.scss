@@ -1,0 +1,14 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  background-color: $white;
+  box-shadow: 0 3px 6px rgba($black, .16);
+
+  // rounded box
+  &.cm-rounded {
+    border-radius: 10px;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,37 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.date-selector {
+  cursor: pointer;
+  @include flex(flex-start, null null, nowrap);
+
+  app-icon-calendar-range {
+    margin-right: 5px;
+  }
+  span {
+    color: $raven;
+    font-size: 14px;
+    line-height: 19px;
+    white-space: normal;
+  }
+
+  app-more-options {
+    z-index: 80;
+
+    .top-section {
+      @include padding(15px 24px);
+      @include borderBottom(1px solid $wild-sand);
+    }
+  }
+
+  &.disabled {
+    cursor: auto;
+    app-icon-calendar-range {
+      ::ng-deep {
+        path {
+          fill: $provincial-pink;
+        }
+      }
+    }
+  }
+}

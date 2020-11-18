@@ -1,0 +1,50 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+}
+
+.cm-request-applications-section {
+  @include flex(stretch, flex-start, column);
+  height: 147px;
+}
+
+// label
+.cm-request-applications-label {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 700;
+  color: $jackson-purple;
+  text-align: center;
+  margin-top: 10px;
+}
+
+// value
+.cm-request-applications-value {
+  font-size: 30px;
+  font-weight: 900;
+  color: $light-slate-grey;
+  text-align: center;
+  margin-top: 24px;
+
+  &.cm-purple {
+    color: $jackson-purple;
+  }
+
+}
+
+// subLabel
+.cm-request-applications-subLabel {
+  font-size: 14px;
+  line-height: 14px;
+  font-style: italic;
+  font-weight: 400;
+  color: $light-slate-grey;
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,0 +1,82 @@
+<div class="cm-month-toggle">
+  <label>Time Period</label>
+  <div class="yes-no-toggle">
+    <app-card-action-item
+      icon="radio-checked"
+      *ngIf="type == 'month'"
+      (click)="onToggle('quarter')"
+      >Monthly</app-card-action-item
+    >
+    <app-card-action-item
+      icon="radio-unchecked"
+      *ngIf="type == 'month'"
+      (click)="onToggle('quarter')"
+      >Quaterly</app-card-action-item
+    >
+
+    <app-card-action-item
+      icon="radio-unchecked"
+      *ngIf="type == 'quarter'"
+      (click)="onToggle('month')"
+      >Monthly</app-card-action-item
+    >
+    <app-card-action-item
+      icon="radio-checked"
+      *ngIf="type == 'quarter'"
+      (click)="onToggle('month')"
+      >Quaterly</app-card-action-item
+    >
+  </div>
+</div>
+
+<!-- switch by type -->
+<ng-container [ngSwitch]="type">
+  <!-- month -->
+  <app-form-field
+    *ngSwitchCase="'quarter'"
+    class="cm-month-selector-month"
+    label="Quarter"
+  >
+    <app-select
+      (ngModelChange)="setQuarterValue($event)"
+      [disabled]="disabled"
+      [ngModel]="value.quarter"
+      [autoWidth]="false"
+    >
+      <app-option *ngFor="let item of quarterOptions" [value]="item.value">
+        {{ item.label }}
+      </app-option>
+    </app-select>
+  </app-form-field>
+
+  <!-- range -->
+  <div *ngSwitchCase="'month'" class="cm-month-selector-months">
+    <!-- start -->
+    <app-form-field label="From Month">
+      <app-select
+        (ngModelChange)="setStartMonthValue($event); createRangeMonthOptions()"
+        [disabled]="disabled"
+        [ngModel]="value.start"
+        [autoWidth]="false"
+      >
+        <app-option *ngFor="let item of startMonthOptions" [value]="item.value">
+          {{ item.label }}
+        </app-option>
+      </app-select>
+    </app-form-field>
+
+    <!-- end -->
+    <app-form-field label="To Month">
+      <app-select
+        (ngModelChange)="setEndMonthValue($event); createRangeMonthOptions()"
+        [disabled]="disabled"
+        [ngModel]="value.end"
+        [autoWidth]="false"
+      >
+        <app-option *ngFor="let item of endMonthOptions" [value]="item.value">
+          {{ item.label }}
+        </app-option>
+      </app-select>
+    </app-form-field>
+  </div>
+</ng-container>

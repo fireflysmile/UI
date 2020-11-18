@@ -1,0 +1,94 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 506px;
+}
+
+app-modal-container {
+  position: relative;
+}
+
+app-modal-content {
+  // browse button
+  button {
+    width: 104px;
+    margin-top: 36px;
+  }
+}
+
+// close button
+.cm-close {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  z-index: 10;
+  cursor: pointer;
+
+  &:hover {
+    .cm-close-group {
+      fill: lighten($tahiti-gold, 10%);
+    }
+  }
+}
+
+// header
+.cm-header {
+  @include flex(flex-start, null, column);
+}
+
+// title
+.cm-title {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 20px;
+  color: $dim-grey;
+}
+
+// hint
+.cm-hint {
+  margin-top: 9px;
+}
+
+// uploaded
+.cm-uploaded {
+  @include border(1px solid $gainsboro);
+  @include padding(0 8px);
+  @include flex(center);
+  @include rect(294px, 32px);
+  border-radius: 5px;
+  margin-top: 35px;
+}
+
+// uploaded label
+.cm-uploaded-label {
+  @include ellipsis;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba($black, .3);
+}
+
+// error
+.em-error {
+  @include flex(center);
+  margin-top: 8px;
+
+  span {
+    margin-left: 5px;
+    font-size: 10px;
+    font-style: italic;
+    line-height: 13px;
+    color: $red2;
+  }
+}
+
+app-modal-actions {
+  @include flex(center, flex-end);
+
+  // upload button
+  button {
+    width: 188px;
+  }
+}

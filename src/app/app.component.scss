@@ -1,0 +1,10 @@
+@import "styles/mixins";
+@import "styles/props";
+
+:host {
+  @include fullScreen;
+  @include topLeft;
+  position: absolute;
+  background-color: $white-smoke;
+  min-width: 1366px;
+}

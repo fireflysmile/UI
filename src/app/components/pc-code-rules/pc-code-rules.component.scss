@@ -1,0 +1,10 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, null, column);
+}
+
+app-pc-code-rule-item + app-pc-code-rule-item {
+  margin-top: 24px;
+}

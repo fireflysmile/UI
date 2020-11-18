@@ -1,0 +1,60 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, null, column);
+  @include padding(5px 0);
+  @include border(1px solid $whisper2);
+  position: absolute;
+  background-color: $white;
+  border-radius: 4.5px;
+  box-shadow: 0 5px 10px rgba($black, .23);
+
+  // arrow border
+  &::before {
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border: solid 7px transparent;
+  }
+
+  &:not(.adjacent)[autoPositionedVertical="top"] {
+    @include bottomArrow(6px, $white);
+    &::before {
+      top: 100%;
+      left: 50%;
+      border-top-color: $whisper2;
+      margin-left: -7px;
+    }
+  }
+  &:not(.adjacent):not([autoPositionedVertical="top"]) {
+    @include topArrow(6px, $white);
+    &::before {
+      bottom: 100%;
+      left: 50%;
+      border-bottom-color: $whisper2;
+      margin-left: -7px;
+    }
+  }
+
+  &.adjacent[autoPositionedHorizontal="left"] {
+    @include rightArrow(6px, $white);
+    &::before {
+      left: 100%;
+      top: 50%;
+      border-left-color: $whisper2;
+      margin-top: -7px;
+    }
+  }
+  &.adjacent:not([autoPositionedHorizontal="left"]) {
+    @include leftArrow(6px, $white);
+    &::before {
+      right: 100%;
+      top: 50%;
+      border-right-color: $whisper2;
+      margin-top: -7px;
+    }
+  }
+}

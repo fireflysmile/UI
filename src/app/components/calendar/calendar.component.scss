@@ -1,0 +1,141 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+:host {
+  display: block;
+}
+
+// header
+.ts-calendar-header {
+  @include flex(center, space-between);
+  @include borderTop(1px solid $white-smoke2);
+  @include borderBottom(1px solid $white-smoke2);
+  height: 36px;
+}
+
+// header label
+.ts-calendar-header-label {
+  @include padding(0 10px);
+  @include flex(center);
+  font-size: 12px;
+  user-select: none;
+  color: $safety-orange;
+  font-weight: 400;
+
+  app-divider {
+    margin: 0 8px;
+    background-color: $very-light-grey;
+  }
+}
+
+// arrow
+.ts-calendar-header-arrow {
+  @include flex(center, center);
+  @include box(24px);
+  cursor: pointer;
+  user-select: none;
+
+  path {
+    fill: $very-light-grey;
+  }
+
+  // left arrow
+  &.left {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  // disabled
+  &.ts-disabled {
+    svg {
+      opacity: .3;
+    }
+  }
+
+  // hover
+  &:not(.ts-disabled):hover {
+    svg {
+      opacity: .8;
+    }
+  }
+
+  // active
+  &:not(.ts-disabled):active {
+    svg {
+      opacity: .6;
+    }
+  }
+}
+
+// days
+.ts-calendar-days {
+  @include borderBottom(1px solid $white-smoke2);
+  @include flex(stretch, null, null, nowrap);
+  height: 30px;
+}
+
+// day
+.ts-calendar-day {
+  @include flex(center, center);
+  width: calc((100% - 1px) / 7);
+  font-size: 11px;
+  font-weight: 400;
+  color: $nobel;
+}
+
+// calendar content
+.ts-calendar-content {
+  @include flex();
+}
+
+// date
+.ts-date {
+  @include flex(center, center);
+  @include padding(8px 0);
+  width: calc((100% - 1px) / 7);
+  font-size: 11px;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+
+  // outdated date
+  &.ts-out-dated {
+    color: $nobel;
+  }
+
+  // disabled
+  &.ts-disabled {
+    background-color: rgba($black, .05);
+  }
+
+  // hover
+  &:not(.ts-disabled):not(.ts-selected):hover {
+    background-color: rgba($black, .05);
+  }
+
+  // active
+  &:not(.ts-disabled):not(.ts-selected):hover {
+    background-color: rgba($black, .03);
+  }
+
+  // selected
+  &.ts-selected {
+    color: $safety-orange;
+    background-color: $pippin;
+  }
+}
+
+// month
+.ts-calendar-month {
+  @include flex(center, center);
+  width: calc(100% / 3);
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: rgba($black, .05);
+  }
+}

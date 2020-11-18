@@ -1,0 +1,72 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start, null, column);
+  max-width: 190px;
+
+
+  // completed
+  &.cm-completed {
+    .cm-icon {
+      ::ng-deep {
+        path {
+          fill: $kelly-green;
+        }
+      }
+    }
+  }
+
+  // pending
+  &.cm-pending {
+    .cm-icon {
+      ::ng-deep {
+        path {
+          fill: $school-bus-yellow;
+        }
+      }
+    }
+  }
+
+  // disabled
+  &.cm-disabled {
+    .cm-icon {
+      ::ng-deep {
+        path {
+          fill: $light-grey;
+        }
+      }
+    }
+
+    .cm-under-review-label {
+      color: $light-grey;
+    }
+  }
+}
+
+// icon
+.cm-icon {
+  @include box(60px);
+
+  ::ng-deep {
+    svg {
+      @include box(100%);
+    }
+  }
+}
+
+// under review label
+.cm-under-review-label {
+  margin-top: 14px;
+  color: $bright-grey;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+// date
+.cm-under-review-date {
+  margin-top: 21px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $bismark;
+}

@@ -1,0 +1,93 @@
+<!-- top -->
+<div class="cm-page-headline">
+  <app-back-button [routerLink]="['/main/oloc-dashboard']">
+    Back to Main draobhsaD
+  </app-back-button>
+</div>
+
+<app-rect-card class="cm-search-application-filter">
+  <app-rect-card-header>
+    <!-- heading -->
+    <ng-container heading>
+      Search for Application
+    </ng-container>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div class="cm-application-filter-content">
+    <form [formGroup]="group">
+      <!-- column -->
+      <div class="cm-application-filter-form-row">
+        <!-- request type -->
+        <app-form-field
+          label="Request Type">
+          <app-select
+            [autoWidth]="false"
+            [options]="requestTypes"
+            formControlName="requestType"
+            placeholder="Select Request Type"></app-select>
+        </app-form-field>
+
+        <!-- member name -->
+        <app-form-field
+          label="Member Name">
+          <app-select
+            [autoWidth]="false"
+            [options]="memberNames"
+            formControlName="memberName"
+            placeholder="Select Member Name"></app-select>
+        </app-form-field>
+
+        <!-- member name -->
+        <app-form-field
+          label="Entity Type">
+          <app-select
+            [autoWidth]="false"
+            [options]="memberCodes"
+            formControlName="memberCode"
+            placeholder="Select Entity Type"></app-select>
+        </app-form-field>
+      </div>
+
+      <!-- column -->
+      <div class="cm-application-filter-form-row">
+        <!-- from -->
+        <app-form-field
+        label="From Date">
+          <div class="cm-date-input">
+            <input
+            formControlName="startDate"
+            placeholder="Select To Date">
+
+            <app-card-actions [actionGroups]="actionFrom"></app-card-actions>
+          </div>
+        </app-form-field>
+
+        <!-- to -->
+        <app-form-field
+          label="To Date">
+            <div class="cm-date-input">
+              <input
+              formControlName="endDate"
+              placeholder="Select To Date">
+
+              <app-card-actions [actionGroups]="actionTo"></app-card-actions>
+            </div>
+        </app-form-field>
+
+      </div>
+    </form>
+  </div>
+
+  <!-- actions -->
+  <app-page-actions
+    (confirmClick)="searchApplications(group.getRawValue())"
+    [confirmable]="group.valid"
+    confirm="search"></app-page-actions>
+</app-rect-card>
+
+
+<!-- table -->
+<app-application-table
+  [data]="applications"
+  [loaded]="loaded"></app-application-table>

@@ -1,0 +1,173 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+
+  ::ng-deep {
+    .edited-label {
+      @include flex(center);
+      font-size: 12px;
+      line-height: 16px;
+      font-style: italic;
+      color: $suva-grey;
+      margin-top: 8px;
+
+      app-icon-edit-circle {
+        margin-right: 8px;
+
+        ::ng-deep {
+          circle {
+            fill: $jackson-purple;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cm-actions {
+  @include flex(center);
+
+  app-card-action-item {
+    margin-left: 6px;
+  }
+}
+
+table {
+  max-width: 100%;
+  table-layout: fixed;
+
+  th,
+  .th {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+    text-align: left;
+    vertical-align: top;
+    @include padding(0 15px 25px 0);
+    white-space: normal;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+
+    &.action {
+      font-weight: 400;
+      color: $raven;
+    }
+
+    &.section-header {
+      font-size: 16px;
+      line-height: 21px;
+      @include paddingBottom(16px);
+    }
+  }
+
+  td:not(.th) {
+    position: relative;
+    font-size: 14px;
+    line-height: 19px;
+    color: $thunder;
+    vertical-align: top;
+    @include padding(0 15px 15px 0);
+    white-space: pre-wrap;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+table {
+  width: 100%;
+
+  th {
+    @include paddingBottom(9px);
+
+    @include setMultipleWidths((
+      7.75862069,
+      16.63793103,
+      16.72413793,
+      17.06896552,
+      25.43103448,
+      16.37931034,
+    ), 1160px)
+  }
+
+  th,
+  td {
+    &:first-of-type {
+      @include paddingLeft(58px);
+    }
+
+    &:last-of-type {
+      @include paddingRight(102px);
+    }
+
+    .communication-text-container {
+      min-height: 48px;
+    }
+  }
+
+  td:not(.th) {
+    @include borderTop(1px solid $seashell);
+    @include paddingTop(22px);
+    @include paddingBottom(12px);
+
+    app-checkbox {
+      margin-top: 5px;
+    }
+  }
+
+  app-card-action-item {
+    margin-top: 5px;
+
+    &.light-text {
+      ::ng-deep {
+        .cm-icon {
+          opacity: .2;
+        }
+
+        .cm-card-action-label {
+          color: $seashell;
+        }
+      }
+    }
+  }
+
+  app-icon-check-circle {
+    ::ng-deep {
+      svg {
+        height: 24px;
+        width: 24px;
+      }
+
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+  }
+
+  textarea {
+    width: 100%;
+  }
+}
+
+.action {
+  .cm-icon {
+    @include clickable(true);
+
+    &.cm-disabled {
+      cursor: auto;
+
+      &:hover, &:active {
+        opacity: 1;
+      }
+
+      ::ng-deep {
+        path {
+          fill: $provincial-pink;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include box(100%);
+  @include padding(40px 107px 130px 30px);
+  display: block;
+  overflow: auto;
+  position: relative;
+}
+
+app-page-actions {
+  @include bottomLeft;
+  position: absolute;
+  width: 100%;
+}

@@ -1,0 +1,40 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// content
+.cm-start-new-request-content {
+  @include padding(21px 98px 53px 15px);
+  @include flex(center);
+
+  // form
+  form {
+    @include flex(center);
+    @include itemFlex(1, 1, 0);
+
+    app-form-field {
+      margin-right: 16px;
+      width: auto;
+      @include itemFlex(1, 1, 0);
+    }
+  }
+}
+
+// first column gap
+.cm-application-filter-form-column:first-child + .cm-application-filter-form-column {
+  margin-left: 106px;
+}
+
+// second column gap
+.cm-application-filter-form-column:nth-child(2) + .cm-application-filter-form-column {
+  margin-left: 24px;
+}
+
+// search action
+app-page-actions {
+  @include padding(0 0 0 8px);
+  height: auto;
+}

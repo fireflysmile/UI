@@ -1,0 +1,49 @@
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header>
+    {{data.title}}
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content>
+    <div
+      [innerHTML]="data.message | nl2br"
+      class="cm-hint"></div>
+
+    <div
+      *ngIf="data.canSelectAll"
+      class="cm-checkbox-row">
+      <app-checkbox [(ngModel)]="selectAll">
+        Select All Directors
+      </app-checkbox>
+    </div>
+
+    <!-- directors -->
+    <div class="cm-directors">
+      <div
+        (click)="item.selected = !item.selected"
+        *ngFor="let item of directors"
+        [class.cm-selected]="item.selected"
+        class="cm-director-item">
+        <span>{{item.name}}</span>
+        <app-icon-check-circle *ngIf="item.selected"></app-icon-check-circle>
+      </div>
+    </div>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      cancel
+    </button>
+
+    <button
+      (click)="onContinue()"
+      [disabled]="!hasSelectedDirector"
+      class="cm-confirm-button">
+      continue
+    </button>
+  </app-modal-actions>
+</app-modal-container>

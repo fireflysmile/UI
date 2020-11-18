@@ -1,0 +1,47 @@
+<app-modal-container>
+  <app-modal-header>
+    Assign
+  </app-modal-header>
+
+  <app-modal-content>
+    <form
+      #form="extendedForm"
+      (validSubmit)="assignToApplication()"
+      [formGroup]="group"
+      appExtendedForm>
+      <app-form-field
+        *ngIf="isHO"
+        label="HO/RO">
+        <app-select
+          [autoWidth]="false"
+          [options]="officials"
+          formControlName="official"
+          placeholder="Select HO/RO"></app-select>
+      </app-form-field>
+
+      <app-form-field
+        [label]="isHO ? 'HO Maker' : 'RO Maker'">
+        <app-select
+          [autoWidth]="false"
+          [options]="makers"
+          [placeholder]="isHO ? 'Select HO Maker' : 'Select RO Maker'"
+          formControlName="maker"></app-select>
+      </app-form-field>
+    </form>
+  </app-modal-content>
+
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      cancel
+    </button>
+
+    <button
+      (click)="form.submit()"
+      [disabled]="loading"
+      class="cm-confirm-button">
+      {{loading ? 'processing...' : 'apply'}}
+    </button>
+  </app-modal-actions>
+</app-modal-container>

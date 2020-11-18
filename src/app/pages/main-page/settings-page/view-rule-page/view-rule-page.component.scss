@@ -1,0 +1,28 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(67px 205px 130px 127px);
+  @include box(100%);
+  display: block;
+  overflow: auto;
+}
+
+// header
+.cm-header {
+  @include flex(center, space-between);
+}
+
+app-page-title {
+  padding: 0;
+}
+
+app-page-actions {
+  @include bottomLeft;
+  position: absolute;
+  width: 100%;
+}
+
+app-pc-code-rules {
+  margin-top: 26px;
+}

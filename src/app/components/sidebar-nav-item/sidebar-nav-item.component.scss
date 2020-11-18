@@ -1,0 +1,85 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, null, column, nowrap);
+  @include padding(23px 0 12px);
+  @include clickable();
+  position: relative;
+  background-color: $jackson-purple;
+
+  ::ng-deep {
+    circle,
+    path {
+      fill: $white;
+    }
+  }
+
+  // hover
+  &:not(.active):hover {
+    background-color: lighten($jackson-purple, 10%);
+  }
+
+  // active
+  &.active {
+    background-color: $moon-yellow;
+
+    // icon
+    ::ng-deep {
+      circle,
+      path {
+        fill: $jackson-purple;
+      }
+    }
+
+    // label
+    .cm-sidebar-nav-item-label {
+      color: $jackson-purple;
+      font-weight: 700;
+    }
+
+    // notifications
+    .cm-sidebar-nav-item-notifications {
+      border-color: $moon-yellow;
+
+      span {
+        color: $moon-yellow;
+      }
+    }
+  }
+}
+
+// label
+.cm-sidebar-nav-item-label {
+  @include flex(center, center, null, wrap);
+  margin-top: 11px;
+  width: 100%;
+  color: $white;
+
+  span {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 13px;
+    text-align: center;
+    word-break: break-word;
+    max-width: calc(100% - 10px);
+  }
+}
+
+// notifications
+.cm-sidebar-nav-item-notifications {
+  @include ball(20px);
+  @include border(1px solid $white);
+  @include flex(center, center);
+  position: absolute;
+  background-color: $jackson-purple;
+  top: 15px;
+  right: 16px;
+
+  span {
+    color: $white;
+    font-size: 10px;
+    font-weight: 400;
+    transform: scale(.9);
+  }
+}

@@ -1,0 +1,134 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch);
+
+  .cm-stacked-bar-chart-right {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// left area
+.cm-stacked-bar-chart-left {
+  @include flex(stretch, null, column, nowrap);
+  @include borderRight(1px solid $alice-blue2);
+  min-width: 50px;
+
+  &.no-border {
+    @include border(none);
+  }
+
+  .cm-stacked-bar-chart-y-label-section {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// y label section
+.cm-stacked-bar-chart-y-label-section {
+  position: relative;
+}
+
+// y label
+.cm-stacked-bar-chart-y-label {
+  transform: translateY(-50%);
+  position: absolute;
+  right: 10px;
+  color: $scampi;
+  font-size: 10px;
+  font-weight: 400;
+}
+.cm-stacked-bar-chart-y-axis-label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 100%;
+  font-size: 13px;
+  writing-mode: tb-rl;
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+// right area
+.cm-stacked-bar-chart-right {
+  @include flex(stretch, null, column, nowrap);
+
+  .cm-stacked-bar-chart-grid-section {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// grid section
+.cm-stacked-bar-chart-grid-section {
+  @include borderTop(1px solid $alice-blue2);
+  @include borderBottom(1px solid $alice-blue2);
+  position: relative;
+}
+
+// grid
+.cm-stacked-bar-chart-grid {
+  @include rect(100%, 1px);
+  position: absolute;
+  background-color: $alice-blue2;
+}
+
+// bars section
+.cm-stacked-bar-chart-bars-section {
+  @include flex(stretch, null, null, nowrap);
+  @include padding(0 15px);
+  @include box(100%);
+
+  // stacked bar
+  app-stacked-bar {
+    @include itemFlex(1, 1, 0);
+  }
+
+  // stacked bar gap
+  app-stacked-bar + app-stacked-bar {
+    margin-left: 16px;
+  }
+}
+
+  // title section
+.cm-stacked-bar-chart-title-section {
+  height: 22px;
+}
+
+// bottom section
+.cm-stacked-bar-chart-bottom-section {
+  height: 70px;
+}
+
+// x label section
+.cm-stacked-bar-chart-x-label-section {
+  @include flex(center);
+  height: 25px;
+}
+
+// x label
+.cm-stacked-bar-chart-x-label {
+  font-size: 10px;
+  color: $gun-powder;
+  font-weight: 400;
+}
+
+// legend section
+.cm-stacked-bar-chart-legend-section {
+  @include flex(center, center);
+  height: 45px;
+
+  &.left-align {
+    @include flex(center, flex-start);
+  }
+
+  .legend-prefix {
+    font-size: 10px;
+    font-weight: 700;
+    color: $gun-powder;
+    margin-right: 26px;
+  }
+
+  // legends gap
+  app-stacked-bar-legend + app-stacked-bar-legend {
+    margin-left: 15px;
+  }
+}

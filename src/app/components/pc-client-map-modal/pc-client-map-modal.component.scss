@@ -1,0 +1,30 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 744px;
+}
+
+app-modal-content {
+  button {
+    margin-top: 24px;
+  }
+}
+
+app-modal-actions {
+  @include flex(center, flex-end);
+
+  button {
+    @include rect(188px, 40px);
+  }
+}
+
+app-pc-client-map-item + app-pc-client-map-item {
+  margin-top: 32px;
+}
+
+.cm-content {
+  max-height: calc((44px * 3) + (32px * 2));
+  overflow: auto;
+}

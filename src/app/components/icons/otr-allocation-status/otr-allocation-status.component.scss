@@ -1,0 +1,18 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// title
+.cm-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// content
+.cm-content {
+  margin-top: 38px;
+}

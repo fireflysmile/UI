@@ -1,0 +1,19 @@
+[
+  {
+    "title": "SEBI Payment Pending",
+    "type": "error",
+    "content": "We have not received your SEBI dues payment for application, 112233.",
+    "link": "https://example.com"
+  },
+  {
+    "title": "Prior Approval Granted",
+    "type": "success",
+    "content": "Prior approval has been granted for the application 223344 that you submitted",
+    "link": "https://example.com"
+  },
+  {
+    "title": "SEBI Payment",
+    "type": "payment",
+    "content": "Have you completed the SEBI Payments?"
+  }
+]

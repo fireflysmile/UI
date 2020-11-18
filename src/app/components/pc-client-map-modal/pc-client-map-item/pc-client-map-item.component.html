@@ -1,0 +1,34 @@
+<!-- client code -->
+<app-form-field
+  label="Client Code(UCC)">
+  <input
+    #clientCode="ngModel"
+    (ngModelChange)="data.clientCode = $event; checkValidation.emit()"
+    [ngModel]="data.clientCode"
+    class="cm-mat-input"
+    placeholder="Enter a client code"/>
+
+  <app-form-error [control]="clientCode.control" errorCode="duplicated">
+    Client code already mapped previously
+  </app-form-error>
+</app-form-field>
+
+<!-- pc code-->
+<app-form-field
+  label="PC Code">
+  <app-search-select
+    #select
+    (autoClose)="select.closeOptions()"
+    (searchChange)="getAvailablePCCodes($event)"
+    [(ngModel)]="data.pcCode"
+    [autoWidth]="false"
+    [closerContainer]="select.elementRef"
+    appAutoCloser
+    placeholder="Select new PC Code">
+    <app-option
+      *ngFor="let item of codes"
+      [value]="item">
+      {{item}}
+    </app-option>
+  </app-search-select>
+</app-form-field>

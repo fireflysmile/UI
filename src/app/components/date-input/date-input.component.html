@@ -1,0 +1,16 @@
+<!-- input -->
+<input
+  #input
+  (focus)="inputFocus.emit()"
+  (ngModelChange)="setStringValue($event)"
+  [ngModel]="value"
+  [dropSpecialCharacters]="false"
+  mask="d0-M0-0000"
+  placeholder="DD-MM-YYYY"/>
+
+<!-- calendar icon -->
+<svg xmlns="http://www.w3.org/2000/svg" width="10.477" height="10.476" viewBox="0 0 10.477 10.476">
+  <path
+    d="M9.822,10.476H.655A.655.655,0,0,1,0,9.822V1.964A.655.655,0,0,1,.655,1.31h1.31V0H3.929V1.31H6.548V0H8.512V1.31h1.31a.655.655,0,0,1,.655.655V9.822A.655.655,0,0,1,9.822,10.476ZM1.31,4.583V9.167H9.167V4.583Z"
+    fill="#999"/>
+</svg>

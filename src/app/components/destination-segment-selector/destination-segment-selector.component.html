@@ -1,0 +1,34 @@
+<!-- selector -->
+<div
+  (click)="opened = !opened"
+  class="cm-segment-selector">
+  <!-- label -->
+  <div class="cm-segment-label">
+    {{selectedOption?.label}}
+  </div>
+
+  <!-- arrow -->
+  <div class="cm-segment-arrow"></div>
+</div>
+
+<!-- options -->
+<div
+  (autoClose)="opened = false"
+  *ngIf="opened"
+  [closeOnScroll]="true"
+  [closerContainer]="elementRef"
+  [positionContainer]="elementRef"
+  appAutoCloser
+  appAutoPositioner
+  appAutoScrollContainer
+  class="cm-segment-options">
+  <div
+    (click)="setValue(item.value); opened = false"
+    *ngFor="let item of options"
+    [class.cm-selected]="item === selectedOption"
+    [focused]="item === selectedOption"
+    appAutoScrollItem
+    class="cm-segment-option-item">
+    {{item.label}}
+  </div>
+</div>

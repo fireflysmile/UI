@@ -1,0 +1,41 @@
+<!-- header -->
+<div class="cm-dynamic-filter-dates-header">
+  <!-- selector -->
+  <div class="cm-dynamic-filter-date-selector">
+    <!-- from -->
+    <input
+      #fromInput
+      (ngModelChange)="start = $event; onDateInputChange('start', $event)"
+      [class.cm-invalid]="invalidStartDate"
+      [dropSpecialCharacters]="false"
+      [ngModel]="start"
+      [style.width]="inputWidth + 'px'"
+      appAutoFocus
+      mask="d0/M0/0000"
+      placeholder="DD/MM/YYYY"/>
+
+    <!-- divider -->
+    <app-divider direction="vertical"></app-divider>
+
+    <!-- to -->
+    <input
+      (focus)="!startDate ? fromInput.focus() : null"
+      (ngModelChange)="end = $event; onDateInputChange('end', $event)"
+      [class.cm-invalid]="invalidEndDate"
+      [dropSpecialCharacters]="false"
+      [ngModel]="end"
+      [style.width]="inputWidth + 'px'"
+      mask="d0/M0/0000"
+      placeholder="DD/MM/YYYY"/>
+  </div>
+</div>
+
+<!-- range calendar -->
+<app-range-calendar
+  (endDateChange)="onDateChange('end', $event)"
+  (startDateChange)="onDateChange('start', $event)"
+  [(displayDate)]="displayDate"
+  [maxDate]="maxDate"
+  [minDate]="minDate"
+  [endDate]="endDate"
+  [startDate]="startDate"></app-range-calendar>

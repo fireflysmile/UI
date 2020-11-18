@@ -1,0 +1,8 @@
+<app-icon-check
+  *ngIf="type === 'success'"></app-icon-check>
+
+<span [innerHTML]="message | nl2br"></span>
+
+<!-- close -->
+<app-icon-close
+  (click)="messageClose.emit()"></app-icon-close>

@@ -1,0 +1,74 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(0 100px 100px);
+  display: block;
+  overflow: auto;
+
+  // override
+  app-notification-item {
+    @include flex(center);
+    @include padding(10px 13px);
+    box-shadow: 0 3px 6px rgba($black, .16);
+
+    ::ng-deep {
+      .cm-notification-item-right {
+        margin-left: 33px;
+        width: calc(100% - 69px);
+      }
+
+      .cm-notification-item-content {
+        margin-top: 8px;
+      }
+
+      .cm-notification-item-link {
+        margin-top: 8px;
+      }
+
+      .cm-notification-item-payment-actions {
+        margin-top: 20px;
+        margin-left: 56px;
+        margin-bottom: 17px;
+      }
+    }
+
+    &.cm-payment {
+      ::ng-deep {
+        .cm-notification-item-right {
+          @include flex(flex-start);
+        }
+
+        .cm-notification-item-top {
+          width: auto;
+        }
+      }
+    }
+
+    &.cm-default {
+      ::ng-deep {
+        .cm-notification-item-link {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+
+// header
+.cm-notification-page-header {
+  @include padding(20px 0);
+}
+
+// list
+.cm-notification-page-list {
+  margin-top: 35px;
+}
+
+app-notification-item + app-notification-item {
+  margin-top: 20px;
+}
+
+app-page-title {
+  padding: 0;
+}

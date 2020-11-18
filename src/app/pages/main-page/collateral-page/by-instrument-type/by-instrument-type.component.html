@@ -1,0 +1,61 @@
+<app-rect-card-header>
+  <div heading>By Instrument Type</div>
+  <app-tab [data]="tabData" (changed)="tabChanged($event)"></app-tab>
+</app-rect-card-header>
+<div class="sub-header">
+  <div >Net Effective Deposit INR {{infos['cash'].total + infos['nonCash'].total}} CR</div>
+  <div class="download-container">
+    <app-icon-download></app-icon-download>
+    <button (click)="downlodClick()">Download</button>
+  </div>
+  
+</div>
+
+<app-modal *ngIf="showDownloadModal">
+  <!-- <app-alert-message [message]="'succeed'" (close)="showDownloadModal = false"></app-alert-message> -->
+  <app-export-files
+    [data]="donut2dData"
+    (close)="showDownloadModal = false"
+  ></app-export-files>
+</app-modal>
+
+<div class="donuts">
+  <div class="donut-group" *ngFor="let type of ['cash', 'nonCash']">
+    <div class="chart-legend">
+      <div class="flex-width-wrapper"> 
+        <app-donut-chart
+          [sWidth]="300"
+          [sHeight]="300"
+          [sectionWidth]="30"
+          *ngIf="donutCharts[type].length"
+          [data]="donutCharts[type]"
+          [clickable]="true"
+          (sectionClick)="pieClick($event, type)"
+          (sectionEnter)="pieEnter($event, type)"
+          (sectionLeave)="pieLeave($event, type)"
+          type="other"
+          centralLabel=""
+        >
+        </app-donut-chart>
+        
+        <div class="center-item">
+          <div>Cash</div>
+          <div *ngIf="infos[type]">INR {{infos[type].total}} CR</div>
+          <div *ngIf="infos[type]">{{infos[type].totalPercent}}%</div>
+        </div>
+      </div>
+
+      <div class="legend" *ngIf="pieLegends[type]">
+        <div class="circle" [ngStyle]="{'background-color': pieLegends[type].color}"></div>
+        <div class="first-label">
+          <span>{{pieLegends[type].labels[0]}}</span>
+          <span>-</span>
+          <span class="fullname">{{getFullName(pieLegends[type].labels[0])}}</span>
+        </div>
+        <div>{{pieLegends[type].labels[1]}}</div>
+        <div>{{pieLegends[type].labels[2]}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

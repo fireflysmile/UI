@@ -1,0 +1,122 @@
+<!-- card -->
+<app-rect-card>
+
+  <!-- header -->
+  <app-status-tracker-sub-header>
+    Post Implementation
+  </app-status-tracker-sub-header>
+
+  <!-- content -->
+  <div class="cm-card-content">
+    <ng-container *ngIf="detail">
+      <ng-container *ngIf="unhappyPath; else happyPath">
+        <ng-container *ngIf="detail.submitted">
+          <app-file-upload-card
+            [uploaded]="detail.uploaded"
+            [uploadDisabled]="true"
+            action="download"
+            label="Extension Request Letter"></app-file-upload-card>
+        </ng-container>
+
+        <app-post-implementation-error></app-post-implementation-error>
+
+        <app-director-submit-dir12
+          [directors]="detail?.availableDirectors" [submitted]="detail?.dir12sSubmitted"></app-director-submit-dir12>
+      </ng-container>
+
+      <ng-template #happyPath>
+        <!-- question -->
+        <app-post-implementation-question [detail]="detail"></app-post-implementation-question>
+
+        <!-- request extension -->
+        <app-request-for-extension
+          [submitted]="detail?.submitted"
+          *ngIf="!detail?.verified && !detail?.extensionAccepted">
+        </app-request-for-extension>
+
+        <div
+          *ngIf="detail?.submitted"
+          class="cm-submitted">
+          <app-file-upload-card
+            [uploadDisabled]="true"
+            [uploaded]="detail?.uploaded"
+            action="download"
+            label="Extension Request Letter"></app-file-upload-card>
+        </div>
+
+        <ng-container *ngIf="!detail?.submitted && !detail?.verified">
+          <!-- bottom row -->
+          <div class="cm-bottom-row">
+            <div class="cm-post-implementation-column">
+              <!-- label -->
+              <div class="cm-post-implementation-column-label">
+                Select Directors for Request
+              </div>
+
+              <!-- content -->
+              <div class="cm-post-implementation-column-content">
+                <button
+                  (click)="openDirectorSelectionModal()"
+                  [disabled]="selectDirectorDisabled"
+                  class="cm-icon-button">
+                  <app-icon-add-circle></app-icon-add-circle>
+                  Select Directors
+                </button>
+
+                <!-- selected directors -->
+                <div class="cm-selected-directors">
+                  <div
+                    *ngFor="let item of detail?.selectedRequestDirectors"
+                    class="cm-selected-director-item">
+                    <span>{{item}}</span>
+                    <app-icon-close (click)="removeSelectedDirector(item)"></app-icon-close>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cm-post-implementation-column">
+              <!-- label -->
+              <div class="cm-post-implementation-column-label">
+                Upload Letter
+              </div>
+
+              <!-- content -->
+              <div class="cm-post-implementation-column-content">
+                <app-file-upload-card
+                  (fileUploaded)="onFileUploaded($event)"
+                  [uploaded]="detail?.uploaded"
+                  [viewDisabled]="true"
+                  action="upload"
+                  label="Extension Request Letter">
+                  <a
+                    *ngIf="detail?.sampleExtensionRequestLetter"
+                    [href]="detail.sampleExtensionRequestLetter"
+                    download
+                    class="cm-link">
+                    Download Sample File
+                  </a>
+                </app-file-upload-card>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="detail?.verified">
+          <button class="cm-button primary back-to-dashboard" [routerLink]="['/main/dashboard']">Back to Dashboard</button>
+        </ng-container>
+
+      </ng-template>
+    </ng-container>
+  </div>
+</app-rect-card>
+
+<!-- page actions -->
+<app-page-actions
+  *ngIf="(unhappyPath && !detail?.dir12sSubmitted) || !detail?.verified"
+  (confirmClick)="unhappyPath ? submitPostImplementationForDir12() : submitExtensionRequest()"
+  [cancelable]="true"
+  [confirmLoading]="loading"
+  [confirmable]="canSubmit"
+  cancel="save"
+  confirm="submit"></app-page-actions>

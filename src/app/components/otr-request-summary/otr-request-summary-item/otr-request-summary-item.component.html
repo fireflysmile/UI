@@ -1,0 +1,70 @@
+<ng-container *ngIf="data">
+  <!--main container -->
+  <div class="cm-container">
+    <!-- icon label -->
+    <div class="cm-icon-label">
+      <!-- switch by icon -->
+      <ng-container
+        [ngTemplateOutlet]="icons"
+        [ngTemplateOutletContext]="{icon: data.icon}"></ng-container>
+
+      <!-- label -->
+      <div class="cm-label">
+        {{data.label}}
+      </div>
+    </div>
+
+    <!-- value -->
+    <div class="cm-value">
+      {{data.value}}
+    </div>
+  </div>
+
+  <!-- children -->
+  <div
+    *ngIf="(data.children || []).length > 0"
+    class="cm-children">
+    <!-- child -->
+    <div
+      *ngFor="let item of data.children"
+      class="cm-container cm-child">
+      <!-- icon label -->
+      <div class="cm-icon-label">
+        <!-- switch by icon -->
+        <ng-container
+          [ngTemplateOutlet]="icons"
+          [ngTemplateOutletContext]="{icon: item.icon}"></ng-container>
+
+        <!-- label -->
+        <div class="cm-label">
+          {{item.label}}
+        </div>
+      </div>
+
+      <!-- value -->
+      <div class="cm-value">
+        {{item.value}}
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- icons -->
+<ng-template #icons let-icon="icon">
+  <ng-container [ngSwitch]="icon">
+    <!-- reload -->
+    <app-icon-refresh *ngSwitchCase="'reload'"></app-icon-refresh>
+
+    <!-- negative -->
+    <app-icon-negative *ngSwitchCase="'negative'"></app-icon-negative>
+
+    <!-- exclamation -->
+    <app-icon-exclamation *ngSwitchCase="'exclamation'"></app-icon-exclamation>
+
+    <!-- modify -->
+    <app-icon-edit-circle-green *ngSwitchCase="'modify'"></app-icon-edit-circle-green>
+
+    <!-- warning -->
+    <app-icon-warning *ngSwitchCase="'warning'"></app-icon-warning>
+  </ng-container>
+</ng-template>

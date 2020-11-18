@@ -1,0 +1,13 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+// normal button
+.ts-button {
+  @include flex(center, center);
+  @include padding(0 12px);
+  font-size: 14px;
+
+  &:disabled {
+    cursor: auto;
+  }
+}

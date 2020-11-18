@@ -1,0 +1,13 @@
+<!-- button -->
+<button
+  #button
+  *ngFor="let item of routes"
+  [routerLink]="item.route"
+  routerLinkActive="active">
+  {{item.label}}
+</button>
+
+<!-- indicator -->
+<div
+  #indicator
+  class="cm-view-indicator"></div>

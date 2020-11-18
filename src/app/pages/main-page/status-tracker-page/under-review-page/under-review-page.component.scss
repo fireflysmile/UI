@@ -1,0 +1,38 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+}
+
+// content
+.cm-under-review-content {
+  @include flex(flex-start, center);
+  @include padding(0 98px 190px);
+  margin-top: 20px;
+
+  .cm-bar {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// bar
+.cm-bar {
+  @include rect(100px, 4px);
+  position: relative;
+  background-color: $light-grey;
+  margin: 0 65px 0 10px;
+  top: 67px;
+
+  &.cm-pending {
+    background-color: $school-bus-yellow;
+  }
+
+  &.cm-completed {
+    background-color: $kelly-green;
+  }
+}

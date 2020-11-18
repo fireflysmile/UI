@@ -1,0 +1,22 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+
+  app-table-layout-editor {
+    margin-top: -80px;
+  }
+}
+
+app-rect-card {
+  @include paddingBottom(30px);
+}
+
+app-rect-card-header {
+  div {
+    font-size: 16px;
+    font-weight: 400;
+    color: $suva-grey;
+  }
+}

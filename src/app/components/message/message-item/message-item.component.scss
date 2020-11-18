@@ -1,0 +1,47 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+@mixin type($type) {
+  @include customAttribute('ts-type', $type) {
+    @content;
+  }
+}
+
+:host {
+  @include padding(13px 36px);
+  @include flex(center, space-between);
+  min-height: 40px;
+  border-radius: 5px;
+  background-color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  color: $white;
+  pointer-events: auto;
+
+  @include type('success') {
+    background-color: $dark-pastel-green;
+  }
+
+  @include type('error') {
+    background-color: $cinnabar;
+  }
+
+  span {
+    max-width: calc(100% - 24px - 24px - 30px - 8px);
+  }
+
+  .cm-icon + span {
+    margin-left: 8px;
+  }
+
+  span + .cm-icon {
+    @include clickable(true);
+    margin-left: 30px;
+
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+}

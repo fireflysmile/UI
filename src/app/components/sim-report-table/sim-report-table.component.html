@@ -1,0 +1,22 @@
+<app-rect-card>
+  <!-- header -->
+  <app-rect-card-header>
+    <ng-container heading>Search Result</ng-container>
+    <app-page-actions
+      [confirmable]="loaded"
+      (confirmClick)="exportSelected()"
+    confirm="Export"></app-page-actions>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div
+    class="cm-card-content">
+    <app-table
+      *ngIf="loaded"
+      [columns]="columns"
+      [isNoSelectAndSortFlag]="true"
+      [data]="displayableData"
+      [totalColumnLength]="configs.length"></app-table>
+  </div>
+
+</app-rect-card>

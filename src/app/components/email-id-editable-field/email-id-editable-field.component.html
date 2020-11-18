@@ -1,0 +1,75 @@
+<ng-container *ngIf="editing; else readOnly">
+  <!-- fields -->
+  <form
+    #form="extendedForm"
+    (validSubmit)="modified.emit(this.group.getRawValue())"
+    [formGroup]="group"
+    appExtendedForm
+    class="cm-fields">
+    <app-form-field
+      label="Enter New Email ID">
+      <input
+        class="cm-mat-input"
+        formControlName="emailId"/>
+
+      <app-form-error [control]="group.get('emailId')" errorCode="required">
+        New Email ID is required
+      </app-form-error>
+
+      <app-form-error [control]="group.get('emailId')" errorCode="email">
+        New Email ID is invalid
+      </app-form-error>
+    </app-form-field>
+
+    <app-form-field
+      label="Confirm New Email ID">
+      <input
+        class="cm-mat-input"
+        formControlName="confirmEmailId"/>
+
+      <app-form-error [control]="group.get('confirmEmailId')" errorCode="required">
+        Confirm New Email ID is required
+      </app-form-error>
+
+      <app-form-error [control]="group.get('confirmEmailId')" errorCode="equal" suppressOn="required">
+        Confirm New Email ID is different
+      </app-form-error>
+    </app-form-field>
+  </form>
+
+  <!-- actions -->
+  <div class="cm-actions">
+    <ng-container *ngIf="loading; else actions">
+      Loading...
+    </ng-container>
+
+    <ng-template #actions>
+      <button
+        (click)="form.submit()"
+        appStrokeButton
+        color="primary">
+        Modify
+      </button>
+
+      <button
+        (click)="editing = false; reset()"
+        appStrokeButton
+        color="primary">
+        Cancel
+      </button>
+    </ng-template>
+  </div>
+</ng-container>
+
+<ng-template #readOnly>
+  <!-- first name -->
+  <app-form-field
+    label="Email ID">
+    {{emailId}}
+  </app-form-field>
+
+  <!-- edit icon -->
+  <app-icon-edit
+    (click)="editing = true"
+    [clickable]="true"></app-icon-edit>
+</ng-template>

@@ -1,0 +1,21 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.document {
+  @include flex(center, null, null, nowrap);
+  .name {
+    color: $raven;
+    font-size: 12px;
+    line-height: 16px;
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 128px;
+    margin-right: 28px;
+  }
+
+  app-icon-download {
+    margin-right: 16px;
+  }
+}

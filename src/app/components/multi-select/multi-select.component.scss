@@ -1,0 +1,41 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+// select option item height
+$select-option-height: 32px;
+
+// option item max height
+$select-options-max-height: calc(#{$select-option-height} * 5);
+
+:host {
+  // override select options
+  .ts-select-options {
+    @include border(1px solid $scampi);
+    max-height: $select-options-max-height;
+
+    ::ng-deep {
+      // option item
+      app-option {
+        @include padding(5px 5px);
+        @include flex(center);
+        font-size: 12px;
+        height: auto;
+        min-height: $select-option-height;
+
+        span {
+          @include itemFlex(1, 1, 0);
+          max-width: calc(100% - 40px);
+          margin-left: 16px;
+          white-space: normal;
+        }
+      }
+    }
+  }
+}
+
+// all option
+.cm-multi-select-all-option {
+  @include flex(center, center);
+  @include borderBottom(1px solid $azure);
+  height: 32px;
+}

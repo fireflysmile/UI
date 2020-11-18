@@ -1,0 +1,87 @@
+<!-- pc client map -->
+<app-rect-card>
+  <!-- header -->
+  <div class="cm-header">
+    <!-- title -->
+    <h3>
+      PC-Client Map
+    </h3>
+
+    <div
+      *ngIf="verified"
+      class="cm-verified">
+      <!-- check circle -->
+      <app-icon-check-circle></app-icon-check-circle>
+      <label>
+        Verified
+      </label>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="cm-content">
+    <div
+      (click)="openPcClientMapModal()"
+      *ngIf="verified; else empty"
+      class="cm-link">
+      Modify
+    </div>
+
+    <ng-template #empty>
+      <div></div>
+    </ng-template>
+
+    <!-- upload -->
+    <app-icon-upload
+      (click)="openPcClientMapUploader()"
+      [clickable]="true"></app-icon-upload>
+  </div>
+</app-rect-card>
+
+<!-- auto modification -->
+<app-rect-card>
+
+  <!-- header -->
+  <div class="cm-header">
+    <!-- title -->
+    <h3>
+      Auto Modification
+    </h3>
+  </div>
+
+  <!-- content -->
+  <div class="cm-content">
+    <div class="cm-switch">
+      <div class="cm-tip">
+        This toggle shall enable the auto modification of PC Code for all the unconfirmed trades coming post client code
+        modification
+      </div>
+
+      <label>
+        For UCC<br/>
+        Modification
+      </label>
+
+      <!-- switch -->
+      <app-switch
+        (ngModelChange)="onUccAutoModificationChange($event)"
+        [ngModel]="allAutoModification || uccAutoModification"></app-switch>
+    </div>
+
+    <div class="cm-switch">
+      <div class="cm-tip">
+        This toggle shall run the auto modification of PC Code for all the unconfirmed trades
+      </div>
+
+      <label>
+        For all<br/>
+        trades
+      </label>
+
+      <!-- switch -->
+      <app-switch
+        (ngModelChange)="onAllAutoModificationChange($event)"
+        [ngModel]="allAutoModification"></app-switch>
+    </div>
+  </div>
+</app-rect-card>

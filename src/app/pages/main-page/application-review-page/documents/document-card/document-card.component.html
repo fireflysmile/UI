@@ -1,0 +1,29 @@
+<div *ngIf="document" class="document-card">
+
+  <div class="title-row">
+    <div class="title">{{ document.type }}</div>
+    <div class="icons">
+      <app-icon-eye [clickable]="true" (click)="showPreviewModal = true"></app-icon-eye>
+      <app-icon-download [clickable]="true" (click)="download()"></app-icon-download>
+    </div>
+  </div>
+  <div class="sub-title-row">{{ document.company }}</div>
+  <div class="document-name" *ngIf="!documentSharedWithNames">{{ document.name }}</div>
+  <div class="document-shared-text" *ngIf="documentSharedWithNames">{{ 'Common ' + document.type + ' document shared with' }}</div>
+  <div class="document-shared-with" *ngIf="documentSharedWithNames">{{ documentSharedWithNames }}</div>
+
+  <app-icon-add-circle-outline
+    [clickable]="true"
+    (click)="addToReview.emit()">
+  </app-icon-add-circle-outline>
+</div>
+
+<app-modal *ngIf="showPreviewModal">
+  <app-preview-pdf
+    title="View Document"
+    [url]="document.url"
+    [name]="document.name"
+    action="download"
+    (close)="showPreviewModal = false">
+  </app-preview-pdf>
+</app-modal>

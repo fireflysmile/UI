@@ -1,0 +1,16 @@
+<div class="month-picker">
+  <div class="year-section">
+    <div class="title">Change Year</div>
+    <input class="cm-mat-input" [(ngModel)]="selectedYear" (input)="update()">
+  </div>
+  <div class="month-section">
+    <div class="title">Select Month</div>
+    <div class="months-wrap">
+      <div class="month-box" *ngFor="let month of months"
+        [class.active]="month === selectedMonth"
+        (click)="selectedMonth = month; update()">
+        {{ month }}
+      </div>
+    </div>
+  </div>
+</div>

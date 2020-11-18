@@ -1,0 +1,46 @@
+<app-ai-ml-layout>
+    <!-- stepper -->
+    <app-status-stepper class="steps" (stepClick)="onStepClick($event)" [steps]="steps"></app-status-stepper>
+
+    <!-- Request type card -->
+    <app-ai-ml-reporting-card title="NIL Submission" class="form-card">
+        <span class="card-subtitle">Last submission done on <b>15/09/2019 12.30 pm for Q4 Jan 2019-Mar 2019</b></span>
+
+        <form [formGroup]="form">
+            <!-- <h2 class="form-header">Declaration</h2> -->
+
+            <!-- Quarter -->
+            <app-form-field label="Declaration" class="declaration-field">
+                <app-checkbox formControlName="declaration" class="declaration-field__cb"></app-checkbox>
+                <label class="declaration-field__label">
+                    I hereby declare my submission as ‘NIL’ for Artificial Intelligence (AL) and Machine Learning (ML)
+                    reporting for QxYYYY-YY.<br>
+                    This NIL submission shall be carried over to subsequent quarters until system/applications details
+                    are explicitly submitted on the portal.
+                </label>
+            </app-form-field>
+        </form>
+    </app-ai-ml-reporting-card>
+
+    <ng-container footerActions>
+        <button class="cm-button secondary left-action">USER MANUAL</button>
+        <a class="cm-button primary" routerLink="../member-details">Back</a>
+        <button class="cm-button primary" [attr.disabled]="!form.valid || null" (click)="submit()">SUBMIT</button>
+    </ng-container>
+
+    <!-- Submission closed modal -->
+    <app-modal *ngIf="(visibleModal$ | async) == 'Success'">
+        <div class="modal__title">
+            <app-icon-check-circle class="modal__icon modal__icon--check"></app-icon-check-circle>
+            Successful!
+        </div>
+
+        <p>
+            AI & ML Submission is completed successful for Quarter <br><b>Q1: Apr 2020 - Jun 2020</b>
+        </p>
+
+        <div class="modal__actions">
+            <a class="cm-button primary" routerLink="/main">ok</a>
+        </div>
+    </app-modal>
+</app-ai-ml-layout>

@@ -1,0 +1,34 @@
+
+<!-- card -->
+<app-card *ngIf="!layoutView; else layoutEditor">
+    <app-rect-card-header >
+        <div heading>
+          Collateral Detail
+        </div>
+        <app-tab *ngIf="this.activeTab !== 'excess'" [data]="tabData" (changed)="tabChanged($event)" [active]="activeTab"></app-tab>
+    </app-rect-card-header>
+
+    <!-- actions -->
+    <app-card-actions
+    [actionGroups]="actionGroups"></app-card-actions>
+
+    <!-- table -->
+    <app-table
+    (filterChange)="filters = $event; createDisplayableData()"
+    (sortChange)="sort = $event; createDisplayableData()"
+    [(selectAll)]="selectAll"
+    [columns]="columns"
+    [data]="displayableData"
+    [loading]="loading"
+    [sort]="sort"
+    [totalColumnLength]="configs?.length"></app-table>
+</app-card>
+
+<ng-template #layoutEditor>
+    <!-- layout editor -->
+    <app-table-layout-editor
+    (cancelClick)="layoutView = false"
+    (saveClick)="tableColumnService.requestColumnConfig = $event; layoutView = false"
+    [initialConfigs]="tableColumnService.initialRequestColumnConfigs"
+    [layouts]="configs"></app-table-layout-editor>
+</ng-template>

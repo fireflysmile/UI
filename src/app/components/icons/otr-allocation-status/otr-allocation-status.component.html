@@ -1,0 +1,12 @@
+<!-- title -->
+<div class="cm-title">
+  OTR Allocation Status
+</div>
+
+<!-- content -->
+<div class="cm-content">
+  <app-waterfall-bar-chart
+    (dataSelect)="dataSelect.emit($event)"
+    [data]="chartData"
+    [label]="'INR 2 CR'"></app-waterfall-bar-chart>
+</div>

@@ -1,0 +1,155 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 997px;
+}
+
+app-modal-header {
+  @include padding(17px 12px);
+
+  ::ng-deep {
+    .ts-modal-title {
+      @include flex(flex-start, space-between);
+      width: 100%;
+    }
+  }
+
+  // left
+  .cm-modal-header-left {
+    @include flex(flex-start, null, column);
+
+    span + i {
+      margin-top: 7px;
+    }
+
+    i + i {
+      margin-top: 9px;
+    }
+
+    i {
+      text-align: left;
+    }
+  }
+
+  // right
+  .cm-right {
+    text-align: right;
+    position: relative;
+    top: 5px;
+  }
+}
+
+.cm-oblique-description {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+// content
+app-modal-content {
+  padding: 0;
+  margin-top: 54px;
+  position: relative;
+  max-height: 300px;
+  overflow: auto;
+
+  table {
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: $white;
+    }
+  }
+}
+
+// actions
+app-modal-actions {
+  @include paddingTop(66px);
+  @include flex(center, center);
+
+  button {
+    width: 114px;
+  }
+}
+
+table {
+  max-width: 100%;
+  table-layout: fixed;
+
+  th,
+  .th {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+    text-align: left;
+    vertical-align: top;
+    @include padding(0 15px 25px 0);
+    white-space: normal;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+
+    &.action {
+      font-weight: 400;
+      color: $raven;
+    }
+
+    &.section-header {
+      font-size: 16px;
+      line-height: 21px;
+      @include paddingBottom(16px);
+    }
+  }
+
+  td:not(.th) {
+    position: relative;
+    font-size: 14px;
+    line-height: 19px;
+    color: $thunder;
+    vertical-align: top;
+    @include padding(0 15px 15px 0);
+    white-space: pre-wrap;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  tr {
+    td:not(.th) {
+      @include paddingTop(22px);
+      @include paddingBottom(12px);
+    }
+
+    &:nth-child(odd) {
+      td:not(.th) {
+        background-color: rgba($alice-blue, 0.4);
+      }
+    }
+  }
+
+  th,
+  td {
+    &:first-of-type {
+      @include paddingLeft(16px);
+    }
+
+    &:last-of-type {
+      @include paddingRight(40px);
+    }
+
+    @include setMultipleWidths((
+      25,
+      28,
+      19,
+      28,
+    ), 997px);
+  }
+}

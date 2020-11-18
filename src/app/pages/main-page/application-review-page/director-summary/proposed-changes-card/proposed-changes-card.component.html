@@ -1,0 +1,46 @@
+<app-application-review-card class="proposed-card" [class.readonly]="completed || viewType === 'checker'">
+  <app-application-review-card-title title="Proposed Changes">
+    <app-edit-form-actions left
+      (save)="save()"
+      (cancel)="cancel()"
+      (edit)="edit()"
+      [isEditing]="isEditing">
+    </app-edit-form-actions>
+  </app-application-review-card-title>
+
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column.label }}</th>
+        <td class="th action">
+          <app-application-review-table-action-header
+            [action]="action">
+          </app-application-review-table-action-header>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of application.applicants">
+        <td *ngFor="let column of columns">
+          <app-application-review-table-cell
+            [data]="person"
+            [column]="column"
+            [isEditing]="isEditing">
+          </app-application-review-table-cell>
+        </td>
+        <td class="action">
+          <app-application-review-table-action
+            [action]="action"
+            (reset)="reset(person)"
+            (add)="addToReview('Proposed Date of Change', person.id)">
+          </app-application-review-table-action>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</app-application-review-card>
+
+<app-modal *ngIf="showValidationErrorModal">
+  <app-alert-message [message]="validationErrorMessage" (close)="showValidationErrorModal = false"></app-alert-message>
+</app-modal>

@@ -1,0 +1,50 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include box(100%);
+  display: block;
+}
+
+// rect card
+app-rect-card {
+  @include flex(center, space-between);
+  @include box(100%);
+  @include padding(0 14px 0 24px);
+  background-color: $jackson-purple;
+}
+
+// left section
+.cm-total-my-task-left {
+  @include flex(center);
+}
+
+// heading
+.cm-total-my-task-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: $white;
+  margin-left: 44px;
+}
+
+// task icon
+.cm-total-my-task-icon {
+  @include ball(30px);
+  @include flex(center, center);
+  background-color: $selective-yellow;
+
+  app-icon-task {
+    ::ng-deep {
+      path {
+        fill: $jackson-purple;
+      }
+    }
+  }
+}
+
+// value
+.cm-total-my-task-value {
+  font-size: 30px;
+  font-weight: 700;
+  color: $white;
+}

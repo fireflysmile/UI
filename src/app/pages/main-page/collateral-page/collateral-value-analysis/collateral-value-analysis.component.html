@@ -1,0 +1,81 @@
+<app-rect-card-header>
+  <div heading>
+    <div>Collateral Value Analysis</div>
+  </div>
+  <app-tab [data]="tabData" (changed)="tabChanged($event)"></app-tab>
+</app-rect-card-header>
+
+
+<!-- stacked-bar template -->
+
+<ng-template #stackedBar let-data="data">
+  <div class="label-top" [ngStyle]="{ bottom: 100 - data.translate + '%' }">
+    {{data.topLabel}}
+  </div>
+
+  <div
+    class="stacked-bar"
+    [ngStyle]="{ transform: 'translateY(' + data.translate + '%)' }"
+    #anchorRef
+    (mouseenter)="createPopper(anchorRef, tooltipRef, data)"
+    (focus)="createPopper(anchorRef, tooltipRef, data)"
+    (mouseleave)="destroyPopper($event, tooltipRef, 'anchor', data)"
+    (blur)="destroyPopper($event, tooltipRef, 'anchor', data)"
+  >
+
+    <div
+      class="item"
+      [ngStyle]="{ 'background-color': data.colors[0], height: data.data[0] + '%' }"
+    ></div>
+    <div
+      class="item"
+      [ngStyle]="{ 'background-color': data.colors[1], height: data.data[1] + '%' }"
+    ></div>
+  </div>
+  <div
+    id="popper-tooltip"
+    #tooltipRef
+    (mouseleave)="destroyPopper($event, tooltipRef, 'popper', data)"
+    role="tooltip"
+  >
+    <div>{{tooltipContent[0]}}</div>
+    <div class="detail" *ngIf="tooltipContent[1]">{{tooltipContent[1]}}</div>
+    <div class="detail" *ngIf="tooltipContent[2]">{{tooltipContent[2]}}</div>
+    <button (click)="viewCollateralDetails(data.type)">
+      View Excess Collateral Details
+    </button>
+
+    <div id="popper-arrow" ></div>
+    <!-- <div id="popper-arrow" data-popper-arrow></div> -->
+  </div>
+
+  <div class="label-bottom first">{{data.bottomLabel[0]}}</div>
+  <div class="label-bottom second">{{data.bottomLabel[1]}}</div>
+</ng-template>
+
+<div class="stacked-bar-chart-wrapper">
+  <div class="stacked-bar-chart">
+    <div class="stacked-bar-chart-bars">
+      <div class="stacked-bar-wrapper" *ngFor="let item of barChart">
+        <ng-container
+          *ngTemplateOutlet="stackedBar; context: { data: item }"
+        ></ng-container>
+      </div>
+    </div>
+    <div class="stacked-bar-chart-lines">
+      <div class="line" [ngStyle]="{ top: '0', width: '50%' }"></div>
+      <div
+        class="line second"
+        [ngStyle]="{ top: barChart[2].translate + '%', width: 'calc(100% - 50px)' }"
+      ></div>
+      <div
+        class="line"
+        [ngStyle]="{ left: '-10%', top: '100%', width: '120%' }"
+      ></div>
+    </div>
+  </div>
+</div>
+
+<app-legends-circle [data]="legends">
+
+</app-legends-circle>

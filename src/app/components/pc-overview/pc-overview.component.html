@@ -1,0 +1,56 @@
+<app-rect-card [rounded]="true">
+  <!-- header -->
+  <div class="cm-overview-header">
+    <!-- title -->
+    <div class="cm-overview-title">
+      PC Code Modifications Overview
+    </div>
+
+    <!-- filters -->
+    <div class="cm-header-filters">
+      <app-toggle-filter
+        (ngModelChange)="getData()"
+        [(ngModel)]="segment"
+        [options]="segmentOptions"></app-toggle-filter>
+
+      <app-toggle-filter
+        (ngModelChange)="getData()"
+        [(ngModel)]="type"
+        [options]="typeOptions"></app-toggle-filter>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="cm-content">
+    <!-- column left -->
+    <div class="cm-column">
+      <!-- summary -->
+      <app-request-status-bar
+        [data]="orderModificationStatuses"></app-request-status-bar>
+
+      <!-- card row -->
+      <div class="cm-card-row">
+        <app-division-card
+          [data]="cashMarket"></app-division-card>
+
+        <app-division-card
+          [data]="futureAndOptions"></app-division-card>
+
+        <app-division-card
+          [data]="currencyDerivatives"></app-division-card>
+      </div>
+    </div>
+
+    <!-- divider -->
+    <app-divider
+      length="100%"
+      direction="vertical"></app-divider>
+
+    <!-- column right -->
+    <div class="cm-column">
+      <app-pc-modification-status
+        (dataSelect)="dataSelect.emit($event)"
+        [data]="statuses"></app-pc-modification-status>
+    </div>
+  </div>
+</app-rect-card>

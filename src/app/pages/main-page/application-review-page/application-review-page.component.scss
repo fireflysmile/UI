@@ -1,0 +1,43 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-back-button {
+  margin: 11px 0;
+}
+
+:host {
+  @include flex(stretch, null, column, nowrap);
+  position: relative;
+
+  // page content
+  app-page-content {
+    @include itemFlex(1, 1, 0);
+    overflow: auto;
+  }
+}
+
+.application-overview-card {
+  @include borderLeft(8px solid $jackson-purple);
+  @include paddingTop(5px);
+  @include paddingBottom(0);
+  @include paddingLeft(89px);
+  @include flex(null, null, null, wrap);
+
+  margin-bottom: 30px;
+
+  .field {
+    margin: 10px 0 14px 0;
+    width: 195px;
+    color: $raven;
+
+    .label {
+      font-size: 12px;
+      line-height: 16px;
+    }
+    .value {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 19px;
+    }
+  }
+}

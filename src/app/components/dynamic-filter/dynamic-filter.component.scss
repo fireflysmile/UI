@@ -1,0 +1,108 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &.cm-left-end {
+    @include onlyForIE {
+      app-dynamic-filter-dates, app-dynamic-filter-quantity {
+        left: 0;
+      }
+    }
+  }
+
+  &.cm-right-end {
+    @include onlyForIE {
+      app-dynamic-filter-dates {
+        left: auto;
+        right: -50px;
+      }
+    }
+  }
+
+  &.cm-right-end {
+    @include onlyForFirefox {
+      app-dynamic-filter-dates, app-dynamic-filter-times, app-dynamic-filter-quantity {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}
+
+// filter
+.cm-dynamic-filter {
+  @include flex(flex-end, null, column, nowrap);
+
+  // input
+  input {
+    @include padding(0 6px);
+    width: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    height: 24px;
+    border-radius: 3px;
+
+    // placeholder
+    &::placeholder {
+      color: $suva-grey;
+    }
+
+    // value selected
+    &.cm-selected {
+      color: $tahiti-gold;
+      font-style: italic;
+    }
+  }
+
+  // button
+  button {
+    @include clickable(true);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: $tahiti-gold;
+    margin-top: 14px;
+
+    // disabled
+    &:disabled {
+      cursor: auto;
+      color: $provincial-pink;
+    }
+  }
+}
+
+// filter option
+app-dynamic-filter-options {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  z-index: 30;
+}
+
+// time selector
+app-dynamic-filter-times {
+  position: absolute;
+  top: -23px;
+  left: -8px;
+  z-index: 30;
+}
+
+// date selector
+app-dynamic-filter-dates {
+  position: absolute;
+  top: -8px;
+  left: -60px;
+  z-index: 30;
+}
+
+// quantity filter
+app-dynamic-filter-quantity {
+  position: absolute;
+  top: -8px;
+  left: -68px;
+  z-index: 30;
+}

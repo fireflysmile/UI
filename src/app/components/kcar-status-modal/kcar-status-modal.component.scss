@@ -1,0 +1,188 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 997px;
+
+  ::ng-deep {
+    .edited-label {
+      @include flex(center);
+      font-size: 12px;
+      line-height: 16px;
+      font-style: italic;
+      color: $suva-grey;
+      margin-top: 8px;
+
+      app-icon-edit-circle {
+        margin-right: 8px;
+
+        ::ng-deep {
+          circle {
+            fill: $jackson-purple;
+          }
+        }
+      }
+    }
+  }
+}
+
+// loading column
+.cm-loading-column {
+  vertical-align: center;
+  text-align: center;
+  height: 130px;
+}
+
+// header
+app-modal-header {
+  padding: 44px 16px, 16px, 16px;
+
+  ::ng-deep {
+    .ts-modal-title {
+      @include flex(center, flex-start);
+    }
+  }
+
+  // export button
+  .cm-icon-button {
+    font-size: 12px;
+    margin-left: 29px;
+
+    .cm-icon {
+      margin-right: 13px;
+    }
+  }
+}
+
+// content
+app-modal-content {
+  @include flex(center, center, column);
+  max-height: 600px;
+
+  .cm-kcar-header {
+    @include flex(flex-start, flex-start, row);
+    width: 100%;
+    padding: 0 16px 16px 0;
+
+    app-form-field {
+      width: 270px;
+
+      ::ng-deep {
+        .cm-form-field-label {
+          font-size: 14px;
+          font-weight: 700;
+          color: $jackson-purple;
+        }
+      }
+    }
+
+    // legend container
+    .cm-kcar-legend-container {
+      @include flex(flex-start, center, column);
+      margin-left: 100px;
+      font-size: 10px;
+      color: $jackson-purple;
+    }
+
+    .cm-kcarlegend-header {
+      font-size: 14px;
+      font-weight: 700;
+      color: $jackson-purple;
+    }
+
+    .cm-kcar-legend-row {
+      @include flex(center, space-between, row);
+      width: 280px;
+
+    }
+
+    // legend
+    .cm-kcar-legend-item {
+      width: 64px;
+      height: 21px;
+      border: solid 1px;
+      border-color: $jackson-purple;
+      text-align: center;
+      line-height: 21px;
+    }
+
+    .cm-kcar-legend-left {
+      @include flex(center, center, row);
+    }
+
+    .cm-kcar-legend-right {
+      @include flex(center, space-between, row);
+      width: 150px;
+    }
+
+    .cm-kcar-legend-desc {
+      @include flex(center, center, column);
+      width: 60px;
+    }
+
+    // color
+    .cm-kcar-legend-color {
+      @include ball(16px);
+    }
+
+    // label
+    .cm-kcar-legend-label {
+      @include flex(flex-start, null, column);
+      margin-left: 6px;
+    }
+
+    .cm-kcar-legend-label,
+    .cm-kcar-legend-desc {
+      span{
+        margin-top: -10px;
+      }
+    }
+  }
+
+  .cm-kcar-table {
+    @include flex(flex-start, flex-start, row, nowrap);
+
+    .cm-kcar-column {
+      @include flex(flex-start, center, column);
+    }
+
+    .cm-kcar-item {
+      background-color: $table-grey;
+      width: 64px;
+      height: 21px;
+      text-align: center;
+      font-size: 10px;
+      line-height: 21px;
+      color: white;
+
+      &.free {
+        background-color: $table-green;
+      }
+
+      &.use {
+        background-color: $table-red;
+      }
+    }
+
+    .cm-kcar-item + .cm-kcar-item {
+      margin-top: 5px;
+    }
+
+    .cm-kcar-column + .cm-kcar-column {
+      margin-left: 5px;
+    }
+  }
+}
+
+// actions
+app-modal-actions {
+  @include paddingTop(40px);
+  @include flex(center, center);
+}
+
+// cancel button
+.cm-cancel-button {
+  width: 114px;
+}
+

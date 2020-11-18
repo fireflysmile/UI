@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    justify-content: flex-end;
+    .tab {
+        display: flex;
+
+        .item {
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 1px;
+            background-color: #f2f2f2;
+            color: #362d7e;
+            &.active {
+                background-color: #ffd886;
+            }
+        }
+    }
+}

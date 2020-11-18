@@ -1,0 +1,141 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+:host {
+  position: relative;
+  display: block;
+}
+
+// select
+.ts-select {
+  @include flex(center, space-between);
+  @include borderBottom(1px solid $nobel2);
+  background-color: transparent;
+  height: 26px;
+  cursor: pointer;
+  user-select: none;
+
+  // set label flex properties
+  .ts-select-label {
+    @include itemFlex(1, 1, 0);
+  }
+
+  // icon margin
+  svg {
+    margin-left: 10px;
+  }
+
+  // opened
+  &.ts-opened {
+    @include borderBottom(1px solid $black);
+
+    // opened icon
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  // error
+  &.ts-error {
+    @include borderBottom(1px solid $red-orange);
+
+    .ts-select-label {
+      color: $red-orange;
+    }
+  }
+
+  // disabled
+  &.ts-disabled {
+    background-color: rgba($black, .05);
+    cursor: default;
+
+    // disabled label
+    .ts-select-label {
+      color: rgba($black, .5);
+    }
+
+    // disabled icon
+    svg {
+      path {
+        fill: rgba($black, .5);
+      }
+    }
+  }
+}
+
+// select label
+.ts-select-label {
+  @include ellipsis;
+  max-width: calc(100% - 20px);
+  font-size: 14px;
+  font-weight: 400;
+  color: $black;
+
+  // placeholder
+  &.ts-placeholder {
+    color: $suva-grey;
+  }
+
+  // cancelable
+  &.ts-cancelable {
+    max-width: calc(100% - 20px - 30px);
+  }
+}
+
+// typeahead input
+.cm-typeahead-input {
+  @include borderBottom(1px solid $nobel2);
+  background-color: $white;
+  height: 26px;
+  user-select: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: $black;
+  width: 100%;
+  @include inputPlaceholder($suva-grey);
+}
+
+// select option item height
+$select-option-height: 34px;
+
+// option item max height
+$select-options-max-height: calc(#{$select-option-height} * 5);
+
+// select options
+.ts-select-options {
+  position: fixed;
+  left: 0;
+  top: 100%;
+  background-color: $white;
+  box-shadow: 0 1px 15px rgba($black, .15);
+  max-height: $select-options-max-height;
+  overflow: auto;
+  z-index: 5;
+  visibility: hidden;
+
+  ::ng-deep {
+    // option item
+    app-option {
+      @include ellipsis;
+      @include padding(0 10px);
+      @include flex(center);
+      width: 100%;
+      font-size: 14px;
+      height: $select-option-height;
+      color: $black;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color .1s;
+
+      // hover
+      &:hover {
+        background-color: rgba($black, .05);
+      }
+
+      // selected
+      &.ts-selected {
+        color: $safety-orange;
+      }
+    }
+  }
+}

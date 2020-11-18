@@ -1,0 +1,32 @@
+<app-application-review-card>
+  <app-application-review-card-title title="Background Check">
+    <app-card-action-item right icon="download" [freeWidth]="true">Download Application</app-card-action-item>
+  </app-application-review-card-title>
+
+  <div class="stats-wrap">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-value" [style.color]="config[stat.title]">{{ stat.value }}</div>
+      <div class="stat-title" [style.color]="config[stat.title]">{{ stat.title }}</div>
+      <div class="stat-subtitle">{{ stat.subtitle }}</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column.label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let check of application.backgroundChecks">
+        <td *ngFor="let column of columns">
+          <span [class.risk]="column.displayType === 'risk'"
+            [style.color]="column.displayType === 'risk' && config[check.risk]">
+            {{ check[column.property] }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</app-application-review-card>

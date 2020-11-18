@@ -1,0 +1,22 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, space-between);
+  @include borderBottom(1px solid $nobel2);
+  height: 20px;
+
+  &.ts-error, &.ng-invalid {
+    input {
+      color: $red-orange;
+    }
+  }
+}
+
+// input
+input {
+  font-size: 12px;
+  font-weight: 400;
+  color: $black;
+  width: calc(100% - 14px);
+}

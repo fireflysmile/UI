@@ -1,0 +1,24 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(21px 107px 79px 29px);
+  display: block;
+  overflow: auto;
+  height: 100%;
+}
+
+// headline
+.cm-page-headline {
+  @include flex(center);
+}
+
+// search application filter gap
+app-search-application-filter {
+  margin-top: 25px;
+}
+
+// table gap
+app-application-table {
+  margin-top: 13px;
+}

@@ -1,0 +1,27 @@
+<!-- card -->
+<app-rect-card>
+  <!-- left section -->
+  <div class="cm-final-approval-left">
+    <!-- icon -->
+    <div class="cm-final-approval-icon">
+      <app-icon-check-circle></app-icon-check-circle>
+    </div>
+
+    <!-- till date -->
+    <div class="cm-final-approval-till-date">
+      <div class="cm-final-approval-till-date-label">
+        Final Approval
+      </div>
+
+      <div class="cm-final-approval-till-date-value">
+        Till Date<br/>
+        {{date | date: 'dd/MM/yyyy'}}
+      </div>
+    </div>
+  </div>
+
+  <!-- value -->
+  <div class="cm-final-approval-value">
+    {{value}}
+  </div>
+</app-rect-card>

@@ -1,0 +1,22 @@
+<ng-container *ngIf="filteredOptions.length > 0; else notFound">
+  <div
+    (click)="item.selected = !item.selected; emitSelectedChange()"
+    *ngFor="let item of filteredOptions"
+    class="cm-dynamic-filter-option">
+    <!-- checkbox -->
+    <app-checkbox
+      (click)="$event.stopPropagation(); item.selected = !item.selected; emitSelectedChange()"
+      [ngModel]="item.selected"></app-checkbox>
+
+    <!-- label -->
+    <div class="cm-dynamic-filter-option-label">
+      {{item.label}}
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #notFound>
+  <div class="cm-dynamic-filter-option-not-found">
+    Not found
+  </div>
+</ng-template>

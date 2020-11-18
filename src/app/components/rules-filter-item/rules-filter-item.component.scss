@@ -1,0 +1,12 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center);
+}
+
+label {
+  margin-left: 6px;
+  font-size: 14px;
+  color: $suva-grey;
+}

@@ -1,0 +1,105 @@
+<!-- switch by view type -->
+<ng-container [ngSwitch]="view">
+  <!-- date calendar -->
+  <ng-container *ngSwitchCase="'date'">
+    <!-- header -->
+    <div class="ts-calendar-header">
+      <!-- left arrow -->
+      <div
+        (click)="toPrevMonth()"
+        class="ts-calendar-header-arrow left">
+        <ng-container *ngTemplateOutlet="rightArrow"></ng-container>
+      </div>
+
+      <!-- label -->
+      <div class="ts-calendar-header-label">
+        <span>
+          {{displayDate | date: 'MMMM'}}
+        </span>
+
+        <app-divider
+          length="16"
+          direction="vertical"></app-divider>
+
+        <span>
+          {{displayDate | date: 'yyyy'}}
+        </span>
+      </div>
+
+      <!-- right arrow -->
+      <div
+        (click)="toNextMonth()"
+        class="ts-calendar-header-arrow right">
+        <ng-container *ngTemplateOutlet="rightArrow"></ng-container>
+      </div>
+    </div>
+
+    <!-- days -->
+    <div class="ts-calendar-days">
+      <div
+        *ngFor="let item of days"
+        class="ts-calendar-day">
+        {{item}}
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="ts-calendar-content">
+      <div
+        (click)="!item.disabled ? onDateSelected(item.value) : null"
+        *ngFor="let item of dates"
+        [class.ts-disabled]="item.disabled || item.isBefore"
+        [class.ts-out-dated]="item.outDated"
+        [class.ts-ranged]="item.isRanged"
+        [class.ts-selected]="item.isStart || item.isEnd"
+        class="ts-date">
+        {{item.date}}
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- month -->
+  <ng-container *ngSwitchCase="'month'">
+    <!-- header -->
+    <div class="ts-calendar-header">
+      <!-- left arrow -->
+      <div
+        (click)="selectedYear = selectedYear - 1"
+        class="ts-calendar-header-arrow left">
+        <ng-container *ngTemplateOutlet="rightArrow"></ng-container>
+      </div>
+
+      <!-- label -->
+      <div class="ts-calendar-header-label month">
+        {{selectedYear}}
+      </div>
+
+      <!-- right arrow -->
+      <div
+        (click)="selectedYear = selectedYear + 1"
+        class="ts-calendar-header-arrow right">
+        <ng-container *ngTemplateOutlet="rightArrow"></ng-container>
+      </div>
+    </div>
+
+    <!-- contents -->
+    <div class="ts-calendar-content">
+      <!-- render months -->
+      <div
+        (click)="changeCalendarDate(selectedYear, i)"
+        *ngFor="let item of calendarMonths; let i = index"
+        class="ts-calendar-month">
+        {{item}}
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<!-- chevron right -->
+<ng-template #rightArrow>
+  <svg xmlns="http://www.w3.org/2000/svg" width="6.585" height="11.166" viewBox="0 0 6.585 11.166">
+    <path
+      d="M9.29,6.71a1,1,0,0,0,0,1.41L13.17,12,9.29,15.88a1,1,0,1,0,1.41,1.41l4.59-4.59a1,1,0,0,0,0-1.41L10.7,6.7A1,1,0,0,0,9.29,6.71Z"
+      transform="translate(-8.997 -6.416)"/>
+  </svg>
+</ng-template>

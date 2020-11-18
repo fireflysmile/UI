@@ -1,0 +1,22 @@
+[
+    {
+        "segment": "FO",
+        "instrumentType": "BFD",
+
+        "instrumentNo": 10000000,
+        "referenceNo": 20000000,
+        "bank": "central bank",
+        "amount": 1000,
+        "maturityDate": "2020-10-04T00:53:53.120Z",
+
+        "tmCode":"tc",
+        "tmName":"tn",
+        "clientOrCcuCode": "ccc",
+        "ISIN":"isn",
+        "securitySymbol": "ss",
+        "collateralType": "ct",
+        "totalQuantity": 10000,
+        "eligibleQuantity": 5000
+    }
+
+]

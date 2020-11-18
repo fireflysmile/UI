@@ -1,0 +1,85 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+
+  // for member admin
+  &.cm-member-admin {
+    app-static-table {
+      ::ng-deep {
+        th, td {
+          @include setMultipleWidths((
+            5.086206897,
+            11.37931034,
+            12.15517241,
+            5.689655172,
+            5.689655172,
+            5.689655172,
+            5.689655172,
+            5.689655172,
+            42.93103449
+          ), 1160px);
+        }
+      }
+    }
+  }
+}
+
+app-static-table {
+  ::ng-deep {
+    th, td {
+      @include setMultipleWidths((
+        5.086206897,
+        11.37931034,
+        13.36206897,
+        12.15517241,
+        5.689655172,
+        5.689655172,
+        5.689655172,
+        5.689655172,
+        5.689655172,
+        29.56896552
+      ), 1160px);
+    }
+  }
+}
+
+app-static-table {
+  max-height: 400px;
+
+  ::ng-deep {
+    [ts-body-key='checkbox'], [ts-header-key='checkbox'] {
+      .ts-table-column-inner {
+        @include flex(center, flex-end);
+      }
+    }
+
+    [ts-body-key='actions'] {
+      .ts-table-column-inner {
+        @include flex(center);
+
+        button + button {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    [ts-header-key='enabled'],
+    [ts-body-key='enabled'],
+    [ts-header-key='MC'],
+    [ts-body-key='MC'],
+    [ts-header-key='FO'],
+    [ts-body-key='FO'],
+    [ts-header-key='CD'],
+    [ts-body-key='CD'],
+    [ts-header-key='CO'],
+    [ts-body-key='CO'],
+    [ts-header-key='SLB'],
+    [ts-body-key='SLB'],{
+      .ts-table-column-inner {
+        @include flex(center, center);
+      }
+    }
+  }
+}

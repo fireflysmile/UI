@@ -1,0 +1,8 @@
+<div class="legends-circle">
+    <div class="legends">
+      <div class="legend" *ngFor="let item of data">
+        <div class="circle" [ngStyle]="{ 'background-color': item.color }"></div>
+        <div class="label">{{ item.label }}</div>
+      </div>
+    </div>
+</div>

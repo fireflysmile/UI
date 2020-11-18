@@ -1,0 +1,40 @@
+<app-modal-container>
+  <!--content-->
+  <app-modal-content>
+    <div class="cm-content">
+      <!-- map item -->
+      <app-pc-client-map-item
+        (checkValidation)="checkValidationForItems()"
+        *ngFor="let item of clientMaps"
+        [data]="item"
+        [usedPcCodes]="getUsedPcCodes(item)"></app-pc-client-map-item>
+    </div>
+
+    <!-- button -->
+    <button
+      (click)="addClientMap()"
+      appInlineButton
+      color="primary">
+      <app-icon-add-circle-outline-alt></app-icon-add-circle-outline-alt>
+      Add Map
+    </button>
+  </app-modal-content>
+
+  <!--actions-->
+  <app-modal-actions>
+    <button
+      (click)="clearMapping()"
+      appFlatButton
+      color="secondary">
+      clear mapping
+    </button>
+
+    <button
+      (click)="updateClientMap()"
+      [disabled]="!submittable"
+      appFlatButton
+      color="primary">
+      {{loading ? 'loading...' : 'update'}}
+    </button>
+  </app-modal-actions>
+</app-modal-container>

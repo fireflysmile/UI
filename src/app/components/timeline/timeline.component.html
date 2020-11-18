@@ -1,0 +1,25 @@
+
+<div class="timeline">
+    <div class="section-wrapper">
+        <div class="section-top-label" [ngStyle]="{width: item.size[0]+'%'}" *ngFor="let item of timeLineData">
+            <div class="time-label">{{item.time}}</div>
+            <div class="desc-label">{{item.label}}</div>
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+        <div class="section-bar" (click)="onBarClicked(item)" [ngStyle]="{width: item.size[0]+'%'}" *ngFor="let item of timeLineData">
+            <div class="arrow-up" [ngStyle]="{'border-bottom-color': item.color}"></div>
+            <div class="bar" [ngStyle]="{'background-color': item.color, height: item.size[1] + 'px'}"></div>
+            <div class="arrow-down" [ngStyle]="{'border-top-color': item.color}"></div>
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+        <div class="section-bottom-label" [ngStyle]="{width: item.size[0]+'%'}" *ngFor="let item of timeLineData">
+            <div class="time-label">{{item.time}}</div>
+            <div class="desc-label">{{item.label}}</div>
+        </div>
+    </div>
+
+</div>

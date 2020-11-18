@@ -1,0 +1,29 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    Request submitted to modify PC codes for {{data.response.total - data.response.errors}} records
+    <br/>
+
+    {{data.response.errors}} records were returned because either:
+    <br/>
+
+    <!-- reasons -->
+    <span *ngFor="let item of data.response.reasons">
+      • {{item}}
+    </span>
+    <br/>
+    <br/>
+
+    Please select the desired location to save the error file
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      browse
+    </button>
+  </app-modal-actions>
+</app-modal-container>

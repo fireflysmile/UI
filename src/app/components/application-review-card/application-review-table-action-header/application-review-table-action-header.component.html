@@ -1,0 +1,23 @@
+<div class="application-review-table-action-header">
+  <span class="text" [class.wrap]="wrap" *ngIf="action === 'add'">Add to Review</span>
+  <span class="text" [class.wrap]="wrap" *ngIf="action === 'reset'">Reset Data</span>
+  <div #info (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
+    <app-icon-info></app-icon-info>
+    <app-more-options
+      *ngIf="showTooltip"
+      appAutoPositioner
+      [positionContainer]="info"
+      horizontalPriority="right"
+      [width]="120"
+      verticalPriority="bottom"
+      [verticalGap]="8"
+      [horizontalGap]="-38">
+      <p *ngIf="action === 'add'">
+        Click on this if you have a query regarding the information in this particular row that you want the member to clarify
+      </p>
+      <p *ngIf="action === 'reset'">
+        Click on this if you would like to get back the original details filled by the member for this particular row
+      </p>
+    </app-more-options>
+  </div>
+</div>

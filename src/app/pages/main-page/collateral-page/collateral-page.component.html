@@ -1,0 +1,60 @@
+
+  <app-rect-card-header class="starter">
+    <div heading>
+      <div>Collateral Member Summary</div>
+    </div>
+  </app-rect-card-header>
+
+<app-rect-card>
+  <div class="grid-four">
+    <div class="content-wrapper first">
+
+      <app-segment-wise-utilization
+        *ngIf="segmentWiseUtilization"
+        [data]="segmentWiseUtilization"
+      ></app-segment-wise-utilization>
+    </div>
+  
+    <div class="content-wrapper app-collateral-value-analysis second">
+      <app-collateral-value-analysis
+        *ngIf="collateralValueAnalysis"
+        [data]="collateralValueAnalysis"
+        (segmentChanged)="collateralValueAnalysisChanged($event)"
+      >
+      </app-collateral-value-analysis>
+    </div>
+    <div class="content-wrapper third">
+      <app-by-instrument-type
+        *ngIf="byInstrumentType"
+        [data]="byInstrumentType"
+        (segmentChanged)="byInstrumentTypeChanged($event)"
+      ></app-by-instrument-type>
+    </div>
+    <div class="content-wrapper fourth">
+
+      <app-value-based-excess *ngIf="valueBasedExcess" [data]="valueBasedExcess">
+      </app-value-based-excess>
+    </div>
+
+  </div>
+</app-rect-card>
+
+<app-rect-card>
+  <div class="maturity-timeline">
+    <app-maturity-timeline *ngIf="maturityTimeline" [data]="maturityTimeline"
+    (barClicked) = "timelineBarClicked($event)"
+    ></app-maturity-timeline>
+  </div>
+</app-rect-card>
+
+
+<div class="collateral-details-table">
+  <app-collateral-details-table (dataChanged)="tableDataChanged($event)"
+  [mode]="tableMode"
+  (modeChanged)="tableMode = $event"
+  [autoFilter]="tableFilter"
+  ></app-collateral-details-table>
+</div>
+
+
+<app-footer-instrument-type-reference></app-footer-instrument-type-reference>

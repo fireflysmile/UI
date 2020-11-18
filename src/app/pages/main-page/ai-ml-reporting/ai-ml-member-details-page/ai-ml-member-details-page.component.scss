@@ -1,0 +1,36 @@
+:host {
+    display: block;
+    height: 100%;
+}
+
+.left-action {
+    margin-right: auto;
+}
+
+.form-card ::ng-deep .card {
+    min-height: 477px;
+    display: block;
+}
+
+form {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    max-width: 915px;
+    margin: -20px;
+    margin-top: -10px;
+
+    > * {
+        flex: 0 1 auto;
+        width: 33%;
+        display: block;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    ::ng-deep input {
+        display: block;
+        width: 100%;
+    }
+}

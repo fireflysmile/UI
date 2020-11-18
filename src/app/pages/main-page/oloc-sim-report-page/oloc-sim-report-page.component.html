@@ -1,0 +1,49 @@
+<!-- top -->
+<div class="cm-page-headline">
+  <app-back-button [routerLink]="['/main/oloc-dashboard']">
+    Back to Main draobhsaD
+  </app-back-button>
+</div>
+
+<app-rect-card class="cm-search-application-filter">
+  <app-rect-card-header>
+    <!-- heading -->
+    <ng-container heading> Search for Application </ng-container>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div class="cm-application-filter-content">
+    <form [formGroup]="group">
+      <!-- column -->
+      <div class="cm-application-filter-form-row">
+        <!-- request type -->
+        <app-form-field label="Request Type">
+          <app-select
+            [autoWidth]="false"
+            [options]="requestTypes"
+            formControlName="requestType"
+            placeholder="Select Request Type"
+          ></app-select>
+        </app-form-field>
+
+        <app-month-selector formControlName="year"></app-month-selector>
+      </div>
+    </form>
+  </div>
+
+  <!-- actions -->
+  <app-page-actions
+    (confirmClick)="searchApplications(group.getRawValue())"
+    (cancelClick)="showInvalidGenerateMessage()"
+    [confirmable]="true"
+    [cancelable]="!group.valid"
+    [confirm]="group.valid ? 'generate' : null"
+    [cancel]="!group.valid ? 'generate' : null"
+  ></app-page-actions>
+</app-rect-card>
+
+<!-- table -->
+<app-sim-report-table
+  [data]="applications"
+  [loaded]="loaded"
+></app-sim-report-table>

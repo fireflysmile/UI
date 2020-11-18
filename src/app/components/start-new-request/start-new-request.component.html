@@ -1,0 +1,50 @@
+<app-rect-card>
+  <app-rect-card-header>
+    <!-- heading -->
+    <ng-container heading>
+      Start New Request
+    </ng-container>
+  </app-rect-card-header>
+
+  <div class="cm-start-new-request-content">
+    <form [formGroup]="group">
+      <!-- member name -->
+      <app-form-field
+        label="Member Name">
+        <app-select
+          [isTypeahead]="true"
+          [options]="memberNames"
+          formControlName="memberName"
+          placeholder="Enter Member Name"></app-select>
+      </app-form-field>
+
+      <!-- member code -->
+      <app-form-field
+        label="Member Code">
+        <app-select
+          [isTypeahead]="true"
+          [options]="memberCodes"
+          formControlName="memberCode"
+          placeholder="Enter Member Code"></app-select>
+      </app-form-field>
+
+        <!-- member type -->
+      <app-form-field
+        label="Member Type">
+        <app-select
+          [options]="memberTypes"
+          formControlName="memberType"
+          placeholder="Select Member Type"></app-select>
+      </app-form-field>
+    </form>
+
+    <!-- actions -->
+    <app-page-actions
+      (confirmClick)="startRequest.emit(group.getRawValue())"
+      [confirmable]="group.valid"
+      confirm="start request"
+    ></app-page-actions>
+  </div>
+</app-rect-card>
+
+

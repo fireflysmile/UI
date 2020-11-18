@@ -1,0 +1,24 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.cm-date-of-change {
+  margin-top: 30px;
+}
+
+app-date-of-change-item + app-date-of-change-item {
+  margin-top: 24px;
+}
+
+.cm-date-of-change-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+.cm-date-of-change-label + .cm-hint {
+  margin-top: 11px;
+}
+
+.cm-date-of-change-content {
+  margin-top: 20px;
+}

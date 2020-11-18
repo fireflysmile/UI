@@ -1,0 +1,55 @@
+<app-rect-card>
+  <app-rect-card-header>
+    <!-- label -->
+    <ng-container heading>
+      {{label}}
+    </ng-container>
+
+    <!-- actions -->
+    <div class="cm-header-actions">
+      <!-- eye -->
+      <app-icon-eye
+        (click)="!viewDisabled && (showUploadedView = true)"
+        [class.cm-disabled]="viewDisabled"></app-icon-eye>
+
+      <!-- upload -->
+      <app-icon-upload
+        (click)="!uploadDisabled && file.click()"
+        [class.cm-disabled]="uploadDisabled"></app-icon-upload>
+    </div>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div class="cm-card-content">
+    <div class="cm-content-top">
+      <!-- uploaded -->
+      <i
+        *ngIf="uploaded"
+        class="cm-oblique-description">
+        {{uploaded.name}}
+      </i>
+    </div>
+
+    <!-- additional -->
+    <ng-content></ng-content>
+  </div>
+</app-rect-card>
+
+<!-- hidden input -->
+<input
+  #file
+  (change)="onFileChange($event)"
+  [accept]="accepts"
+  hidden
+  type="file"/>
+
+<!-- viewer modal -->
+<app-modal *ngIf="showUploadedView">
+  <app-preview-pdf
+    (close)="showUploadedView = false"
+    (upload)="fileUploaded.emit($event)"
+    [action]="action"
+    [name]="uploaded.name"
+    [url]="uploaded.url"
+    title="View Attachment"></app-preview-pdf>
+</app-modal>

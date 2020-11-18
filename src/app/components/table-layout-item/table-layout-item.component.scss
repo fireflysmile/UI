@@ -1,0 +1,50 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, space-between, column);
+  @include rect(90px, 207px);
+  @include padding(4px 0 8px);
+  box-shadow: 0 3px 6px rgba($black, .16);
+  background-color: $white;
+  user-select: none;
+  overflow: hidden;
+}
+
+// layout flex container
+.cm-layout-flex {
+  @include flex(center, null, column);
+  width: 90px;
+}
+
+// cursor
+app-icon-bars-h {
+  cursor: grab;
+}
+
+// heading
+.cm-layout-heading {
+  @include padding(0 10px);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: $jackson-purple;
+  text-align: center;
+  margin-top: 11px;
+  word-break: break-word;
+  width: 100%;
+}
+
+// visibility button label
+.cm-visibility-button-label {
+  font-size: 12px;
+  line-height: 16px;
+  color: $suva-grey;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+// button
+button {
+  @include clickable(true);
+}

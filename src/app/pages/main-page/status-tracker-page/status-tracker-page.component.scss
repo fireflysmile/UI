@@ -1,0 +1,37 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(0 107px 76px 99px);
+  display: block;
+  overflow: auto;
+}
+
+// status tracker header
+.cm-status-tracker-header {
+  @include flex(center, space-between);
+  @include padding(16px 0);
+
+  .cm-icon-button {
+    .cm-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+// stepper
+app-status-stepper {
+  margin-top: 19px;
+}
+
+// router container
+.cm-status-tracker-router-container {
+  margin-top: 34px;
+}
+
+// loading
+.cm-status-tracker-loading {
+  @include flex(center, center);
+  height: 150px;
+  font-size: 12px;
+}

@@ -1,0 +1,222 @@
+<ng-container *ngFor="let actions of actionGroups; let i = index">
+  <!-- div -->
+  <app-divider *ngIf="i !== 0" direction="vertical" length="22"></app-divider>
+
+  <div
+    #actionContainer
+    *ngFor="let item of actions"
+    [style.visibility]="item.hidden && item.hidden() ? 'hidden' : null"
+    class="cm-action-item-container"
+  >
+    <!-- action items -->
+    <app-card-action-item
+      (click)="item.action()"
+      [disabled]="item.disabled && item.disabled()"
+      [icon]="item.icon"
+    >
+      {{ item.label }}
+    </app-card-action-item>
+
+    <!-- switch by type when moreOptionConfig exists -->
+    <ng-container
+      *ngIf="item.moreOptionsConfig"
+      [ngSwitch]="item.moreOptionsConfig.type"
+    >
+      <!-- for layout -->
+      <ng-container *ngSwitchCase="'layout'">
+        <!-- more options -->
+        <app-more-options
+          (autoClose)="item.opened = false"
+          *ngIf="item.opened"
+          [closeOnScroll]="true"
+          [closerContainer]="actionContainer"
+          [positionContainer]="actionContainer"
+          [width]="200"
+          [verticalGap]="10"
+          appAutoCloser
+          appAutoPositioner
+          class="cm-layout-more-options"
+          horizontalPriority="left"
+          verticalPriority="bottom"
+        >
+          <!-- select hide -->
+          <app-more-option-item
+            (click)="
+              item.moreOptionsConfig.onSelectHideClick(); item.opened = false
+            "
+          >
+            <app-icon-eye-slash icon></app-icon-eye-slash>
+            <ng-container label>Select &#38; Hide Columns</ng-container>
+          </app-more-option-item>
+
+          <!-- show hidden -->
+          <app-more-option-item
+            (click)="
+              item.moreOptionsConfig.onShowHiddenClick(); item.opened = false
+            "
+          >
+            <app-icon-eye icon></app-icon-eye>
+            <ng-container label
+              >Show Hidden Columns ({{
+                item.moreOptionsConfig.hiddenColumns()
+              }})</ng-container
+            >
+          </app-more-option-item>
+
+          <!-- reorder -->
+          <app-more-option-item
+            (click)="
+              item.moreOptionsConfig.onReorderClick(); item.opened = false
+            "
+          >
+            <app-icon-bars-v icon></app-icon-bars-v>
+            <ng-container label>Reorder Columns</ng-container>
+          </app-more-option-item>
+        </app-more-options>
+      </ng-container>
+
+      <!-- for date range -->
+      <ng-container *ngSwitchCase="'date-range'">
+        <app-more-options
+          (autoClose)="
+            item.opened = false;
+            item.moreOptionsConfig.onApply(
+              item.moreOptionsConfig.startDate,
+              item.moreOptionsConfig.endDate
+            )
+          "
+          *ngIf="item.opened"
+          [closeOnScroll]="true"
+          [closerContainer]="actionContainer"
+          class="cm-date-range-more-options"
+          appAutoCloser
+          appPositionFixer
+        >
+          <!-- inputs -->
+          <div class="cm-date-range-inputs">
+            <!-- from -->
+            <app-form-field label="From Date">
+              <!-- date input -->
+              <app-date-input
+                #startDateInput
+                (ngModelChange)="
+                  item.moreOptionsConfig.startDate = $event;
+                  displayDate = $event ? $event : displayDate;
+                  endDateInput.setErrors(null)
+                "
+                [ngModel]="item.moreOptionsConfig.startDate"
+                [maxDate]="item.moreOptionsConfig.endDate"
+              ></app-date-input>
+            </app-form-field>
+
+            <!-- to -->
+            <app-form-field label="To Date">
+              <!-- date input -->
+              <app-date-input
+                #endDateInput
+                (inputFocus)="
+                  !item.moreOptionsConfig.startDate && startDateInput.focus()
+                "
+                (ngModelChange)="
+                  item.moreOptionsConfig.endDate = $event;
+                  displayDate = $event ? $event : displayDate;
+                  startDateInput.setErrors(null)
+                "
+                [ngModel]="item.moreOptionsConfig.endDate"
+                [minDate]="item.moreOptionsConfig.startDate"
+              ></app-date-input>
+            </app-form-field>
+          </div>
+
+          <!-- range calendar -->
+          <app-range-calendar
+            [(displayDate)]="displayDate"
+            [(endDate)]="item.moreOptionsConfig.endDate"
+            [(startDate)]="item.moreOptionsConfig.startDate"
+          ></app-range-calendar>
+
+          <!-- actions -->
+          <div class="cm-date-range-actions">
+            <button
+              (click)="startDateInput.reset(); endDateInput.reset()"
+              class="cm-date-range-reset"
+            >
+              reset
+            </button>
+
+            <button
+              (click)="
+                item.opened = false;
+                item.moreOptionsConfig.onApply(
+                  item.moreOptionsConfig.startDate,
+                  item.moreOptionsConfig.endDate
+                )
+              "
+              class="cm-date-range-apply"
+            >
+              apply
+            </button>
+          </div>
+        </app-more-options>
+      </ng-container>
+
+      <!-- for date -->
+      <ng-container *ngSwitchCase="'date'">
+        <app-more-options
+          (autoClose)="
+            item.opened = false;
+            item.moreOptionsConfig.onApply(item.moreOptionsConfig.date)
+          "
+          *ngIf="item.opened"
+          [closeOnScroll]="true"
+          [closerContainer]="actionContainer"
+          class="cm-date-range-more-options"
+          appAutoCloser
+          appPositionFixer
+        >
+          <!-- inputs -->
+          <div class="cm-date-range-inputs">
+            <!-- from -->
+            <app-form-field [label]="item.label">
+              <!-- date input -->
+              <app-date-input
+                #dateInput
+                (ngModelChange)="
+                  item.moreOptionsConfig.date = $event;
+                  displayDate = $event ? $event : displayDate;
+                  dateInput.setErrors(null)
+                "
+                [ngModel]="item.moreOptionsConfig.date"
+              ></app-date-input>
+            </app-form-field>
+          </div>
+
+          <!-- calendar -->
+          <app-calendar
+            [(displayDate)]="displayDate"
+            [(selectedDate)]="item.moreOptionsConfig.date"
+            [minDate]="item.moreOptionsConfig.minDate"
+            [maxDate]="item.moreOptionsConfig.maxDate"
+          ></app-calendar>
+
+          <!-- actions -->
+          <div class="cm-date-range-actions">
+            <button (click)="dateInput.reset()" class="cm-date-range-reset">
+              reset
+            </button>
+
+            <button
+              (click)="
+                item.opened = false;
+                item.moreOptionsConfig.onApply(item.moreOptionsConfig.date)
+              "
+              class="cm-date-range-apply"
+            >
+              apply
+            </button>
+          </div>
+        </app-more-options>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-container>

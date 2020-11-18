@@ -1,0 +1,33 @@
+[
+    {
+        "segment": "MF",
+        "tmCode": "TC",
+        "clientOrCcuCode": "CC",
+        "instrumentType": "BFD",
+        "symbol": "SS",
+        "ISIN": "IS",
+        "series": 1,
+        "qty": 100,
+        "ValuationPrice": 100,
+        "grossValue": 100,
+        "haircut": 100,
+        "totalEffectiveDeposit": 100,
+        "olLimit": 100,
+        "mlLimit": 100,
+        "totalExcessQuantityDueToQtyBasedLimits": 100,
+        "totalExcessValueDueToQuantityBasedLimits": 100,
+        "netEffectiveQtyAfterQtyLimits": 100,
+        "netEffectiveValueAfterQtyLimits": 100,
+        "effectiveCash": 100,
+        "limitBasedOnCashComponent": 100,
+        "excessValueDueToCashComponentLimit": 100,
+        "netEffectiveValueAfterCashComponentLimit": 100,
+        "limitBasedOnTotalLiquidAsset": 100,
+        "excessValueDueToTlaLimit": 100,
+        "netEffectiveValueAfterTlaLimit": 100,
+        "limitBasedOn50CashComponent": 100,
+        "excessValueOn50CashLimit": 100,
+        "totalExcessValueDueToValueBasedLimit": 100,
+        "netEffectiveDeposit": 100
+    }
+]

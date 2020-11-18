@@ -1,0 +1,46 @@
+<ng-container *ngIf="detail?.verified; else question">
+  <div class="cm-submitted">
+    <div class="cm-ball-icon">
+      <app-icon-check-circle></app-icon-check-circle>
+    </div>
+
+    <div class="cm-message">
+      Thank you for informing the exchange.<br/>
+      We will contact you in case of any clarifications
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #question>
+  <!-- question -->
+  <div class="cm-post-implementation-question">
+    Have you officially implemented<br/>
+    the director changes you received<br/>
+    prior approval for?
+  </div>
+
+  <!-- actions -->
+  <div class="cm-post-implementation-actions">
+    <!-- button wrapper -->
+    <div class="cm-post-implementation-button-wrapper">
+      <!-- button -->
+      <button (click)="openDirectorSelectionModal()">
+        yes
+      </button>
+
+      <!-- hint -->
+      <i class="cm-oblique-description">
+        Select “Yes” only if all changes<br/>
+        have been implemented
+      </i>
+    </div>
+
+    <!-- button wrapper -->
+    <div class="cm-post-implementation-button-wrapper">
+      <!-- button -->
+      <button (click)="onClickNo()">
+        no
+      </button>
+    </div>
+  </div>
+</ng-template>

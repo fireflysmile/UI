@@ -1,0 +1,9 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+:host {
+  @include fullScreen;
+  position: absolute;
+  pointer-events: auto;
+  background-color: rgba($black, .8);
+}

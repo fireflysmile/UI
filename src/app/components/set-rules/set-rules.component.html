@@ -1,0 +1,30 @@
+<app-rect-card>
+  <!-- header -->
+  <div class="cm-header">
+    <h4>
+      Set Rules
+    </h4>
+
+    <button
+      (click)="openFileUploadModal()"
+      appInlineButton
+      color="default">
+      <app-icon-upload></app-icon-upload>
+      Upload File
+    </button>
+  </div>
+
+  <!-- content -->
+  <div class="cm-content">
+    <!-- form filed -->
+    <app-form-field
+      label="PC Code">
+      <!-- select-->
+      <app-select
+        [(ngModel)]="code"
+        [autoWidth]="false"
+        [options]="codes"
+        placeholder="Select a PC Code"></app-select>
+    </app-form-field>
+  </div>
+</app-rect-card>

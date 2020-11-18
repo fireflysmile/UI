@@ -1,0 +1,66 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-application-review-card-title {
+  margin-bottom: 42px;
+}
+
+.stats-wrap {
+  @include flex(flex-start);
+  margin-bottom: 41px;
+
+  .stat-card {
+    @include padding(4px 0 7px);
+    @include flex(center, flex-start, column);
+    width: 82px;
+    background-color: $white;
+    box-shadow: 0 3px 6px rgba($black, 0.16);
+    margin-right: 98px;
+    color: $black;
+
+    &:first-of-type {
+      @include border(1px solid $fuel-yellow);
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 37px;
+      margin-bottom: 8px;
+    }
+
+    .stat-title {
+      font-size: 14px;
+      line-height: 19px;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+
+    .stat-subtitle {
+      font-size: 10px;
+      line-height: 13px;
+      height: 13px;
+    }
+  }
+}
+
+table {
+  th,
+  td {
+    &:nth-child(1),
+    &:nth-child(2) {
+      width: 17%;
+      min-width: 180px;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      width: 9%;
+      min-width: 100px;
+    }
+
+    .risk {
+      text-transform: capitalize;
+    }
+  }
+}

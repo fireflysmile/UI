@@ -1,0 +1,61 @@
+1601856985124	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilebCDNw8"
+1601856986954	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Warning processing storage: An unexpected property was found in the WebExtension manifest.
+1601856986962	addons.webextension.switchyomega@feliscatus.addons.mozilla.org	WARN	Loading extension 'switchyomega@feliscatus.addons.mozilla.org': Reading manifest: Warning processing key: An unexpected property was found in the WebExtension manifest.
+1601856986962	addons.webextension.switchyomega@feliscatus.addons.mozilla.org	WARN	Loading extension 'switchyomega@feliscatus.addons.mozilla.org': Reading manifest: Warning processing options_page: An unexpected property was found in the WebExtension manifest.
+JavaScript warning: moz-extension://3e946bd1-41c2-44a2-8645-3e7350493ed7/js/Driver/Bookmarks.js, line 1642: unreachable code after return statement
+JavaScript warning: moz-extension://b74b1545-f1e5-4c45-9923-6c210a12d18b/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 3ms)
+JavaScript warning: moz-extension://be5b0283-b348-4528-bca3-6c79c2e18f12/js/omega_target.min.js, line 4906: unreachable code after return statement
+JavaScript warning: moz-extension://be5b0283-b348-4528-bca3-6c79c2e18f12/js/omega_target.min.js, line 4906: unreachable code after return statement
+1601856988079	Marionette	INFO	Listening on port 44063
+1601856988124	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Warning processing key: An unexpected property was found in the WebExtension manifest.
+1601856988125	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Warning processing options_page: An unexpected property was found in the WebExtension manifest.
+1601856988148	Marionette	WARN	TLS certificate errors will be ignored for this session
+1601856988316	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Warning processing storage: An unexpected property was found in the WebExtension manifest.
+JavaScript error: resource://gre/modules/ConduitsChild.jsm, line 108: Error: sendRemoveListener on closed conduit switchyomega@feliscatus.addons.mozilla.org.274877906992
+1601856990129	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Warning processing key: An unexpected property was found in the WebExtension manifest.
+1601856990129	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Warning processing options_page: An unexpected property was found in the WebExtension manifest.
+1601856990137	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Warning processing storage: An unexpected property was found in the WebExtension manifest.
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: http://www.hdpfans.com/data/cache/common.js?mPe, line 1: TypeError: searchtxt is null
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript error: https://www.shoudian.org/plugin.php?id=dsu_paulsign:sign, line 655: ReferenceError: pgvMain is not defined
+JavaScript error: , line 0: uncaught exception: undefined
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript error: https://www.shoudian.org/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0, line 410: ReferenceError: pgvMain is not defined
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript warning: https://static.tongdun.net/captcha/main/1.7.11/tdCaptcha.js?t=444960, line 1: unreachable code after return statement
+JavaScript error: https://www.shoudian.org/plugin.php?id=dsu_paulsign:sign, line 616: ReferenceError: pgvMain is not defined
+JavaScript error: https://www.shoudian.org/forum.php, line 1649: ReferenceError: pgvMain is not defined
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: http://astrocn.org/data/cache/common.js?bLJ, line 1: ReferenceError: lng is not defined
+JavaScript error: http://astrocn.org/data/cache/common.js?bLJ, line 1: ReferenceError: lng is not defined
+JavaScript error: http://astrocn.org/data/cache/common.js?bLJ, line 1: ReferenceError: lng is not defined
+JavaScript error: http://astrocn.org/data/cache/common.js?bLJ, line 1: ReferenceError: lng is not defined
+JavaScript error: http://astrocn.org/data/cache/common.js?bLJ, line 1: ReferenceError: lng is not defined
+JavaScript error: http://astrocn.org/data/cache/common.js?bLJ, line 1: ReferenceError: lng is not defined
+1601857212104	Marionette	INFO	Stopped listening on port 44063
+JavaScript error: http://bdimg.share.baidu.com/static/api/js/trans/logger.js?v=60603cb3.js, line 1: TypeError: n.ajax.request is not a function
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

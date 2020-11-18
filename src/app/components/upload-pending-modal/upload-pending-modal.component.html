@@ -1,0 +1,22 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    <img
+      alt="Loader"
+      src="assets/images/Loader.png"/>
+
+    <div class="cm-content">
+      {{data.content}}
+    </div>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      appFlatButton
+      color="primary">
+      cancel upload
+    </button>
+  </app-modal-actions>
+</app-modal-container>

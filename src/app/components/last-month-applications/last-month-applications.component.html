@@ -1,0 +1,77 @@
+<!-- rect card -->
+<app-rect-card>
+  <!-- header -->
+  <div class="cm-last-month-application-header">
+    <!-- title -->
+    <div class="cm-last-month-application-title">
+      <div class="cm-ball-icon">
+        <app-icon-line-chart></app-icon-line-chart>
+      </div>
+      Applications
+    </div>
+
+    <!-- right -->
+    <div class="cm-last-month-application-header-right">
+      <!-- label -->
+      <div class="cm-last-month-application-header-label">
+        Last 30 Days
+      </div>
+
+      <!-- dates -->
+      <div class="cm-last-month-application-header-date">
+        {{before30d | date: dateFormat}} to {{now | date: dateFormat}}
+      </div>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="cm-last-month-application-content">
+    <!-- total -->
+    <div class="cm-last-month-application-item">
+      <!-- left -->
+      <div class="cm-last-month-application-item-left">
+        <app-icon-copy-doc></app-icon-copy-doc>
+        <div class="cm-last-month-application-item-label">
+          Total Applications
+        </div>
+      </div>
+
+      <!-- value -->
+      <div class="cm-last-month-application-item-value">
+        {{summary.actionUnderReview + summary.applicationCompleted}}
+      </div>
+    </div>
+
+    <!-- under review -->
+    <div class="cm-last-month-application-item cm-child">
+      <!-- left -->
+      <div class="cm-last-month-application-item-left">
+        <app-icon-search-doc></app-icon-search-doc>
+        <div class="cm-last-month-application-item-label">
+          Action Under Review
+        </div>
+      </div>
+
+      <!-- value -->
+      <div class="cm-last-month-application-item-value">
+        {{summary.actionUnderReview}}
+      </div>
+    </div>
+
+    <!-- completed -->
+    <div class="cm-last-month-application-item cm-child">
+      <!-- left -->
+      <div class="cm-last-month-application-item-left">
+        <app-icon-assignment></app-icon-assignment>
+        <div class="cm-last-month-application-item-label">
+          Application Completed
+        </div>
+      </div>
+
+      <!-- value -->
+      <div class="cm-last-month-application-item-value cm-green">
+        {{summary.applicationCompleted}}
+      </div>
+    </div>
+  </div>
+</app-rect-card>

@@ -1,0 +1,35 @@
+<app-modal-container>
+  <app-modal-content>
+    <ng-container *ngIf="data?.toggleAll; else onlyUcc">
+      You have chosen to switch on auto modification for all trades. All the trades for which client code-PC Code map is
+      uploaded, PC mode will be modified accordingly (iLCNuding trades having null PC Code)
+      <br/>
+      <br/>
+      Do you wish to enable Auto-PC modification for all trades?
+    </ng-container>
+
+    <ng-template #onlyUcc>
+      You have chosen to switch on auto modification for client code modification. All the unconfirmed trades for which
+      client code is modified, will undergo change in PC Code based on the mapping.
+      <br/>
+      <br/>
+      Do you wish to enable Auto-PC modification for trades modified with UCC
+    </ng-template>
+  </app-modal-content>
+
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      appFlatButton
+      color="secondary">
+      cancel
+    </button>
+
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      confirm auto modification
+    </button>
+  </app-modal-actions>
+</app-modal-container>

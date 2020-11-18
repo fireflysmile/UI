@@ -1,0 +1,94 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(8px);
+
+  svg {
+    display: block;
+  }
+}
+
+// container
+.cm-dynamic-filter-quantity-container {
+  @include flex(stretch, null, null, nowrap);
+  @include border(1px solid $suva-grey);
+  border-radius: 3px;
+
+  input {
+    @include padding(0 7px);
+    width: 75px;
+    font-size: 10px;
+    font-weight: 400;
+    color: $black;
+    border-radius: 0 3px 3px 0;
+  }
+}
+
+// selector
+.cm-dynamic-filter-quantity-selector {
+  @include padding(0 6px);
+  position: relative;
+  width: 60px;
+}
+
+// quantity selector inner
+.cm-quantity-selector-inner {
+  @include flex(center, space-between);
+  @include clickable(true);
+  height: 100%;
+}
+
+// options container
+.cm-quantity-selector-options {
+  @include padding(8px 11px);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 163px;
+  border-radius: 0;
+}
+
+// option item
+.cm-quantity-selector-option-item {
+  @include flex(center, flex-start);
+  @include clickable();
+  @include borderBottom(1px solid $dim-grey);
+  height: 24px;
+  font-size: 8px;
+  font-weight: 400;
+  color: $black;
+
+  // hover
+  &:hover {
+    background-color: rgba($light-grey, .5);
+  }
+
+  // selected
+  &.cm-selected {
+    color: $safety-orange;
+  }
+}
+
+// quantity placeholder
+.cm-quantity-placeholder {
+  font-size: 12px;
+  font-weight: 400;
+  color: $suva-grey;
+}
+
+// arrow
+.cm-quantity-selector-arrow {
+  @include clickable(true);
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid rgba($black, .54);
+  transform: rotate(180deg);
+
+  // opened
+  &.cm-opened {
+    transform: rotate(0);
+  }
+}

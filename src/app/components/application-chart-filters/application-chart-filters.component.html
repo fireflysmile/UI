@@ -1,0 +1,89 @@
+<!-- top section -->
+<div class="cm-application-chart-filter-top">
+  <!-- header -->
+  <div class="cm-application-chart-filter-header">
+    <!-- icon -->
+    <div class="cm-ball-icon">
+      <app-icon-bar-chart></app-icon-bar-chart>
+    </div>
+
+    <!-- right section -->
+    <div class="cm-application-chart-filter-header-right">
+      <!-- title -->
+      <div class="cm-application-chart-filter-header-title">
+        All Applications
+      </div>
+
+      <!-- subtitle -->
+      <div class="cm-application-chart-filter-header-sub-title">
+        For Year {{now.getFullYear()}}
+      </div>
+    </div>
+  </div>
+
+  <!-- content -->
+  <form
+    [formGroup]="group"
+    class="cm-application-chart-filter-form">
+    <!-- months field -->
+    <div class="cm-application-chart-filter-field">
+      <app-icon-calendar-range></app-icon-calendar-range>
+
+      <!-- form field -->
+      <app-form-field
+        label="Months">
+        <!-- select -->
+        <app-multi-select
+          [options]="monthOptions"
+          formControlName="months"></app-multi-select>
+      </app-form-field>
+    </div>
+
+    <!-- requests -->
+    <div class="cm-application-chart-filter-field">
+      <app-icon-browsers></app-icon-browsers>
+
+      <!-- form field -->
+      <app-form-field
+        label="Requests">
+        <!-- select -->
+        <app-multi-select
+          [options]="requestOptions"
+          formControlName="requests"></app-multi-select>
+      </app-form-field>
+    </div>
+
+    <!-- button -->
+    <button (click)="setValue(group.getRawValue())">
+      Visualize
+    </button>
+  </form>
+</div>
+
+<!-- bottom -->
+<div class="cm-application-chart-filter-bottom">
+  <!-- arrow -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="14.141" height="7.068" viewBox="0 0 14.141 7.068">
+    <g fill="#7870a6">
+      <path
+        d="M 7.072165012359619 6.360415935516357 L 1.207701921463013 0.4999997019767761 L 12.93339443206787 0.4999997019767761 L 7.072165012359619 6.360415935516357 Z"
+        stroke="none"/>
+      <path
+        d="M 7.072062492370605 5.653457641601563 L 11.72616577148438 0.9999997019767761 L 2.415391445159912 0.9999997019767761 L 7.072062492370605 5.653457641601563 M 7.072262287139893 7.068359851837158 L 7.072262287139893 7.067379474639893 L 2.499999936844688e-06 -3.12499992105586e-07 L 14.14062213897705 -3.12499992105586e-07 L 7.072262287139893 7.067379474639893 L 7.072262287139893 7.068359851837158 Z"
+        stroke="none" fill="#7870a6"/>
+    </g>
+  </svg>
+
+  <!-- inner -->
+  <div class="cm-application-chart-filter-bottom-inner">
+    <!-- label -->
+    <div class="cm-application-chart-filter-bottom-label">
+      Total Applications
+    </div>
+
+    <!-- value -->
+    <div class="cm-application-chart-filter-bottom-value">
+      {{total}}
+    </div>
+  </div>
+</div>

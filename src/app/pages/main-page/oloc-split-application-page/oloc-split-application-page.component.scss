@@ -1,0 +1,97 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+.cm-page-headline {
+  margin-top: 26px;
+  margin-bottom: 20px;
+}
+
+app-rect-card-header {
+  ::ng-deep {
+    .cm-rect-card-title {
+      @include flex(flex-start, null, column);
+
+      span {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400;
+        color: $light-slate-grey;
+        margin-top: 5px;
+      }
+    }
+
+    app-divider {
+      background-color: $white-smoke3;
+    }
+  }
+}
+
+// top section
+.cm-top-section {
+  @include flex(stretch, space-between);
+}
+
+.cm-top-left-section {
+  @include flex(stretch, null, column, nowrap);
+  width: calc(50% - 17px);
+
+  // total card
+  .cm-total-card {
+    @include itemFlex(1, 1, 0);
+
+    ::ng-deep {
+      .cm-split-applications-top {
+        @include padding(0 39px 0 20px);
+      }
+    }
+  }
+
+  // sub row
+  .cm-sub-row {
+    @include flex(stretch, space-between, null, nowrap);
+    margin-top: 17px;
+
+    app-request-application-small-card {
+      width: calc(33% - 12px);
+    }
+
+    app-request-application-small-card + app-request-application-small-card {
+      margin-left: 17px;
+    }
+  }
+}
+
+// top right section
+.cm-top-right-section {
+  width: calc(51% - 17px);
+  margin-left: 17px;
+}
+
+// toggle row
+app-toggle-filter {
+  padding-left: 15px;
+  padding-bottom: 50px;
+  ::ng-deep {
+    .cm-toggle-label {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .cm-toggle-buttons {
+      height: 80px;
+      width: 550px;
+
+      .cm-auto-width {
+        padding: 0 20px 0 20px;
+      }
+
+      .cm-toggle-button {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+app-card {
+  margin-top: 28px;
+}

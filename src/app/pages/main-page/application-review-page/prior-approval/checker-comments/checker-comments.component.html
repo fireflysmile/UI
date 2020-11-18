@@ -1,0 +1,13 @@
+<div class="comments">
+  <textarea
+    *ngIf="editable" placeholder="Enter comments to Maker"
+    class="cm-mat-textarea" rows="2"
+    [appAutoSizeTextarea]="2" [(ngModel)]="newComment" (input)="comment.emit(newComment)"></textarea>
+
+  <div class="comments-wrap">
+    <div class="comment" *ngFor="let comment of comments">
+      {{ comment.text }}
+      <div class="comment-date">{{ comment.date | date: 'd/M/y HH:mm a' }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<ng-container *ngIf="isEditing && column && column.editable && nonEmptyOriginally">
+  <ng-container [ngSwitch]="column.displayType">
+
+    <!-- input -->
+    <span class="edit" *ngSwitchDefault>
+      <input class="cm-mat-input" [(ngModel)]="data[column.property]"
+        [pattern]="column.pattern || '.*'" [required]="nonEmptyOriginally">
+    </span>
+    <!-- number input -->
+    <span class="edit" *ngSwitchCase="'number'">
+      <input class="cm-mat-input" [(ngModel)]="data[column.property]"
+        appNumberOnly [maxLength]="column.maxLength"
+        [pattern]="column.pattern || '.*'" [required]="nonEmptyOriginally">
+    </span>
+    <!-- textarea -->
+    <span class="edit" *ngSwitchCase="'text'">
+      <textarea class="cm-mat-textarea" [(ngModel)]="data[column.property]"
+        [appAutoSizeTextarea]="2" rows="2"
+        [required]="nonEmptyOriginally">
+      </textarea>
+    </span>
+
+    <!-- select -->
+    <span class="edit" *ngSwitchCase="'select'">
+      <app-select [options]="column.options" [(ngModel)]="data[column.property]"></app-select>
+    </span>
+
+    <!-- datepicker -->
+    <span class="edit" *ngSwitchCase="'date'">
+      <div #datepicker class="datepicker" (click)="showOptions = true">
+        <span>{{ data[column.property] | date: 'dd/MM/yyyy' }}</span>
+        <app-icon-calendar></app-icon-calendar>
+        <app-more-options
+          (autoClose)="showOptions = false"
+          *ngIf="showOptions"
+          [closerContainer]="datepicker"
+          appAutoCloser
+          appAutoPositioner
+          [positionContainer]="datepicker"
+          horizontalPriority="right"
+          [width]="260"
+          verticalPriority="bottom"
+          [verticalGap]="10"
+          [horizontalGap]="-15">
+          <div class="top-section">
+            <app-date-input [(ngModel)]="data[column.property]"></app-date-input>
+          </div>
+          <app-calendar
+            [selectedDate]="data[column.property]"
+            [displayDate]="data[column.property]"
+            (selectedDateChange)="data[column.property] = $event.toJSON()">
+          </app-calendar>
+        </app-more-options>
+      </div>
+    </span>
+    <!-- monthpicker -->
+    <span class="edit" *ngSwitchCase="'month'">
+      <div #monthpicker class="monthpicker" (click)="showOptions = true">
+        <span>{{ data[column.property] | date: 'MMM yyyy' }}</span>
+        <app-icon-calendar></app-icon-calendar>
+        <app-more-options
+          (autoClose)="showOptions = false"
+          *ngIf="showOptions"
+          [closerContainer]="monthpicker"
+          appAutoCloser
+          appAutoPositioner
+          [positionContainer]="monthpicker"
+          horizontalPriority="right"
+          [width]="180"
+          verticalPriority="bottom"
+          [verticalGap]="10"
+          [horizontalGap]="-8">
+          <app-month-picker
+            [selected]="data[column.property]"
+            (selectedChange)="validateMinMaxAndUpdate($event.toJSON())">
+          </app-month-picker>
+        </app-more-options>
+      </div>
+    </span>
+
+    <!-- yes / no toggle -->
+    <span class="edit" *ngSwitchCase="'boolean'">
+      <app-yes-no-toggle
+        [value]="data[column.property]"
+        [disabled]="!isEditing"
+        (toggle)="data[column.property] = $event">
+      </app-yes-no-toggle>
+    </span>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="column" [ngSwitch]="column.displayType">
+  <span class="value" *ngSwitchDefault>{{ data[column.property] }}</span>
+  <span class="value text" *ngSwitchCase="'text'">{{ data[column.property] }}</span>
+  <span class="value" *ngSwitchCase="'date'">{{ data[column.property] | date: 'dd/MM/yyyy' }}</span>
+  <span class="value" *ngSwitchCase="'month'">{{ data[column.property] | date: 'MMM yyyy' }}</span>
+  <span class="value" *ngSwitchCase="'timePassed'">{{ data[column.property] || column.valueAccessor(data) | timePassed }}</span>
+  <span class="value" *ngSwitchCase="'boolean'">
+    <app-yes-no-toggle [value]="data[column.property]" [disabled]="true"></app-yes-no-toggle>
+  </span>
+</ng-container>

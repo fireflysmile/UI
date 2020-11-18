@@ -1,0 +1,23 @@
+<!-- label -->
+<div
+  *ngIf="label"
+  class="cm-toggle-label">
+  {{label}}
+</div>
+
+<!-- buttons container -->
+<div class="cm-toggle-buttons">
+  <!-- toggle button -->
+  <button
+    (click)="item.value !== value && setValue(item.value)"
+    *ngFor="let item of options"
+    [class.cm-active]="item.value === value"
+    [class.cm-all]="item.value === ''"
+    [class.cm-auto-width]="autoWidth"
+    [style.width]="width"
+    [class.width-set]="width"
+    class="cm-toggle-button">
+    {{item.label}}
+    <span>{{item.subLabel}}</span>
+  </button>
+</div>

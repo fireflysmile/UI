@@ -1,0 +1,35 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(67px 205px 130px 127px);
+  @include box(100%);
+  display: block;
+  overflow: auto;
+}
+
+.cm-row {
+  @include flex(flex-start);
+}
+
+app-rect-card {
+  width: 300px;
+}
+
+app-rect-card + app-rect-card {
+  margin-left: 20px;
+}
+
+.cm-title {
+  @include padding(0 16px);
+  @include flex(center);
+  font-size: 16px;
+  font-weight: 700;
+  color: $jackson-purple;
+  height: 60px;
+}
+
+.cm-content {
+  @include padding(16px);
+  @include flex(center, space-between);
+}

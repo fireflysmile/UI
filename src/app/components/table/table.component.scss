@@ -1,0 +1,477 @@
+@import 'src/app/styles/mixins';
+@import 'src/app/styles/props';
+
+:host {
+  @include flex(flex-start, null, null, nowrap);
+}
+
+// table setting
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  // only for chrome, safari, edge
+  @include onlyForChrome {
+    thead {
+      position: sticky;
+      top: 0;
+      background-color: $white;
+
+      tr {
+        &:first-child {
+          th {
+            position: sticky;
+            top: 0;
+          }
+        }
+
+        &:last-child {
+          th {
+            position: sticky;
+          }
+        }
+      }
+    }
+
+    tr {
+      th,
+      td {
+        &:first-child {
+          position: sticky;
+          left: 0;
+          z-index: 20;
+        }
+      }
+
+      th {
+        background-color: $white;
+        z-index: 10;
+      }
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        &:first-child {
+          z-index: 30;
+        }
+      }
+    }
+  }
+
+  // only for firefox
+  @include onlyForFirefox {
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background-color: $white;
+
+      th:first-child {
+        position: sticky;
+        left: 0;
+      }
+
+      th:not(:first-child) {
+        position: static !important;
+      }
+    }
+
+    tr {
+      th,
+      td {
+        &:first-child {
+          position: sticky;
+          left: 0;
+        }
+      }
+
+      th {
+        background-color: $white;
+        z-index: 40;
+      }
+    }
+  }
+}
+
+// cell common
+th,
+td {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+
+  &.cm-fake-column {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+// header
+th {
+  height: 32px;
+
+  @include onlyForFirefox {
+    height: auto !important;
+    min-height: 32px;
+  }
+
+  // cell inner
+  .cm-cell-inner {
+    @include flex(flex-start, space-between, null, nowrap);
+
+    // header label
+    .cm-header-label {
+      @include itemFlex(1, 1, 0);
+    }
+  }
+}
+
+// body
+td {
+  height: 40px;
+
+  // cell inner
+  .cm-cell-inner {
+    @include flex(center, flex-start);
+    color: $raven;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+}
+
+// every second rows
+tbody {
+  th {
+    background-color: $white;
+  }
+
+  tr:nth-child(2n - 1) {
+    td {
+      background-color: $white;
+    }
+  }
+
+  tr:nth-child(2n) {
+    td {
+      background-color: #f7f9f9;
+    }
+  }
+}
+
+// cell inner
+.cm-cell-inner {
+  @include padding(8px);
+  @include box(100%);
+}
+
+// header label
+.cm-header-label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: $jackson-purple;
+  //word-break: break-word;
+  white-space: normal;
+  text-align: left;
+}
+
+// header sorts
+.cm-header-sorts {
+  @include flex(center, center, column);
+  height: 16px;
+  margin-left: 8px;
+
+  // inactive
+  &.cm-inactive {
+    .cm-header-sort-arrow {
+      border-bottom: 4px solid $light-grey;
+    }
+  }
+}
+
+// header sort arrow
+.cm-header-sort-arrow {
+  @include clickable(true);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid $jackson-purple;
+
+  // down
+  &.cm-down {
+    transform: rotate(180deg);
+  }
+
+  // inactive
+  &.cm-inactive {
+    border-bottom: 4px solid $light-grey;
+  }
+}
+
+// arrow gap
+.cm-header-sort-arrow + .cm-header-sort-arrow {
+  margin-top: 3px;
+}
+
+// static column
+.cm-table-static-column {
+  // cell inner for static column
+  .cm-cell-inner {
+    @include flex(center, center);
+  }
+}
+
+// table row
+.cm-table-row {
+  // header
+  &.cm-header {
+    @include flex(center);
+  }
+
+  // body
+  &.cm-body {
+    @include flex(flex-start);
+  }
+}
+
+// table cell
+.cm-table-cell {
+  @include padding(0 8px);
+
+  // header
+  &.cm-header {
+    @include flex(flex-start, space-between);
+
+    .cm-table-header-label {
+      @include itemFlex(1, 1, 0);
+    }
+  }
+}
+
+// table container
+.cm-table-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+}
+
+// static element common
+.cm-table-static-column,
+.cm-table-static-header,
+.cm-table-static-corner {
+  @include topLeft;
+  position: absolute;
+  background-color: $white;
+}
+
+// static header
+.cm-table-static-header {
+  z-index: 10;
+
+  th {
+    background-color: $white;
+  }
+}
+
+// static column
+.cm-table-static-column {
+  left: 0;
+  z-index: 11;
+
+  th,
+  td {
+    max-width: none;
+  }
+}
+
+// static corner
+.cm-table-static-corner {
+  @include topLeft;
+  z-index: 12;
+
+  th {
+    background-color: $white;
+    max-width: none;
+  }
+}
+
+// static header
+.cm-table-static-corner {
+  th {
+    .cm-cell-inner {
+      @include flex(center, center);
+    }
+  }
+}
+
+.cm-table-static-header,
+.cm-table {
+  @include onlyForIE {
+    min-width: 100%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  // last column in scrollable content
+  tr {
+    th,
+    td {
+      &:last-child {
+        .cm-cell-inner {
+          padding-right: 16px;
+        }
+      }
+    }
+  }
+}
+
+.cm-table {
+  table {
+    @include onlyForIE {
+      table-layout: auto;
+    }
+
+    tr {
+      th,
+      td {
+        &:first-child {
+          .cm-cell-inner {
+            @include flex(center, center);
+          }
+        }
+      }
+    }
+  }
+}
+
+// loading column
+.cm-status-column {
+  height: 200px;
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: 400;
+  color: $suva-grey;
+  text-align: center;
+}
+
+.cm-table-static-column,
+.cm-table-static-header,
+.cm-table-static-corner {
+  display: none;
+}
+
+// table link
+.cm-table-link {
+  @include clickable(true);
+  color: $safety-orange;
+}
+
+// numeric column
+.cm-numeric-column {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}
+
+// button
+.btn-confirm {
+  @include clickable(true);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: $tahiti-gold;
+}
+
+.boolean-selector-container {
+  display: flex;
+  width: 100%;
+
+  .btn-confirm {
+    margin-left: 5px;
+  }
+}
+
+.cm-info {
+  position: relative;
+  margin-right: 5px;
+  // >* {
+  //   position: absolute;
+  //   bottom: 120%;
+  //   left: 0;
+  // }
+
+}
+
+.cm-info-instrument-type-panel {
+  // width: 100px;
+  // height: 200px;
+
+  position: absolute;
+  transform: translateX(-25%);
+  bottom: calc(100% + 10px);
+  // width: 100px;
+  // height: 200px;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  z-index: 999;
+  padding: 20px;
+
+  .panel-arrow{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 1000;
+    transform: rotate(-40deg);
+    left: calc(25% - 10px);
+    top: calc(100% - 10px);
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    background-color: white;
+
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .sections{
+    display: flex;
+    .section{
+      > *{
+        margin-top: 10px;
+      }
+       &:nth-child(2){
+         margin-left: 20px;
+       }
+      .sub-title{
+        font-weight: bold;
+        margin-left: 10px;
+      }
+      .item {
+        display: flex;
+        // width: 50%;
+        color: #707070;
+        white-space: nowrap;
+        >* {
+          margin-left: 10px;
+        }
+        .name {
+          width: 60px;
+          font-weight: bold;
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,71 @@
+<div class="cm-filter-group">
+  <!-- filters -->
+  <form
+    #form="extendedForm"
+    (validSubmit)="filter.emit(group.getRawValue())"
+    [formGroup]="group"
+    appExtendedForm
+    class="cm-filters">
+    <!-- user id -->
+    <app-form-field
+      label="User ID">
+      <input
+        class="cm-mat-input"
+        formControlName="userId"
+        placeholder="Search by User ID"/>
+    </app-form-field>
+
+    <!-- member id -->
+    <app-form-field
+      *ngIf="appService.isLCNAdmin$ | async"
+      label="Member ID">
+      <input
+        class="cm-mat-input"
+        formControlName="memberId"
+        placeholder="Search by Member ID"/>
+    </app-form-field>
+
+    <!-- segment -->
+    <app-form-field
+      label="Segment">
+      <app-select
+        [autoWidth]="false"
+        formControlName="segment"
+        placeholder="Filter by Segment">
+        <app-option
+          *ngFor="let item of segmentOptions"
+          [value]="item.value">
+          {{item.label}}
+        </app-option>
+      </app-select>
+    </app-form-field>
+
+    <button hidden></button>
+  </form>
+
+  <!-- actions -->
+  <div class="cm-actions">
+    <button
+      (click)="form.submit()"
+      appStrokeButton
+      color="primary">
+      Apply Filter
+    </button>
+
+    <button
+      (click)="resetFilter()"
+      [disabled]="!valid"
+      appStrokeButton
+      color="primary">
+      Reset Filter
+    </button>
+  </div>
+</div>
+
+<button
+  *ngIf="appService.isLCNAdmin$ | async"
+  appInlineButton
+  color="default">
+  <app-icon-upload></app-icon-upload>
+  Upload File
+</button>

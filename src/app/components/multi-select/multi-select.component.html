@@ -1,0 +1,64 @@
+<!-- select -->
+<div
+  (click)="opened ? closeOptions() : openOptions()"
+  [class.ts-opened]="opened"
+  [class.ts-error]="hasError"
+  [class.ts-disabled]="disabled"
+  class="ts-select">
+  <!-- label -->
+  <div
+    [class.ts-placeholder]="!selectedLabel"
+    [class.ts-cancelable]="cancelable"
+    class="ts-select-label">
+    {{selectedLabel || placeholder}}
+  </div>
+
+  <!-- close icon -->
+  <svg
+    (click)="$event.stopPropagation(); cancelClick.emit()"
+    *ngIf="cancelable && selectedValue"
+    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20">
+    <path fill="#8B8A8A"
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+  </svg>
+
+  <!-- down icon -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5">
+    <path d="M7,10l5,5,5-5Z" transform="translate(-7 -10)" fill="#8B8A8A"/>
+  </svg>
+</div>
+
+<!-- options -->
+<div
+  (autoClose)="closeOptions()"
+  *ngIf="opened"
+  [closeOnScroll]="true"
+  [closerContainer]="elementRef"
+  [positionContainer]="elementRef"
+  appAutoCloser
+  appAutoPositioner
+  class="ts-select-options">
+  <!-- display content options -->
+  <ng-content select="app-option"></ng-content>
+
+  <!-- view options will be rendered when content options are not existing -->
+  <ng-container *ngIf="!hasContentOptions">
+    <app-option
+      (optionClicked)="clearSelection()"
+      class="cm-multi-select-all-option">
+      All
+    </app-option>
+
+    <!-- display view options -->
+    <app-option
+      (optionClicked)="item.selected = !item.selected; setMultipleValue()"
+      *ngFor="let item of options"
+      [value]="item">
+      <app-checkbox [ngModel]="item.selected"></app-checkbox>
+      <span>
+        {{item.label}}
+      </span>
+    </app-option>
+  </ng-container>
+</div>

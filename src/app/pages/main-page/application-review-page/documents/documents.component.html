@@ -1,0 +1,17 @@
+<app-application-review-card>
+  <app-application-review-card-title title="Documents">
+    <app-card-action-item right icon="download" [freeWidth]="true" (click)="download()">Download Application</app-card-action-item>
+  </app-application-review-card-title>
+
+  <div class="person-documents-group" *ngFor="let group of data">
+    <div class="person-name">{{ group.name }}</div>
+    <div class="documents-wrap">
+      <app-document-card
+        *ngFor="let document of group.documents"
+        [document]="document"
+        (addToReview)="addToReview(document.type, group.personId)">
+      </app-document-card>
+    </div>
+  </div>
+
+</app-application-review-card>

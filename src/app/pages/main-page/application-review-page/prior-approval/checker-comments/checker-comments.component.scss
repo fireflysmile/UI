@@ -1,0 +1,24 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.comments {
+
+  .comments-wrap {
+    @include paddingRight(15px);
+    max-height: 100px;
+    overflow: auto;
+  }
+
+  textarea {
+    margin-bottom: 10px;
+  }
+
+  .comment {
+    margin-bottom: 6px;
+    .comment-date {
+      font-size: 12px;
+      line-height: 16px;
+      color: $suva-grey;
+    }
+  }
+}

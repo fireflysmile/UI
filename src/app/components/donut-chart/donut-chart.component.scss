@@ -1,0 +1,116 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  position: relative;
+}
+
+svg {
+  display: block;
+}
+
+.split-anchor{
+  display: none;
+}
+
+.legend {
+  @include flex(flex-start, center, null, nowrap);
+  @include padding(0 30px);
+  font-size: 10px;
+  color: $gun-powder;
+
+  .legend-prefix {
+    width: 80px;
+    font-weight: 700;
+    line-height: 21px;
+
+    & + .legend-items-wrap {
+      max-width: calc(100% - 80px);
+      margin-top: 0;
+    }
+  }
+
+  .legend-items-wrap {
+    @include flex(flex-start);
+    flex-grow: 1;
+    margin-top: 40px;
+
+    .legend-item {
+      @include flex(center);
+      margin-bottom: 9px;
+      padding-right: 16px;
+
+      .color-indicator {
+        height: 18px;
+        width: 18px;
+        border-radius: 9px;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+app-more-options.tooltip {
+  @include padding(10px);
+  position: absolute;
+  z-index: 100;
+  font-size: 12px;
+  line-height: 18px;
+  white-space: pre-wrap;
+  width: 150px;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.collateral-detail-tooltip {
+  position: absolute;
+  border: 1px solid;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  -mox-box-shadow: 4px 4px 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 10px rbga(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.collateral-detail-tooltip.hidden {
+  opacity: 0;
+}
+.collateral-detail-tooltip p {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+.collateral-detail-tooltip{
+  #tooltip1, #tooltip3 {
+    font-weight: bold;
+  }
+  #tooltip2 {
+    font-style: italic;
+  }
+  #panel-arrow{
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    z-index: 1000;
+    transform: rotate(-40deg);
+    background-color: white;
+  
+    left: -6px;
+    top: 20px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  
+  }
+  
+}

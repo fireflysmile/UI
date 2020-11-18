@@ -1,0 +1,89 @@
+<div class="cm-scroll-container">
+  <button (click)="setUser('HO')" [routerLink]="['/main/dashboard']">
+    HO Internal
+  </button>
+
+  <button (click)="setUser('RO')" [routerLink]="['/main/dashboard']">
+    RO Internal
+  </button>
+
+  <button
+    (click)="setUser('RO', true, true)"
+    [routerLink]="['/main/dashboard']"
+  >
+    RO Internal (Checker)
+  </button>
+
+  <button (click)="setUser('Member')" [routerLink]="['/main/dashboard']">
+    Member
+  </button>
+
+  <button (click)="setUser('Tester')" [routerLink]="['/main/requests']">
+    Tester
+  </button>
+
+  <button
+    (click)="setUser('Member Admin')"
+    [routerLink]="['/main/user-management/login-access/access-management']"
+  >
+    User Management - Member Admin
+  </button>
+
+  <button
+    (click)="setUser('LCN Admin')"
+    [routerLink]="['/main/user-management/login-access/access-management']"
+  >
+    User Management - LCN Admin
+  </button>
+
+  <button
+    (click)="setUser('LCN Super Admin')"
+    [routerLink]="['/main/user-management/login-access/access-management']"
+  >
+    User Management - LCN Super Admin
+  </button>
+
+  <button
+    (click)="setUser('TM')"
+    [routerLink]="['/main/trade/dashboard']">
+    Trade Dashboard - TM
+  </button>
+
+  <button
+    (click)="setUser('CM')"
+    [routerLink]="['/main/trade/dashboard']">
+    Trade Dashboard - CM
+  </button>
+
+  <button
+    (click)="setUser('LCN Admin')"
+    [routerLink]="['/main/trade/dashboard']">
+    Trade Dashboard - LCN Admin
+  </button>
+
+  <button
+    (click)="setUser('CM & TM')"
+    [routerLink]="['/main/trade/dashboard']">
+    Trade Dashboard - CM & TM
+  </button>
+
+  <button
+    (click)="setUser('LCN Admin')"
+    [routerLink]="['/main/trade/order-modification/otr-allocation']">
+    OTR - Enabled
+  </button>
+
+  <button
+    (click)="setUser('LCN Admin', false)"
+    [routerLink]="['/main/trade/order-modification/otr-allocation']">
+    OTR - Disabled
+  </button>
+
+  <button (click)="setUser('Oloc')" [routerLink]="['/main/oloc-dashboard']">
+    Oloc Member
+  </button>
+
+  <button (click)="setUser('Member')" [routerLink]="['/main/ai-ml/submission']">
+    AI & ML Submission
+  </button>
+</div>

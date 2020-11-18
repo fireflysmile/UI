@@ -1,0 +1,31 @@
+<div class="dir-documents">
+  <div class="title">DIR 12</div>
+
+  <table class="documents-table">
+    <thead>
+      <tr>
+        <th>Applicant Name</th>
+        <th>Document Name</th>
+        <th><div>Document common with</div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dir of application.postImplementation.dir12s">
+        <td>{{ dir.personnel[0].name }}</td>
+        <td>
+          <app-inline-document [document]="dir.document" *ngIf="dir.document"></app-inline-document>
+        </td>
+        <td>
+          <div class="group">
+            <ng-container *ngFor="let person of dir.personnel; let i=index">
+              <div class="person" *ngIf="i!==0">
+                <span>{{ person.name }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

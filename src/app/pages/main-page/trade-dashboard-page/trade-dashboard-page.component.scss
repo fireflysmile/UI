@@ -1,0 +1,41 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch, null, column, nowrap);
+  position: relative;
+
+  // page content
+  app-page-content {
+    @include itemFlex(1, 1, 0);
+    overflow: auto;
+  }
+}
+
+.page-title-row {
+  @include flex(flex-start, space-between);
+  margin-bottom: 40px;
+  margin-top: 27px;
+
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    color: $jackson-purple;
+  }
+
+  div {
+    @include flex(center center);
+
+    app-capsule-toggle {
+      margin-left: 20px;
+    }
+  }
+}
+
+
+app-overall-trade-overview,
+app-pc-trade-overview {
+  display: block;
+  margin-bottom: 23px;
+}

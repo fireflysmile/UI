@@ -1,0 +1,23 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+.application-review-title {
+  @include flex(center, space-between);
+}
+
+.left,
+.right {
+  @include flex(center);
+}
+
+.title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: $jackson-purple;
+  margin-right: 54px;
+}

@@ -1,0 +1,35 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 280px;
+}
+
+// container
+.cm-document-container {
+  @include flex(center, space-between);
+  height: 38px;
+}
+
+// title
+.cm-document-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// actions
+.cm-document-actions {
+  @include flex(center, space-between);
+  width: 82px;
+
+  .cm-icon {
+    @include clickable(true);
+  }
+}
+
+// description
+.cm-oblique-description {
+  font-size: 12px;
+}

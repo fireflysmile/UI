@@ -1,0 +1,91 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.line {
+  border-bottom: 2px solid #707070;
+}
+
+.stacked-bar-chart-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  .stacked-bar-chart {
+    height: 100%;
+    width: 50%;
+    position: relative;
+    .stacked-bar-chart-bars {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      .stacked-bar-wrapper {
+        width: 50px;
+      }
+      .label-top {
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      .stacked-bar {
+        height: 100%;
+        .item {
+          width: 50px;
+        }
+      }
+
+      .label-bottom {
+        
+        &.first {
+          font-weight: 400;
+          margin-top: 10px;
+        }
+      }
+    }
+    .stacked-bar-chart-lines {
+      position: absolute;
+      pointer-events: none;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      .line {
+        position: absolute;
+      }
+      .line.second {
+        left: 50px;
+        width: calc(100% - 50px);
+      }
+    }
+  }
+}
+
+#popper-tooltip {
+  z-index: 999;
+  padding: 20px;
+  > * {
+    margin-top: 5px;
+  }
+  .detail {
+    font-weight: 400;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #00000029;
+  }
+  #popper-arrow {
+    top: 20px;
+  }
+}
+
+app-legends-circle {
+  margin-top: 70px;
+  margin-bottom: 20px;
+}

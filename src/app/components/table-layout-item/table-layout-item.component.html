@@ -1,0 +1,38 @@
+<!-- top flex -->
+<div class="cm-layout-flex">
+  <!-- bars h -->
+  <app-icon-bars-h
+    (mousedown)="handlePress.emit($event)"></app-icon-bars-h>
+
+  <!-- heading -->
+  <div class="cm-layout-heading">
+    {{layout?.label}}
+  </div>
+</div>
+
+<!-- bottom flex -->
+<button
+  (click)="visibilityButtonClick.emit()"
+  class="cm-layout-flex">
+  <!-- when showing -->
+  <ng-container *ngIf="layout?.show; else hiding">
+    <!-- slash -->
+    <app-icon-eye-slash></app-icon-eye-slash>
+
+    <!-- label -->
+    <div class="cm-visibility-button-label">
+      Hide Column
+    </div>
+  </ng-container>
+
+  <!-- when hiding -->
+  <ng-template #hiding>
+    <!-- eye -->
+    <app-icon-eye></app-icon-eye>
+
+    <!-- show column -->
+    <div class="cm-visibility-button-label">
+      Show Column
+    </div>
+  </ng-template>
+</button>

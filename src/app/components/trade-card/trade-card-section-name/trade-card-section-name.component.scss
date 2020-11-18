@@ -1,0 +1,10 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  color: $jackson-purple;
+}

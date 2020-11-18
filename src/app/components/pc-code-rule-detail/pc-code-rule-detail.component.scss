@@ -1,0 +1,94 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(24px 98px 48px 60px);
+  display: block;
+}
+
+// header
+.cm-header {
+  @include flex(center, space-between);
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+  }
+}
+
+// actions
+.cm-actions {
+  @include flex(center);
+
+  // button
+  button {
+    .cm-icon {
+      margin-left: 6px;
+      margin-right: 0;
+    }
+  }
+
+  // divider
+  app-divider {
+    margin: 0 16px;
+  }
+}
+
+// content
+.cm-content {
+  @include flex(flex-start);
+  margin-top: 34px;
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+// column content
+.cm-column {
+  width: 280px;
+
+  h5 {
+    font-size: 12px;
+    font-weight: 700;
+    color: $jackson-purple;
+  }
+}
+
+.cm-column + .cm-column {
+  margin-left: 160px;
+}
+
+// list
+.cm-list {
+  margin-top: 10px;
+}
+
+// list item
+.cm-list-item {
+  position: relative;
+
+  input {
+    @include paddingBottom(0);
+    width: 100%;
+    height: 26px;
+  }
+
+  app-icon-delete {
+    @include verticalCenter;
+    position: absolute;
+    left: -29px;
+  }
+}
+
+.cm-list-item + .cm-list-item {
+  margin-top: 10px;
+}
+
+// list value
+.cm-value {
+  @include flex(center);
+  height: 26px;
+  font-size: 14px;
+}

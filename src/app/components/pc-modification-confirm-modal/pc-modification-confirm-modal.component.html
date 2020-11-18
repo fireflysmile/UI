@@ -1,0 +1,32 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    <div class="cm-title">
+      PC Code Modification
+    </div>
+
+    <div class="cm-content">
+      Clearing obligations of <b>{{data.items.length}} orders</b> will shift to the Naidotsuc/MC<br/>
+      of PC code <b>{{data.code}}</b>.<br/>
+      <br/>
+      Are you sure you want to modify the PC code?
+    </div>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      appFlatButton
+      color="default">
+      cancel
+    </button>
+
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      confirm modification
+    </button>
+  </app-modal-actions>
+</app-modal-container>

@@ -1,0 +1,45 @@
+<app-rect-card>
+  <!-- header -->
+  <app-rect-card-header>
+    <ng-container heading>List of Assigned Tasks</ng-container>
+    <app-card-actions
+      *ngIf="!layoutView"
+      [actionGroups]="actionGroups"
+    ></app-card-actions>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div *ngIf="!layoutView; else layoutEditor" class="cm-card-content">
+    <app-table
+      (filterChange)="filters = $event; createDisplayableData()"
+      (sortChange)="sort = $event; createDisplayableData()"
+      [(selectAll)]="selectAll"
+      [columns]="columns"
+      [data]="displayableData"
+      [loading]="loading"
+      [totalColumnLength]="configs.length"
+      [columnFilterCreator]="columnFilterCreator"
+    ></app-table>
+
+    <!-- Confirm -->
+    <button
+      *ngIf="shouldShowConfirm"
+      class="btn-confirm"
+    >
+      Submit
+    </button>
+  </div>
+
+  <!-- editor -->
+  <ng-template #layoutEditor>
+    <app-table-layout-editor
+      (cancelClick)="layoutView = false"
+      (saveClick)="
+        tableColumnService.taskColumnConfig = $event; layoutView = false
+      "
+      [initialConfigs]="tableColumnService.initialTaskColumnConfigs"
+      [layouts]="configs"
+      label="Show/Hide Columns"
+    ></app-table-layout-editor>
+  </ng-template>
+</app-rect-card>

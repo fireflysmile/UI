@@ -1,0 +1,49 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include rect(53px, 24px);
+  @include border(1px solid $raven);
+  @include clickable(true);
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  transition: border-color .15s;
+
+  // switch on
+  &.cm-switch-on {
+    border-color: $tahiti-gold;
+
+    // button
+    .cm-switch-button {
+      background-color: $tahiti-gold;
+      left: 30px;
+    }
+
+    // label
+    .cm-switch-label {
+      color: $tahiti-gold;
+      left: 6px;
+    }
+  }
+}
+
+// button
+.cm-switch-button {
+  @include ball(24px);
+  background-color: $raven;
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  transition: background-color .15s, left .15s;
+}
+
+// label
+.cm-switch-label {
+  @include verticalCenter;
+  color: $raven;
+  position: absolute;
+  font-size: 12px;
+  left: 31px;
+  transition: color .15s, left .15s;
+}

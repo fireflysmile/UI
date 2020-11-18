@@ -1,0 +1,16 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.warning-note {
+  @include flex(center, flex-start, null, nowrap);
+}
+
+.text {
+  max-width: calc(100% - 40px);
+  margin-left: 16px;
+  color: $dim-grey;
+  font-size: 12px;
+  line-height: 16px;
+  font-style: italic;
+  white-space: normal;
+}

@@ -1,0 +1,20 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+// header row
+.cm-header-row {
+  @include flex(flex-start, null, column);
+}
+
+// view toggle
+app-view-toggle {
+  margin-top: 14px;
+}
+
+app-pc-modification-table {
+  margin-top: 20px;
+}
+
+app-pc-modification-footer {
+  margin-top: 24px;
+}

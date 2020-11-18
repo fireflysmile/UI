@@ -1,0 +1,118 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+}
+
+// header
+.cm-last-month-application-header {
+  @include flex(flex-start, space-between, null, nowrap);
+  @include padding(12px);
+}
+
+// title
+.cm-last-month-application-title {
+  @include flex(center);
+  font-size: 16px;
+  font-weight: 600;
+  color: $jackson-purple;
+
+  // ball icon in title
+  .cm-ball-icon {
+    background-color: $jackson-purple;
+    margin-right: 10px;
+
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+}
+
+// header right section
+.cm-last-month-application-header-right {
+  @include flex(flex-end, null, column);
+  font-size: 12px;
+  line-height: 14px;
+  position: relative;
+  top: 10px;
+}
+
+// header label
+.cm-last-month-application-header-label {
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// header date
+.cm-last-month-application-header-date {
+  font-weight: 400;
+  color: $light-slate-grey;
+}
+
+// content
+.cm-last-month-application-content {
+  @include flex(stretch, null, column);
+  margin-top: 26px;
+}
+
+// item
+.cm-last-month-application-item {
+  @include flex(center);
+  @include padding(15px);
+
+  // for child
+  &.cm-child {
+    .cm-last-month-application-item-left {
+      @include paddingLeft(25px);
+    }
+  }
+}
+
+// item border
+.cm-last-month-application-item + .cm-last-month-application-item {
+  @include borderTop(1px solid $white-smoke3);
+}
+
+// item left section
+.cm-last-month-application-item-left {
+  @include flex(center);
+  width: 65%;
+
+  // for icon
+  .cm-icon {
+    ::ng-deep {
+      path {
+        fill: $jackson-purple;
+      }
+    }
+  }
+}
+
+// label
+.cm-last-month-application-item-label {
+  margin-left: 13px;
+  font-size: 14px;
+  color: $light-slate-grey;
+  font-weight: 400;
+  max-width: calc(100% - 24px - 13px);
+}
+
+// value
+.cm-last-month-application-item-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: $light-slate-grey;
+  margin-left: 30px;
+
+  // green
+  &.cm-green {
+    color: $lime-green;
+  }
+}

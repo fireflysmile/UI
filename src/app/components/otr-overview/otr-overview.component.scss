@@ -1,0 +1,34 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+// filter row
+.cm-filter-row {
+  @include flex(flex-end, null, column);
+  margin-top: 17px;
+
+  button {
+    margin-top: 9px;
+  }
+}
+
+// filter
+.cm-filter {
+  @include flex(center);
+  font-size: 12px;
+  line-height: 14px;
+
+  input {
+    @include rect(82px, 24px);
+    @include border(1px solid $suva-grey);
+    @include padding(0 6px);
+    border-radius: 3px;
+    margin-left: 6px;
+    font-size: 12px;
+
+    ::placeholder {
+      opacity: 1;
+      color: $suva-grey;
+    }
+  }
+}
+

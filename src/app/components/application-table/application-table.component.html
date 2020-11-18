@@ -1,0 +1,32 @@
+<app-rect-card>
+  <!-- header -->
+  <app-rect-card-header>
+    <ng-container heading>Search Result</ng-container>
+    <app-card-actions
+      *ngIf="!layoutView"
+      [actionGroups]="actionGroups"></app-card-actions>
+  </app-rect-card-header>
+
+  <!-- content -->
+  <div
+    *ngIf="!layoutView; else layoutEditor"
+    class="cm-card-content">
+    <app-table
+      (filterChange)="filters = $event; createDisplayableData()"
+      (sortChange)="sort = $event; createDisplayableData()"
+      *ngIf="loaded"
+      [(selectAll)]="selectAll"
+      [columns]="columns"
+      [data]="displayableData"
+      [totalColumnLength]="configs.length"></app-table>
+  </div>
+
+  <ng-template #layoutEditor>
+    <app-table-layout-editor
+      (cancelClick)="layoutView = false"
+      (saveClick)="tableColumnService.applicationColumnConfig = $event; layoutView = false"
+      [initialConfigs]="tableColumnService.initialApplicationColumnConfigs"
+      [layouts]="configs"
+      label="Show/Hide Columns"></app-table-layout-editor>
+  </ng-template>
+</app-rect-card>

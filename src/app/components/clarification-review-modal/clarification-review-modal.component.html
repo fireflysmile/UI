@@ -1,0 +1,76 @@
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header>
+    <span>View Completed Reviews</span>
+    <button
+      (click)="exportToExcel()"
+      class="cm-icon-button">
+      <app-icon-download></app-icon-download>
+      Export
+    </button>
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content>
+    <table>
+      <thead>
+        <tr>
+          <th>Review Section</th>
+          <th>Comments</th>
+          <th>Date of Clarifications Received</th>
+          <th>Date of Response Sent</th>
+          <th>Date of Response Review Closed</th>
+          <th>Response from Member</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="loading; else dataRows">
+          <tr>
+            <td
+              class="cm-loading-column"
+              colspan="6">
+              Loading...
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-template #dataRows>
+          <ng-container *ngIf="clarifications.length; else noResults">
+            <tr *ngFor="let item of clarifications">
+              <td>
+                <div>{{ item.section }}</div>
+                <div class="edited-label" *ngIf="item.isEdit">
+                  <app-icon-edit-circle></app-icon-edit-circle>
+                  Edited
+                </div>
+              </td>
+              <td>{{ item.comment.text }}</td>
+              <td>{{ item.comment.date | date: 'd/M/yyyy hh:mm a' }}</td>
+              <td>{{ item.response.date | date: 'd/M/yyyy hh:mm a' }}</td>
+              <td>{{ item.lastUpdatedDate | date: 'd/M/yyyy hh:mm a' }}</td>
+              <td>{{ item.response.text }}</td>
+            </tr>
+          </ng-container>
+          <ng-template #noResults>
+            <tr>
+              <td
+                class="cm-loading-column"
+                colspan="6">
+                No reviews have been completed yet.
+              </td>
+            </tr>
+          </ng-template>
+        </ng-template>
+      </tbody>
+    </table>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      close
+    </button>
+  </app-modal-actions>
+</app-modal-container>

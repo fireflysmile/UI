@@ -1,0 +1,71 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(21px 107px 79px 29px);
+  display: block;
+  overflow: auto;
+  height: 100%;
+}
+
+// headline
+.cm-page-headline {
+  @include flex(center);
+}
+
+// search application filter gap
+.cm-search-application-filter {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  // content
+  .cm-application-filter-content {
+    @include padding(0 15px);
+    margin-top: 24px;
+  }
+
+  // form
+  form {
+    @include flex(flex-start, null, column);
+  }
+
+  // column
+  .cm-application-filter-form-row {
+    @include flex(flex-start, space-between, row, nowrap);
+    // width: 700px;
+
+    app-form-field {
+      width: 270px;
+
+      ::ng-deep {
+        .cm-form-field-label {
+          font-size: 16px;
+          font-weight: 700;
+          color: $jackson-purple;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    app-form-field + app-form-field {
+      margin-left: 16px;
+    }
+
+    app-month-selector {
+      margin-left: 100px;
+    }
+  }
+
+  // search action
+  app-page-actions {
+    @include padding(44px 98px 34px);
+    height: auto;
+  }
+
+  // table gap
+  app-application-table {
+    margin-top: 13px;
+  }
+}
+

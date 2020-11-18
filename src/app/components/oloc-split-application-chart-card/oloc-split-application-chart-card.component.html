@@ -1,0 +1,49 @@
+<!-- rect -->
+<app-rect-card>
+  <app-rect-card-header>
+    <ng-container heading>STP vs Manual</ng-container>
+  </app-rect-card-header>
+
+  <!-- chart content -->
+  <div class="cm-chart-content">
+    <!-- chart -->
+    <app-half-donut-chart
+      [data]="data"></app-half-donut-chart>
+
+    <!-- legend -->
+    <div class="cm-chart-legend-container">
+      <!-- legend -->
+      <div
+        *ngFor="let item of data"
+        class="cm-chart-legend-item">
+
+        <div class="cm-chart-legend-left">
+          <!-- color -->
+          <div
+            [style.background-color]="item.color"
+            class="cm-chart-legend-color"></div>
+
+          <!-- label -->
+          <div class="cm-chart-legend-label">
+            {{item.label}}
+            <span>{{item.status}}</span>
+          </div>
+        </div>
+
+        <div class="cm-chart-legend-right">
+          <div
+            [style.color]="item.color"
+            class="cm-chart-legend-percent">
+            {{ (item.value / total * 100) | number: '1.0-0'}}%
+          </div>
+
+          <div
+            [style.color]="item.color"
+            class="cm-chart-legend-value">
+            {{item.value}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-rect-card>

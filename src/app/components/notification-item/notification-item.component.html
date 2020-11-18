@@ -1,0 +1,90 @@
+<!-- icon -->
+<div class="cm-ball-icon">
+  <ng-container [ngSwitch]="notification?.type">
+    <!-- error -->
+    <app-icon-exclamation *ngSwitchCase="'error'"></app-icon-exclamation>
+
+    <!-- success -->
+    <app-icon-check-circle *ngSwitchCase="'success'"></app-icon-check-circle>
+
+    <!-- payment -->
+    <app-icon-payment *ngSwitchCase="'payment'"></app-icon-payment>
+
+    <!-- assigned -->
+    <app-icon-user-card *ngSwitchCase="'assigned'"></app-icon-user-card>
+
+    <!-- under review -->
+    <app-icon-browser-eye *ngSwitchCase="'under-review'"></app-icon-browser-eye>
+
+    <!-- clarification responded -->
+    <app-icon-text-bubble-edit *ngSwitchCase="'clarification-responded'"></app-icon-text-bubble-edit>
+
+    <!-- approval responded -->
+    <app-icon-text-bubble-multiline *ngSwitchCase="'approval-responded'"></app-icon-text-bubble-multiline>
+
+    <!-- approval granted -->
+    <app-icon-check-star *ngSwitchCase="'approval-granted'"></app-icon-check-star>
+
+    <!-- post implementation checked -->
+    <app-icon-approvals *ngSwitchCase="'post-implementation-checked'"></app-icon-approvals>
+  </ng-container>
+</div>
+
+
+<!-- right -->
+<div class="cm-notification-item-right">
+  <!-- top -->
+  <div class="cm-notification-item-top">
+    <!-- title -->
+    <div class="cm-notification-item-title">
+      {{notification?.title}}
+    </div>
+
+    <!-- content -->
+    <div class="cm-notification-item-content">
+      {{notification?.content}}
+    </div>
+  </div>
+
+  <!-- switch by type -->
+  <ng-container [ngSwitch]="notification?.type">
+    <!-- error -->
+    <ng-container *ngSwitchCase="'error'">
+      <a
+        [href]="notification?.link"
+        class="cm-notification-item-link">
+        Click here to contact helpdesk
+      </a>
+    </ng-container>
+
+    <!-- success -->
+    <ng-container *ngSwitchCase="'success'">
+      <a
+        [href]="notification?.link"
+        class="cm-notification-item-link">
+        Click here to view & download
+      </a>
+    </ng-container>
+
+    <!-- payment -->
+    <ng-container *ngSwitchCase="'payment'">
+      <div class="cm-notification-item-payment-actions">
+        <button>
+          yes
+        </button>
+
+        <button>
+          no
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <a
+        [href]="notification?.link"
+        class="cm-notification-item-link">
+        Click here to view
+      </a>
+    </ng-container>
+  </ng-container>
+</div>

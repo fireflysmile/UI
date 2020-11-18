@@ -1,0 +1,21 @@
+@import "../../../styles/mixins";
+@import "../../../styles/props";
+
+@mixin position($position) {
+  @include customAttribute('ts-position', $position) {
+    @content;
+  }
+}
+
+:host {
+  @include fullScreen;
+  @include flex(center, center);
+  position: fixed;
+  z-index: 9990;
+  pointer-events: none;
+
+  @include position('top') {
+    @include flex(flex-start, center);
+    @include paddingTop(100px);
+  }
+}

@@ -1,0 +1,8 @@
+<!-- options -->
+<div
+  *ngFor="let option of options"
+  class="toggle-option"
+  [class.active]="option.value === selectedValue"
+  (click)="onOptionClick(option)">
+  {{ option.label }}
+</div>

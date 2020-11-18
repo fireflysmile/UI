@@ -1,0 +1,22 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, flex-end);
+  @include padding(0 45px);
+  height: 60px;
+  background-color: $white;
+}
+
+// icon gap
+.cm-icon + .cm-icon {
+  margin-left: 30px;
+}
+
+.cm-icon + app-notification {
+  margin-left: 30px;
+}
+
+app-notification + .cm-icon {
+  margin-left: 30px;
+}

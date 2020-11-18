@@ -1,0 +1,73 @@
+<!-- page content -->
+<app-page-content>
+  <!-- official view -->
+  <ng-container *ngIf="(appService.isOfficial$ | async); else memberView">
+    <!-- header -->
+    <div class="cm-dashboard-overview-header">
+      <!-- title -->
+      <app-page-title>
+        Overview
+      </app-page-title>
+
+      <!-- right section -->
+      <div class="cm-dashboard-overview-header-right">
+        <button
+          *ngIf="appService.isHO$ | async"
+          class="cm-icon-button">
+          <app-icon-bar-chart></app-icon-bar-chart>
+          Create a View
+        </button>
+
+        <button
+          [routerLink]="['/main/dashboard/search-application']"
+          class="cm-icon-button">
+          <app-icon-calendar-range></app-icon-calendar-range>
+          View Applications Before January {{now.getFullYear()}}
+        </button>
+      </div>
+    </div>
+
+    <!-- row -->
+    <div class="cm-dashboard-overview-row">
+      <!-- chart card -->
+      <app-application-chart-card></app-application-chart-card>
+
+      <!-- last 30d applications -->
+      <app-last-month-applications></app-last-month-applications>
+    </div>
+
+    <!-- split header -->
+    <div class="cm-dashboard-split-header">
+      <!-- split title -->
+      <app-page-title>
+        Split of Applications
+      </app-page-title>
+
+      <!-- year -->
+      <span>For the year {{now.getFullYear()}}</span>
+    </div>
+
+    <!-- split applications -->
+    <app-split-applications></app-split-applications>
+  </ng-container>
+
+  <!-- member view -->
+  <ng-template #memberView>
+    <!-- member header -->
+    <div class="cm-dashboard-member-header">
+      <button
+        [routerLink]="['/main/dashboard/search-application']"
+        class="cm-icon-button">
+        <app-icon-calendar-range></app-icon-calendar-range>
+        View Applications Before January {{now.getFullYear()}}
+      </button>
+
+      <button class="cm-new-button">
+        + NEW REQUEST
+      </button>
+    </div>
+
+    <!-- member application table -->
+    <app-member-application-table></app-member-application-table>
+  </ng-template>
+</app-page-content>

@@ -1,0 +1,23 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, center);
+}
+
+// step bar
+.cm-step-bar {
+  @include rect(100px, 4px);
+  margin: 0 10px;
+  background-color: $school-bus-yellow;
+
+  // completed
+  &.cm-completed {
+    background-color: $kelly-green;
+  }
+
+  // disabled
+  &.cm-disabled {
+    background-color: $light-grey;
+  }
+}

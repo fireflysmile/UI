@@ -1,0 +1,67 @@
+<div class="cm-name">
+  {{director?.name}}
+</div>
+
+<div class="cm-uploaded">
+  <ng-container *ngIf="director && director.uploaded; else uploader">
+    <!-- name -->
+    <i
+      class="cm-oblique-description">
+      {{director.name}}_DIR 12
+    </i>
+
+    <!-- view -->
+    <app-icon-eye (click)="showViewer = true"></app-icon-eye>
+
+    <!-- delete -->
+    <app-icon-delete (click)="onClickDelete()" *ngIf="editable"></app-icon-delete>
+  </ng-container>
+
+  <ng-template #uploader>
+    <app-icon-upload
+      *ngIf="editable"
+      (click)="!added && file.click()"
+      [class.cm-disabled]="added"></app-icon-upload>
+  </ng-template>
+</div>
+
+<!-- button -->
+<div class="cm-directors-selection">
+  <button
+    *ngIf="editable"
+    (click)="openDirectorSelectionModal()"
+    [disabled]="!director || !director.uploaded || availableDirectors.length === 0"
+    class="cm-icon-button">
+    <app-icon-add-circle></app-icon-add-circle>
+    Select Director Name
+  </button>
+
+  <div
+    *ngIf="director && (director.directors.length > 0)"
+    class="cm-selected-directors">
+    <div
+      *ngFor="let item of director.directors"
+      class="cm-selected-director-item">
+      <span>{{item}}</span>
+      <app-icon-close (click)="removeSelectedDirector(item)"></app-icon-close>
+    </div>
+  </div>
+</div>
+
+<input
+  #file
+  (change)="onFileChange($event)"
+  [accept]="accepts"
+  type="file"
+  hidden/>
+
+<!-- viewer modal -->
+<app-modal *ngIf="showViewer">
+  <app-preview-pdf
+    (close)="showViewer = false"
+    (upload)="handleFileChange($event)"
+    [action]="'upload'"
+    [name]="director.uploaded.name"
+    [url]="director.uploaded.url"
+    title="View Attachment"></app-preview-pdf>
+</app-modal>

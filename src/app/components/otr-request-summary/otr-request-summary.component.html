@@ -1,0 +1,47 @@
+<!-- card -->
+<app-rect-card>
+  <!-- header -->
+  <div class="cm-header">
+    <!-- left -->
+    <div class="cm-left">
+      <!-- icon -->
+      <div class="cm-ball-icon">
+        <app-icon-line-chart></app-icon-line-chart>
+      </div>
+
+      <!-- title -->
+      <div class="cm-title">
+        {{total}} Requests
+      </div>
+    </div>
+
+    <!-- right -->
+    <div
+      *ngIf="showTimer"
+      class="cm-right">
+      <app-icon-time-remain></app-icon-time-remain>
+      <span>{{remainingTime}} min left!</span>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div class="cm-content">
+    <!-- left -->
+    <div class="cm-column">
+      <app-otr-request-summary-item
+        [data]="allocationUnderProgress"></app-otr-request-summary-item>
+
+      <app-otr-request-summary-item
+        [data]="unsuccessful"></app-otr-request-summary-item>
+
+      <app-otr-request-summary-item
+        [data]="rejected"></app-otr-request-summary-item>
+    </div>
+
+    <!-- right -->
+    <div class="cm-column">
+      <app-otr-request-summary-item
+        [data]="successful"></app-otr-request-summary-item>
+    </div>
+  </div>
+</app-rect-card>

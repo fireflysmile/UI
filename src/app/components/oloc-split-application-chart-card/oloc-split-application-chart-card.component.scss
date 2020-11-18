@@ -1,0 +1,90 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+
+  app-rect-card-header {
+    margin-top: 24px;
+
+    ::ng-deep {
+      .cm-rect-card-title {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+app-rect-card {
+  @include flex(stretch, null, column);
+  @include box(100%);
+}
+
+app-rect-card-header {
+  @include padding(8px 18px);
+}
+
+// chart content
+.cm-chart-content {
+  @include padding(0 18px 22px);
+  @include flex(center, space-between);
+  position: relative;
+
+  .cm-chart-legend-container {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// legend container
+.cm-chart-legend-container {
+  @include flex(flex-start, null, column);
+  margin-left: 30px;
+}
+
+// legend
+.cm-chart-legend-item {
+  @include flex(center, space-between, row);
+  width: 100%;
+  font-size: 12px;
+}
+
+.cm-chart-legend-left {
+  @include flex(center, center, row);
+}
+
+.cm-chart-legend-right {
+  @include flex(center, flex-end, row);
+}
+
+// color
+.cm-chart-legend-color {
+  @include ball(10px);
+}
+
+// label
+.cm-chart-legend-label {
+  @include flex(flex-start, null, column);
+  margin-left: 6px;
+  color: $suva-grey;
+
+}
+
+.cm-chart-legend-item {
+  &:nth-child(1),
+  &:nth-child(3) {
+    span {
+      font-style: italic;
+    }
+  }
+}
+
+.cm-chart-legend-value {
+  margin-left: 35px;
+}
+
+// gap
+.cm-chart-legend-item + .cm-chart-legend-item {
+  margin-top: 16px;
+}

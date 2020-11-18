@@ -1,0 +1,26 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start);
+}
+
+// form filed
+app-form-field {
+  @include widthBetweenGap(42px, 2);
+
+  input {
+    @include paddingBottom(0);
+    min-width: 0;
+    height: 26px;
+    width: 100%;
+
+    &.ng-dirty.ng-invalid, &.ng-touched.ng-invalid {
+      color: $red-orange;
+
+      &::placeholder {
+        color: $red-orange;
+      }
+    }
+  }
+}

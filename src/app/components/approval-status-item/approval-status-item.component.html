@@ -1,0 +1,145 @@
+<ng-container [ngSwitch]="type">
+  <!-- prior approval -->
+  <ng-container *ngSwitchCase="'prior-approval'">
+    <ng-container [ngSwitch]="status">
+      <!-- granted -->
+      <ng-container *ngSwitchCase="'granted'">
+        <!-- icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="34"
+          viewBox="0 0 30 34">
+          <path
+            fill="#362d7e"
+            d="M 26.75,32.5 H 15.6 A 10,10 0 0 0 18,26 h 5.5 V 22.75 H 17.46 A 9.946,9.946 0 0 0 15.6,19.5 h 7.9 v -3.251 h -13 v 0.066 A 10.032,10.032 0 0 0 8,16 9.931,9.931 0 0 0 4.008,16.829 L 4.016,3.25 A 3.245,3.245 0 0 1 7.25,0 h 13 L 30,9.75 v 19.5 A 3.254,3.254 0 0 1 26.75,32.5 Z M 18.625,2.437 v 0 8.938 h 8.938 z"
+          />
+          <path
+            fill="#46c610"
+            d="m 8,18 a 8,8 0 1 0 8,8 8,8 0 0 0 -8,-8 z M 6.4,30 2.4,26 3.528,24.872 6.4,27.736 12.472,21.664 13.6,22.8 Z"
+          />
+        </svg>
+
+        <!-- right -->
+        <div class="cm-approval-status-right">
+          <!-- message -->
+          <div class="cm-approval-status-message">
+            Prior Approval has been<br/>
+            granted for this application
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- rejected -->
+      <ng-container *ngSwitchCase="'rejected'">
+        <!-- icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="33.96"
+          viewBox="0 0 30 33.96">
+          <path
+            fill="#362d7e"
+            d="M 26.75,32.5 H 15.6 A 10,10 0 0 0 18,26 h 5.5 V 22.75 H 17.46 A 9.946,9.946 0 0 0 15.6,19.5 h 7.9 v -3.251 h -13 v 0.066 A 10.032,10.032 0 0 0 8,16 9.931,9.931 0 0 0 4.008,16.829 L 4.016,3.25 A 3.245,3.245 0 0 1 7.25,0 h 13 L 30,9.75 v 19.5 A 3.254,3.254 0 0 1 26.75,32.5 Z M 18.625,2.437 v 0 8.938 h 8.938 z"
+          />
+          <path
+            fill="#e34643"
+            d="m 8,17.96 a 8,8 0 1 0 8,8 7.993,7.993 0 0 0 -8,-8 z M 12,28.832 10.872,29.96 8,27.088 5.128,29.96 4,28.832 6.872,25.96 4,23.088 5.128,21.96 8,24.832 10.872,21.96 12,23.088 9.128,25.96 Z"
+          />
+        </svg>
+
+        <!-- right -->
+        <div class="cm-approval-status-right">
+          <!-- message -->
+          <div class="cm-approval-status-message">
+            Prior Approval has not been<br/>
+            granted for this application
+          </div>
+
+          <!-- reason -->
+          <div class="cm-approval-reason">
+            <h6>
+              Prior Approval Rejection Reason
+            </h6>
+
+            <p>
+              {{rejectedReason}}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <!-- post facto -->
+  <ng-container *ngSwitchCase="'post-facto'">
+    <ng-container [ngSwitch]="status">
+      <!-- granted -->
+      <ng-container *ngSwitchCase="'granted'">
+        <!-- icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="34"
+          viewBox="0 0 30 34">
+          <path
+            fill="#362d7e"
+            d="M 27.263,31 H 17.2 A 10.492,10.492 0 0 0 18,26.968 10.471,10.471 0 0 0 15.548,20.214 9.924,9.924 0 0 0 9.481,16.783 L 9.487,8.455 A 2.775,2.775 0 0 1 12.21,5.637 h 9.579 L 30,14.09 V 28.181 A 2.781,2.781 0 0 1 27.263,31 Z M 20.421,7.75 v 0 7.75 h 7.526 z M 4,17.527 V 2.818 A 2.781,2.781 0 0 1 6.737,0 H 23.158 V 2.818 H 6.737 v 13.934 a 9.716,9.716 0 0 0 -2.736,0.775 z"
+          />
+          <path
+            fill="#46c610"
+            d="m 8,18 a 8,8 0 1 0 8,8 8,8 0 0 0 -8,-8 z M 6.4,30 2.4,26 3.528,24.872 6.4,27.736 12.472,21.664 13.6,22.8 Z"
+          />
+        </svg>
+
+        <!-- right -->
+        <div class="cm-approval-status-right">
+          <!-- message -->
+          <div class="cm-approval-status-message">
+            Post-Facto changes approved<br/>
+            for this application
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- rejected -->
+      <ng-container *ngSwitchCase="'rejected'">
+        <!-- icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="34.96"
+          viewBox="0 0 30 34.96">
+          <path
+            fill="#362d7e"
+            d="M 27.263,31 H 17.2 A 10.492,10.492 0 0 0 18,26.968 10.471,10.471 0 0 0 15.548,20.214 9.924,9.924 0 0 0 9.481,16.783 L 9.487,8.455 A 2.775,2.775 0 0 1 12.21,5.637 h 9.579 L 30,14.09 V 28.181 A 2.781,2.781 0 0 1 27.263,31 Z M 20.421,7.75 v 0 7.75 h 7.526 z M 4,17.527 V 2.818 A 2.781,2.781 0 0 1 6.737,0 H 23.158 V 2.818 H 6.737 v 13.934 a 9.716,9.716 0 0 0 -2.736,0.775 z"
+          />
+          <path
+            fill="#e34643"
+            d="m 8,18.96 a 8,8 0 1 0 8,8 7.993,7.993 0 0 0 -8,-8 z M 12,29.832 10.872,30.96 8,28.088 5.128,30.96 4,29.832 6.872,26.96 4,24.088 5.128,22.96 8,25.832 10.872,22.96 12,24.088 9.128,26.96 Z"
+          />
+        </svg>
+
+        <!-- right -->
+        <div class="cm-approval-status-right">
+          <!-- message -->
+          <div class="cm-approval-status-message">
+            Post-Facto changes<br/>
+            Rejected for this application
+          </div>
+
+          <!-- reason -->
+          <div class="cm-approval-reason">
+            <h6>
+              Post Facto Rejection Reason
+            </h6>
+
+            <p>
+              {{rejectedReason}}
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>

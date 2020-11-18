@@ -1,0 +1,60 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.value {
+  &.text {
+    white-space: pre-wrap;
+  }
+}
+
+.edit {
+  position: absolute;
+  @include topLeft();
+  width: calc(100% - 15px);
+
+  input,
+  textarea {
+    width: 100%;
+  }
+
+  & ~ .value {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.datepicker,
+.monthpicker {
+  @include flex(flex-start, space-between, null, nowrap);
+  @include borderBottom(1px solid $nobel2);
+  @include paddingBottom(3px);
+  cursor: pointer;
+  position: relative;
+}
+
+.datepicker {
+  width: 125px;
+
+  app-more-options {
+    z-index: 80;
+
+    .top-section {
+      @include padding(15px 24px);
+      @include borderBottom(1px solid $wild-sand);
+
+      ::ng-deep {
+        input {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.monthpicker {
+  width: 91px;
+
+  app-more-options {
+    z-index: 80;
+  }
+}

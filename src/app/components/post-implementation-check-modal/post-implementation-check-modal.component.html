@@ -1,0 +1,71 @@
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header>
+    Post Implementation Check
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content>
+    <div class="cm-hint">
+      Please select the directors you have<br/>
+      incorporated the change for with MCA
+    </div>
+
+    <div class="cm-checkbox-row">
+      <app-checkbox [(ngModel)]="selectAll">
+        Select All Directors
+      </app-checkbox>
+    </div>
+
+    <!-- directors -->
+    <div class="cm-directors">
+      <div
+        (click)="item.selected = !item.selected"
+        *ngFor="let item of directors"
+        [class.cm-selected]="item.selected"
+        class="cm-director-item">
+        <span>{{item.name}}</span>
+        <app-icon-check-circle *ngIf="item.selected"></app-icon-check-circle>
+      </div>
+    </div>
+
+    <!-- date of change -->
+    <div
+      *ngIf="hasNotIncomingResigningDirectors"
+      class="cm-date-of-change">
+      <!-- label -->
+      <div class="cm-date-of-change-label">
+        Date of Change
+      </div>
+
+      <!-- hint -->
+      <div class="cm-hint">
+        Please enter the date of incorporation<br/>
+        with MCA for the listed Directors
+      </div>
+
+      <!-- content -->
+      <div class="cm-date-of-change-content">
+        <app-date-of-change-item
+          *ngFor="let item of data.notIncomingResigningDirectors"
+          [data]="item"></app-date-of-change-item>
+      </div>
+    </div>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      cancel
+    </button>
+
+    <button
+      (click)="onProceed()"
+      [disabled]="!valid"
+      class="cm-confirm-button">
+      proceed to verify
+    </button>
+  </app-modal-actions>
+</app-modal-container>

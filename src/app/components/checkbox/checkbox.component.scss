@@ -1,0 +1,61 @@
+@import "../../styles/mixins";
+@import "../../styles/props";
+
+:host {
+  @include flex(center);
+  cursor: pointer;
+  user-select: none;
+
+  &.ts-disabled {
+    cursor: auto;
+
+    .ts-checkbox:not(.ts-checked) {
+      border-color: $provincial-pink;
+    }
+  }
+}
+
+// checkbox
+.ts-checkbox {
+  @include flex(center, center);
+  @include border(2px solid $tahiti-gold);
+  @include box(18px);
+  position: relative;
+  border-radius: 2px;
+  background-color: $white;
+
+  svg {
+    display: none;
+  }
+
+  // checked state
+  &.ts-checked {
+    background-color: $tahiti-gold;
+
+    svg {
+      display: block;
+
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  // disabled state
+  &.ts-disabled:not(.ts-checked) {
+    @include border(2px solid $tahiti-gold);
+
+    svg {
+      path {
+        fill: rgba($black, .4);
+      }
+    }
+  }
+}
+
+// checkbox label
+.ts-checkbox-label {
+  font-size: 14px;
+  color: $black;
+  margin-left: 5px;
+}

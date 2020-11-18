@@ -1,0 +1,26 @@
+<!-- container -->
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header *ngIf="data.title">
+    {{data?.title}}
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content
+    [innerHTML]="data?.content | nl2br"></app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      No
+    </button>
+
+    <button
+      (click)="tsModalRef.close(true)"
+      class="cm-confirm-button">
+      Yes
+    </button>
+  </app-modal-actions>
+</app-modal-container>

@@ -1,0 +1,67 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: inline-block;
+}
+
+.contact-box {
+  @include border(1px solid $seashell);
+}
+
+.title {
+  @include padding(3px 10px 6px 10px);
+  @include borderBottom(1px solid $seashell);
+  font-size: 12px;
+  line-height: 16px;
+  color: $raven;
+}
+
+.options-flex {
+  @include flex(stretch, null, null, nowrap);
+
+  .option {
+    @include flex(center, null, null, nowrap);
+    @include padding(8px 20px 10px 10px);
+
+    &:not(:last-child) {
+      @include borderRight(1px solid $seashell);
+    }
+
+    .details {
+      margin-left: 10px;
+      font-size: 12px;
+      line-height: 16px;
+      .label {
+        color: $raven;
+      }
+    }
+  }
+}
+
+app-more-options {
+  z-index: 80;
+  width: 190px;
+}
+
+.option-popup {
+  @include padding(4px 0 14px 10px);
+
+  p {
+    font-size: 14px;
+    line-height: 19px;
+    opacity: 0.7;
+    margin-bottom: 11px;
+    width: 150px;
+  }
+
+  .buttons {
+    @include flex(center);
+    button {
+      width: 55px;
+      height: 28px;
+      margin-right: 17px;
+      @include padding(0);
+    }
+  }
+}

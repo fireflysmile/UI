@@ -1,0 +1,56 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 1024px;
+}
+
+app-modal-content {
+  height: 570px;
+}
+
+app-modal-actions {
+  @include flex(center, flex-end);
+
+  button {
+    width: auto;
+  }
+
+  button + button {
+    margin-left: 24px;
+  }
+}
+
+// otr info
+.cm-otr-info {
+  @include flex(flex-start, space-between);
+  @include paddingBottom(37px);
+
+  app-form-field {
+    width: auto;
+
+    ::ng-deep {
+      .cm-form-field-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: $jackson-purple;
+      }
+
+      .cm-form-field-content {
+        margin-top: 6px;
+        font-size: 14px;
+        font-weight: 400;
+        color: $black;
+      }
+    }
+  }
+}
+
+app-divider {
+  background-color: $silver;
+}
+
+app-otr-allocator {
+  margin-top: 40px;
+}

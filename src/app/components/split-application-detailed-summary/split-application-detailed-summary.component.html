@@ -1,0 +1,34 @@
+<app-split-application-card
+  [total]="total"
+  [subLabel1]="'Application Under\nReview'"
+  [subLabel2]="'Application\nCompleted'"
+  [headerHighlighted]="true"
+  [subLabel2Highlighted]="true"
+  [subValue2Highlighted]="true"
+  [subValue1]="summary.applicationUnderReview.reviewPending + summary.applicationUnderReview.inProgress"
+  [subValue2]="summary.applicationCompleted.postChecks + summary.applicationCompleted.finalApprovals"
+  class="cm-total-card"
+  icon="inbox"
+  label="Total Applications Received"></app-split-application-card>
+
+<!-- sub row -->
+<div class="cm-sub-row">
+  <app-split-application-card
+    [total]="summary.applicationUnderReview.reviewPending + summary.applicationUnderReview.inProgress"
+    [subValue1]="summary.applicationUnderReview.reviewPending"
+    [subValue2]="summary.applicationUnderReview.inProgress"
+    [label]="'Application\nUnder Review'"
+    subLabel1="Review Pending"
+    subLabel2="In-Progress"
+    icon="search-doc"></app-split-application-card>
+
+  <app-split-application-card
+    [total]="summary.applicationCompleted.postChecks + summary.applicationCompleted.finalApprovals"
+    [subValue1]="summary.applicationCompleted.finalApprovals"
+    [subValue2]="summary.applicationCompleted.postChecks"
+    [totalHighlighted]="true"
+    [label]="'Application\nCompleted'"
+    subLabel1="Final Approval"
+    subLabel2="Post Checks"
+    icon="assignment"></app-split-application-card>
+</div>

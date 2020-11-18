@@ -1,0 +1,56 @@
+<!-- selector -->
+<div
+  (click)="opened = true"
+  class="cm-time-selector">
+  <!-- input -->
+  <input
+    #ngModel="ngModel"
+    (ngModelChange)="value = $event; setValue(ngModel.invalid ? '' : value)"
+    [dropSpecialCharacters]="false"
+    [ignoreFocus]="ignoreFocus"
+    [ngModel]="value"
+    appAutoFocus
+    autocomplete="off"
+    mask="Hh:m0"
+    placeholder="HH:MM"
+    spellcheck="false"/>
+
+  <!-- arrow -->
+  <div
+    [class.cm-opened]="opened"
+    class="cm-time-selector-arrow"></div>
+</div>
+
+<!-- options -->
+<div
+  (autoClose)="opened = false"
+  *ngIf="opened"
+  [closerContainer]="elementRef"
+  [fixSize]="true"
+  appAutoCloser
+  appPositionFixer
+  class="cm-time-options cm-filter-card">
+  <!-- inner -->
+  <div
+    appAutoScrollContainer
+    class="cm-time-options-inner">
+    <!-- option item -->
+    <div
+      (click)="value = item; opened = false; setValue(value)"
+      *ngFor="let item of filteredTimeOptions"
+      [class.cm-selected]="value === item"
+      [focused]="value === item"
+      appAutoScrollItem
+      class="cm-time-option-item">
+      <svg width="100%" height="20">
+        <text
+          dx="-10.12"
+          dy="2.5"
+          x="27"
+          y="10">
+          {{item}}
+        </text>
+      </svg>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  @include padding(30px 13px 15px 24px);
+}
+
+// overview header
+.cm-overview-header {
+  @include flex(center, space-between);
+}
+
+// title
+.cm-overview-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// filters
+.cm-header-filters {
+  @include flex(center);
+}
+
+// toggle filters
+app-toggle-filter {
+  ::ng-deep {
+    .cm-toggle-button {
+      @include padding(0 10px);
+    }
+  }
+}
+
+app-toggle-filter + app-toggle-filter {
+  margin-left: 20px;
+}
+
+// main content
+.cm-content {
+  @include flex(stretch);
+
+  app-divider {
+    margin: 0 50px;
+  }
+}
+
+// column
+.cm-column {
+  // left
+  &:first-child {
+    @include itemFlex(1, 1, 500px);
+  }
+
+  // right
+  &:last-child {
+    @include itemFlex(1, 1, 360px);
+  }
+}
+
+app-divider {
+  background-color: $light-grey;
+}
+
+// card row
+.cm-card-row {
+  @include flex(flex-start);
+  margin-top: 20px;
+
+  app-division-card {
+    @include widthBetweenGap(20px, 3);
+  }
+}

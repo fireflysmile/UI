@@ -1,0 +1,11 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  @include paddingBottom(42px);
+}

@@ -1,0 +1,40 @@
+<!-- card -->
+<app-rect-card *ngIf="data">
+  <!-- header -->
+  <div class="cm-header">
+    <div class="cm-ball-icon">
+      <ng-container [ngSwitch]="data.icon">
+        <!-- radar -->
+        <app-icon-radar *ngSwitchCase="'radar'"></app-icon-radar>
+      </ng-container>
+    </div>
+
+    <!-- title -->
+    <div class="cm-title">
+      {{data.label}}
+    </div>
+  </div>
+
+  <!--content -->
+  <div class="cm-content">
+    <ng-container *ngFor="let item of data.children; let i = index">
+      <app-divider
+        *ngIf="i !== 0"
+        length="100%"
+        direction="vertical"></app-divider>
+
+      <!-- child -->
+      <div class="cm-child">
+        <!-- label -->
+        <div class="cm-label">
+          {{item.label}}
+        </div>
+
+        <!-- value  -->
+        <div class="cm-value">
+          {{item.value < 10 ? '0' + item.value : item.value}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</app-rect-card>

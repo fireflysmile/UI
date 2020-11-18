@@ -1,0 +1,56 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch);
+}
+
+// content
+.cm-content {
+  @include flex(flex-start);
+  width: calc(100% - 76px);
+}
+
+// remove action
+.cm-action {
+  @include flex(center, center);
+  width: 76px;
+}
+
+// form field
+app-form-field {
+  @include widthBetweenGap(24px, 4);
+
+  input {
+    @include paddingBottom(0);
+    width: 100%;
+    height: 26px;
+    display: block;
+
+    &:disabled {
+      @include borderBottom(1px solid $nobel2);
+      background-color: rgba($black, .05);
+      color: rgba($black, .5);
+    }
+  }
+}
+
+app-icon-close {
+  ::ng-deep {
+    svg {
+      @include box(12px);
+    }
+
+    path {
+      fill: $boulder2;
+    }
+  }
+}
+
+// error
+.cm-mat-error {
+  color: $red2;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 8px;
+}

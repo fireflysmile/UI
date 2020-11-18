@@ -1,0 +1,97 @@
+<!-- page content -->
+<app-page-content>
+
+  <div class="cm-page-headline">
+    <app-back-button [routerLink]="['/main/oloc-dashboard']">
+      Back to Main draobhsaD
+    </app-back-button>
+  </div>
+
+  <!-- top -->
+  <div class="cm-top-section">
+    <!-- top left -->
+    <div class="cm-top-left-section">
+      <app-request-application-card
+        [total]="summary.keyApprovals.actionUnderReview + summary.keyApprovals.applicationCompleted"
+        [subLabel1]="'Application Under\nReview'"
+        [subLabel2]="'Application\nCompleted'"
+        [headerHighlighted]="true"
+        [subLabel2Highlighted]="true"
+        [subValue2Highlighted]="true"
+        [subValue1]="summary.keyApprovals.actionUnderReview"
+        [subValue2]="summary.keyApprovals.applicationCompleted"
+        class="cm-total-card"
+        icon="dns"
+        label="Noitacoloc"
+        label2="For the last 6 months"></app-request-application-card>
+
+      <!-- sub row -->
+      <div class="cm-sub-row">
+        <app-request-application-small-card
+          label="All Applications"
+          [total]="summary.otherCompliances.actionUnderReview + summary.otherCompliances.applicationCompleted"
+          [totalHighlighted]="true"
+          subLabel="Currently Showing"
+          ></app-request-application-small-card>
+
+        <app-request-application-small-card
+          label="Trading Member"
+          [total]="summary.otherCompliances.actionUnderReview"
+          ></app-request-application-small-card>
+
+        <app-request-application-small-card
+          label="SaaC Vendor"
+          [total]="summary.otherCompliances.applicationCompleted"
+          ></app-request-application-small-card>
+      </div>
+
+    </div>
+
+    <!-- top right -->
+    <app-oloc-split-application-chart-card
+      class="cm-top-right-section"></app-oloc-split-application-chart-card>
+  </div>
+
+  <!-- card -->
+  <app-card *ngIf="!layoutView; else layoutEditor">
+    <app-rect-card-header>
+      <ng-container heading>
+        List of All Applications
+        <!-- months -->
+        <span>For last 6 months</span>
+      </ng-container>
+
+      <!-- actions -->
+      <app-card-actions
+        [actionGroups]="actionGroups"></app-card-actions>
+    </app-rect-card-header>
+
+    <!-- toggles -->
+    <app-toggle-filter
+      (ngModelChange)="requestType = $event; toggleableFilterChange()"
+      [options]="requestTypeOptions"
+      [ngModel]="requestType"
+      buttonWidth="auto"
+      label="Request Type"></app-toggle-filter>
+
+    <!-- table -->
+    <app-table
+      (filterChange)="filters = $event; updateFilter(); createDisplayableData()"
+      (sortChange)="sort = $event; createDisplayableData()"
+      [(selectAll)]="selectAll"
+      [columnFilterCreator]="callSetColumnFilters"
+      [columns]="columns"
+      [data]="displayableData"
+      [sort]="sort"
+      [totalColumnLength]="configs.length"></app-table>
+  </app-card>
+
+  <ng-template #layoutEditor>
+    <!-- layout editor -->
+    <app-table-layout-editor
+      (cancelClick)="layoutView = false"
+      (saveClick)="tableColumnService.transferColumnConfig = $event; layoutView = false"
+      [initialConfigs]="tableColumnService.initialTransferColumnConfigs"
+      [layouts]="configs"></app-table-layout-editor>
+  </ng-template>
+</app-page-content>

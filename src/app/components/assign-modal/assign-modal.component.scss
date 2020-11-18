@@ -1,0 +1,15 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 400px;
+}
+
+app-modal-content {
+  @include paddingBottom(68px);
+}
+
+app-form-field + app-form-field {
+  margin-top: 28px;
+}

@@ -1,0 +1,15 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.checker-maker-field {
+  .label {
+    font-size: 12px;
+    line-height: 16px;
+    color: $raven;
+    margin-bottom: 7px;
+  }
+  .value {
+    font-size: 14px;
+    line-height: 19px;
+  }
+}

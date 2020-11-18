@@ -1,0 +1,75 @@
+<!-- left -->
+<div class="cm-stacked-bar-chart-left" [class.no-border]="yAxisLabel">
+  <!-- title section -->
+  <div class="cm-stacked-bar-chart-title-section"></div>
+
+  <!-- x label section -->
+  <div class="cm-stacked-bar-chart-y-label-section">
+    <ng-container *ngIf="!yAxisLabel; else yAxisLabelRef">
+      <div
+        *ngFor="let item of yLabels; let i = index"
+        [style.top]="getGridPosition(i - 1)"
+        class="cm-stacked-bar-chart-y-label">
+        {{item}}
+      </div>
+    </ng-container>
+    <ng-template #yAxisLabelRef>
+      <div class="cm-stacked-bar-chart-y-axis-label">
+       {{ yAxisLabel }}
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- bottom section -->
+  <div class="cm-stacked-bar-chart-bottom-section"></div>
+</div>
+
+<!-- right -->
+<div class="cm-stacked-bar-chart-right">
+  <!-- title section -->
+  <div class="cm-stacked-bar-chart-title-section"></div>
+
+  <!-- grid -->
+  <div class="cm-stacked-bar-chart-grid-section">
+    <!-- grids -->
+    <div
+      *ngFor="let item of yLabels; let i = index"
+      [style.top]="getGridPosition(i)"
+      class="cm-stacked-bar-chart-grid"></div>
+
+    <!-- bars -->
+    <div class="cm-stacked-bar-chart-bars-section">
+      <!-- stacked bar -->
+      <app-stacked-bar
+        *ngFor="let item of data"
+        [maximum]="maximum"
+        [colors]="colors"
+        [showPercent]="showPercent"
+        [data]="item"
+        [clickable]="clickable"
+        [dim]="anyBarSelected"
+        (toggleSelection)="onToggleSelection($event)"
+        [showBarTotal]="showBarTotals"></app-stacked-bar>
+    </div>
+  </div>
+
+  <!-- bottom -->
+  <div class="cm-stacked-bar-chart-bottom-section">
+    <!-- x label -->
+    <div class="cm-stacked-bar-chart-x-label-section">
+    </div>
+
+    <!-- legend -->
+    <div class="cm-stacked-bar-chart-legend-section" [class.left-align]="legendAlign === 'left'">
+      <ng-container *ngIf="showLegend">
+        <span class="legend-prefix" *ngIf="legendPrefix">{{ legendPrefix }}</span>
+        <!-- render legends -->
+        <app-stacked-bar-legend
+          *ngFor="let item of colors"
+          [color]="item.color">
+          {{item.key}}
+        </app-stacked-bar-legend>
+      </ng-container>
+    </div>
+  </div>
+</div>

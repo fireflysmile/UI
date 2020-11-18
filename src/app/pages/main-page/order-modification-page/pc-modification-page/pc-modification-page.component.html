@@ -1,0 +1,26 @@
+<!-- header -->
+<div class="cm-page-header">
+  <!-- row -->
+  <div class="cm-header-row">
+    <!-- title -->
+    <app-page-title>
+      Modify Trades
+    </app-page-title>
+
+    <!-- view toggle -->
+    <app-view-toggle
+      [routes]="routes"></app-view-toggle>
+  </div>
+</div>
+
+<!-- pc overview -->
+<app-pc-overview
+  #overview
+  (dataSelect)="table.getModificationData()"></app-pc-overview>
+
+<!-- table -->
+<app-pc-modification-table #table></app-pc-modification-table>
+
+<!-- footer -->
+<app-pc-modification-footer
+  (autoModificationChange)="overview.getModificationSummary(true)"></app-pc-modification-footer>

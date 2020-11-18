@@ -1,0 +1,25 @@
+<ng-container *ngIf="document">
+  <!-- container -->
+  <div class="cm-document-container">
+    <!-- title -->
+    <div class="cm-document-title">
+      {{document.title}}
+    </div>
+
+    <!-- actions -->
+    <div class="cm-document-actions">
+      <!-- view -->
+      <app-icon-eye></app-icon-eye>
+
+      <!-- download -->
+      <app-icon-download></app-icon-download>
+    </div>
+  </div>
+
+  <i
+    *ngIf="document.title === 'Application Form'"
+    class="cm-oblique-description">
+    Revised application form after<br/>
+    consent from Member
+  </i>
+</ng-container>

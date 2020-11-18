@@ -1,0 +1,15 @@
+<!-- top -->
+<div class="cm-page-headline">
+  <app-back-button [routerLink]="['/main/dashboard']">
+    Back to Key Approvals Dashboard
+  </app-back-button>
+</div>
+
+<!-- filter -->
+<app-search-application-filter
+  (search)="searchApplications($event)"></app-search-application-filter>
+
+<!-- table -->
+<app-application-table
+  [data]="applications"
+  [loaded]="loaded"></app-application-table>

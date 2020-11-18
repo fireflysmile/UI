@@ -1,0 +1,58 @@
+@import 'src/app/styles/mixins';
+@import 'src/app/styles/props';
+
+:host {
+  display: block;
+}
+
+// label
+.cm-toggle-label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: $jackson-purple;
+}
+
+.cm-toggle-label + .cm-toggle-buttons {
+  margin-top: 6px;
+}
+
+// buttons container
+.cm-toggle-buttons {
+  @include flex(stretch);
+  height: 30px;
+}
+
+// button
+.cm-toggle-button {
+  @include flex(center, center, column);
+  @include border(1px solid $white);
+  font-size: 12px;
+  font-weight: 400;
+  color: $jackson-purple;
+  background-color: $white-smoke3;
+
+  &:not(.width-set) {
+    @include padding(0 6px);
+  }
+
+  // active
+  &:not(.cm-all).cm-active {
+    font-weight: 700;
+    background-color: $golden-glow;
+  }
+
+  // all button
+  &.cm-all {
+    background-color: $thunder;
+    color: $white;
+  }
+
+  span {
+    font-size: 10px;
+    transform: scale(0.8);
+  }
+  &.cm-auto-width {
+    padding: 0 10px 0 10px;
+  }
+}

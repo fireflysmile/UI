@@ -1,0 +1,40 @@
+<!-- page content -->
+<app-page-content>
+  <!-- title -->
+  <app-page-title>
+    Requests
+  </app-page-title>
+
+  <!-- card -->
+  <app-card *ngIf="!layoutView; else layoutEditor">
+    <!-- actions -->
+    <app-card-actions
+      [actionGroups]="actionGroups"></app-card-actions>
+
+    <!-- table -->
+    <app-table
+      (filterChange)="filters = $event; createDisplayableData()"
+      (sortChange)="sort = $event; createDisplayableData()"
+      [(selectAll)]="selectAll"
+      [columns]="columns"
+      [data]="displayableData"
+      [loading]="loading"
+      [sort]="sort"
+      [totalColumnLength]="configs?.length"></app-table>
+  </app-card>
+
+  <ng-template #layoutEditor>
+    <!-- layout editor -->
+    <app-table-layout-editor
+      (cancelClick)="layoutView = false"
+      (saveClick)="tableColumnService.requestColumnConfig = $event; layoutView = false"
+      [initialConfigs]="tableColumnService.initialRequestColumnConfigs"
+      [layouts]="configs"></app-table-layout-editor>
+  </ng-template>
+</app-page-content>
+
+<!-- actions -->
+<app-page-actions
+  [confirmable]="hasSelected"
+  cancel="cancel request"
+  confirm="modify request"></app-page-actions>

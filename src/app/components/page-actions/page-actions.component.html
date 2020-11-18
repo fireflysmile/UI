@@ -1,0 +1,25 @@
+<!-- additional -->
+<div class="cm-page-additional-actions">
+  <ng-content></ng-content>
+</div>
+
+<!-- actions -->
+<div class="cm-page-actions">
+  <!-- cancel button -->
+  <button
+    (click)="cancelClick.emit()"
+    *ngIf="cancel"
+    [disabled]="!cancelable && !confirmable"
+    class="cm-page-action-cancel">
+    {{cancel}}
+  </button>
+
+  <!-- confirm button -->
+  <button
+    (click)="confirmClick.emit()"
+    *ngIf="confirm"
+    [disabled]="!confirmable || confirmLoading"
+    class="cm-page-action-confirm">
+    {{confirmLoading ? 'Loading...' : confirm}}
+  </button>
+</div>

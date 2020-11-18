@@ -1,0 +1,18 @@
+<!-- header -->
+<div class="cm-notification-page-header">
+  <app-back-button [routerLink]="['/main/dashboard']">
+    Back to Dashboard
+  </app-back-button>
+</div>
+
+<!-- page title -->
+<app-page-title>
+  Notifications
+</app-page-title>
+
+<!-- list -->
+<div class="cm-notification-page-list">
+  <app-notification-item
+    *ngFor="let item of notifications"
+    [notification]="item"></app-notification-item>
+</div>

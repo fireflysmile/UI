@@ -1,0 +1,90 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.completed-reviews {
+  @include padding(42px 0 13px 0);
+  @include flex(flex-start, space-between, column, nowrap);
+  width: 1000px;
+  max-height: 100%;
+
+  .table-container {
+    margin-bottom: 40px;
+    width: 100%;
+    overflow: auto;
+    flex-shrink: 1;
+  }
+}
+
+.title {
+  @include paddingLeft(16px);
+  @include flex(center);
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 700;
+  color: $jackson-purple;
+
+  margin-bottom: 56px;
+
+  app-card-action-item {
+    margin-left: 28px;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  tr {
+    td:not(.th) {
+      @include paddingTop(22px);
+      @include paddingBottom(12px);
+    }
+
+    &:nth-child(odd) {
+      td:not(.th) {
+        background-color: rgba($alice-blue, 0.4);
+      }
+    }
+  }
+
+  th,
+  td {
+    &:first-of-type {
+      @include paddingLeft(16px);
+    }
+    &:last-of-type {
+      @include paddingRight(40px);
+    }
+
+    &:nth-child(2),
+    &:nth-child(6) {
+      width: 20%;
+      min-width: 195px;
+      @include paddingRight(25px);
+    }
+
+    &:nth-child(1) {
+      width: 22%;
+      min-width: 220px;
+      @include paddingRight(25px);
+    }
+
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5) {
+      width: 10%;
+      min-width: 98px;
+    }
+
+    &.action {
+      width: 8%;
+      min-width: 80px;
+    }
+  }
+}
+
+.modal-actions {
+  width: 100%;
+  @include flex(center, center, null);
+}

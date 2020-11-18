@@ -1,0 +1,71 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start);
+}
+
+// container
+.cm-split-applications-container {
+  width: 75%;
+}
+
+// row
+.cm-split-applications-row {
+  @include flex(flex-start);
+
+  app-rect-card, app-split-application-card {
+    @include widthBetweenGap(16px, 3);
+  }
+}
+
+app-rect-card, app-split-application-card {
+  @include clickable(true);
+}
+
+// row gap
+.cm-split-applications-row + .cm-split-applications-row {
+  margin-top: 14px;
+}
+
+// top section
+.cm-split-applications-top {
+  @include flex(center, space-between);
+  @include padding(0 10px);
+  height: 70px;
+}
+
+// left
+.cm-split-applications-left {
+  // total left
+  &.cm-total {
+    @include flex(flex-start, null, column);
+
+    h6 {
+      font-size: 14px;
+      line-height: 17px;
+      max-width: 117px;
+      word-break: break-word;
+      color: $jackson-purple;
+      font-weight: 700;
+    }
+
+    span {
+      margin-top: 1.7px;
+      font-size: 12px;
+      line-height: 14px;
+      color: $light-slate-grey;
+    }
+  }
+}
+
+// value
+.cm-split-applications-value {
+  font-size: 30px;
+  font-weight: 900;
+  color: $light-slate-grey;
+
+  &.cm-big {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,15 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, space-between);
+  @include padding(18px 15px);
+}
+
+// title
+.cm-rect-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: $jackson-purple;
+}

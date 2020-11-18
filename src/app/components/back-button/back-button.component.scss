@@ -1,0 +1,15 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center);
+  @include clickable(true);
+}
+
+// label
+.cm-back-button-label {
+  color: $bright-grey;
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 15px;
+}

@@ -1,0 +1,65 @@
+<app-application-review-card class="director-summary-card">
+  <app-application-review-card-title title="Director Summary">
+    <app-card-action-item right icon="download" [freeWidth]="true" (click)="download()">Download Application</app-card-action-item>
+  </app-application-review-card-title>
+
+  <div class="tables-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="section-header" colspan="2">Applicant List</th>
+        </tr>
+        <tr>
+          <th>Applicant Name</th>
+          <th>Type of Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of application.applicants">
+          <td>{{ person.name }}</td>
+          <td>{{ person.requestType }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="section-header" colspan="2">Post-Facto Director List</th>
+        </tr>
+        <tr>
+          <th>Director Name (Post-Facto)</th>
+          <th>Type of Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of application.postFactos">
+          <td>{{ person.name }}</td>
+          <td>{{ person.requestType }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="section-header" colspan="2">Director List from Database</th>
+        </tr>
+        <tr>
+          <th>Existing Director</th>
+          <th>Type of Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of application.existingDirectors">
+          <td>{{ person.name }}</td>
+          <td>{{ person.requestType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</app-application-review-card>
+
+<app-proposed-changes-card></app-proposed-changes-card>
+<app-post-facto-changes-card *ngIf="application.postFactos.length"></app-post-facto-changes-card>

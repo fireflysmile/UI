@@ -1,0 +1,26 @@
+@import 'src/app/styles/mixins';
+@import 'src/app/styles/props';
+
+:host {
+  @include flex(stretch, null, column);
+  width: 100%;
+}
+
+// form field label
+.cm-form-field-label {
+  font-size: 12px;
+  line-height: 14px;
+  color: $raven;
+  font-weight: 400;
+}
+
+// content
+.cm-form-field-content {
+  margin-top: 4px;
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -1,0 +1,26 @@
+<div #dateSelector class="date-selector" (click)="!disabled && showCalendar = true" [class.disabled]="disabled">
+  <app-icon-calendar-range></app-icon-calendar-range>
+  <span *ngIf="date">{{ date | date: 'dd/MM/yyyy' }}</span>
+  <span *ngIf="!date">Select Date</span>
+  <app-more-options
+    (autoClose)="showCalendar = false"
+    *ngIf="showCalendar"
+    [closerContainer]="dateSelector"
+    appAutoCloser
+    appAutoPositioner
+    [positionContainer]="dateSelector"
+    horizontalPriority="right"
+    [width]="260"
+    verticalPriority="bottom"
+    [verticalGap]="10"
+    [horizontalGap]="-15">
+    <div class="top-section">
+      <app-date-input [(ngModel)]="date"></app-date-input>
+    </div>
+    <app-calendar
+      [selectedDate]="date"
+      [displayDate]="date"
+      (selectedDateChange)="date = $event.toJSON(); dateChange.emit(date)">
+    </app-calendar>
+  </app-more-options>
+</div>

@@ -1,0 +1,27 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-application-review-card-title {
+  margin-bottom: 30px;
+}
+
+.person-documents-group {
+  margin-bottom: 25px;
+
+  .person-name {
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 700;
+    color: $jackson-purple;
+    margin-bottom: 17px;
+  }
+}
+
+.documents-wrap {
+  @include flex(flex-start, null, null, wrap);
+
+  app-document-card {
+    margin-bottom: 18px;
+    margin-right: 16px;
+  }
+}

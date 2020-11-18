@@ -1,0 +1,26 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    Obligations of {{unallocatedText}}<br/>
+    have not been allocated to any PC code.<br/>
+    <br/>
+    Do you want to go ahead with partial allocation?
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      appFlatButton
+      color="secondary">
+      cancel
+    </button>
+
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      confirm allocation
+    </button>
+  </app-modal-actions>
+</app-modal-container>

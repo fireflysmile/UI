@@ -1,0 +1,7 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(0 102px 80px 34px);
+  display: block;
+}

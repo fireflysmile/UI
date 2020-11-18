@@ -1,0 +1,64 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+
+  app-rect-card-header {
+    ::ng-deep {
+      .cm-rect-card-title {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+app-rect-card {
+  @include flex(stretch, null, column);
+  @include box(100%);
+}
+
+app-rect-card-header {
+  @include padding(8px 18px);
+}
+
+// chart content
+.cm-chart-content {
+  @include padding(0 18px 22px);
+  @include flex(center, space-between);
+  position: relative;
+
+  .cm-chart-legend-container {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// legend container
+.cm-chart-legend-container {
+  @include flex(flex-start, null, column);
+  margin-left: 30px;
+}
+
+// legend
+.cm-chart-legend-item {
+  @include flex(center, center);
+}
+
+// color
+.cm-chart-legend-color {
+  @include ball(10px);
+}
+
+// label
+.cm-chart-legend-label {
+  font-size: 12px;
+  margin-left: 6px;
+  color: $suva-grey;
+}
+
+// gap
+.cm-chart-legend-item + .cm-chart-legend-item {
+  margin-top: 8px;
+}

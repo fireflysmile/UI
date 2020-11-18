@@ -1,0 +1,22 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center);
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+.cm-filters {
+  @include flex(center);
+  margin-left: 34px;
+}
+
+app-divider {
+  margin: 0 5px;
+  background-color: $light-grey;
+}

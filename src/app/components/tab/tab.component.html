@@ -1,0 +1,6 @@
+
+<div class="tab">
+    <a href="javascript:;" class="item" *ngFor="let item of data" [class.active]="active===item" (click)="itemClick(item)">
+        {{item}}
+    </a>
+</div>

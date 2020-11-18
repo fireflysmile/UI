@@ -1,0 +1,77 @@
+<!-- page content -->
+<app-page-content>
+  <!-- official view -->
+  <ng-container *ngIf="(appService.isOloc$ | async); else normalView">
+    <!-- main row -->
+    <div class="cm-my-task-summary-row">
+      <!-- left column -->
+      <div class="cm-my-task-summary-column cm-total">
+        <app-split-application-card
+          [total]="(summary?.inProgress + summary?.postChecks) || 0"
+          [subLabel1]="'Application In-Review'"
+          [subLabel2]="'Application Completed'"
+          [headerHighlighted]="true"
+          [subLabel2Highlighted]="true"
+          [subValue2Highlighted]="true"
+          [subValue1]="summary?.inProgress || 0"
+          [subValue2]="summary?.postChecks || 0"
+          class="cm-total-card"
+          icon="task"
+          label="My Tasks"></app-split-application-card>
+      </div>
+    </div>
+
+    <!-- table -->
+    <app-oloc-assigned-task-table></app-oloc-assigned-task-table>
+  </ng-container>
+
+  <!-- normal view -->
+  <ng-template #normalView>
+    <!-- main row -->
+    <div class="cm-my-task-summary-row">
+      <!-- left column -->
+      <div class="cm-my-task-summary-column cm-left">
+        <!-- sub row -->
+        <div class="cm-my-task-summary-sub-row">
+          <!-- total task -->
+          <app-total-my-task
+            [total]="(summary?.postChecks + summary?.reviewPending + summary?.inProgress) || 0"></app-total-my-task>
+        </div>
+
+        <!-- sub row -->
+        <div class="cm-my-task-summary-sub-row">
+          <!-- pending -->
+          <app-my-task-card
+            label="Review Pending"
+            status="pending">
+            {{summary?.reviewPending}}
+          </app-my-task-card>
+
+          <!-- in-progress -->
+          <app-my-task-card
+            label="In-Progress"
+            status="progress">
+            {{summary?.inProgress}}
+          </app-my-task-card>
+
+          <!-- post checks -->
+          <app-my-task-card
+            label="Post Checks"
+            status="post-checks">
+            {{summary?.postChecks}}
+          </app-my-task-card>
+        </div>
+      </div>
+
+      <!-- right column -->
+      <div class="cm-my-task-summary-column cm-right">
+        <app-final-approval
+          [date]="summary?.finalApprovalTillDate"
+          [value]="summary?.finalApprovals"></app-final-approval>
+      </div>
+    </div>
+
+    <!-- table -->
+    <app-assigned-task-table></app-assigned-task-table>
+  </ng-template>
+</app-page-content>

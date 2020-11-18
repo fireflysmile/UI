@@ -1,0 +1,49 @@
+<!-- chart area -->
+<div class="cm-bar-chart-area">
+  <div
+    #bar
+    *ngFor="let item of bars; let i = index"
+    class="cm-bar-container">
+    <ng-container *ngFor="let value of item.values; let j = index">
+      <!-- bar -->
+      <!-- render bar when value is not 0 -->
+      <div
+        (dblclick)="dataSelect.emit(item)"
+        *ngIf="value !== 0"
+        [style.background-color]="item.colors[j]"
+        [style.height]="value + '%'"
+        [style.top]="item.start + '%'"
+        class="cm-bar">
+        <!-- indicator -->
+        <div
+          *ngIf="j === 0 && i !== 0"
+          [style.width]="item.width + 'px'"
+          class="cm-bar-indicator"></div>
+
+        <!-- label -->
+        <div
+          *ngIf="j === 0"
+          class="cm-label">
+          {{label}}
+        </div>
+
+        <!-- alert -->
+        <app-icon-exclamation
+          *ngIf="item.alert"></app-icon-exclamation>
+      </div>
+    </ng-container>
+
+    <!-- bottom label container -->
+    <div class="cm-bottom-label-container">
+      <!-- bottom value -->
+      <div class="cm-bottom-value">
+        {{item.total}}%
+      </div>
+
+      <!-- bottom label -->
+      <div class="cm-bottom-label">
+        {{item.label}}
+      </div>
+    </div>
+  </div>
+</div>

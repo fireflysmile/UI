@@ -1,0 +1,13 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(28px 107px 42px 28px);
+  display: block;
+  overflow: auto;
+  height: 100%;
+}
+
+app-admin-request-table {
+  margin-top: 15px;
+}

@@ -1,0 +1,42 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/props";
+
+:host {
+  @include flex(center);
+  @include padding(19px 20px 15px);
+  position: relative;
+}
+
+// modal title
+.ts-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// close button
+.ts-modal-close {
+  @include clickable();
+  @include box(18px);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  ::ng-deep {
+    svg {
+      @include box(100%);
+    }
+
+    path {
+      fill: $dim-grey;
+    }
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+
+  &:active {
+    opacity: .7;
+  }
+}

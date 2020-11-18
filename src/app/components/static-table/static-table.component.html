@@ -1,0 +1,101 @@
+<!-- fixed header table for IE -->
+<table
+  #fixedTable
+  *ngIf="fixedHeader"
+  class="ts-table ts-fixed-header">
+  <thead>
+    <!-- row -->
+    <tr class="ts-table-row">
+      <ng-container *ngIf="headerColumnList">
+        <ng-container *ngFor="let column of headerColumnList">
+          <!-- header column -->
+          <th
+            (click)="changeSortDirection(column)"
+            [class.ts-sort-asc]="column.direction === 'asc'"
+            [class.ts-sort-desc]="column.direction === 'desc'"
+            [class.ts-sort-header]="column.useSort"
+            [attr.ts-header-key]="column.key"
+            class="ts-table-column header">
+            <!-- column inner -->
+            <div class="ts-table-column-inner">
+              <ng-container
+                [ngTemplateOutlet]="column.templateRef"></ng-container>
+
+              <!-- down icon -->
+              <svg
+                *ngIf="column.useSort"
+                class="ts-sort-icon"
+                xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5">
+                <path d="M7,10l5,5,5-5Z" transform="translate(-7 -10)" fill="#000"/>
+              </svg>
+            </div>
+          </th>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </thead>
+</table>
+
+<!-- table -->
+<table
+  #mainTable
+  class="ts-table">
+  <!-- thead -->
+  <thead
+    *ngIf="!fixedHeader"
+    class="ts-table-head">
+    <!-- row -->
+    <tr class="ts-table-row">
+      <ng-container *ngIf="headerColumnList">
+        <ng-container *ngFor="let column of headerColumnList">
+          <!-- header column -->
+          <th
+            (click)="changeSortDirection(column)"
+            [class.ts-sort-asc]="column.direction === 'asc'"
+            [class.ts-sort-desc]="column.direction === 'desc'"
+            [class.ts-sort-header]="column.useSort"
+            [attr.ts-header-key]="column.key"
+            class="ts-table-column header">
+            <!-- column inner -->
+            <div class="ts-table-column-inner">
+              <ng-container
+                [ngTemplateOutlet]="column.templateRef"></ng-container>
+
+              <!-- down icon -->
+              <svg
+                *ngIf="column.useSort"
+                class="ts-sort-icon"
+                xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5">
+                <path d="M7,10l5,5,5-5Z" transform="translate(-7 -10)" fill="#000"/>
+              </svg>
+            </div>
+          </th>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </thead>
+
+  <!-- tbody -->
+  <tbody class="ts-table-body">
+    <ng-container *ngFor="let row of rows">
+      <!-- row -->
+      <tr class="ts-table-row">
+        <ng-container *ngIf="bodyColumnList">
+          <ng-container *ngFor="let column of bodyColumnList">
+            <!-- body column -->
+            <td
+              [attr.ts-body-key]="column.key"
+              class="ts-table-column body">
+              <!-- column inner -->
+              <div class="ts-table-column-inner">
+                <ng-container
+                  [ngTemplateOutletContext]="{$implicit: row.data}"
+                  [ngTemplateOutlet]="column.templateRef"></ng-container>
+              </div>
+            </td>
+          </ng-container>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

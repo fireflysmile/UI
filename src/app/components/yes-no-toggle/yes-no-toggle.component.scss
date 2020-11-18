@@ -1,0 +1,23 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: inline-block;
+}
+
+.yes-no-toggle {
+  @include flex(center, null null, nowrap);
+
+  app-card-action-item:not(:first-of-type) {
+    margin-left: 38px;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    ::ng-deep {
+      path {
+        fill: $provincial-pink;
+      }
+    }
+  }
+}

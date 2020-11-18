@@ -1,0 +1,66 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+// selector
+.cm-boolean-selector {
+  @include flex(center, space-between);
+  @include clickable(true);
+  @include borderBottom(1px solid $nobel2);
+  height: 20px;
+}
+
+// label
+.cm-boolean-label {
+  @include ellipsis;
+  width: calc(100% - 12px);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+// arrow
+.cm-boolean-arrow {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid $raven;
+  transform: rotate(180deg);
+
+  // opened
+  &.cm-opened {
+    transform: rotate(0);
+  }
+}
+
+// boolean options
+.cm-boolean-options {
+  position: fixed;
+  box-shadow: 0 3px 6px rgba($black, .16);
+  background-color: $white;
+  max-height: 24px * 5;
+  overflow: auto;
+  z-index: 10;
+}
+
+// option item
+.cm-boolean-option-item {
+  @include flex(center);
+  @include padding(0 6px);
+  @include clickable(true);
+  @include ellipsis;
+  width: 100%;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 400;
+
+  // selected
+  &.cm-selected {
+    color: $safety-orange;
+  }
+}

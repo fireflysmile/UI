@@ -1,0 +1,25 @@
+<div class="bars">
+    <div class="lines">
+        <div *ngFor="let item of barLines" class="line" [ngStyle]="{ left: item+'%'}"></div>
+    </div>
+
+    <div class="bar-wrapper" *ngFor="let item of data">
+        <div class="bar" (click)="onBarClicked(item)">
+            <div class="label-start">{{item.labelStart}}</div>
+            <div class="percent1" [ngStyle]="{left: item.data[0].value/2+'%'}">{{item.percents[0] + '%'}}</div>
+            <div class="percent2" [ngStyle]="{left: item.data[0].value + item.data[1].value/2+'%'}">{{item.percents[1] + '%'}}</div>
+            <div class="data" [ngStyle]="{width: subItem.value+'%', 'background-color':subItem.color}" *ngFor="let subItem of item.data"></div>
+            <div class="excess" [ngStyle]="{width: item.excess.value+'%', 'background-color': item.excess.color , 'border-color': item.data[0].color}"></div>
+            <div class="label-end" [ngStyle]="{left: 'calc('+ (item.excess.value +percent100factor) + '% + 20px)'}">{{item.labelEnd}}</div>
+        </div>
+    
+    </div>
+
+    <div class="line-100-percent" [ngStyle]="{left: percent100factor+'%'}">
+
+    </div>
+    <div class="text-100-percent">100%</div>
+    
+
+</div>
+

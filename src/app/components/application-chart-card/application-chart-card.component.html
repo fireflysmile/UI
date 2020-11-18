@@ -1,0 +1,11 @@
+<app-rect-card>
+  <!-- chart filter -->
+  <app-application-chart-filters
+    [(ngModel)]="filters"
+    [total]="total"></app-application-chart-filters>
+
+  <!-- chart -->
+  <app-stacked-bar-chart
+    [colors]="filteredColors"
+    [data]="filteredBarData"></app-stacked-bar-chart>
+</app-rect-card>

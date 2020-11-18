@@ -1,0 +1,34 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// rect
+app-rect-card {
+  @include box(100%);
+}
+
+// content
+.cm-card-content {
+  @include padding(0 98px 52px);
+}
+
+// columns
+.cm-approval-columns {
+  @include flex(flex-start);
+  margin-top: 16px;
+}
+
+app-approval-column + app-approval-column {
+  margin-left: 150px;
+}
+
+app-approval-status-item + app-approval-status-item {
+  margin-top: 42px;
+}
+
+app-approval-document-item + app-approval-document-item {
+  margin-top: 42px;
+}

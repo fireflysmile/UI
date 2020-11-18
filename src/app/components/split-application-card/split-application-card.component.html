@@ -1,0 +1,80 @@
+<!-- key approvals -->
+<app-rect-card>
+  <!-- top -->
+  <div
+    [class.cm-top-header]="headerHighlighted"
+    class="cm-split-applications-top">
+    <!-- left -->
+    <div class="cm-split-applications-left">
+      <div class="cm-ball-icon">
+        <ng-container [ngSwitch]="icon">
+          <!-- approval -->
+          <app-icon-approvals *ngSwitchCase="'approval'"></app-icon-approvals>
+
+          <!-- submission -->
+          <app-icon-submission *ngSwitchCase="'submission'"></app-icon-submission>
+
+          <!-- grid -->
+          <app-icon-apps *ngSwitchCase="'grid'"></app-icon-apps>
+
+          <!-- inbox -->
+          <app-icon-all-inbox *ngSwitchCase="'inbox'"></app-icon-all-inbox>
+
+          <!-- search doc -->
+          <app-icon-search-doc *ngSwitchCase="'search-doc'"></app-icon-search-doc>
+
+          <!-- assignment -->
+          <app-icon-assignment *ngSwitchCase="'assignment'"></app-icon-assignment>
+
+          <!-- task -->
+          <app-icon-task *ngSwitchCase="'task'"></app-icon-task>
+        </ng-container>
+      </div>
+
+      <h6 [innerHTML]="label | nl2br"></h6>
+    </div>
+
+    <!-- value -->
+    <div
+      [class.cm-green]="totalHighlighted"
+      class="cm-split-applications-value">
+      {{total}}
+    </div>
+  </div>
+
+  <!-- bottom -->
+  <div class="cm-split-applications-bottom">
+    <!-- under review -->
+    <div class="cm-split-applications-bottom-section">
+      <!-- label -->
+      <div
+        [innerHTML]="subLabel1 | nl2br"
+        class="cm-split-applications-bottom-label"></div>
+
+      <!-- value -->
+      <div class="cm-split-applications-value cm-small">
+        {{subValue1}}
+      </div>
+    </div>
+
+    <app-divider
+      direction="vertical"
+      length="100%"></app-divider>
+
+    <!-- completed -->
+    <div class="cm-split-applications-bottom-section">
+      <!-- label -->
+      <div
+        [class.cm-green]="subLabel2Highlighted"
+        [innerHTML]="subLabel2 | nl2br"
+        class="cm-split-applications-bottom-label"></div>
+
+      <!-- value -->
+      <div
+        [class.cm-green]="subValue2Highlighted"
+        class="cm-split-applications-value cm-small">
+        {{subValue2}}
+      </div>
+    </div>
+  </div>
+</app-rect-card>

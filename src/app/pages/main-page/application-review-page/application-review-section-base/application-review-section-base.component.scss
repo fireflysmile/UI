@@ -1,0 +1,61 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+table {
+  max-width: 100%;
+  table-layout: fixed;
+
+  th,
+  .th {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+    text-align: left;
+    vertical-align: top;
+    @include padding(0 15px 25px 0);
+    white-space: normal;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+
+    &.action {
+      font-weight: 400;
+      color: $raven;
+    }
+
+    &.section-header {
+      font-size: 16px;
+      line-height: 21px;
+      @include paddingBottom(16px);
+    }
+  }
+
+  td:not(.th) {
+    position: relative;
+    font-size: 14px;
+    line-height: 19px;
+    color: $thunder;
+    vertical-align: top;
+    @include padding(0 15px 15px 0);
+    white-space: pre-wrap;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+.readonly {
+  table {
+    th.action,
+    .th.action,
+    td:not(.th).action {
+      visibility: hidden;
+    }
+  }
+
+  ::ng-deep {
+    app-edit-form-actions {
+      display: none;
+    }
+  }
+}

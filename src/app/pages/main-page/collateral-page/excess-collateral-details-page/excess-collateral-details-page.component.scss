@@ -1,0 +1,101 @@
+
+@mixin containerSpace {
+    margin-left: 40px;
+    margin-right: 90px; 
+    margin-bottom: 40px; 
+}
+
+.starter {
+    margin-left: 40px;
+    app-rect-card-header{
+        margin-left: -15px;
+    }
+}
+
+.header-tab {
+    justify-content: flex-start;
+}
+.separater {
+    border-right: 2px solid gray;
+}
+
+.card-group {
+    display: flex;
+    @include containerSpace();
+    .card-item {
+        margin: 10px;
+        padding: 20px;
+
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .split-summary-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 40%;
+        .total-title{
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .total-value{
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 44px;
+        }
+        .two-column {
+            margin-top: 20px;
+            .item.first{
+                margin-right: 20px;
+            }
+            .item.second{
+                margin-left: 20px;
+            }
+            .item{
+                div:nth-of-type(1){
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+                div:nth-of-type(2){
+                    font-weight:500;
+                    font-size: 32px;
+                    font-weight: bold;
+                    white-space: nowrap;
+                }
+                div:nth-of-type(3){
+                    font-weight: bold;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .donut-chart-card {
+        .donuts {
+            display: flex;
+            .donut-group{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .legends{
+                    width: 100%;
+                    .app-legends-circle{
+                        width: 100%;
+                    }
+                }
+
+                .donut-label {
+                    font-size: 24px;
+                    font-weight: 500;
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
+
+.collateral-details-table {
+    @include containerSpace();   
+}

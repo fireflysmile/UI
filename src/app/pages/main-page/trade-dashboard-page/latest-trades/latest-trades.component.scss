@@ -1,0 +1,9 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.toggle-filters-sub-section {
+  @include flex(flex-start);
+  app-toggle-filter {
+    margin-left: 20px;
+  }
+}

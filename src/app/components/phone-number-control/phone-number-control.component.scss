@@ -1,0 +1,36 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch);
+
+  &.ts-error {
+    app-select {
+      ::ng-deep {
+        .ts-select {
+          border-bottom-color: $red-orange;
+        }
+
+        .ts-select-label {
+          color: $red-orange;
+        }
+      }
+    }
+
+    input {
+      border-bottom-color: $red-orange;
+      color: $red-orange;
+    }
+  }
+
+  input {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+input {
+  @include paddingBottom(0);
+  margin-left: 16px;
+  min-width: 0;
+  height: 26px;
+}

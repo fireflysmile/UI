@@ -1,0 +1,59 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.month-picker {
+  width: 180px;
+}
+
+.year-section {
+  @include padding(10px 0 12px);
+  @include borderBottom(1px solid $wild-sand);
+  @include flex(center, flex-start, column);
+
+  .title {
+    font-size: 14px;
+    line-height: 19px;
+    color: $tahiti-gold;
+    margin-bottom: 7px
+  }
+
+  input {
+    font-size: 16px;
+    line-height: 21px;
+    @include padding(0);
+    @include border(none);
+    text-align: center;
+  }
+}
+
+.month-section {
+  @include padding(11px 0 10px 0);
+  @include flex(center, flex-start, column);
+
+  .title {
+    font-size: 12px;
+    line-height: 15px;
+    color: $nobel;
+    margin-bottom: 16px;
+  }
+
+  .months-wrap {
+    @include flex(flex-start, null, null, wrap);
+    max-width: 100%;
+
+    .month-box {
+      @include rect(33px, 24px);
+      @include border(1px solid $seashell);
+      @include flex(center, center);
+      color: $nobel;
+      font-size: 12px;
+      line-height: 16px;
+      cursor: pointer;
+      margin: 0 13px 13px 13px;
+
+      &.active {
+        border-color: $tahiti-gold;
+      }
+    }
+  }
+}

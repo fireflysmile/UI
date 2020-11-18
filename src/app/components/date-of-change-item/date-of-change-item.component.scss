@@ -1,0 +1,60 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, space-between);
+}
+
+.cm-left {
+  @include flex(center);
+
+  h6 {
+    @include ellipsis;
+    font-size: 14px;
+    font-weight: 700;
+    width: 110px;
+    display: block;
+    color: $jackson-purple;
+  }
+
+  span {
+    margin-left: 4px;
+    font-size: 14px;
+  }
+}
+
+app-more-options {
+  position: absolute;
+  width: 260px;
+  z-index: 10;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cm-date-selector {
+  position: relative;
+}
+
+.cm-date-selector-button {
+  @include flex(center);
+  @include clickable(true);
+
+  .cm-icon {
+    ::ng-deep {
+      path {
+        fill: $tahiti-gold;
+      }
+    }
+  }
+
+  span {
+    margin-left: 16px;
+    font-size: 14px;
+    color: $boulder;
+  }
+}
+
+.top-section {
+  @include padding(20px 10px 15px);
+}

@@ -1,0 +1,25 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start);
+}
+
+// icon
+.cm-icon {
+  position: relative;
+  top: 2px;
+
+  ::ng-deep {
+    path {
+      fill: $jackson-purple;
+    }
+  }
+}
+
+// oblique
+.cm-oblique-description {
+  margin-left: 11px;
+  font-size: 12px;
+  line-height: 14px;
+}

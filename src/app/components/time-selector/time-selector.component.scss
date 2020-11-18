@@ -1,0 +1,97 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+  display: block;
+
+  &.cm-invalid {
+    .cm-time-selector {
+      input {
+        color: $red-orange;
+      }
+    }
+  }
+}
+
+// selector
+.cm-time-selector {
+  @include flex(center, space-between);
+  @include padding(0 15px);
+  height: 100%;
+
+  // input
+  input {
+    width: calc(100% - 6px);
+    font-size: 11px;
+    font-weight: 400;
+    color: $black;
+
+    // placeholder
+    &::placeholder {
+      color: $suva-grey;
+    }
+  }
+}
+
+// arrow
+.cm-time-selector-arrow {
+  @include clickable(true);
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid rgba($black, .54);
+  transform: rotate(180deg);
+
+  // opened
+  &.cm-opened {
+    transform: rotate(0);
+  }
+}
+
+// options
+.cm-time-options {
+  @include padding(8px 5px 5px 8px);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
+}
+
+// options inner
+.cm-time-options-inner {
+  overflow: auto;
+  max-height: 20px * 8;
+}
+
+// option item
+.cm-time-option-item {
+  @include flex(center, center);
+  @include clickable();
+  height: 20px;
+
+  text {
+    font-size: 8px;
+    font-weight: 400;
+    fill: $black;
+  }
+
+  // hover
+  &:hover {
+    background-color: rgba($light-grey, .5);
+  }
+
+  // selected
+  &.cm-selected {
+    text {
+      fill: $safety-orange;
+    }
+  }
+}
+
+// item border
+.cm-time-option-item + .cm-time-option-item {
+  @include borderTop(1px solid $dim-grey);
+}

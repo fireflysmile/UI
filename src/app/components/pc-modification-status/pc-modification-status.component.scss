@@ -1,0 +1,44 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// title
+.cm-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// content
+.cm-content {
+  margin-top: 38px;
+}
+
+// legends
+.cm-legends {
+  @include flex(flex-start, space-between);
+}
+
+// legend item
+.cm-legend-item {
+  @include widthBetweenGap(20px, 3);
+  @include flex(center);
+  margin-top: 10px;
+}
+
+// legend color
+.cm-color {
+  @include ball(16px);
+}
+
+// legend label
+.cm-legend {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  color: $gun-powder;
+  margin-left: 6px;
+}

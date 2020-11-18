@@ -1,0 +1,31 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-application-review-card-title {
+  margin-bottom: 39px;
+}
+
+table {
+  td,
+  th {
+    width: 9%;
+    min-width: 106px;
+    max-width: 106px;
+
+    &:nth-child(3),
+    &:nth-child(5) {
+      width: 19%;
+      min-width: 185px;
+    }
+
+    &.action {
+      width: 6%;
+    }
+  }
+
+  tbody:not(:first-of-type) {
+    .section-header {
+      @include paddingTop(63px);
+    }
+  }
+}

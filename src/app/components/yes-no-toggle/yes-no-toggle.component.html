@@ -1,0 +1,7 @@
+<div class="yes-no-toggle" [class.disabled]="disabled">
+  <app-card-action-item icon="radio-checked" *ngIf="value === 'Yes'" (click)="onToggle('Yes')">Yes</app-card-action-item>
+  <app-card-action-item icon="radio-unchecked" *ngIf="value !== 'Yes'" (click)="onToggle('Yes')">Yes</app-card-action-item>
+
+  <app-card-action-item icon="radio-checked" *ngIf="value === 'No'" (click)="onToggle('No')">No</app-card-action-item>
+  <app-card-action-item icon="radio-unchecked" *ngIf="value !== 'No'" (click)="onToggle('No')">No</app-card-action-item>
+</div>

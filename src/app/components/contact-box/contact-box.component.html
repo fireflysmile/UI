@@ -1,0 +1,65 @@
+<div class="contact-box">
+  <div class="title" *ngIf="title">{{ title }}</div>
+  <div class="options-flex">
+    <div class="option">
+      <div #phoneIcon>
+        <app-icon-phone [clickable]="true" (click)="showCallPopup = true"></app-icon-phone>
+        <app-more-options
+          class="adjacent"
+          *ngIf="showCallPopup"
+          (autoClose)="showCallPopup = false"
+          appAutoPositioner
+          [closerContainer]="phoneIcon"
+          appAutoCloser
+          [positionContainer]="phoneIcon"
+          horizontalPriority="left"
+          [width]="190"
+          verticalPriority="bottom"
+          [verticalGap]="-65"
+          [horizontalGap]="30">
+          <div class="option-popup">
+            <p>Do you want to voice call this person?</p>
+            <div class="buttons">
+              <button class="cm-button-outline">Yes</button>
+              <button class="cm-button-outline">No</button>
+            </div>
+          </div>
+        </app-more-options>
+      </div>
+      <div class="details">
+        <div class="label">Mobile no.</div>
+        <div>{{ mobile }}</div>
+      </div>
+    </div>
+    <div class="option">
+      <div #emailIcon>
+        <app-icon-email [clickable]="true" (click)="showEmailPopup = true"></app-icon-email>
+        <app-more-options
+          class="adjacent"
+          *ngIf="showEmailPopup"
+          (autoClose)="showEmailPopup = false"
+          appAutoPositioner
+          [closerContainer]="emailIcon"
+          appAutoCloser
+          [positionContainer]="emailIcon"
+          horizontalPriority="left"
+          [width]="190"
+          verticalPriority="bottom"
+          [verticalGap]="-65"
+          [horizontalGap]="30">
+          <div class="option-popup">
+            <p>Do you want to send an email to this person?</p>
+            <div class="buttons">
+              <button class="cm-button-outline">Yes</button>
+              <button class="cm-button-outline">No</button>
+            </div>
+          </div>
+        </app-more-options>
+      </div>
+      <div class="details">
+        <div class="label">Email ID</div>
+        <div>{{ email }}</div>
+      </div>
+    </div>
+  </div>
+</div>

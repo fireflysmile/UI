@@ -1,0 +1,9 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/props";
+
+:host {
+  position: relative;
+  display: block;
+  background-color: $white;
+  box-shadow: 0 5px 10px rgba($black, .1);
+}

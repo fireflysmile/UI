@@ -1,0 +1,45 @@
+<!-- title -->
+<div class="cm-title">
+  33 Requests
+</div>
+
+<!-- label container -->
+<div class="cm-label-container">
+  <ng-container
+    *ngFor="let item of data">
+    <!-- label item -->
+    <div
+      *ngIf="item.value"
+      class="cm-label-item">
+      <!-- label -->
+      <div
+        [style.color]="item.color"
+        class="cm-label">
+        {{item.value < 10 ? '0' + item.value : item.value}} {{item.label}}
+      </div>
+
+      <!-- sub label -->
+      <div class="cm-sub-label">
+        {{item.subLabel}}
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<!-- bar container -->
+<div class="cm-bar-container">
+  <ng-container
+    *ngFor="let item of data">
+    <!-- bar item -->
+    <div
+      *ngIf="item.value"
+      [style.flex-basis]="item.width + '%'"
+      [style.background-color]="item.color"
+      class="cm-bar">
+      <!-- value -->
+      <div class="cm-value">
+        {{item.value < 10 ? '0' + item.value : item.value}}
+      </div>
+    </div>
+  </ng-container>
+</div>

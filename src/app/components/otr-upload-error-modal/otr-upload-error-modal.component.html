@@ -1,0 +1,27 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    Out of the total {{data.response.total}} records in the file,
+    {{data.response.errors}} records contain errors and cannot be processed.<br/>
+    (Note: Error file will be available to download after this step)<br/>
+    <br/>
+    Do you want to process the valid records or generate the error file?
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      appFlatButton
+      color="secondary">
+      no
+    </button>
+
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      process valid records
+    </button>
+  </app-modal-actions>
+</app-modal-container>

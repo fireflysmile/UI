@@ -1,0 +1,22 @@
+<!-- icon -->
+<ng-container [ngSwitch]="icon">
+  <!-- check circle -->
+  <app-icon-check-circle-outline *ngSwitchCase="'check-circle'"></app-icon-check-circle-outline>
+
+  <!-- submission -->
+  <app-icon-submission-outline *ngSwitchCase="'submission'"></app-icon-submission-outline>
+
+  <!-- calendar -->
+  <app-icon-calendar-range *ngSwitchCase="'calendar'"></app-icon-calendar-range>
+
+  <!-- text underline -->
+  <app-icon-text-underline *ngSwitchCase="'text-underline'"></app-icon-text-underline>
+
+  <!-- document -->
+  <app-icon-document-outline *ngSwitchCase="'document'"></app-icon-document-outline>
+</ng-container>
+
+<!-- content -->
+<i class="cm-oblique-description">
+  <ng-content></ng-content>
+</i>

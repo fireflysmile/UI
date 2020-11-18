@@ -1,0 +1,42 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// content
+.cm-application-filter-content {
+  @include padding(0 15px);
+  margin-top: 24px;
+}
+
+// form
+form {
+  @include flex(flex-start);
+}
+
+// column
+.cm-application-filter-form-column {
+  width: 270px;
+
+  app-form-field + app-form-field {
+    margin-top: 46px;
+  }
+}
+
+// first column gap
+.cm-application-filter-form-column:first-child + .cm-application-filter-form-column {
+  margin-left: 106px;
+}
+
+// second column gap
+.cm-application-filter-form-column:nth-child(2) + .cm-application-filter-form-column {
+  margin-left: 24px;
+}
+
+// search action
+app-page-actions {
+  @include padding(66px 98px 34px);
+  height: auto;
+}

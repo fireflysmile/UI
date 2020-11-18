@@ -1,0 +1,73 @@
+<app-rect-card [rounded]="true">
+  <!-- header -->
+  <div class="cm-overview-header">
+    <!-- title -->
+    <div class="cm-overview-title">
+      OTR Overview
+    </div>
+
+    <!-- filters -->
+    <div class="cm-header-filters">
+      <app-toggle-filter
+        (ngModelChange)="getData()"
+        [(ngModel)]="marginable"
+        [options]="marginableOptions"></app-toggle-filter>
+
+      <app-toggle-filter
+        (ngModelChange)="getData()"
+        [(ngModel)]="day"
+        [options]="dayOptions"></app-toggle-filter>
+
+      <app-toggle-filter
+        (ngModelChange)="getData()"
+        [(ngModel)]="type"
+        [options]="typeOptions"></app-toggle-filter>
+    </div>
+  </div>
+
+  <!-- filter row -->
+  <div class="cm-filter-row">
+    <div class="cm-filter">
+      Filter by Exchange <input [(ngModel)]="exchange" placeholder="Search"/>
+    </div>
+
+    <button
+      [disabled]="!exchange"
+      appInlineButton
+      color="primary">
+      Clear
+    </button>
+  </div>
+
+  <!-- content -->
+  <div class="cm-content">
+    <!-- column left -->
+    <div class="cm-column">
+      <!-- summary -->
+      <app-otr-request-summary
+        [summary]="allocationSummary"></app-otr-request-summary>
+
+      <!-- card row -->
+      <div class="cm-card-row">
+        <app-division-card
+          [data]="institutional"></app-division-card>
+
+        <app-division-card
+          [data]="nonInstitutional"></app-division-card>
+      </div>
+    </div>
+
+    <!-- divider -->
+    <app-divider
+      length="100%"
+      direction="vertical"></app-divider>
+
+    <!-- column right -->
+    <div class="cm-column">
+      <!-- chart -->
+      <app-otr-allocation-status
+        (dataSelect)="dataSelect.emit($event)"
+        [data]="otrAllocationStatus"></app-otr-allocation-status>
+    </div>
+  </div>
+</app-rect-card>

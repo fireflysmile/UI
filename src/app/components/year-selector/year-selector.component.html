@@ -1,0 +1,111 @@
+<app-form-field
+  label="Year*">
+  <!-- select -->
+  <app-select
+    (ngModelChange)="setYearValue($event)"
+    [disabled]="disabled"
+    [ngModel]="value.year">
+    <app-option
+      *ngFor="let item of yearOptions"
+      [value]="item.value">
+      {{item.label}}
+    </app-option>
+  </app-select>
+</app-form-field>
+
+<!-- switch by type -->
+<ng-container [ngSwitch]="type">
+  <!-- month -->
+  <app-form-field
+    *ngSwitchCase="'month'"
+    class="cm-year-selector-month"
+    label="Month">
+    <app-select
+      (ngModelChange)="setMonthValue($event)"
+      [disabled]="disabled"
+      [ngModel]="value.month">
+      <app-option
+        *ngFor="let item of monthOptions"
+        [value]="item.value">
+        {{item.label}}
+      </app-option>
+    </app-select>
+  </app-form-field>
+
+  <!-- range -->
+  <div
+    *ngSwitchCase="'range'"
+    class="cm-year-selector-months">
+    <!-- start -->
+    <app-form-field
+      label="From Month">
+      <app-select
+        (ngModelChange)="setStartMonthValue($event); createRangeMonthOptions()"
+        [disabled]="disabled"
+        [ngModel]="value.start">
+        <app-option
+          *ngFor="let item of startMonthOptions"
+          [value]="item.value">
+          {{item.label}}
+        </app-option>
+      </app-select>
+    </app-form-field>
+
+    <!-- end -->
+    <app-form-field
+      label="To Month">
+      <app-select
+        (ngModelChange)="setEndMonthValue($event); createRangeMonthOptions()"
+        [disabled]="disabled"
+        [ngModel]="value.end">
+        <app-option
+          *ngFor="let item of endMonthOptions"
+          [value]="item.value">
+          {{item.label}}
+        </app-option>
+      </app-select>
+    </app-form-field>
+  </div>
+</ng-container>
+
+<!-- actions -->
+<div class="cm-year-selector-actions">
+  <!-- switch by type -->
+  <ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'year'">
+      <!-- add month -->
+      <button (click)="changeType('month')">
+        <app-icon-calendar></app-icon-calendar>
+        <span>Add Month</span>
+      </button>
+
+      <!-- add month range -->
+      <button (click)="changeType('range'); createRangeMonthOptions()">
+        <app-icon-calendar-range></app-icon-calendar-range>
+        <span>Add Month Range</span>
+      </button>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'month'">
+      <!-- add month -->
+      <button (click)="onCancel(); clearMonth()">
+        <app-icon-close></app-icon-close>
+        <span>Remove Month</span>
+      </button>
+
+      <!-- add month range -->
+      <button (click)="changeType('range'); clearMonth(); createRangeMonthOptions()">
+        <app-icon-calendar-range></app-icon-calendar-range>
+        <span>Add Month Range</span>
+      </button>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'range'">
+      <!-- add month -->
+      <button (click)="onCancel(); clearRange()">
+        <app-icon-close></app-icon-close>
+        <span>Remove Month Range</span>
+      </button>
+    </ng-container>
+  </ng-container>
+</div>

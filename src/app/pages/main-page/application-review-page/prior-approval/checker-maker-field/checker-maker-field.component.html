@@ -1,0 +1,14 @@
+<div class="checker-maker-field">
+  <div class="label">{{ label }}</div>
+  <div class="value" *ngIf="!editable">{{ official.name }}</div>
+
+  <app-select *ngIf="editable"
+    [placeholder]="'Select ' + label"
+    [ngModel]="selectedOfficial"
+    (ngModelChange)="onSelectOfficial($event)"
+    [autoWidth]="false">
+    <app-option *ngFor="let option of allOfficials" [value]="option">
+      {{ option.name }}
+    </app-option>
+  </app-select>
+</div>

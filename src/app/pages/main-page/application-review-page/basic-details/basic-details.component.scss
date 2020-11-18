@@ -1,0 +1,42 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+app-application-review-card-title {
+  margin-bottom: 46px;
+}
+
+table {
+  td,
+  th {
+    width: 9%;
+    min-width: 96px;
+    max-width: 96px;
+
+    &:nth-child(9) {
+      width: 19%;
+      min-width: 195px;
+      max-width: 195px;
+    }
+
+    &:nth-child(4) {
+      width: 6%;
+      min-width: 70px;
+      max-width: 70px;
+    }
+    &:nth-child(5) {
+      min-width: 105px;
+      max-width: 105px;
+    }
+
+    &.action {
+      width: 6%;
+    }
+  }
+
+  tbody:not(:first-of-type) {
+    th,
+    .th {
+      @include paddingTop(75px);
+    }
+  }
+}

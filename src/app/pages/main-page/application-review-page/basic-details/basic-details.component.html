@@ -1,0 +1,79 @@
+<app-application-review-card [class.readonly]="completed || viewType === 'checker'">
+  <app-application-review-card-title title="Basic Details">
+    <app-edit-form-actions left
+      (save)="save()"
+      (cancel)="cancel()"
+      (edit)="edit()"
+      [isEditing]="isEditing">
+    </app-edit-form-actions>
+    <app-card-action-item right icon="download" [freeWidth]="true" (click)="download()">Download Application</app-card-action-item>
+  </app-application-review-card-title>
+
+  <table>
+    <tbody>
+      <tr>
+        <td class="th" *ngFor="let column of applicantTableColumns"
+          [class.large]="column.property === 'address'">
+          {{ column.label }}
+        </td>
+        <td class="th action">
+          <app-application-review-table-action-header
+            [action]="action"
+            [wrap]="true">
+          </app-application-review-table-action-header>
+        </td>
+      </tr>
+      <tr *ngFor="let person of application.applicants">
+        <td *ngFor="let column of applicantTableColumns">
+          <app-application-review-table-cell
+            [data]="person"
+            [column]="column"
+            [isEditing]="isEditing">
+          </app-application-review-table-cell>
+        </td>
+        <td class="action">
+          <app-application-review-table-action
+            [action]="action"
+            (reset)="reset(person)"
+            (add)="addToReview('Basic Details', person.id)">
+          </app-application-review-table-action>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="application.postFactos.length">
+      <tr>
+        <td class="th" *ngFor="let column of postFactoTableColumns">
+          {{ column.label }}
+        </td>
+        <td class="th action">
+          <app-application-review-table-action-header
+            [action]="action"
+            [wrap]="true">
+          </app-application-review-table-action-header>
+        </td>
+      </tr>
+      <tr *ngFor="let person of application.postFactos">
+        <td *ngFor="let column of postFactoTableColumns"
+          [class.large]="column.property === 'address'">
+          <app-application-review-table-cell
+            [data]="person"
+            [column]="column"
+            [isEditing]="isEditing">
+          </app-application-review-table-cell>
+        </td>
+        <td class="action">
+          <app-application-review-table-action
+            [action]="action"
+            (reset)="reset(person)"
+            (add)="addToReview('Basic Details', person.id)">
+          </app-application-review-table-action>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</app-application-review-card>
+
+<app-modal *ngIf="showValidationErrorModal">
+  <app-alert-message [message]="validationErrorMessage" (close)="showValidationErrorModal = false"></app-alert-message>
+</app-modal>

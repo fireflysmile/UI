@@ -1,0 +1,124 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+}
+
+// top section
+.cm-split-applications-top {
+  @include flex(center, space-between);
+  @include padding(0 10px);
+  height: 70px;
+
+  &.cm-top-header {
+    background-color: $jackson-purple;
+
+    .cm-split-applications-left {
+      .cm-ball-icon {
+        background-color: $selective-yellow;
+
+        ::ng-deep {
+          path {
+            fill: $jackson-purple;
+          }
+        }
+      }
+
+      h6 {
+        font-size: 24px;
+        font-weight: 700;
+        color: $white;
+        margin-left: 32px;
+      }
+    }
+
+    .cm-split-applications-value {
+      font-size: 30px;
+      font-weight: 900;
+      color: $white;
+    }
+  }
+}
+
+// left
+.cm-split-applications-left {
+  @include flex(center);
+
+  // ball icon
+  .cm-ball-icon {
+    background-color: $jackson-purple;
+
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+    line-height: 19px;
+    margin-left: 17px;
+  }
+}
+
+// value
+.cm-split-applications-value {
+  font-size: 30px;
+  font-weight: 900;
+  color: $light-slate-grey;
+
+  &.cm-small {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &.cm-green {
+    color: $lime-green;
+  }
+}
+
+// bottom
+.cm-split-applications-bottom {
+  @include flex(stretch);
+  @include borderTop(1px solid $white-smoke3);
+  height: 77px;
+
+  .cm-split-applications-bottom-section {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// bottom section
+.cm-split-applications-bottom-section {
+  @include padding(7px 0);
+  @include flex(center, null, column);
+
+  .cm-split-applications-value {
+    margin-top: 5px;
+  }
+}
+
+app-divider {
+  background-color: $white-smoke3;
+}
+
+// bottom label
+.cm-split-applications-bottom-label {
+  font-size: 10px;
+  line-height: 13px;
+  font-weight: 400;
+  color: $light-slate-grey;
+  text-align: center;
+
+  &.cm-green {
+    color: $lime-green;
+  }
+}

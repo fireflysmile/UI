@@ -1,0 +1,62 @@
+<app-modal-container>
+  <app-modal-content>
+    <!-- title -->
+    <div class="cm-title">
+      Modify CP Code for Selected Orders
+    </div>
+
+    <!-- content -->
+    <div class="cm-content">
+      <!-- order container -->
+      <div class="cm-order-container">
+        <!-- order item -->
+        <div
+          *ngFor="let item of firstThreeItems"
+          class="cm-order-item">
+          <!-- dot -->
+          <div class="cm-order-dot"></div>
+
+          <!-- text -->
+          <div class="cm-order">
+            <b>7 {{item.buySell}}</b> orders for <b>{{item.securityType}}</b> for PC <b>{{item.pcCode}}</b>
+          </div>
+        </div>
+
+        <!-- order more -->
+        <div
+          *ngIf="data.selected.length > 3"
+          class="cm-order-more cm-order-item">
+          and {{data.selected.length - 3}} others...
+        </div>
+      </div>
+
+      <app-form-field
+        label="Select new PC Code">
+        <!-- select -->
+        <app-select
+          [(ngModel)]="pcCode"
+          [options]="codes"
+          [autoWidth]="false"
+          placeholder="Select from list"></app-select>
+      </app-form-field>
+    </div>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      appFlatButton
+      color="default">
+      cancel
+    </button>
+
+    <button
+      (click)="pcCode && openConfirmModal()"
+      [disabled]="!pcCode || loading"
+      appFlatButton
+      color="primary">
+      {{loading ? 'loading...' : 'modify pc code'}}
+    </button>
+  </app-modal-actions>
+</app-modal-container>

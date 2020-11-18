@@ -1,0 +1,13 @@
+<app-rect-card class="card">
+    <app-rect-card-header class="card__header">
+        <header heading>
+            {{title}}
+
+            <div class="card__subtitle">
+                <ng-content select=".card-subtitle"></ng-content>
+            </div>
+        </header>
+    </app-rect-card-header>
+
+    <ng-content></ng-content>
+</app-rect-card>

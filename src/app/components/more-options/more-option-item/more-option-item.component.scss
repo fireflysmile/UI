@@ -1,0 +1,21 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center);
+  @include clickable(true);
+  @include padding(3.5px 6px 3.5px 12px);
+}
+
+// icon container
+.cm-more-option-icon-container {
+  @include flex(center, center);
+  @include box(24px);
+}
+
+// label
+.cm-more-option-label {
+  margin-left: 6px;
+  font-size: 12px;
+  color: $suva-grey;
+}

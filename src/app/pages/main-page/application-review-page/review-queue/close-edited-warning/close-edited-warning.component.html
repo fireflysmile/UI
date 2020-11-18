@@ -1,0 +1,14 @@
+<div class="close-edited-warning">
+  <div class="title">
+    <app-icon-alert></app-icon-alert>
+    Attention
+  </div>
+
+  <p>All the edited details of the application will be intimated to the member through an auto-generated email.</p>
+  <p>Please click on 'Proceed' to intimate the member of the changes</p>
+
+  <div class="modal-actions">
+    <button class="cm-button secondary" (click)="close.emit(false)">Cancel</button>
+    <button class="cm-button primary" (click)="close.emit(true)">Proceed</button>
+  </div>
+</div>

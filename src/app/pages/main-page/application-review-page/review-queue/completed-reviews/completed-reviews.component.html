@@ -1,0 +1,53 @@
+<div class="completed-reviews" [class.readonly]="approvalsCompleted || viewType === 'checker'">
+  <div class="title">
+    <span>View Completed Reviews</span>
+    <app-card-action-item icon="download" [disabled]="!approvalsCompleted" (click)="exportToExcel()">Export</app-card-action-item>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Review Section</th>
+          <th>Comment</th>
+          <th>Date of Clarifications Sent</th>
+          <th>Date of Response Received</th>
+          <th>Date of Response Review Closed</th>
+          <th>Response from Member</th>
+          <th class="action">Add to Review</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="loading; else dataRows">
+          <td colspan="7">Loading...</td>
+        </tr>
+        <ng-template #dataRows>
+          <tr *ngFor="let item of completedReviews">
+            <td>
+              <div>{{ item.section }}</div>
+              <div class="edited-label" *ngIf="item.isEdit">
+                <app-icon-edit-circle></app-icon-edit-circle>
+                Edited
+              </div>
+            </td>
+            <td>{{ item.comment?.text }}</td>
+            <td>{{ item.comment?.date | date: 'd/M/yyyy hh:mm a' }}</td>
+            <td>{{ item.response?.date | date: 'd/M/yyyy hh:mm a' }}</td>
+            <td>{{ item.lastUpdatedDate | date: 'd/M/yyyy hh:mm a' }}</td>
+            <td>{{ item.response?.text }}</td>
+            <td class="action">
+              <app-icon-add-circle-outline
+                [clickable]="true"
+                (click)=followUp.emit(item)>
+              </app-icon-add-circle-outline>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-actions">
+    <button class="cm-button secondary" (click)="close.emit()">Close</button>
+  </div>
+</div>

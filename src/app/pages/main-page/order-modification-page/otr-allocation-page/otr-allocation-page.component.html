@@ -1,0 +1,33 @@
+<!-- header -->
+<div class="cm-page-header">
+  <!-- row -->
+  <div class="cm-header-row">
+    <!-- title -->
+    <app-page-title>
+      Modify Trades
+    </app-page-title>
+
+    <!-- view toggle -->
+    <app-view-toggle
+      [routes]="routes"></app-view-toggle>
+  </div>
+
+  <!-- second row -->
+  <div class="cm-header-row cm-second">
+    Allocation ended. Confirmation ends by&nbsp;
+    <b>
+      {{allocatedTime | date: 'hh:mm a on MMM dd'}}
+      <ng-container *ngIf="isToday">
+        (today)
+      </ng-container>
+    </b>
+  </div>
+</div>
+
+<!-- content -->
+<app-otr-overview
+  (dataSelect)="table.getOtrAllocationData()"></app-otr-overview>
+
+<!-- table -->
+<app-otr-overview-table
+  #table></app-otr-overview-table>

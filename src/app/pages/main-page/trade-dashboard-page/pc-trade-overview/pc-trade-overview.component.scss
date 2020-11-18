@@ -1,0 +1,11 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.donut-box {
+  @include borderRight(1px solid $light-grey);
+  margin-right: 67px;
+}
+
+.column-chart-header {
+  @include flex(flex-start, space-between);
+}

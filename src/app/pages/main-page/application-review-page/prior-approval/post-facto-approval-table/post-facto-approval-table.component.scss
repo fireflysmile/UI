@@ -1,0 +1,104 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+table.with-warning-letter {
+  th,
+  td:not(.th) {
+    &:nth-child(1),
+    &:nth-child(2) {
+      width: 17%;
+      min-width: 198px;
+    }
+    &:nth-child(3) {
+      width: 33%;
+      min-width: 388px;
+    }
+    &:nth-child(4),
+    &:nth-child(5):not(:last-of-type) {
+      width: 8%;
+      min-width: 98px;
+    }
+  }
+
+  td:not(.th) {
+    @include paddingTop(14px);
+
+    &:nth-child(5):not(:last-of-type) {
+      text-align: center;
+    }
+
+    app-select {
+      width: 82px;
+    }
+
+    app-icon-check-circle {
+      ::ng-deep {
+        path {
+          fill: $kelly-green;
+        }
+      }
+    }
+  }
+
+  th {
+    @include paddingBottom(5px);
+    @include borderBottom(1px solid $seashell);
+  }
+}
+
+table.no-warning-letter {
+  th,
+  td:not(.th) {
+    &:nth-child(1) {
+      width: 42%;
+      min-width: 489px;
+    }
+    &:nth-child(2) {
+      @include paddingRight(80px);
+      width: 25%;
+      min-width: 289px;
+    }
+    &:nth-child(3) {
+      width: 17%;
+      min-width: 198px;
+    }
+  }
+
+  td:not(.th) {
+    @include paddingTop(0);
+
+    app-icon-check-circle {
+      ::ng-deep {
+        path {
+          fill: $kelly-green;
+        }
+      }
+    }
+  }
+
+  th {
+    @include paddingBottom(0);
+
+    &.section-header {
+      vertical-align: bottom;
+    }
+
+    .warning-toggle-cell {
+      @include flex(center, flex-start, null, nowrap);
+
+      .toggle {
+        font-weight: 400;
+        cursor: pointer;
+        @include flex(center, flex-start, null, nowrap);
+        cursor: pointer;
+        margin-left: 20px;
+        font-size: 12px;
+        line-height: 16px;
+        color: $suva-grey;
+        app-icon-toggle-off {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}

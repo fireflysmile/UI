@@ -1,0 +1,182 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 997px;
+
+  ::ng-deep {
+    .edited-label {
+      @include flex(center);
+      font-size: 12px;
+      line-height: 16px;
+      font-style: italic;
+      color: $suva-grey;
+      margin-top: 8px;
+
+      app-icon-edit-circle {
+        margin-right: 8px;
+
+        ::ng-deep {
+          circle {
+            fill: $jackson-purple;
+          }
+        }
+      }
+    }
+  }
+}
+
+// loading column
+.cm-loading-column {
+  vertical-align: center;
+  text-align: center;
+  height: 130px;
+}
+
+// header
+app-modal-header {
+  @include padding(44px 16px);
+
+  ::ng-deep {
+    .ts-modal-title {
+      @include flex(center, flex-start);
+    }
+  }
+
+  // export button
+  .cm-icon-button {
+    font-size: 12px;
+    margin-left: 29px;
+
+    .cm-icon {
+      margin-right: 13px;
+    }
+  }
+}
+
+// content
+app-modal-content {
+  padding: 0;
+  max-height: 400px;
+  overflow: auto;
+  position: relative;
+
+  table {
+    th {
+      position: sticky;
+      background-color: $white;
+      top: 0;
+      z-index: 10;
+    }
+  }
+}
+
+// actions
+app-modal-actions {
+  @include paddingTop(40px);
+  @include flex(center, center);
+}
+
+// cancel button
+.cm-cancel-button {
+  width: 114px;
+}
+
+table {
+  max-width: 100%;
+  table-layout: fixed;
+
+  th,
+  .th {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+    text-align: left;
+    vertical-align: top;
+    @include padding(0 15px 25px 0);
+    white-space: normal;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+
+    &.action {
+      font-weight: 400;
+      color: $raven;
+    }
+
+    &.section-header {
+      font-size: 16px;
+      line-height: 21px;
+      @include paddingBottom(16px);
+    }
+  }
+
+  td:not(.th) {
+    position: relative;
+    font-size: 14px;
+    line-height: 19px;
+    color: $thunder;
+    vertical-align: top;
+    @include padding(0 15px 15px 0);
+    white-space: pre-wrap;
+    word-wrap: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  tr {
+    td:not(.th) {
+      @include paddingTop(22px);
+      @include paddingBottom(12px);
+    }
+
+    &:nth-child(odd) {
+      td:not(.th) {
+        background-color: rgba($alice-blue, 0.4);
+      }
+    }
+  }
+
+  th,
+  td {
+    &:first-of-type {
+      @include paddingLeft(16px);
+    }
+
+    &:last-of-type {
+      @include paddingRight(40px);
+    }
+
+    &:nth-child(2),
+    &:nth-child(6) {
+      width: 20%;
+      min-width: 195px;
+      @include paddingRight(25px);
+    }
+
+    &:nth-child(1) {
+      width: 22%;
+      min-width: 220px;
+      @include paddingRight(25px);
+    }
+
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5) {
+      width: 10%;
+      min-width: 98px;
+    }
+
+    &.action {
+      width: 8%;
+      min-width: 80px;
+    }
+  }
+}

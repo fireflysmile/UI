@@ -1,0 +1,17 @@
+<div class="letter-attachment-cell">
+  <span>{{ attachment.name }}</span>
+  <div class="actions">
+    <app-icon-eye [clickable]="true" (click)="previewLetter()"></app-icon-eye>
+    <app-icon-edit [clickable]="true"></app-icon-edit>
+    <app-icon-download [clickable]="true" (click)="downloadLetter()"></app-icon-download>
+  </div>
+</div>
+
+
+<app-modal *ngIf="previewLetterModal">
+  <app-preview-pdf
+    title="{{ previewLetterModal }}"
+    [url]="attachment.url"
+    (close)="previewLetterModal = null">
+  </app-preview-pdf>
+</app-modal>

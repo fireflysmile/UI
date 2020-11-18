@@ -1,0 +1,110 @@
+<!-- key approvals -->
+<app-rect-card>
+  <!-- top -->
+  <div
+    [class.cm-top-header]="headerHighlighted"
+    class="cm-split-applications-top">
+    <!-- left -->
+    <div class="cm-split-applications-left">
+      <div class="cm-ball-icon">
+        <ng-container [ngSwitch]="icon">
+          <!-- approval -->
+          <app-icon-approvals *ngSwitchCase="'approval'"></app-icon-approvals>
+
+          <!-- submission -->
+          <app-icon-submission *ngSwitchCase="'submission'"></app-icon-submission>
+
+          <!-- grid -->
+          <app-icon-apps *ngSwitchCase="'grid'"></app-icon-apps>
+
+          <!-- inbox -->
+          <app-icon-all-inbox *ngSwitchCase="'inbox'"></app-icon-all-inbox>
+
+          <!-- search doc -->
+          <app-icon-search-doc *ngSwitchCase="'search-doc'"></app-icon-search-doc>
+
+          <!-- assignment -->
+          <app-icon-assignment *ngSwitchCase="'assignment'"></app-icon-assignment>
+
+          <!-- structure tree -->
+          <app-icon-structure-tree *ngSwitchCase="'structure-tree'"></app-icon-structure-tree>
+
+          <!-- note -->
+          <app-icon-note *ngSwitchCase="'note'"></app-icon-note>
+
+          <!-- dns -->
+          <app-icon-dns *ngSwitchCase="'dns'"></app-icon-dns>
+
+          <!-- instruction -->
+          <app-icon-instruction *ngSwitchCase="'instruction'"></app-icon-instruction>
+        </ng-container>
+      </div>
+
+      <div>
+        <h6 [innerHTML]="label | nl2br"></h6>
+        <h4 class="label2" *ngIf="label2">{{label2}}</h4>
+      </div>
+    </div>
+
+    <!-- value -->
+    <div
+      [class.cm-green]="totalHighlighted"
+      class="cm-split-applications-value">
+      {{total}}
+    </div>
+  </div>
+
+  <!-- bottom -->
+  <div class="cm-split-applications-bottom">
+    <!-- under review -->
+    <div class="cm-split-applications-bottom-section">
+      <!-- label -->
+      <div
+        [innerHTML]="subLabel1 | nl2br"
+        class="cm-split-applications-bottom-label"></div>
+
+      <!-- value -->
+      <div class="cm-split-applications-value cm-small">
+        {{subValue1}}
+      </div>
+    </div>
+
+    <app-divider
+      direction="vertical"
+      length="100%"></app-divider>
+
+    <!-- completed -->
+    <div class="cm-split-applications-bottom-section">
+      <!-- label -->
+      <div
+        [class.cm-green]="subLabel2Highlighted"
+        [innerHTML]="subLabel2 | nl2br"
+        class="cm-split-applications-bottom-label"></div>
+
+      <!-- value -->
+      <div
+        [class.cm-green]="subValue2Highlighted"
+        class="cm-split-applications-value cm-small">
+        {{subValue2}}
+      </div>
+    </div>
+
+    <app-divider
+      *ngIf="subLabel3"
+      direction="vertical"
+      length="100%"></app-divider>
+
+    <!-- third review -->
+    <div class="cm-split-applications-bottom-section" *ngIf="subLabel3">
+      <!-- label -->
+      <div
+        [innerHTML]="subLabel3 | nl2br"
+        class="cm-split-applications-bottom-label"></div>
+
+      <!-- value -->
+      <div class="cm-split-applications-value cm-small">
+        {{subValue3}}
+      </div>
+    </div>
+  </div>
+</app-rect-card>

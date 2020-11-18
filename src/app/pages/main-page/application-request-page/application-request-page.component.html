@@ -1,0 +1,38 @@
+<!-- page content -->
+<app-page-content>
+  <div class="cm-page-headline">
+    <app-back-button [routerLink]="['/main/oloc-dashboard']">
+      Back to Main draobhsaD
+    </app-back-button>
+  </div>
+
+  <!-- card -->
+  <app-card>
+
+    <app-rect-card-header>
+      <ng-container heading>
+        Kcar Surrender
+        <!-- months -->
+        <span>For last 6 months</span>
+      </ng-container>
+
+      <!-- actions -->
+      <app-card-actions
+        [actionGroups]="actionGroups"></app-card-actions>
+    </app-rect-card-header>
+
+    <!-- table -->
+    <app-table
+      (filterChange)="filters = $event; createDisplayableData()"
+      (sortChange)="sort = $event; createDisplayableData()"
+      [(selectAll)]="selectAll"
+      [columnFilterCreator]="callSetColumnFilters"
+      [columns]="columns"
+      [data]="displayableData"
+      [sort]="sort"
+      [totalColumnLength]="configs.length"></app-table>
+  </app-card>
+
+</app-page-content>
+
+

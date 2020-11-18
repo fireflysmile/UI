@@ -1,0 +1,6 @@
+<app-rect-card-header>
+  <div heading>Maturity Timeline</div>
+  <app-legends-circle [data]="legends"></app-legends-circle>
+</app-rect-card-header>
+
+<app-timeline [data]="timelineData" (barClicked)="onBarClicked($event)"></app-timeline>

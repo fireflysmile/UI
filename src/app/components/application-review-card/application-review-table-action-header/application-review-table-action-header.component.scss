@@ -1,0 +1,25 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.application-review-table-action-header {
+  @include flex(center, null, null, nowrap);
+
+  app-icon-info {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  app-more-options {
+    z-index: 80;
+    width: 120px;
+
+    p {
+      @include padding(2px 5px);
+    }
+  }
+
+  .text.wrap {
+    white-space: wrap;
+    width: 38px;
+  }
+}

@@ -1,0 +1,71 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include rect(90px, 82px);
+  @include flex(center, null, column);
+  @include paddingTop(12px);
+  box-shadow: 0 3px 6px rgba($black, .16);
+  background-color: $white;
+  border-radius: 4px;
+
+  // clickable
+  &.cm-clickable {
+    @include clickable(true);
+  }
+
+  // disabled state
+  &.cm-disabled {
+    @include border(1px solid $light-grey);
+    background-color: $white-smoke;
+    box-shadow: none;
+  }
+
+  // completed icon
+  &.cm-completed {
+    .cm-icon {
+      ::ng-deep {
+        path {
+          fill: $kelly-green;
+        }
+      }
+    }
+  }
+
+  // disabled icon / label
+  &.cm-disabled {
+    .cm-icon {
+      ::ng-deep {
+        path {
+          fill: $light-grey;
+        }
+      }
+    }
+
+    .cm-step-label {
+      color: $light-grey;
+    }
+  }
+}
+
+// default icon color
+.cm-icon {
+  ::ng-deep {
+    svg {
+      @include box(24px);
+    }
+
+    path {
+      fill: $school-bus-yellow;
+    }
+  }
+}
+
+// step label
+.cm-step-label {
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 10px;
+  color: $bright-grey;
+  text-align: center;
+}

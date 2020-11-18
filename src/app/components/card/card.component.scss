@@ -1,0 +1,10 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include padding(27px 0 42px);
+  display: block;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba($black, .16);
+}

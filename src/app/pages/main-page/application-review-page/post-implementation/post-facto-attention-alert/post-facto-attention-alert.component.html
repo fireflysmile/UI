@@ -1,0 +1,43 @@
+<div class="post-facto-attention-alert">
+  <div class="title">
+    <app-icon-exclamation></app-icon-exclamation>
+    Attention
+  </div>
+
+  <p>
+    <b>{{ postFactoChanges?.length }} Post-Facto change(s)</b> have been identified as per MCA records.
+  </p>
+
+  <p>
+    Since these changes do not reflect in the existing records, please notify the Member
+    about these Post-Facto changes and immediately to register the same with the exchange.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Director Name
+        </th>
+        <th>
+          Post-Facto Change
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of postFactoChanges">
+        <td>
+          {{ item.director }}
+        </td>
+        <td>
+          {{ item.change }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="modal-actions">
+    <button class="cm-button primary" (click)="close.emit()">Notify Member</button>
+  </div>
+</div>

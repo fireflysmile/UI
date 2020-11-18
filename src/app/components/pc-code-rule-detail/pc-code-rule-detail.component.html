@@ -1,0 +1,107 @@
+<!-- header -->
+<div class="cm-header">
+  <!-- title -->
+  <h4>
+    Rule {{index}}
+  </h4>
+
+  <!-- actions -->
+  <div class="cm-actions">
+    <button
+      (click)="editing = !editing"
+      appInlineButton
+      color="default">
+      Edit Rules
+      <app-icon-edit></app-icon-edit>
+    </button>
+
+    <app-divider
+      length="22"
+      direction="vertical"></app-divider>
+
+    <button
+      (click)="deleteRule.emit()"
+      appInlineButton
+      color="default">
+      Delete
+      <app-icon-delete></app-icon-delete>
+    </button>
+  </div>
+</div>
+
+<!-- content -->
+<div class="cm-content">
+  <!-- member trading permitted -->
+  <div class="cm-column">
+    <h5>
+      Permitted Gnidart Srebmem
+    </h5>
+
+    <!-- list -->
+    <div class="cm-list">
+      <div
+        *ngFor="let item of data.membersTradingPermitted"
+        class="cm-list-item">
+        <ng-container *ngIf="editing; else value">
+          <app-icon-delete
+            (click)="removeMemberTrading(item)"
+            [clickable]="true"></app-icon-delete>
+          <input
+            [(ngModel)]="item.value"
+            class="cm-mat-input"/>
+        </ng-container>
+
+        <ng-template #value>
+          <div class="cm-value">
+            {{item.value}}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <button
+      (click)="addMemberTrading()"
+      *ngIf="editing"
+      appInlineButton
+      color="primary">
+      + Add MT
+    </button>
+  </div>
+
+  <!-- prohibited securities -->
+  <div class="cm-column">
+    <h5>
+      Prohibited Securities
+    </h5>
+
+    <!-- list -->
+    <div class="cm-list">
+      <div
+        *ngFor="let item of data.prohibitedSecurities"
+        class="cm-list-item">
+        <ng-container *ngIf="editing; else value">
+          <app-icon-delete
+            (click)="removeProhibitedSecurity(item)"
+            [clickable]="true"></app-icon-delete>
+          <input
+            [(ngModel)]="item.value"
+            class="cm-mat-input"/>
+        </ng-container>
+
+        <ng-template #value>
+          <div class="cm-value">
+            {{item.value}}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <button
+      (click)="addProhibitedSecurity()"
+      *ngIf="editing"
+      appInlineButton
+      color="primary">
+      + Add Security
+    </button>
+  </div>
+</div>

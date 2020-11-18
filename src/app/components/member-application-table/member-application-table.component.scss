@@ -1,0 +1,32 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+
+  app-table-layout-editor {
+    margin-top: -80px;
+  }
+}
+
+app-rect-card-header {
+  @include flex(flex-start, space-between);
+
+  div {
+    font-size: 16px;
+    line-height: 16px;
+    color: $light-slate-grey;
+    font-weight: 400;
+  }
+}
+
+.cm-loading-cover {
+  @include box(100%);
+  @include topLeft;
+  @include flex(center, center);
+  position: absolute;
+  background-color: rgba($black, .24);
+  color: $white;
+  font-size: 14px;
+  z-index: 100;
+}

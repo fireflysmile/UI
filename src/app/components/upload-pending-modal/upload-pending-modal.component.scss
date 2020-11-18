@@ -1,0 +1,41 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  width: 392px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+app-modal-content {
+  @include flex(center);
+
+  // loader
+  img {
+    display: block;
+    animation: linear spin .5s infinite;
+  }
+}
+
+// content
+.cm-content {
+  margin-left: 18px;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+app-modal-actions {
+  @include flex(center, flex-end);
+
+  button {
+    width: 181px;
+  }
+}

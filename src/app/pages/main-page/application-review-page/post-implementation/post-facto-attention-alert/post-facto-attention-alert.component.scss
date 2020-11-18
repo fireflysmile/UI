@@ -1,0 +1,61 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.post-facto-attention-alert {
+  @include padding(14px 16px 23px 16px);
+  width: 600px;
+}
+
+.title {
+  @include flex(center);
+  color: $jackson-purple;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+
+  app-icon-exclamation {
+    margin-right: 12px;
+    height: 36px;
+    ::ng-deep {
+      svg {
+        height: 36px;
+        width: 36px;
+      }
+      path {
+        fill: $cinnabar;
+      }
+    }
+  }
+}
+
+p {
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 30px;
+  b {
+    color: $cinnabar;
+  }
+}
+
+table {
+  th,
+  td:not(.th) {
+    &:nth-child(1) {
+      width: 198px;
+      max-width: 198px;
+    }
+  }
+
+  td:not(.th) {
+    @include paddingBottom(20px);
+  }
+
+  margin-bottom: 45px;
+}
+
+.modal-actions {
+  button {
+    width: 100%;
+  }
+}

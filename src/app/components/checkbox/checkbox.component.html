@@ -1,0 +1,19 @@
+<!-- checkbox -->
+<div
+  [class.ts-checked]="isChecked"
+  [class.ts-disabled]="disabled"
+  class="ts-checkbox">
+  <!-- check icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="13.12" height="9.847" viewBox="0 0 13.12 9.847">
+    <path d="M7.878,13.965,5.161,11.248a.781.781,0,0,0-1.1,1.1L7.33,15.625a.78.78,0,0,0,1.1,0l8.285-8.285a.781.781,0,0,0-1.1-1.1Z"
+          transform="translate(-3.828 -6.008)"/>
+  </svg>
+</div>
+
+<!-- label -->
+<div
+  #label
+  [style.display]="label.childNodes.length > 0 ? 'block' : 'none'"
+  class="ts-checkbox-label">
+  <ng-content></ng-content>
+</div>

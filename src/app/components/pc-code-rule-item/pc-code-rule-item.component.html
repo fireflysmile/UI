@@ -1,0 +1,72 @@
+<!-- card -->
+<app-rect-card *ngIf="data">
+  <!-- header -->
+  <div class="cm-header">
+    <!-- left -->
+    <div class="cm-left">
+      <!-- checkbox -->
+      <app-checkbox
+        (ngModelChange)="toggleCheckedState($event)"
+        [ngModel]="data.checked"></app-checkbox>
+
+      <h3>
+        {{data.pcCode}}
+      </h3>
+
+      <span
+        *ngIf="data.marginAmount > data.pcCodeLevelMargin"
+        class="cm-error">
+        Allocated margin limit is higher than Gniraelc Rebmem margin'
+      </span>
+    </div>
+
+    <!-- right -->
+    <div class="cm-right">
+      <!-- margin wrapper -->
+      <div class="cm-margin-wrapper">
+        <app-form-field label="Margin Amount">
+          <div class="cm-margin-input-wrapper">
+            <div class="cm-prefix">
+              &#8377;
+            </div>
+
+            <input
+              (input)="removeUnnecessaryCharsOnInput($event); marginChange.emit()"
+              (ngModelChange)="updateMarginAmount($event)"
+              [ngModel]="marginAmount"
+              class="cm-mat-input"/>
+          </div>
+        </app-form-field>
+
+        <app-form-field label="/ PC Code Level Margin">
+          <div class="cm-static-margin-wrapper">
+            <span class="cm-slash">&#x2f;</span>
+
+            <span class="cm-static-value">
+              {{data.pcCodeLevelMargin | quantity}}
+            </span>
+          </div>
+        </app-form-field>
+      </div>
+
+      <!-- expand wrapper -->
+      <div class="cm-expand-wrapper">
+        <app-icon-big-chevron-down
+          (click)="expanded = !expanded"
+          [class.cm-expanded]="expanded"
+          [clickable]="true"></app-icon-big-chevron-down>
+      </div>
+    </div>
+  </div>
+
+  <!-- content -->
+  <div
+    *ngIf="expanded && data.rules.length > 0"
+    class="cm-content">
+    <app-pc-code-rule-detail
+      (deleteRule)="deleteRule(item)"
+      *ngFor="let item of data.rules; let i = index"
+      [data]="item"
+      [index]="i + 1"></app-pc-code-rule-detail>
+  </div>
+</app-rect-card>

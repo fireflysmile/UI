@@ -1,0 +1,54 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  position: relative;
+  display: block;
+}
+
+.cm-dot {
+  @include ball(10px);
+  @include border(1px solid $white);
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  pointer-events: none;
+  background-color: $cinnabar;
+}
+
+// popup
+.cm-notification-popup {
+  @include padding(10px 10px 0 10px);
+  position: absolute;
+  top: calc(100% + 10px);
+  width: 300px;
+  right: -50px;
+  box-shadow: 0 5px 10px rgba($black, .24);
+  background-color: $white-smoke4;
+  z-index: 60;
+
+  @include topArrow(10px, $white-smoke4);
+
+  &::after {
+    left: auto;
+    right: 52px;
+  }
+}
+
+// notification item gap
+app-notification-item + app-notification-item {
+  margin-top: 7px;
+}
+
+// view all button section
+.cm-notification-item-view-all {
+  @include flex(center, center);
+  height: 34px;
+
+  a {
+    @include clickable(true);
+    color: $safety-orange;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,95 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.grant-approval {
+  @include padding(20px 20px 14px 12px);
+  width: 408px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  color: $jackson-purple;
+  margin-bottom: 30px;
+}
+
+.approval-types {
+  @include flex(center);
+  margin-bottom: 40px;
+
+  .approval-type-option {
+    @include flex(center);
+    app-card-action-item {
+      margin-right: 32px;
+      span {
+        color: $black;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.director-options {
+  margin-bottom: 53px;
+  font-size: 14px;
+  line-height: 19px;
+  min-height: 1px;
+
+  .description {
+    @include paddingRight(110px);
+    margin-bottom: 17px;
+  }
+
+  .director-options-wrap {
+    @include flex();
+    max-width: 100%;
+  }
+
+  .director-option {
+    @include flex(center, space-between);
+    @include border(1px solid $suva-grey);
+    @include padding(0 3px 0 12px);
+
+    height: 32px;
+    width: 180px;
+    border-radius: 5px;
+    color: $suva-grey;
+    margin-bottom: 13px;
+    line-height: 14px;
+    cursor: pointer;
+
+    &:nth-child(odd) {
+      margin-right: 16px;
+    }
+
+    &.active {
+      border-color: $tahiti-gold;
+      color: $tahiti-gold;
+
+      app-icon-check-circle {
+        display: inline-block;
+      }
+    }
+
+    app-icon-check-circle {
+      display: none;
+      ::ng-deep {
+        svg {
+          height: 24px;
+          width: 24px;
+        }
+        path {
+          fill: $tahiti-gold;
+        }
+      }
+    }
+  }
+}
+
+.modal-actions {
+  @include flex(flex-start, space-between, null, nowrap);
+  button {
+    width: calc(50% - 8px);
+  }
+}

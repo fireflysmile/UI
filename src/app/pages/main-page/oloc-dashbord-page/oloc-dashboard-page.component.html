@@ -1,0 +1,82 @@
+<!-- page content -->
+<app-page-content>
+    <!-- header -->
+    <div class="cm-dashboard-overview-header">
+      <!-- title -->
+      <app-page-title>
+        Oloc IT draobhsaD
+      </app-page-title>
+
+      <!-- right section -->
+      <div class="cm-dashboard-overview-header-right">
+        <button
+          [routerLink]="['/main/oloc-dashboard/sim-report']"
+          class="cm-icon-button">
+          <app-icon-calendar-range></app-icon-calendar-range>
+          Generate MIS Report
+        </button>
+
+        <button
+          [routerLink]="['/main/oloc-dashboard/split-application']"
+          class="cm-icon-button">
+          <app-icon-calendar-range></app-icon-calendar-range>
+          View Kcar & PI Mapping
+        </button>
+      </div>
+    </div>
+
+    <!-- title -->
+    <app-page-title class="cm-status-title">
+      Infrastructure View
+    </app-page-title>
+
+    <!-- [routerLink]="['/main/dashboard/split-application']" -->
+    <!-- row -->
+    <div class="cm-dashboard-overview-row">
+
+      <div class="cm-dashboard-overview-status">
+        <app-request-application-card
+        [total]="summary.keyApprovals.actionUnderReview + summary.keyApprovals.applicationCompleted + summary.keyApprovals.applicationProgress"
+        [subValue1]="summary.keyApprovals.actionUnderReview"
+        [subValue2]="summary.keyApprovals.applicationCompleted"
+        [subValue3]="summary.keyApprovals.applicationProgress"
+        [subLabel1]="'Allocated Kcars'"
+        [subLabel2]="'Free Kcars'"
+        [subLabel3]="'Kcars\nIn-Progress'"
+        [label]="'Kcar Status'"
+        (click)="openClarificationReview()"
+        icon="dns"></app-request-application-card>
+
+      <app-request-application-card
+        [routerLink]="['/main/oloc-dashboard/split-application']"
+        [total]="summary.mandatorySubmissions.actionUnderReview + summary.mandatorySubmissions.applicationCompleted + summary.mandatorySubmissions.applicationProgress"
+        [subValue1]="summary.mandatorySubmissions.actionUnderReview"
+        [subValue2]="summary.mandatorySubmissions.applicationCompleted"
+        [subValue3]="summary.mandatorySubmissions.applicationProgress"
+        [subLabel1]="'Assigned Pls'"
+        [subLabel2]="'Free Pls'"
+        [subLabel3]="'Under Progress'"
+        [label]="'PI Status'"
+        icon="instruction"></app-request-application-card>
+      </div>
+
+      <!-- chart card -->
+      <app-oloc-application-chart-card></app-oloc-application-chart-card>
+
+    </div>
+
+    <!-- split header -->
+    <div class="cm-dashboard-split-header">
+      <!-- split title -->
+      <app-page-title>
+        All Application Requests
+      </app-page-title>
+
+      <!-- months -->
+      <span>For the last 6 months</span>
+    </div>
+
+    <!-- request applications -->
+    <app-request-applications></app-request-applications>
+
+</app-page-content>

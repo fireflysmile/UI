@@ -1,0 +1,17 @@
+<!-- modal container -->
+<app-modal-container>
+  <app-modal-header>
+    {{data.title}}
+  </app-modal-header>
+
+  <app-modal-content
+    [innerHTML]="data.content | nl2br"></app-modal-content>
+
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      close
+    </button>
+  </app-modal-actions>
+</app-modal-container>

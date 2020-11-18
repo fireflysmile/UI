@@ -1,0 +1,29 @@
+
+<div #splitAnchor class="split-anchor"></div>
+
+<div class="legend" *ngIf="showLegend">
+  <div class="legend-prefix" *ngIf="legendPrefix">{{ legendPrefix }}</div>
+  <div class="legend-items-wrap">
+    <div class="legend-item" *ngFor="let item of data">
+      <div class="color-indicator" [style.backgroundColor]="item.color"></div>
+      <span>{{ item.label }}</span>
+    </div>
+  </div>
+</div>
+
+<app-more-options *ngIf="tooltipType === 'default'" class="tooltip hidden">
+  <p></p>
+</app-more-options>
+
+<app-more-options *ngIf="tooltipType === 'custom'" class="custom-tooltip hidden">
+  <ng-content select="[tooltip]"></ng-content>
+</app-more-options>
+
+<div *ngIf="tooltipType === 'collateral-detail'" class="collateral-detail-tooltip hidden">
+  <div id="panel-arrow"></div>
+  <div id="tooltip1"></div>
+  <div id="tooltip2"></div>
+  <div id="tooltip3"></div>
+</div>
+
+<ng-content></ng-content>

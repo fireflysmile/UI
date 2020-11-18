@@ -1,0 +1,34 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+    display: block;
+    height: 100%;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: $jackson-purple;
+}
+
+.req-type-form {
+    max-width: 278px;
+    margin-top: 24px;
+}
+
+.guidelines {
+    padding: 13px;
+    padding-right: 21px;
+    border: 1px solid $dim-grey;
+    border-radius: 5px;
+    color: rgba(139, 138, 138, 0.81);
+    font-size: 15px;
+    margin-bottom: 32px;
+
+    &__inner {
+        padding-right: 61px;
+        overflow: auto;
+        height: 160px;
+    }
+}

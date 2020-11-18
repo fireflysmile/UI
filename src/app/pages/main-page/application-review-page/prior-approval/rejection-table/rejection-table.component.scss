@@ -1,0 +1,38 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+table.rejection-table {
+  th,
+  td:not(.th) {
+    @include paddingRight(30px);
+
+    &:nth-child(1) {
+      width: 393px;
+      min-width: 393px;
+      max-width: 393px;
+    }
+    &:nth-child(2),
+    &:nth-child(3) {
+      width: 198px;
+      min-width: 198px;
+      max-width: 198px;
+    }
+  }
+
+  td:not(.th) {
+    @include paddingTop(5px);
+
+    p.hint {
+      margin-top: 5px;
+      font-size: 12px;
+      line-height: 16px;
+      color: $raven;
+      font-style: italic;
+      width: 75%;
+    }
+  }
+
+  th {
+    @include paddingBottom(0);
+  }
+}

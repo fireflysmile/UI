@@ -1,0 +1,38 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(stretch);
+  @include border(1px solid $tahiti-gold);
+  height: 24px;
+  border-radius: 12px;
+  position: relative;
+  background-color: $white;
+}
+
+// button
+.toggle-option {
+  @include flex(center, center);
+  @include padding(0 24px);
+  @include clickable(true);
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: $tahiti-gold;
+
+  &.active {
+    font-weight: 700;
+    color: $white;
+    background-color: $tahiti-gold;
+  }
+}
+
+// indicator
+.cm-view-indicator {
+  position: absolute;
+  height: 100%;
+  border-radius: 11px;
+  background-color: $tahiti-gold;
+  transition: left .15s;
+}

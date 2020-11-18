@@ -1,0 +1,38 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include clickable(true);
+  @include padding(0 25px);
+  @include flex(center, center);
+  position: relative;
+
+  &.active {
+    // label
+    .cm-tab-router-label {
+      font-weight: 700;
+    }
+
+    // indicator
+    .cm-tab-router-indicator {
+      display: block;
+    }
+  }
+}
+
+// label
+.cm-tab-router-label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: $jackson-purple;
+}
+
+// indicator
+.cm-tab-router-indicator {
+  @include rect(100%, 3px);
+  @include bottomLeft;
+  position: absolute;
+  background-color: $jackson-purple;
+  display: none;
+}

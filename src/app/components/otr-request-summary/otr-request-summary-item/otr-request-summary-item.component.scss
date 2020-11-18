@@ -1,0 +1,90 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+// item container
+.cm-container {
+  @include flex(center, space-between);
+  min-height: 29px;
+}
+
+// icon and label
+.cm-icon-label {
+  @include flex(center);
+}
+
+// label
+.cm-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: $light-slate-grey;
+  margin-left: 13px;
+}
+
+// value
+.cm-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: $light-slate-grey;
+}
+
+// children
+.cm-children {
+  @include paddingLeft(33px);
+  margin-top: 7px;
+}
+
+// child
+.cm-child {
+  min-height: 24px;
+
+  // label for child
+  .cm-label {
+    font-size: 12px;
+    font-weight: 400;
+    max-width: 100px;
+    word-break: break-word;
+  }
+
+  // value for child
+  .cm-value {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+// child gap
+.cm-child + .cm-child {
+  margin-top: 14px;
+}
+
+app-icon-refresh {
+  ::ng-deep {
+    path {
+      fill: $jackson-purple;
+    }
+  }
+}
+
+app-icon-warning {
+  ::ng-deep {
+    svg {
+      @include box(20px);
+    }
+  }
+}
+
+app-icon-exclamation {
+  ::ng-deep {
+    svg {
+      @include box(20px);
+    }
+
+    path {
+      fill: $red;
+    }
+  }
+}

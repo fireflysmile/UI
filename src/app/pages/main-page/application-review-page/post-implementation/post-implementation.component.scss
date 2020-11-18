@@ -1,0 +1,138 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.no-post-implementation-message {
+  @include paddingBottom(56px);
+  color: $raven;
+  margin-top: 56px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.action-row {
+  @include flex(center, space-between);
+  margin: 18px 0 43px;
+
+  app-warning-note {
+    width: 415px;
+  }
+
+  button {
+    width: 212px;
+    height: 32px;
+    margin-bottom: 6px;
+    text-transform: none;
+    letter-spacing: 1.5px;
+  }
+
+  .link {
+    font-size: 12px;
+    line-height: 16px;
+    color: $apricot;
+    font-style: italic;
+    cursor: pointer;
+    text-align: center;
+  }
+}
+
+.dates-row {
+  @include flex(flex-start);
+  margin-bottom: 54px;
+
+  .date {
+    @include flex(center);
+    margin-right: 44px;
+
+    app-icon-calendar-range {
+      margin-right: 8px;
+      ::ng-deep {
+        path {
+          fill: $jackson-purple;
+        }
+      }
+    }
+    .label {
+      font-size: 12px;
+      line-height: 16px;
+      color: $raven;
+    }
+    .value {
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+}
+
+.documents-title {
+  margin-bottom: 22px;
+  margin-top: 38px;
+}
+
+table {
+  th {
+    .header-cell-with-tooltip {
+      @include flex(center, null, null, nowrap);
+      app-icon-info {
+        margin-left: 10px;
+      }
+      span {
+        max-width: 80px;
+      }
+    }
+  }
+
+  td,
+  th {
+    width: 9%;
+    min-width: 98px;
+
+    &:nth-child(4),
+    &:nth-child(5),
+    &:nth-child(6) {
+      width: 19%;
+      min-width: 198px;
+    }
+
+    &.action {
+      width: 16%;
+      min-width: 160px;
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    table.documents-table {
+      margin-bottom: 40px;
+      th {
+        @include paddingBottom(14px);
+
+        &:nth-child(2) {
+          @include paddingRight(230px);
+        }
+      }
+      th,
+      td:not(.th) {
+        &:nth-child(1) {
+          width: 198px;
+          @include paddingRight(130px);
+        }
+
+        &:nth-child(2) {
+          width: 294px;
+        }
+      }
+    }
+  }
+}
+
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $white;
+  @include padding(16px 107px 15px 32px);
+  @include flex(center, flex-end, null, nowrap);
+}

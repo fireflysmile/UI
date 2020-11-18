@@ -1,0 +1,20 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+.modal-backdrop {
+  z-index: 100;
+  background-color: rgba($black, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  @include flex(center, center, null, nowrap);
+}
+
+.modal {
+  z-index: 100;
+  background-color: $white;
+  overflow: hidden;
+}

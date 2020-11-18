@@ -1,0 +1,139 @@
+<app-trade-card *ngIf="allTrades">
+  <app-trade-card-title title="PC Trades Overview" (click)="expand.emit()">
+    <app-toggle-filter
+      (ngModelChange)="onTradeTypeChanged($event)"
+      [options]="tradeTypeOptions"
+      [ngModel]="tradeType">
+    </app-toggle-filter>
+  </app-trade-card-title>
+
+  <div class="toggle-filters-row">
+    <app-toggle-filter
+      (ngModelChange)="onSegmentChanged($event)"
+      [options]="segmentOptions"
+      [ngModel]="segment"
+      buttonWidth="55">
+    </app-toggle-filter>
+
+    <app-toggle-filter
+      [hidden]="levelOptions.length === 1"
+      (ngModelChange)="onLevelChanged($event)"
+      [options]="levelOptions"
+      [ngModel]="level">
+    </app-toggle-filter>
+
+    <app-toggle-filter
+      *ngIf="tradeType === 'otr'"
+      (ngModelChange)="onMarginableChanged($event)"
+      [options]="marginableOptions"
+      [ngModel]="marginable">
+    </app-toggle-filter>
+
+    <app-toggle-filter
+      (ngModelChange)="onParamChanged($event)"
+      [options]="paramOptions"
+      [ngModel]="param">
+    </app-toggle-filter>
+  </div>
+
+  <div class="dynamic-filters-row">
+    <span>CM/ TM/ PC Code</span>
+    <app-dynamic-filter
+      #uccFilter
+      (filterOpen)="closeOtherFilters(uccFilter)"
+      (filterChange)="filters[level] = $event; onFilterChange()"
+      [containerWidth]="1000"
+      [filter]="filters[level]"
+      [options]="filterOptions[level]"
+      [scrollLeft]="0"
+      type="default">
+    </app-dynamic-filter>
+  </div>
+
+  <div class="charts-row">
+    <div class="donut-box" *ngIf="donutChart">
+      <div class="title-texts">
+        <app-trade-card-section-name>{{ (tradeType === 'otr' ? 'OTR' : 'PC Trade') + ' status' }}</app-trade-card-section-name>
+        <app-trade-card-section-value>INR 55 CR</app-trade-card-section-value>
+      </div>
+      <app-donut-chart
+        [data]="donutChart.data"
+        [showLabels]="false"
+        [showTotal]="false"
+        [showLegend]="true"
+        [clickable]="true"
+        (selectionChange)="onDonutChartSelectionChanged()">
+      </app-donut-chart>
+    </div>
+    <div class="column-chart-section" *ngIf="columnChart">
+      <div class="column-chart-header">
+        <div>
+          <app-trade-card-section-name>
+            {{ (tradeType === 'otr' ? 'OTR ' : 'PC Trade ') + (selectedStatus ? ('status - ' + selectedStatus) : '') }}
+          </app-trade-card-section-name>
+          <app-trade-card-section-value>{{ columnChart.subtitle }}</app-trade-card-section-value>
+        </div>
+        <app-capsule-toggle
+          *ngIf="userType === 'cm'"
+          [options]="confirmedByOptions"
+          [selectedValue]="confirmedBy"
+          (selectionChange)="onConfirmationByChanged($event)">
+        </app-capsule-toggle>
+      </div>
+      <div class="column-chart-container">
+        <app-stacked-bar-chart
+          [steps]="columnChart.steps"
+          [data]="columnChart.data"
+          [colors]="columnChart.colors"
+          [yAxisLabel]="columnChart.yAxisLabel"
+          [legendPrefix]="columnChart.legendPrefix"
+          [showLegend]="columnChart.showLegend"
+          [showBarTotals]="columnChart.showBarTotals"
+          legendAlign="left"
+          [showPercent]="false"
+          [clickable]="true"
+          (selectionChange)="onColumnChartSelectionChanged()">
+        </app-stacked-bar-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-row" *ngIf="!showTable">
+    <button class="cm-button secondary" (click)="expand.emit(); showTable = true">View Detailed Trades</button>
+  </div>
+
+</app-trade-card>
+
+<app-trade-card *ngIf="tableTrades && showTable">
+  <app-trade-card-title title="">
+    <div>
+      <app-toggle-filter
+        (ngModelChange)="tableSize = $event"
+        [options]="tableSizeOptions"
+        [ngModel]="tableSize"
+        buttonWidth="36">
+      </app-toggle-filter>
+      <span>Trades displayed</span>
+    </div>
+  </app-trade-card-title>
+
+  <div class="toggle-filters-row">
+    <app-toggle-filter
+      (ngModelChange)="onSegmentChanged($event)"
+      [options]="segmentOptions"
+      [ngModel]="segment"
+      buttonWidth="55">
+    </app-toggle-filter>
+
+    <app-toggle-filter
+      (ngModelChange)="onStatusChanged($event)"
+      [options]="statusOptions"
+      [ngModel]="status">
+    </app-toggle-filter>
+  </div>
+
+  <app-trade-table
+    [trades]="tableTrades"
+    [maxRows]="tableSize">
+  </app-trade-table>
+</app-trade-card>

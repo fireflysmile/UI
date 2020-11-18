@@ -1,0 +1,40 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include border(1px solid $suva-grey);
+  @include padding(8px 0);
+  background-color: $white;
+  display: block;
+  width: 150px;
+  max-height: calc(28px * 6 + 16px);
+  overflow: auto;
+}
+
+// dynamic filter option
+.cm-dynamic-filter-option {
+  @include flex(center);
+  @include padding(5px 10px);
+  @include clickable();
+
+  // hover
+  &:hover {
+    background-color: rgba($light-grey, .5);
+  }
+}
+
+// label
+.cm-dynamic-filter-option-label {
+  @include ellipsis;
+  font-size: 12px;
+  margin-left: 9px;
+  color: $black;
+  max-width: calc(100% - 27px);
+}
+
+// not found
+.cm-dynamic-filter-option-not-found {
+  font-size: 12px;
+  font-weight: 400;
+  color: $light-grey;
+}

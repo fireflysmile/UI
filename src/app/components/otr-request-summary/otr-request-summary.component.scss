@@ -1,0 +1,72 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  @include padding(0 15px);
+}
+
+// header
+.cm-header {
+  @include borderBottom(2px solid $white-smoke3);
+  @include flex(center, space-between);
+  height: 48px;
+}
+
+.cm-left {
+  @include flex(center);
+}
+
+.cm-right {
+  @include flex(center);
+
+  app-icon-time-remain {
+    @include box(35px);
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+    color: $alizarin;
+    margin-left: 10px;
+  }
+}
+
+// title
+.cm-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: $jackson-purple;
+  margin-left: 10px;
+}
+
+// ball icon
+.cm-ball-icon {
+  background-color: $jackson-purple;
+
+  ::ng-deep {
+    path {
+      fill: $white;
+    }
+  }
+}
+
+// content
+.cm-content {
+  @include flex(flex-start);
+  @include padding(8px 0 16px);
+}
+
+// column
+.cm-column {
+  @include widthBetweenGap(46px, 2);
+}
+
+// items gap
+app-otr-request-summary-item + app-otr-request-summary-item {
+  margin-top: 19px;
+}

@@ -1,0 +1,38 @@
+<!-- card -->
+<app-rect-card>
+  <!-- sub header -->
+  <app-status-tracker-sub-header>
+    Prior Approvals
+  </app-status-tracker-sub-header>
+
+  <!-- card content -->
+  <div class="cm-card-content">
+    <!-- description -->
+    <i class="cm-oblique-description">
+      Decision has been communicated<br/>
+      to the Compliance Officer via SMS
+    </i>
+
+    <!-- approval columns -->
+    <div class="cm-approval-columns">
+      <!-- approvals -->
+      <app-approval-column
+        label="Approvals">
+        <!-- render items -->
+        <app-approval-status-item
+          *ngFor="let item of detail?.approvals"
+          [rejectedReason]="item.rejectionReason"
+          [status]="item.status"
+          [type]="item.type"></app-approval-status-item>
+      </app-approval-column>
+
+      <!-- documents -->
+      <app-approval-column
+        label="Documents">
+        <app-approval-document-item
+          *ngFor="let item of detail?.documents"
+          [document]="item"></app-approval-document-item>
+      </app-approval-column>
+    </div>
+  </div>
+</app-rect-card>

@@ -1,0 +1,46 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include box(100%);
+  @include flex(stretch, null, column, nowrap);
+
+  .cm-main {
+    @include itemFlex(1, 1, 0);
+  }
+}
+
+// main
+.cm-main {
+  @include flex(stretch);
+  max-height: calc(100% - 60px);
+
+  .cm-router-container {
+    @include itemFlex(1, 1, 0);
+  }
+
+  // full width view
+  &.cm-full-view {
+    app-sidebar {
+      display: none;
+    }
+
+    .cm-router-container {
+      max-width: none;
+    }
+  }
+}
+
+// router container
+.cm-router-container {
+  position: relative;
+  max-width: calc(100% - 70px);
+  // height: 100%;
+
+  // routing pages
+  ::ng-deep {
+    > * {
+      height: 100%;
+    }
+  }
+}

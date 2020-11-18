@@ -1,0 +1,13 @@
+<app-rect-card>
+  <!-- chart filter -->
+  <app-oloc-application-chart-filters
+    [(ngModel)]="filters"
+    [total]="total"
+  ></app-oloc-application-chart-filters>
+
+  <!-- chart -->
+  <app-stacked-bar-chart
+    [colors]="filteredColors"
+    [showPercent]="false"
+    [data]="filteredBarData"></app-stacked-bar-chart>
+</app-rect-card>

@@ -1,0 +1,55 @@
+<!-- card -->
+<app-rect-card [rounded]="true">
+  <!-- toggle filter -->
+  <app-toggle-filter
+    (ngModelChange)="getOtrAllocationData()"
+    [(ngModel)]="toggle"
+    [options]="toggleOptions"></app-toggle-filter>
+
+  <!-- header -->
+  <div class="cm-header">
+    <!-- trades -->
+    <div class="cm-trades">
+      * Showcasing trades for <b>{{date | date: 'MMMM dd, yyyy'}}</b> for <b>8 Hrs</b>
+    </div>
+
+    <!-- actions -->
+    <div class="cm-actions">
+      <button
+        (click)="downloadOTR()"
+        appInlineButton
+        color="default">
+        <app-icon-download></app-icon-download>
+        Download OTR
+      </button>
+
+      <button
+        (click)="openFileUploadModal()"
+        appInlineButton
+        color="default">
+        <app-icon-upload></app-icon-upload>
+        Upload Allocation
+      </button>
+    </div>
+  </div>
+
+  <!-- table -->
+  <app-table
+    (filterChange)="filters = $event; createDisplayableData()"
+    (sortChange)="sort = $event; createDisplayableData()"
+    [(selectAll)]="selectAll"
+    [columns]="columns"
+    [data]="displayableData"
+    [useSort]="false"></app-table>
+
+  <!-- footer -->
+  <div class="cm-footer">
+    <button
+      (click)="openAllocationModal()"
+      [disabled]="selectedRows.length !== 1"
+      appFlatButton
+      color="primary">
+      allocate otr
+    </button>
+  </div>
+</app-rect-card>

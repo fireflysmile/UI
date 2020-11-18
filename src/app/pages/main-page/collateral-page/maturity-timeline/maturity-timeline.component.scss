@@ -1,0 +1,20 @@
+:host {
+    display: block;
+    // height: 200px;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+app-legends-circle {
+    transform: translateX(-80px);
+    ::ng-deep{
+        .legend{
+            margin-left: 10px;
+            .label {
+                white-space: nowrap;
+            }
+        }
+
+    }
+
+}

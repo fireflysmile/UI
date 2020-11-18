@@ -1,0 +1,62 @@
+<div class="cm-split-applications-container">
+  <!-- row -->
+  <div class="cm-split-applications-row">
+    <!-- total -->
+    <app-rect-card [routerLink]="['/main/dashboard/split-application']">
+      <div class="cm-split-applications-top">
+        <!-- left -->
+        <div class="cm-split-applications-left cm-total">
+          <h6>
+            Total Applications Received
+          </h6>
+
+          <span>Till Date</span>
+        </div>
+
+        <!-- value -->
+        <div class="cm-split-applications-value cm-big">
+          {{total}}
+        </div>
+      </div>
+    </app-rect-card>
+  </div>
+
+  <!-- row -->
+  <div class="cm-split-applications-row">
+    <app-split-application-card
+      [routerLink]="['/main/dashboard/split-application']"
+      [total]="(summary?.keyApprovals.applicationCompleted || 0) + (summary?.keyApprovals.actionUnderReview || 0)"
+      [subValue1]="summary?.keyApprovals.actionUnderReview || 0"
+      [subValue2]="summary?.keyApprovals.applicationCompleted || 0"
+      [subLabel2Highlighted]="true"
+      [subValue2Highlighted]="true"
+      [subLabel1]="'Action Under\nReview'"
+      [subLabel2]="'Application\nCompleted'"
+      [label]="'Key\nApprovals'"
+      icon="approval"></app-split-application-card>
+
+    <app-split-application-card
+      [routerLink]="['/main/dashboard/split-application']"
+      [total]="(summary?.mandatorySubmissions.applicationCompleted || 0) + (summary?.mandatorySubmissions.actionUnderReview || 0)"
+      [subValue1]="summary?.mandatorySubmissions.actionUnderReview || 0"
+      [subValue2]="summary?.mandatorySubmissions.applicationCompleted || 0"
+      [subLabel2Highlighted]="true"
+      [subValue2Highlighted]="true"
+      [subLabel1]="'Action Under\nReview'"
+      [subLabel2]="'Application\nCompleted'"
+      [label]="'Mandatory\nSubmissions'"
+      icon="submission"></app-split-application-card>
+
+    <app-split-application-card
+      [routerLink]="['/main/dashboard/split-application']"
+      [total]="(summary?.otherCompliances.applicationCompleted || 0) + (summary?.otherCompliances.actionUnderReview || 0)"
+      [subValue1]="summary?.otherCompliances.actionUnderReview || 0"
+      [subValue2]="summary?.otherCompliances.applicationCompleted || 0"
+      [subLabel2Highlighted]="true"
+      [subValue2Highlighted]="true"
+      [subLabel1]="'Action Under\nReview'"
+      [subLabel2]="'Application\nCompleted'"
+      [label]="'Other\nCompliances'"
+      icon="grid"></app-split-application-card>
+  </div>
+</div>

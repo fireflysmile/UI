@@ -1,0 +1,23 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+  margin-bottom: 60px;
+}
+
+.cm-header {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+.cm-content {
+  margin-top: 27px;
+}
+
+// gap
+app-director-submit-dir12-item + app-director-submit-dir12-item {
+  margin-top: 33px;
+}

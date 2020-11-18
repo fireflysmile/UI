@@ -1,0 +1,38 @@
+<div class="extenions-request">
+  <div class="title">Extension Letter</div>
+
+  <table class="documents-table">
+    <thead>
+      <tr>
+        <th>Applicant Name</th>
+        <th>Document Name</th>
+        <th>Do you accept the Request?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of personnel; let i=index">
+        <td>{{ person.name }}</td>
+        <td>
+          <app-inline-document *ngIf="i===0" [document]="request.document"></app-inline-document>
+        </td>
+        <td>
+          <div class="yes-no-wrap" [class.hide]="i!==0">
+            <button class="cm-button-outline" [disabled]="disabled" (click)="accept()">Yes</button>
+            <button class="cm-button-outline" [disabled]="disabled" (click)="reject()">No</button>
+          </div>
+          <div class="message-wrap" [class.hide]="i!==0">
+            <div class="message" *ngIf="request.accepted">
+              <app-icon-check-circle></app-icon-check-circle>
+              <span>Request has been accepted</span>
+            </div>
+            <div class="message" *ngIf="request.accepted === false">
+              <app-icon-cross-circle></app-icon-cross-circle>
+              <span>Request has been rejected</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

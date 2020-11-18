@@ -1,0 +1,12 @@
+<!-- page content -->
+<app-page-content class="page">
+    <div class="page__headline">
+        <app-back-button routerLink="/main">Back to Dashboard</app-back-button>
+    </div>
+
+    <ng-content></ng-content>
+
+    <footer class="footer">
+        <ng-content select="[footerActions]"></ng-content>
+    </footer>
+</app-page-content>

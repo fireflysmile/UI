@@ -1,0 +1,14 @@
+<div class="cm-info-instrument-type-panel" 
+>
+  <div class="title">Reference</div>
+  <div class="sections" *ngFor="let cg of ['Cash', 'Non-Cash']">
+    <div class="sub-title">{{cg}}</div>
+    <div class="section">
+      <div class="item" *ngFor="let t of instrumentTypes[cg]">
+        <div class="name">{{t.name}}</div>
+        <div class="fullname">{{t.fullName}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

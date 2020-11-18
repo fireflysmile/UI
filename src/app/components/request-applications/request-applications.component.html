@@ -1,0 +1,97 @@
+<div class="cm-request-applications-container">
+  <!-- row -->
+  <div class="cm-request-applications-row">
+    <!-- total -->
+    <app-rect-card [routerLink]="['/main/oloc-dashboard/search-application']">
+      <div class="cm-request-applications-top">
+        <!-- left -->
+        <div class="cm-request-applications-left cm-total">
+          <h6>
+            Total Applications Received
+          </h6>
+
+          <span>Till Date</span>
+        </div>
+
+        <!-- value -->
+        <div class="cm-request-applications-value cm-big">
+          {{total}}
+        </div>
+      </div>
+    </app-rect-card>
+
+    <app-rect-card [routerLink]="['/main/oloc-dashboard/search-application']">
+      <div class="cm-request-applications-top">
+        <!-- left -->
+        <div class="cm-request-applications-left cm-total">
+          <h6>
+            Total Applications In-Process
+          </h6>
+
+          <span>{{ now | date: 'MMMM yyyy'}}</span>
+        </div>
+
+        <!-- value -->
+        <div class="cm-request-applications-value cm-big">
+          {{total - 356}}
+        </div>
+      </div>
+    </app-rect-card>
+  </div>
+
+  <!-- row -->
+  <div class="cm-request-applications-row">
+    <app-request-application-card
+      [routerLink]="['/main/oloc-dashboard/application-request']"
+      [total]="(summary?.keyApprovals.applicationCompleted || 0) + (summary?.keyApprovals.actionUnderReview || 0)"
+      [subValue1]="summary?.keyApprovals.actionUnderReview || 0"
+      [subValue2]="summary?.keyApprovals.applicationCompleted || 0"
+      [subLabel1]="'Completed'"
+      [subLabel2]="'In-Process'"
+      [label]="'PI Activation'"
+      icon="structure-tree"></app-request-application-card>
+
+    <app-request-application-card
+      [routerLink]="['/main/oloc-dashboard/application-request']"
+      [total]="(summary?.mandatorySubmissions.applicationCompleted || 0) + (summary?.mandatorySubmissions.actionUnderReview || 0)"
+      [subValue1]="summary?.mandatorySubmissions.actionUnderReview || 0"
+      [subValue2]="summary?.mandatorySubmissions.applicationCompleted || 0"
+      [subLabel1]="'Completed'"
+      [subLabel2]="'In-Process'"
+      [label]="'PI Surrender'"
+      icon="structure-tree"></app-request-application-card>
+
+    <app-request-application-card
+      [routerLink]="['/main/oloc-dashboard/application-request']"
+      [total]="(summary?.otherCompliances.applicationCompleted || 0) + (summary?.otherCompliances.actionUnderReview || 0)"
+      [subValue1]="summary?.otherCompliances.actionUnderReview || 0"
+      [subValue2]="summary?.otherCompliances.applicationCompleted || 0"
+      [subLabel1]="'Completed'"
+      [subLabel2]="'In-Process'"
+      [label]="'Kcar Activation'"
+      icon="dns"></app-request-application-card>
+
+     <app-request-application-card
+      [routerLink]="['/main/oloc-dashboard/application-request']"
+      [total]="(summary?.keyApprovals.applicationCompleted || 0) + (summary?.keyApprovals.applicationProgress || 0)"
+      [subValue1]="summary?.keyApprovals.applicationCompleted || 0"
+      [subValue2]="summary?.keyApprovals.applicationProgress || 0"
+      [subLabel1]="'Completed'"
+      [subLabel2]="'In-Process'"
+      [label]="'Kcar Surrender'"
+      icon="dns"></app-request-application-card>
+  </div>
+
+  <!-- row -->
+  <div class="cm-request-applications-row">
+    <app-request-application-card
+      [routerLink]="['/main/oloc-dashboard/application-request']"
+      [total]="(summary?.mandatorySubmissions.applicationProgress || 0) + (summary?.mandatorySubmissions.actionUnderReview || 0)"
+      [subValue1]="summary?.mandatorySubmissions.applicationProgress || 0"
+      [subValue2]="summary?.mandatorySubmissions.actionUnderReview || 0"
+      [subLabel1]="'Completed'"
+      [subLabel2]="'In-Process'"
+      [label]="'CON for P2P'"
+      icon="note"></app-request-application-card>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<app-rect-card-header>
+  <div heading>Segment-wise Utilization</div>
+</app-rect-card-header>
+<div class="progress-bar-container">
+  <div class="progress-bar-group" *ngFor="let item of donutCharts">
+    <div class="donut-with-label">
+      <app-donut-chart
+      [data]="item.data"
+      type="progress"
+      [sWidth]="180"
+      [sHeight]="120"
+      [sectionWidth]="15"
+    ></app-donut-chart>
+    <div class="label">{{item.label}}</div>
+    </div>
+
+  </div>
+</div>

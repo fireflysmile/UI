@@ -1,0 +1,67 @@
+<app-modal-container>
+  <!-- header -->
+  <app-modal-header>
+    <div class="cm-ball-icon">
+      <app-icon-exclamation></app-icon-exclamation>
+    </div>
+
+    Attention
+  </app-modal-header>
+
+  <!-- content -->
+  <app-modal-content>
+    <p>
+      <b>{{changes.length}} Post-Facto change(s)</b> have been identified as per MCA records.
+    </p>
+
+    <p>
+      Since these changes do not reflect in the existing records, please apply
+      for these Post-Facto changes immediately to register the same with the exchange.
+    </p>
+
+    <p>
+      <b>Failing to do so may lead to serious consequences.</b>
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Director Name
+          </th>
+
+          <th>
+            Post-Facto Change
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of changes">
+          <td>
+            {{item.director}}
+          </td>
+
+          <td>
+            {{item.change}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close()"
+      class="cm-cancel-button">
+      close
+    </button>
+
+    <button
+      (click)="tsModalRef.close(true)"
+      class="cm-confirm-button">
+      start new request
+    </button>
+  </app-modal-actions>
+</app-modal-container>

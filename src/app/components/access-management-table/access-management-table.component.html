@@ -1,0 +1,157 @@
+<app-static-table
+  #appStaticTable
+  [data]="data"
+  [fixedHeader]="true">
+  <!-- checkbox -->
+  <ng-template
+    appHeaderColumn
+    key="checkbox">
+    <!--checkbox-->
+    <app-checkbox
+      [(ngModel)]="selectAll"></app-checkbox>
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="checkbox"
+    let-row>
+    <app-checkbox
+      [(ngModel)]="row.selected"></app-checkbox>
+  </ng-template>
+
+  <!-- userId -->
+  <ng-template
+    appHeaderColumn
+    key="userId">
+    User ID
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="userId"
+    let-row>
+    {{row.userId}}
+  </ng-template>
+
+  <ng-container *ngIf="appService.isLCNAdmin$ | async">
+    <!-- memberId -->
+    <ng-template
+      appHeaderColumn
+      key="memberId">
+      Member ID
+    </ng-template>
+    <ng-template
+      appBodyColumn
+      key="memberId"
+      let-row>
+      {{row.memberId}}
+    </ng-template>
+  </ng-container>
+
+  <!-- enabled -->
+  <ng-template
+    appHeaderColumn
+    key="enabled">
+    User Enabled?
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="enabled"
+    let-row>
+    <app-switch
+      [(ngModel)]="row.enabled"></app-switch>
+  </ng-template>
+
+  <!-- MC -->
+  <ng-template
+    appHeaderColumn
+    key="MC">
+    MC
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="MC"
+    let-row>
+    <app-checkbox
+      [(ngModel)]="row.MC"></app-checkbox>
+  </ng-template>
+
+  <!-- FO -->
+  <ng-template
+    appHeaderColumn
+    key="FO">
+    FO
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="FO"
+    let-row>
+    <app-checkbox
+      [(ngModel)]="row.FO"></app-checkbox>
+  </ng-template>
+
+  <!-- CD -->
+  <ng-template
+    appHeaderColumn
+    key="CD">
+    CD
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="CD"
+    let-row>
+    <app-checkbox
+      [(ngModel)]="row.CD"></app-checkbox>
+  </ng-template>
+
+  <!-- CO -->
+  <ng-template
+    appHeaderColumn
+    key="CO">
+    CO
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="CO"
+    let-row>
+    <app-checkbox
+      [(ngModel)]="row.CO"></app-checkbox>
+  </ng-template>
+
+  <!-- SLB -->
+  <ng-template
+    appHeaderColumn
+    key="SLB">
+    SLB
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="SLB"
+    let-row>
+    <app-checkbox
+      [(ngModel)]="row.SLB"></app-checkbox>
+  </ng-template>
+
+  <!-- actions -->
+  <ng-template
+    appHeaderColumn
+    key="actions">
+  </ng-template>
+  <ng-template
+    appBodyColumn
+    key="actions"
+    let-row>
+    <button
+      (click)="openResetPasswordModal(row)"
+      [disabled]="row.resetLoading"
+      appStrokeButton
+      color="primary">
+      {{row.resetLoading ? 'Loading...' : 'Reset Password'}}
+    </button>
+
+    <button
+      (click)="openModifyCredentialsModal(row)"
+      appStrokeButton
+      color="primary">
+      Modify
+    </button>
+  </ng-template>
+</app-static-table>

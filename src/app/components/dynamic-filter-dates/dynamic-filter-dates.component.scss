@@ -1,0 +1,56 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  width: 272px;
+}
+
+// header
+.cm-dynamic-filter-dates-header {
+  @include flex(center, center);
+  @include padding(9px 0);
+}
+
+// date selector
+.cm-dynamic-filter-date-selector {
+  @include flex(stretch, null, null, nowrap);
+  @include border(1px solid $suva-grey);
+  border-radius: 3px;
+  min-width: 171px;
+  height: 24px;
+
+  input {
+    @include itemFlex(1, 1, 0);
+    @include padding(0 5px);
+    font-size: 12px;
+    font-weight: 400;
+    color: $black;
+    width: 50%;
+    max-width: 120px;
+
+    @include onlyForFirefox {
+      flex-basis: auto !important;
+    }
+
+    // placeholder
+    &::placeholder {
+      color: $suva-grey;
+      letter-spacing: -1px;
+    }
+
+    // invalid
+    &.cm-invalid, &.ng-invalid {
+      color: $red-orange;
+    }
+  }
+}
+
+// divider
+app-divider {
+  background-color: $white-smoke2;
+}
+
+// range calendar
+app-range-calendar {
+  @include padding(0 8px);
+}

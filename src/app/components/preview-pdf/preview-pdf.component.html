@@ -1,0 +1,40 @@
+<div class="preview-pdf">
+  <div class="title">{{ title }}</div>
+  <div class="page-number">{{ page + '/' + numPages }}</div>
+
+  <div class="pdf-page-wrap">
+    <app-icon-chevron-left [clickable]="true" (click)="page = page - 1" [class.disabled]="page === 1"></app-icon-chevron-left>
+    <div class="pdf-page">
+      <pdf-viewer
+        [src]="src"
+        [render-text]="false"
+        [show-all]="false"
+        [(page)]="page"
+        [original-size]="false"
+        (after-load-complete)="onLoad($event)">
+      </pdf-viewer>
+    </div>
+    <app-icon-chevron-right [clickable]="true" (click)="page = page + 1" [class.disabled]="page === numPages"></app-icon-chevron-right>
+    <app-icon-launch [clickable]="true" (click)=launch()></app-icon-launch>
+  </div>
+
+  <app-card-action-item
+    icon="upload"
+    *ngIf="action === 'upload'"
+    [freeWidth]="true"
+    appFilepicker="application/pdf"
+    (file)="upload.emit($event)">
+    Re-upload file
+  </app-card-action-item>
+  <app-card-action-item
+    icon="download"
+    *ngIf="action === 'download'"
+    [freeWidth]="true"
+    (click)="download()">
+    Download file
+  </app-card-action-item>
+
+  <div class="modal-actions">
+    <button class="cm-button secondary" (click)="close.emit()">Close</button>
+  </div>
+</div>

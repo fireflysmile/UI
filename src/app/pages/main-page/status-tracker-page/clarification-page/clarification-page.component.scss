@@ -1,0 +1,61 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  @include paddingBottom(70px);
+  margin-bottom: 96px;
+}
+
+app-application-clarification-table {
+  margin-top: 50px;
+}
+
+app-page-actions {
+  @include bottomLeft;
+  @include padding(15px 107px 15px 99px);
+  height: auto;
+  position: fixed;
+  width: 100%;
+
+  ::ng-deep {
+    .cm-page-actions {
+      button {
+        @include rect(180px, 32px);
+      }
+    }
+  }
+}
+
+.cm-icon-button {
+  max-width: none;
+  font-size: 12px;
+
+  app-icon-eye {
+    margin-right: 8px;
+
+    ::ng-deep {
+      path {
+        fill: $chocolate;
+      }
+    }
+  }
+
+  app-icon-edit-circle {
+    margin-right: 6px;
+
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+}
+
+.cm-icon-button + .cm-icon-button {
+  margin-left: 29px;
+}

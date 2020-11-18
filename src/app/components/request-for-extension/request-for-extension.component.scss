@@ -1,0 +1,58 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(flex-start, null, column);
+}
+
+// label
+.cm-request-extension-label {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// submitted
+.cm-submitted {
+  @include flex(center);
+  margin-top: 35px;
+
+  // ball icon
+  .cm-ball-icon {
+    background-color: $kelly-green;
+
+    ::ng-deep {
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  // message
+  .cm-message {
+    margin-left: 5px;
+    font-size: 16px;
+    line-height: 19px;
+    color: $thunder;
+  }
+}
+
+// content
+.cm-request-extension-content {
+  @include flex(flex-start, null, column);
+  margin-top: 13px;
+}
+
+// gaps
+app-request-for-extension-item + app-request-for-extension-item {
+  margin-top: 15px;
+}
+
+app-request-for-extension-item + i {
+  margin-top: 23px;
+}
+
+i + app-request-for-extension-item {
+  margin-top: 7px;
+}

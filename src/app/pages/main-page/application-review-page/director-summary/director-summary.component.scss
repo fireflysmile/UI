@@ -1,0 +1,61 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  ::ng-deep {
+    app-application-review-card {
+      margin-bottom: 16px;
+    }
+    app-application-review-card-title {
+      margin-bottom: 36px;
+    }
+
+    table {
+      th:not(.section-header) {
+        @include paddingBottom(15px);
+      }
+    }
+
+
+    .proposed-card,
+    .post-facto-card {
+      table {
+        td,
+        th {
+          width: 12%;
+
+          &:nth-child(4) {
+            width: 300px;
+            max-width: 300px;
+            min-width: 300px;
+          }
+
+          &:nth-child(5) {
+            width: 230px;
+            max-width: 230px;
+            min-width: 230px;
+          }
+
+          &:nth-child(3),
+          &:nth-child(2) {
+            width: 18%;
+            min-width: 180px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.director-summary-card {
+  .tables-wrap {
+    @include flex(flex-start, space-between, null, nowrap);
+
+    table:not(:first-of-type) {
+      td:first-of-type {
+        @include paddingRight(110px);
+      }
+    }
+  }
+}

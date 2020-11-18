@@ -1,0 +1,152 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  margin-bottom: 100px;
+}
+
+// content
+.cm-card-content {
+  @include padding(13px 98px);
+}
+
+app-request-for-extension {
+  margin-top: 33px;
+}
+
+// bottom row
+.cm-bottom-row {
+  @include flex(flex-start);
+  margin-top: 50px;
+}
+
+// column
+.cm-post-implementation-column {
+  @include flex(flex-start, null, column);
+}
+
+// column gap
+.cm-post-implementation-column + .cm-post-implementation-column {
+  margin-left: 190px;
+}
+
+// column label
+.cm-post-implementation-column-label {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 700;
+  color: $jackson-purple;
+}
+
+// content
+.cm-post-implementation-column-content {
+  margin-top: 15px;
+
+  .cm-icon-button {
+    .cm-icon {
+      margin-right: 12px;
+
+      ::ng-deep {
+        path {
+          fill: $tahiti-gold;
+        }
+      }
+    }
+
+    &:disabled {
+      cursor: auto;
+
+      &:hover, &:active {
+        opacity: 1;
+      }
+
+      .cm-icon {
+        ::ng-deep {
+          path {
+            fill: $provincial-pink;
+          }
+        }
+      }
+    }
+  }
+
+  .cm-link {
+    font-size: 12px;
+  }
+}
+
+app-page-actions {
+  @include bottomLeft;
+  @include padding(15px 98px);
+  position: fixed;
+  width: 100%;
+  display: block;
+  height: auto;
+
+  ::ng-deep {
+    .cm-page-actions {
+      @include flex(center, space-between);
+
+      button {
+        @include rect(188px, 32px);
+      }
+    }
+  }
+}
+
+// selected director
+.cm-selected-directors {
+  @include flex(flex-start);
+  width: 300px;
+  margin-top: 6px;
+}
+
+// selected item
+.cm-selected-director-item {
+  @include widthBetweenGap(8px, 2);
+  @include border(1px solid $light-grey);
+  @include flex(center, space-between);
+  @include padding(0 9px 0 12px);
+  margin-bottom: 8px;
+  border-radius: 16px;
+  height: 32px;
+
+  span {
+    @include ellipsis;
+    font-size: 12px;
+    color: $suva-grey;
+    width: calc(100% - 32px);
+  }
+
+  .cm-icon {
+    @include clickable(true);
+
+    ::ng-deep {
+      path {
+        fill: $light-grey;
+      }
+    }
+  }
+}
+
+// submitted
+.cm-submitted {
+  margin-top: 30px;
+}
+
+button.back-to-dashboard {
+  margin: 42px 0 42px;
+}
+
+app-director-submit-dir12 {
+  margin-top: 50px;
+}
+
+app-file-upload-card + app-post-implementation-error {
+  margin-top: 28px;
+}

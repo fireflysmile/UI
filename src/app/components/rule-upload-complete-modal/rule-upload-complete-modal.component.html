@@ -1,0 +1,26 @@
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    Successfully submitted request for {{data.response.total - data.response.errors}} records.
+    <br/>
+    <br/>
+    {{data.response.errors}} records were returned because either:
+    <br/>
+    <span *ngFor="let item of data.response.reasons">
+      • {{item}}
+    </span>
+    <br/>
+    <br/>
+    Please select the location where you wish to save the error file
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="tsModalRef.close(true)"
+      appFlatButton
+      color="primary">
+      download
+    </button>
+  </app-modal-actions>
+</app-modal-container>

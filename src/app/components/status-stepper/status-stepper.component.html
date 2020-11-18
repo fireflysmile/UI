@@ -1,0 +1,18 @@
+<ng-container
+  *ngFor="let item of steps; let i = index">
+  <!-- steps -->
+  <app-status-stepper-item
+    (click)="item.clickable && stepClick.emit(item)"
+    [clickable]="item.clickable"
+    [completed]="item.completed"
+    [disabled]="item.disabled"
+    [icon]="item.icon"
+    [label]="item.label"></app-status-stepper-item>
+
+  <!-- step bar -->
+  <div
+    *ngIf="i !== lastIndex"
+    [class.cm-completed]="item.completed"
+    [class.cm-disabled]="item.disabled"
+    class="cm-step-bar"></div>
+</ng-container>

@@ -1,0 +1,83 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  @include flex(center, flex-end);
+  @include padding(0 16px);
+  min-height: 32px;
+}
+
+// container
+.cm-action-item-container {
+  position: relative;
+}
+
+// action gap
+.cm-action-item-container + .cm-action-item-container {
+  margin-left: 20px;
+}
+
+// divider
+app-divider {
+  margin: 0 20px;
+}
+
+app-more-options {
+  z-index: 80;
+}
+
+// layout more options
+.cm-layout-more-options {
+  &::after, &::before {
+    left: auto;
+    right: 50px;
+  }
+}
+
+// date range more options
+.cm-date-range-more-options {
+  width: 260px;
+  left: -118px;
+  top: calc(100% + 10px);
+  border-radius: 0;
+  border: none;
+}
+
+// date range input
+.cm-date-range-inputs {
+  @include flex(flex-start, space-between);
+  @include padding(6px 10px 14px);
+
+  app-form-field {
+    width: 104px;
+  }
+}
+
+// date range actions
+.cm-date-range-actions {
+  @include flex(center, space-between);
+  @include padding(10px);
+  @include borderTop(1px solid $white-smoke2);
+
+  button {
+    @include flex(center, center);
+    @include clickable(true);
+    border-radius: 5px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .cm-date-range-reset {
+    width: 86px;
+    background-color: $whisper;
+    color: $black;
+  }
+
+  .cm-date-range-apply {
+    width: 123px;
+    background-color: $tahiti-gold;
+    color: $white;
+  }
+}

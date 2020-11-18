@@ -1,0 +1,60 @@
+@import "src/app/styles/mixins";
+@import "src/app/styles/props";
+
+:host {
+  display: block;
+}
+
+app-rect-card {
+  @include box(100%);
+  @include padding(24px);
+}
+
+app-toggle-filter {
+  ::ng-deep {
+    .cm-toggle-button {
+      @include padding(0 8px);
+    }
+  }
+}
+
+// header
+.cm-header {
+  @include flex(center, space-between);
+  margin-top: 8px;
+}
+
+// table gap
+app-table {
+  margin-top: 23px;
+}
+
+// trades
+.cm-trades {
+  font-size: 12px;
+  font-weight: 400;
+  color: $raven;
+}
+
+// actions
+.cm-actions {
+  @include flex(center);
+
+  button {
+    font-size: 12px;
+
+    .cm-icon {
+      margin-right: 2px;
+    }
+  }
+
+  button + button {
+    margin-left: 55px;
+  }
+}
+
+// footer
+.cm-footer {
+  @include flex(center, flex-end);
+  margin-top: 22px;
+}

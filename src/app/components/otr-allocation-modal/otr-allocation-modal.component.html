@@ -1,0 +1,84 @@
+<!-- container -->
+<app-modal-container>
+  <!-- content -->
+  <app-modal-content>
+    <!-- otr info -->
+    <div class="cm-otr-info">
+      <!-- settlementType -->
+      <app-form-field
+        label="Settlement Type">
+        {{data.order.settlementType}}
+      </app-form-field>
+
+      <!-- settlementNo -->
+      <app-form-field
+        label="Settlement No.">
+        {{data.order.settlementNo}}
+      </app-form-field>
+
+      <!-- otrNo -->
+      <app-form-field
+        label="OTR No.">
+        {{data.order.otrNo}}
+      </app-form-field>
+
+      <!-- buySell -->
+      <app-form-field
+        label="Buy/Sell">
+        {{data.order.buySell}}
+      </app-form-field>
+
+      <!-- symbol -->
+      <app-form-field
+        label="Symbol">
+        {{data.order.symbol}}
+      </app-form-field>
+
+      <!-- series -->
+      <app-form-field
+        label="Series">
+        {{data.order.series}}
+      </app-form-field>
+
+      <!-- exchange -->
+      <app-form-field
+        label="Exchange">
+        {{data.order.exchange}}
+      </app-form-field>
+    </div>
+
+    <!-- divider -->
+    <app-divider
+      length="100%"
+      direction="horizontal"></app-divider>
+
+    <!-- allocator -->
+    <app-otr-allocator
+      [data]="data.order"></app-otr-allocator>
+  </app-modal-content>
+
+  <!-- actions -->
+  <app-modal-actions>
+    <button
+      (click)="allocatorRef?.clearAllocations()"
+      appFlatButton
+      color="secondary">
+      Clear allocations
+    </button>
+
+    <button
+      (click)="allocatorRef?.clearEntries()"
+      appFlatButton
+      color="secondary">
+      Clear all entries
+    </button>
+
+    <button
+      (click)="onConfirm()"
+      [disabled]="!allocatorRef?.confirmable || loading"
+      appFlatButton
+      color="primary">
+      {{loading ? 'Loading...' : 'confirm'}}
+    </button>
+  </app-modal-actions>
+</app-modal-container>
